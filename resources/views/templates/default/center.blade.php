@@ -1,0 +1,4 @@
+
+@yield('center')
+
+<!--//main right-->
