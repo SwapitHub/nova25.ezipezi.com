@@ -1,7 +1,18 @@
 {
     "name": "lanhktc/s-cart",
     "description": "Free Laravel e-commerce for business: shopping cart, cms content, and more...",
-    "keywords": ["Open source","E-commerce", "Ecommerce", "Shopping cart",  "CMS", "framework", "laravel","shop", "store","business"],
+    "keywords": [
+        "Open source",
+        "E-commerce",
+        "Ecommerce",
+        "Shopping cart",
+        "CMS",
+        "framework",
+        "laravel",
+        "shop",
+        "store",
+        "business"
+    ],
     "homepage": "https://s-cart.org",
     "license": "MIT",
     "authors": [
@@ -10,7 +21,7 @@
             "email": "lanhktc@gmail.com"
         }
     ],
-    "type" : "project",
+    "type": "project",
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -25,7 +36,7 @@
         "paypal/rest-api-sdk-php": "^1.13",
         "phpoffice/phpspreadsheet": "^1.8",
         "spatie/laravel-pjax": "^2.0",
-        "unisharp/laravel-filemanager": "dev-master"
+        "unisharp/laravel-filemanager": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
