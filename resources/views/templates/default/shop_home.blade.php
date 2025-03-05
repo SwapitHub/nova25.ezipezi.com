@@ -449,7 +449,7 @@ if(!empty($admin)) {
                 <div class="inner-all-shop-new-arrivals-box">
                     <div class="shop-new-arrivals-image">
                         <a href="#" title="Drumstick bresao">
-                            <img src="{{ asset($templateFile . '/images') }}/theme-images/new-arrivals1.jpg"
+                            <img src="{{ asset($templateFile . '/images/theme-images') }}/new-arrivals1.jpg"
                                 alt="Drumstick bresao">
                             <div class="drumstick-cart-sec">
                                 <ul class="ctm-flex-row">
@@ -476,7 +476,7 @@ if(!empty($admin)) {
                 <div class="inner-all-shop-new-arrivals-box">
                     <div class="shop-new-arrivals-image">
                         <a href="#" title="Drum stick tempo">
-                            <img src="{{ asset($templateFile . '/images') }}/theme-images/new-arrivals2.jpg"
+                            <img src="{{ asset($templateFile . '/images/theme-images') }}/new-arrivals2.jpg"
                                 alt="Drum stick tempo">
                             <div class="drumstick-cart-sec">
                                 <ul class="ctm-flex-row">
@@ -503,7 +503,7 @@ if(!empty($admin)) {
                 <div class="inner-all-shop-new-arrivals-box">
                     <div class="shop-new-arrivals-image">
                         <a href="#" title="Doenpuis consuat">
-                            <img src="{{ asset($templateFile . '/images') }}/theme-images/new-arrivals3.jpg"
+                            <img src="{{ asset($templateFile . '/images/theme-images') }}/new-arrivals3.jpg"
                                 alt="Doenpuis consuat">
                             <div class="drumstick-cart-sec">
                                 <ul class="ctm-flex-row">
@@ -530,7 +530,7 @@ if(!empty($admin)) {
                 <div class="inner-all-shop-new-arrivals-box">
                     <div class="shop-new-arrivals-image">
                         <a href="#" title="Deniam frankfurte">
-                            <img src="{{ asset($templateFile . '/images') }}/theme-images/new-arrivals4.jpg"
+                            <img src="{{ asset($templateFile . '/images/theme-images') }}/new-arrivals4.jpg"
                                 alt="Deniam frankfurte">
                             <div class="drumstick-cart-sec">
                                 <ul class="ctm-flex-row">
@@ -571,7 +571,7 @@ if(!empty($admin)) {
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/women-collection-image1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/women-collection-image1.jpg"
                                     alt="women-collection">
                                 <div class="women-man-collection-content">
                                     <h5 class="reddish-pink-color">WOMEN <br> COLLECTIONS</h5>
@@ -585,7 +585,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="CLOTHERS">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/cloth-img.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/cloth-img.jpg"
                                         alt="cloth-img">
                                     <div class="clothers-content-link">
                                         <span>CLOTHERS</span>
@@ -596,7 +596,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="ACCESSORIES">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/accessories-img.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/accessories-img.jpg"
                                         alt="ACCESSORIES">
                                     <div class="clothers-content-link">
                                         <span>ACCESSORIES</span>
@@ -611,7 +611,7 @@ if(!empty($admin)) {
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/women-collection-image2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/women-collection-image2.jpg"
                                     alt="women-collection">
                                 <div class="women-man-collection-content">
                                     <h5 class="soft-muted-blue-color">
@@ -628,7 +628,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="CLOTHERS">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/cloth-img2.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/cloth-img2.jpg"
                                         alt="cloth-img">
                                     <div class="clothers-content-link">
                                         <span>CLOTHERS</span>
@@ -639,7 +639,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="SHOES">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/shoes-img.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/shoes-img.jpg"
                                         alt="SHOES">
                                     <div class="clothers-content-link">
                                         <span>SHOES</span>
@@ -654,7 +654,7 @@ if(!empty($admin)) {
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="KID'S COLLECTIONS">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/women-collection-image3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/women-collection-image3.jpg"
                                     alt="KID'S COLLECTIONS">
                                 <div class="women-man-collection-content">
                                     <h5 class="rusty-orange-color">
@@ -671,7 +671,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="CLOTHERS">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/kids-collection-img.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/kids-collection-img.jpg"
                                         alt="KID'S WEAR">
                                     <div class="clothers-content-link">
                                         <span>KID'S WEAR</span>
@@ -682,7 +682,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="ACCESSORIES">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/kids-ass.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/kids-ass.jpg"
                                         alt="ACCESSORIES">
                                     <div class="clothers-content-link">
                                         <span>ACCESSORIES</span>
@@ -697,7 +697,7 @@ if(!empty($admin)) {
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="STORES HOMEWARE">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/women-collection-image1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/women-collection-image1.jpg"
                                     alt="STORES HOMEWARE">
                                 <div class="women-man-collection-content">
                                     <h5 class="grayish-brown-color">
@@ -714,7 +714,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="DECOR">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/decor-img.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/decor-img.jpg"
                                         alt="DECOR">
                                     <div class="clothers-content-link">
                                         <span>DECOR</span>
@@ -725,7 +725,7 @@ if(!empty($admin)) {
                         <div class="women-man-clothers-sec">
                             <div class="women-man-collection-img">
                                 <a href="#" title="BED & BATH">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/bad-bath-img.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/bad-bath-img.jpg"
                                         alt="BED & BATH">
                                     <div class="clothers-content-link">
                                         <span>BED & BATH</span>
@@ -738,18 +738,18 @@ if(!empty($admin)) {
             </div>
         </div>
     </section>
+
+
+
+
     <!-- ================== SHOP BY CATEGORIES Section End Here ================== -->
     <!-- ================== Product Furniture Section Start Here ================== -->
-
-    <div class="inner-product-fruniture">
-        <div class="product-fruniture-slider slick-initialized slick-slider slick-dotted slick-vertical">
-            <div class="slick-list draggable" style="height: 436.8px;">
-                <div class="slick-track" style="opacity: 1; height: 3058px; transform: translate3d(0px, -436px, 0px);">
-                    <div style="background-image: url({{ asset($templateFile . '/images') }}/theme-images/inner-product-fruniture-bg1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 100px 80px;" class="inner-product-fruniture-slider inner-product-fruniture-slider-three slick-slide slick-cloned"
-                        data-slick-index="-1" id="" aria-hidden="true" tabindex="-1" style="width: 360px;">
+    <section class="product-fruniture-bg ctm-section-margin">
+        <div class="container">
+            <div class="inner-product-fruniture"
+                style="background-image: url({{ asset($templateFile . '/images/theme-images') }}/product-future-bg.jpg);background-repeat: no-repeat background-size: cover;padding: 50px 140px;">
+                <div class="product-fruniture-slider">
+                    <div class="inner-product-fruniture-slider" style="background-image: url({{ asset($templateFile . '/images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -757,16 +757,11 @@ if(!empty($admin)) {
                         <p class="ctm-white-color ctm-mt-20">Transform your space</p>
                         <p class="ctm-white-color ctm-mt-10">with bedroom essentials</p>
                         <div class="futute-shop-now-btn ctm-mt-30">
-                            <a href="#" title="Shop now !" class="common-primary-button ctm-white-color"
-                                tabindex="-1">Shop now !</a>
+                            <a href="#" title="Shop now !" class="common-primary-button ctm-white-color">Shop now
+                                !</a>
                         </div>
                     </div>
-                    <div style="background-image: url({{ asset($templateFile . '/images') }}/theme-images/inner-product-fruniture-bg1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 100px 80px;"" class="inner-product-fruniture-slider slick-slide slick-current slick-active"
-                        data-slick-index="0" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide60"
-                        aria-describedby="slick-slide-control60" style="width: 360px;">
+                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-two" style="background-image: url({{ asset($templateFile . '/images/theme-images') }}/inner-product-fruniturebg-2.png);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -774,34 +769,34 @@ if(!empty($admin)) {
                         <p class="ctm-white-color ctm-mt-20">Transform your space</p>
                         <p class="ctm-white-color ctm-mt-10">with bedroom essentials</p>
                         <div class="futute-shop-now-btn ctm-mt-30">
-                            <a href="#" title="Shop now !" class="common-primary-button ctm-white-color"
-                                tabindex="0">Shop now !</a>
+                            <a href="#" title="Shop now !" class="common-primary-button ctm-white-color">Shop now
+                                !</a>
+                        </div>
+                    </div>
+                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-three" style="background-image: url({{ asset($templateFile . '/images/theme-images') }}/inner-product-fruniture-bg-3.png);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
+                        <h1 class="ctm-white-color">
+                            Bedroom
+                            <div>Furniture</div>
+                        </h1>
+                        <p class="ctm-white-color ctm-mt-20">Transform your space</p>
+                        <p class="ctm-white-color ctm-mt-10">with bedroom essentials</p>
+                        <div class="futute-shop-now-btn ctm-mt-30">
+                            <a href="#" title="Shop now !" class="common-primary-button ctm-white-color">Shop now
+                                !</a>
                         </div>
                     </div>
                 </div>
+                <div class="extra-finalsale-styles ctm-text-center">
+                    <ul>
+                        <li>
+                            <h5>Extra 50% off some final sale styles * </h5>
+                        </li>
+                        <li><a href="#" title="Shop neutrals">Shop neutrals</a></li>
+                    </ul>
+                </div>
             </div>
-
-
-            <ul class="slick-dots" style="" role="tablist">
-                <li class="slick-active" role="presentation"><button type="button" role="tab"
-                        id="slick-slide-control60" aria-controls="slick-slide60" aria-label="1 of 3" tabindex="0"
-                        aria-selected="true">1</button></li>
-                <li role="presentation"><button type="button" role="tab" id="slick-slide-control61"
-                        aria-controls="slick-slide61" aria-label="2 of 3" tabindex="-1">2</button></li>
-                <li role="presentation"><button type="button" role="tab" id="slick-slide-control62"
-                        aria-controls="slick-slide62" aria-label="3 of 3" tabindex="-1">3</button></li>
-            </ul>
         </div>
-        <div class="extra-finalsale-styles ctm-text-center">
-            <ul>
-                <li>
-                    <h5>Extra 50% off some final sale styles * </h5>
-                </li>
-                <li><a href="#" title="Shop neutrals">Shop neutrals</a></li>
-            </ul>
-        </div>
-    </div>
-
+    </section>
     <!-- ================== Product Furniture Section End Here ================== -->
     <!-- ================== Deals zone Section Start Here ================== -->
     <section class="deals-zene-bg ctm-section-margin">
@@ -816,7 +811,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/deals-zone-1.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/deals-zone-1.jpg"
                                         alt="Benderloin officia">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -863,7 +858,54 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/deals-zone-1.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/deals-zone-1.jpg"
+                                        alt="Benderloin officia">
+                                    <div class="drumstick-cart-sec">
+                                        <ul class="ctm-flex-row">
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-heart"></i></button></li>
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-search"></i></button></li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deals-zene-counter-right">
+                        <h5><a href="#" title="Benderloin officia">Benderloin officia</a></h5>
+                        <p class="ctm-mt-10">Lorem ipsum dolor sit amet, consectetur adipisicin..</p>
+                        <div class="product-price-sec ctm-mt-10">
+                            <span class="price-text ctm-secondary-color">$60.00</span>
+                            <span class="old-price-del">$65.00</span>
+                        </div>
+                        <div class="five-star ctm-mt-10">
+                            <ul class="ctm-flex-row">
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                                <li><i class="fa-solid fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="countdown-section ctm-mt-30">
+                            <div class="cound-doun-time">
+                                <div id="timer" class="inner-cound-doun-time">
+                                    <div class="days"></div>
+                                    <div class="hours"></div>
+                                    <div class="minutes"></div>
+                                    <div class="seconds"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="deals-zene-counter-bg  ">
+                    <div class="deals-zene-counter-left">
+                        <div class="inner-all-shop-new-arrivals-box">
+                            <div class="shop-new-arrivals-image">
+                                <a href="#" title="Benderloin officia">
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/deals-zone-1.jpg"
                                         alt="Benderloin officia">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -934,7 +976,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Drum stick tempo">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                         alt="Drum stick tempo">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -954,7 +996,7 @@ if(!empty($admin)) {
                                 </a>
                             </div>
                             <div class="shop-new-arrivals-content">
-                                <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo</a>
+                                <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo1</a>
                                 </h5>
                                 <div class="product-price-sec ctm-mt-10">
                                     <span class="price-text ctm-secondary-color">$60.00</span>
@@ -965,7 +1007,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Boudin porkbell">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                         alt="Boudin porkbell">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -985,7 +1027,7 @@ if(!empty($admin)) {
                                 </a>
                             </div>
                             <div class="shop-new-arrivals-content">
-                                <h5 class="ctm-mt-20"><a href="#" title="Boudin porkbell">Boudin porkbell</a></h5>
+                                <h5 class="ctm-mt-20"><a href="#" title="Boudin porkbell">Boudin porkbell </a></h5>
                                 <div class="product-price-sec ctm-mt-10">
                                     <span class="price-text ctm-secondary-color">$60.00</span>
                                     <span class="old-price-del">$65.00</span>
@@ -995,7 +1037,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                         alt="Benderloin officia">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -1026,7 +1068,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Balltip nullaelit">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                         alt="Balltip nullaelit">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -1057,7 +1099,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Drum stick tempo">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                         alt="Drum stick tempo">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -1088,7 +1130,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Boudin porkbell">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                         alt="Boudin porkbell">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -1118,7 +1160,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                         alt="Benderloin officia">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -1149,7 +1191,7 @@ if(!empty($admin)) {
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Balltip nullaelit">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                         alt="Balltip nullaelit">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
@@ -1185,7 +1227,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Drum stick tempo">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                     alt="Drum stick tempo">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1205,7 +1247,7 @@ if(!empty($admin)) {
                             </a>
                         </div>
                         <div class="shop-new-arrivals-content">
-                            <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo</a></h5>
+                            <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo2</a></h5>
                             <div class="product-price-sec ctm-mt-10">
                                 <span class="price-text ctm-secondary-color">$60.00</span>
                                 <span class="old-price-del">$65.00</span>
@@ -1215,7 +1257,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Boudin porkbell">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                     alt="Boudin porkbell">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1245,7 +1287,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Benderloin officia">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                     alt="Benderloin officia">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1276,7 +1318,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Balltip nullaelit">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                     alt="Balltip nullaelit">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1306,7 +1348,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Drum stick tempo">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                     alt="Drum stick tempo">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1336,7 +1378,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Boudin porkbell">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                     alt="Boudin porkbell">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1366,7 +1408,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Benderloin officia">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                     alt="Benderloin officia">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1397,7 +1439,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Balltip nullaelit">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                     alt="Balltip nullaelit">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1431,7 +1473,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Drum stick tempo">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                     alt="Drum stick tempo">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1451,7 +1493,7 @@ if(!empty($admin)) {
                             </a>
                         </div>
                         <div class="shop-new-arrivals-content">
-                            <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo</a></h5>
+                            <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo3</a></h5>
                             <div class="product-price-sec ctm-mt-10">
                                 <span class="price-text ctm-secondary-color">$60.00</span>
                                 <span class="old-price-del">$65.00</span>
@@ -1461,7 +1503,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Boudin porkbell">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                     alt="Boudin porkbell">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1491,7 +1533,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Benderloin officia">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                     alt="Benderloin officia">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1522,7 +1564,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Balltip nullaelit">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                     alt="Balltip nullaelit">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1553,7 +1595,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Drum stick tempo">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                     alt="Drum stick tempo">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1583,7 +1625,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Boudin porkbell">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                     alt="Boudin porkbell">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1613,7 +1655,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Benderloin officia">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                     alt="Benderloin officia">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1644,7 +1686,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Balltip nullaelit">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                     alt="Balltip nullaelit">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1679,7 +1721,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Drum stick tempo">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                     alt="Drum stick tempo">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1699,7 +1741,8 @@ if(!empty($admin)) {
                             </a>
                         </div>
                         <div class="shop-new-arrivals-content">
-                            <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo</a></h5>
+                            <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo">Drum stick tempo4</a>
+                            </h5>
                             <div class="product-price-sec ctm-mt-10">
                                 <span class="price-text ctm-secondary-color">$60.00</span>
                                 <span class="old-price-del">$65.00</span>
@@ -1709,7 +1752,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Boudin porkbell">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                     alt="Boudin porkbell">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1739,7 +1782,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Benderloin officia">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                     alt="Benderloin officia">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1770,7 +1813,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Balltip nullaelit">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                     alt="Balltip nullaelit">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1801,7 +1844,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Drum stick tempo">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs1.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs1.jpg"
                                     alt="Drum stick tempo">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1831,7 +1874,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Boudin porkbell">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs2.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs2.jpg"
                                     alt="Boudin porkbell">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1861,7 +1904,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Benderloin officia">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs3.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs3.jpg"
                                     alt="Benderloin officia">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1892,7 +1935,7 @@ if(!empty($admin)) {
                     <div class="inner-all-shop-new-arrivals-box">
                         <div class="shop-new-arrivals-image">
                             <a href="#" title="Balltip nullaelit">
-                                <img src="{{ asset($templateFile . '/images') }}/theme-images/future-product-tabs4.jpg"
+                                <img src="{{ asset($templateFile . '/images/theme-images') }}/future-product-tabs4.jpg"
                                     alt="Balltip nullaelit">
                                 <div class="drumstick-cart-sec">
                                     <ul class="ctm-flex-row">
@@ -1942,7 +1985,7 @@ if(!empty($admin)) {
                         <div class="inner-social-media-post-slider">
                             <a href="#" title="Instagram Post">
                                 <div class="social-media-post-slider-image">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider1.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider1.jpg"
                                         alt="Instagram Post">
                                 </div>
                             </a>
@@ -1950,7 +1993,7 @@ if(!empty($admin)) {
                         <div class="inner-social-media-post-slider">
                             <a href="#" title="Instagram Post">
                                 <div class="social-media-post-slider-image">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider2.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider2.jpg"
                                         alt="Instagram Post">
                                 </div>
                             </a>
@@ -1958,7 +2001,7 @@ if(!empty($admin)) {
                         <div class="inner-social-media-post-slider">
                             <a href="#" title="Instagram Post">
                                 <div class="social-media-post-slider-image">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider3.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider3.jpg"
                                         alt="Instagram Post">
                                 </div>
                             </a>
@@ -1966,7 +2009,7 @@ if(!empty($admin)) {
                         <div class="inner-social-media-post-slider">
                             <a href="#" title="Instagram Post">
                                 <div class="social-media-post-slider-image">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider4.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider4.jpg"
                                         alt="Instagram Post">
                                 </div>
                             </a>
@@ -1974,7 +2017,7 @@ if(!empty($admin)) {
                         <div class="inner-social-media-post-slider">
                             <a href="#" title="Instagram Post">
                                 <div class="social-media-post-slider-image">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider5.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider5.jpg"
                                         alt="Instagram Post">
                                 </div>
                             </a>
@@ -1982,7 +2025,7 @@ if(!empty($admin)) {
                         <div class="inner-social-media-post-slider">
                             <a href="#" title="Instagram Post">
                                 <div class="social-media-post-slider-image">
-                                    <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider6.jpg"
+                                    <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider6.jpg"
                                         alt="Instagram Post">
                                 </div>
                             </a>
@@ -2005,7 +2048,7 @@ if(!empty($admin)) {
                             <div class="inner-social-media-post-slider">
                                 <a href="#" title="Instagram Post">
                                     <div class="social-media-post-slider-image">
-                                        <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider-right.jpg"
+                                        <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider-right.jpg"
                                             alt="Instagram Post">
                                     </div>
                                 </a>
@@ -2013,7 +2056,7 @@ if(!empty($admin)) {
                             <div class="inner-social-media-post-slider">
                                 <a href="#" title="Instagram Post">
                                     <div class="social-media-post-slider-image">
-                                        <img src="{{ asset($templateFile . '/images') }}/theme-images/social-media-post-slider-right.jpg"
+                                        <img src="{{ asset($templateFile . '/images/theme-images') }}/social-media-post-slider-right.jpg"
                                             alt="Instagram Post">
                                     </div>
                                 </a>
@@ -2041,73 +2084,73 @@ if(!empty($admin)) {
             <div class="footer-logo-brand-slider">
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image1.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image1.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image2.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image2.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image3.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image3.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image4.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image4.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image5.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image5.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image6.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image6.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image1.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image1.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image2.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image2.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image3.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image3.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image4.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image4.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image5.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image5.png"
                             alt="Logo Brand">
                     </a>
                 </div>
                 <div class="logo-brand-image">
                     <a href="#" title="Logo Brand">
-                        <img src="{{ asset($templateFile . '/images') }}/theme-images/logo-brand-image6.png"
+                        <img src="{{ asset($templateFile . '/images/theme-images') }}/logo-brand-image6.png"
                             alt="Logo Brand">
                     </a>
                 </div>

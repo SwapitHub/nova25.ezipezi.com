@@ -6,13 +6,33 @@ $(".deals-zene-slider").slick({
     slidesToShow: 1,
     infinite: true,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 1000,
     dots: false,
     adaptiveHeight: true,
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
+responsive: [
+{
+            breakpoint: 767, // Below 991px (Tablet)
+            settings: {
+                slidesToShow: 2,
+                dots: true // Enable dots for smaller screens
+            }
+        },
+        {
+            breakpoint: 575, // Below 768px (Mobile)
+            settings: {
+                slidesToShow:1,
+                centerPadding: "20px",
+                dots: true,
+                autoplay: true
+            }
+        }
+		
+		
+    ]
 });
 
 
@@ -35,7 +55,7 @@ $(".banner-slider-main").slick({
     slidesToShow: 1,
     infinite: true,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 1000,
     dots: true,
     adaptiveHeight: true,
@@ -62,15 +82,37 @@ $(".banner-list-slider").slick({
     infinite: true,
     arrows: false,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 1000,
     dots: false,
     adaptiveHeight: true,
     speed: 600,
-    easing: 'ease-in-out',
-    cssEase: 'ease-in-out',
+    easing: "ease-in-out",
+    cssEase: "ease-in-out",
+    responsive: [
+        {
+            breakpoint: 1024, // Below 1200px
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 991, // Below 991px (Tablet)
+            settings: {
+                slidesToShow: 2,
+                dots: true // Enable dots for smaller screens
+            }
+        },
+        {
+            breakpoint: 767, // Below 768px (Mobile)
+            settings: {
+                slidesToShow: 1,
+                dots: true,
+                autoplay: true // Enable autoplay on mobile
+            }
+        }
+    ]
 });
-
 
 
 /* ===========================  New Arrivals Slider Js End Here  =========================== */
@@ -88,13 +130,31 @@ $(".social-media-post-slider").slick({
     infinite: true,
     arrows: true,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 1000,
     dots: false,
     adaptiveHeight: true,
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
+	responsive: [
+       
+        {
+            breakpoint: 767, // Below 991px (Tablet)
+            settings: {
+                slidesToShow: 1,
+                dots: true // Enable dots for smaller screens
+            }
+        },
+        {
+            breakpoint: 575, // Below 768px (Mobile)
+            settings: {
+                slidesToShow: 1,
+                dots: true,
+                autoplay: true // Enable autoplay on mobile
+            }
+        }
+    ]
 });
 
 
@@ -113,13 +173,37 @@ $(".footer-logo-brand-slider").slick({
     infinite: true,
     arrows: true,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 1000,
     dots: false,
     adaptiveHeight: true,
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
+	responsive: [
+       {
+            breakpoint: 1024, // Below 991px (Tablet)
+            settings: {
+                slidesToShow: 4,
+                dots: true // Enable dots for smaller screens
+            }
+        },
+        {
+            breakpoint: 767, // Below 991px (Tablet)
+            settings: {
+                slidesToShow: 3,
+                dots: true // Enable dots for smaller screens
+            }
+        },
+        {
+            breakpoint: 575, // Below 768px (Mobile)
+            settings: {
+                slidesToShow: 2,
+                dots: true,
+                autoplay: true // Enable autoplay on mobile
+            }
+        }
+    ]
 });
 
 
@@ -142,7 +226,7 @@ $(document).ready(function () {
             infinite: true,
             arrows: false,
             slidesToScroll: 1,
-            autoplay: false,
+            autoplay: true,
             autoplaySpeed: 1000,
             dots: false,
             speed: 600,
@@ -286,6 +370,7 @@ $(document).ready(function(){
     arrows: true,
     infinite: true,
     speed: 500,
+	autoplay: true,
     fade: true,
     cssEase: 'linear'
   });
@@ -319,3 +404,89 @@ $(document).ready(function(){
   animateIn(); // Animate in the initial slide content
 });
 /* ===========================  Scroll Animation  Js End Here  =========================== */
+
+document.querySelectorAll(".dropdown-menu-list").forEach((menu) => {
+    menu.addEventListener("mouseenter", function () {
+        let submenu = this.querySelector(".sub-menu-header-list");
+        if (submenu) {
+            if (window.innerWidth <= 991) {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "flex";
+            }
+            submenu.style.opacity = "1";
+            submenu.style.visibility = "visible";
+        }
+    });
+
+    menu.addEventListener("mouseleave", function () {
+        let submenu = this.querySelector(".sub-menu-header-list");
+        if (submenu) {
+            submenu.style.display = "none";
+            submenu.style.opacity = "0";
+            submenu.style.visibility = "hidden";
+        }
+    });
+});
+
+
+
+
+$(document).ready(function () {
+    $("#show-megamenu-mobile").click(function () {
+        $(".main-header-menu").toggleClass("mobile-menu-custon");
+    });
+});
+
+document.querySelector(".close-icon-for-mobile span").addEventListener("click", function () {
+    document.querySelector(".main-header-menu").classList.remove("mobile-menu-custon");
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    function toggleParentMenu() {
+        if (window.innerWidth <= 991) {
+            document.querySelectorAll("span.caret-icon").forEach((icon) => {
+                icon.addEventListener("click", function (event) {
+                    event.stopPropagation(); // Prevent event bubbling
+
+                    let parentListItem = this.closest("li.dropdown-menu-list"); // Get the parent li
+                    let allListItems = document.querySelectorAll("li.dropdown-menu-list"); // Get all li items
+
+                    // Remove 'active-list-menu' class from all sibling li elements
+                    allListItems.forEach((li) => {
+                        if (li !== parentListItem) {
+                            li.classList.remove("active-list-menu");
+                        }
+                    });
+
+                    // Toggle class on the clicked parent li
+                    if (parentListItem) {
+                        parentListItem.classList.toggle("active-list-menu");
+                    }
+                });
+            });
+        }
+    }
+
+    toggleParentMenu(); // Run function on load
+
+    // Re-run function on window resize
+    window.addEventListener("resize", function () {
+        toggleParentMenu();
+    });
+});
+
+
+$(document).ready(function () {
+    $(".back-to-top").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 800); // Smooth scroll to top in 800ms
+    });
+});
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 300) {
+        $(".back-to-top").addClass("show");
+    } else {
+        $(".back-to-top").removeClass("show");
+    }
+});

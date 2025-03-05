@@ -239,6 +239,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -259,12 +273,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/css/intlTelInput.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
     <!-- Link Style Sheet -->
     {{-- <link rel="stylesheet" href="css/custom.css"> --}}
     <link href="{{ asset($templateFile . '/css/custom.css') }}" rel="stylesheet">
 
     <!--Module meta -->
-    @isset($blocksContent['meta'])
+    {{-- @isset($blocksContent['meta'])
         @foreach ($blocksContent['meta'] as $layout)
             @php
                 $arrPage = explode(',', $layout->page);
@@ -275,7 +290,7 @@
                 @endif
             @endif
         @endforeach
-    @endisset
+    @endisset --}}
     <!--//Module meta -->
     <!--[if lt IE 9]>
    <script src="{{ asset($templateFile . '/images/theme-images/') }}{{ asset($templateFile . '/js/html5shiv.js') }}">

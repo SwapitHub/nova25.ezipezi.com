@@ -219,26 +219,27 @@
      });
  </script> --}}
 
-
+ <!-- ================== Footer Section Start Here ================== -->
  <section class="footer-sec">
      <div class="top-footer">
          <div class="container">
              <div class="footer-inner-top">
                  <div class="footer-top-column">
-                     <h3 class="modtitle"><i class="fa fa-map-marker" aria-hidden="true"></i>Find your nearest
-                         store</h3>
+                     <h3 class="modtitle"><i class="fa fa-map-marker" aria-hidden="true"></i>Find your nearest store</h3>
                      <div class="modcontent">
                          <p>A contemporary grooming collection infused with the invigorating and sensual scent of
-                             Revoshop</p>
+                             Revoshop
+                         </p>
                          <span>Find your store</span><a class="button" href="#">SHOP SYSTEM</a>
                      </div>
                  </div>
                  <div class="footer-top-column">
                      <div class="newsletter" style="width:100%; ">
                          <h3 class="modtitle"><i class="fa fa-envelope"></i> Newsletter </h3>
-                         <div class="promotext">Contrary to popular belief, Lorem Ipsum is not simply random text.
-                             It has roots in a piece of classical Latin literature from 45 BC, making it over 2000
-                             years old.</div>
+                         <div class="promotext">Contrary to popular belief, Lorem Ipsum is not simply random text. It
+                             has
+                             roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                         </div>
                          <div class="block_content">
                              <form method="post" id="signup" name="signup"
                                  class="form-group form-inline signup send-mail">
@@ -290,8 +291,7 @@
                              </ul>
                              <div class="logo-payment-footer">
                                  <a href="#"><img data-sizes="auto" class="lazyautosizes lazyloaded"
-                                         src="{{ asset($templateFile . '/images/theme-images') }}/logo-payment-footer.png"
-                                         data-src="{{ asset($templateFile . '/images/theme-images') }}/logo-payment-footer.png"
+                                         src="{{ asset($templateFile . '/images/theme-images') }}/logo-payment-footer.png" data-src="{{ asset($templateFile . '/images/theme-images') }}/logo-payment-footer.png"
                                          alt="logo payment" sizes="50px"></a>
                              </div>
                          </div>
@@ -353,9 +353,11 @@
                                                  href="index.php?route=information/information&amp;information_id=6">FAQ</a>
                                          </li>
                                          <li><a href="index.php?route=information/information&amp;information_id=3">Warranty
-                                                 And Services</a></li>
+                                                 And
+                                                 Services</a></li>
                                          <li><a href="index.php?route=information/information&amp;information_id=7">Support
-                                                 24/7 page</a></li>
+                                                 24/7
+                                                 page</a></li>
                                          <li><a href="index.php?route=extension/simple_blog/article">Blog</a></li>
 
                                      </ul>
@@ -375,9 +377,11 @@
                                                  href="index.php?route=information/information&amp;information_id=6">FAQ</a>
                                          </li>
                                          <li><a href="index.php?route=information/information&amp;information_id=3">Warranty
-                                                 And Services</a></li>
+                                                 And
+                                                 Services</a></li>
                                          <li><a href="index.php?route=information/information&amp;information_id=7">Support
-                                                 24/7 page</a></li>
+                                                 24/7
+                                                 page</a></li>
                                          <li><a href="index.php?route=extension/simple_blog/article">Blog</a></li>
                                      </ul>
                                  </div>
@@ -390,8 +394,9 @@
                                  <h3 class="modtitle">Contact Us</h3>
                                  <ul class="links-contact">
                                      <li class="address">
-                                         <i class="fa fa-home" aria-hidden="true"></i> <span>Address : No 40
-                                             Baria Sreet 133/2 NewYork City, NY, United States</span>
+                                         <i class="fa fa-home" aria-hidden="true"></i> <span>Address : No 40 Baria
+                                             Sreet 133/2
+                                             NewYork City, NY, United States</span>
                                      </li>
                                      <li class="mail">
                                          <i class="fa fa-envelope" aria-hidden="true"></i><a
@@ -399,7 +404,8 @@
                                      </li>
                                      <li class="phone">
                                          <i class="fa fa-phone" aria-hidden="true"></i><span>Phone 1 : 0123456789
-                                             <br>Phone 2 : 0123456789</span>
+                                             <br>Phone 2 :
+                                             0123456789</span>
                                      </li>
                                  </ul>
                              </div>
@@ -420,3 +426,16 @@
          </div>
      </div>
  </section>
+
+ <div id="so-groups" class="right so-groups-sticky hidden-xs">
+     <a class="sticky-mycart" data-target="popup" data-popup="#popup-mycart"><span>Cart</span><i
+             class="fa fa-shopping-cart"></i></a>
+     <a class="sticky-myaccount" data-target="popup" data-popup="#popup-myaccount"><span>Account</span><i
+             class="fa fa-user"></i></a>
+     <a class="sticky-mysearch" data-target="popup" data-popup="#popup-mysearch"><span>Search</span><i
+             class="fa fa-search"></i></a>
+     <a class="sticky-recent" data-target="popup" data-popup="#popup-recent"><span>Recent View</span><i
+             class="fa fa-recent"></i></a>
+ </div>
+ <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+ <!-- ================== Footer Section End Here ================== -->
