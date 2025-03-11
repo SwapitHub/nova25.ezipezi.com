@@ -44,6 +44,7 @@ exit();
 		<link href="{{ asset($templateFile.'/css/prettyPhoto.css')}}" rel="stylesheet">
 		<link href="{{ asset($templateFile.'/css/animate.css')}}" rel="stylesheet">
 		<link href="{{ asset($templateFile.'/css/main.css')}}" rel="stylesheet">
+		<link href="{{ asset($templateFile.'/css/custom.css')}}" rel="stylesheet">
 		<link href="{{ asset($templateFile.'/css/responsive.css')}}" rel="stylesheet">
 		<link href="{{ asset($templateFile.'/css/style.css')}}" rel="stylesheet">
 		<link href="{{ asset($templateFile.'/css/cookit.css')}}" rel="stylesheet">
@@ -183,6 +184,7 @@ exit();
 			<script src="{{ asset($templateFile.'/js/jquery.scrollUp.min.js')}}"></script>
 			<script src="{{ asset($templateFile.'/js/jquery.prettyPhoto.js')}}"></script>
 			<script src="{{ asset($templateFile.'/js/main.js')}}"></script>
+			<script src="{{ asset($templateFile.'/js/custom.js')}}"></script>
 			<script src="{{ asset($templateFile.'/js/cookit.js')}}"></script>
 			<script src="{{ asset($templateFile.'/js/jquery-read-more.js')}}"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
@@ -232,7 +234,7 @@ exit();
 			<!--//Module bottom -->
 			
 	</body>
-	<script>
+	{{-- <script>
 		document.addEventListener('contextmenu', event => event.preventDefault());	
 		$('body').bind('copy paste',function(e) {
 			e.preventDefault(); return false; 
@@ -253,5 +255,5 @@ exit();
 				event.preventDefault();
 			}
 		});
-	</script>
+	</script> --}}
 </html>

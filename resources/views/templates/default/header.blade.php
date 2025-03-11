@@ -290,325 +290,349 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
     </div>
   </div>
 </div>
-</div>  
-        
-<header>
-<div class="container">
-  <div class="header-inner">
-   <div class="header-content">
-    <div class="logo">
-    <div class="logo-img">
-      <a href="{{ route('home') }}"><img src="{{ asset(sc_store('logo')) }}" alt="{{ sc_store('logo_alt') }}"></a>
+</div>
 
+{{-- Moddle header start--}}
+<div class="middle-header">
+  <div class="container">
+    <div class="middle-header-inner">
+      <div class="middle-header-column middle-header-column-one">
+        <ul>
+          <li><a href="#">FIND A STORE</a></li>
+          <li><a href="#">CREDIT CARD</a></li>
+          <li><a href="#">GIFT CARD</a></li>
+        </ul>
+      </div>
+      <div class="middle-header-column middle-header-column-two">
+        <img src="{{ asset(sc_store('logo')) }}" alt="img">
+      </div>
+      <div class="middle-header-column middle-header-column-three">
+        <div id="sosearchpro-custom" class="sosearchpro-wrapper so-search ">
+          <form method="GET" action="index.php">
+            <div id="search-function-header" class="search input-group form-group">
+              <input class="autosearch-input form-control" type="search" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="search"><ul class="dropdown-menu" style="display: none;"></ul>
+              <button type="submit" class="button-search btn btn-default btn-lg" name="submit_search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    </div>
-    <div class="navbar">
-      <ul class="nav navbar-nav collapse navbar-collapse">
-        <li><a href="{{ route('home') }}">Welcome</a></li>
-     <?php  $cmsCat = App\Models\Widget::getncmsCat();   
-
-
-              if(!empty($cmsCat)) { 
-                foreach($cmsCat as $cmcat) { 
-                 $subCat = App\Models\Widget::getcmsContent($cmcat->id);
-                
-                 if(count($subCat)>1)
-                 {
-
-                   ?>
-                   <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}<i class="fa fa-angle-down"></i></a>
-                       <ul role="menu" class="sub-menu">
-                        <?php foreach($subCat as $subc)  {
-                          if($subc->title!=$cmcat->title) {
-                                                       
-                        ?>
-                        <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
-                      <?php 
-                     
-                       } }?>
-                      </ul>
-                  </li>
-                  <?php } 
-                  else { ?>
-                 
-                  <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
-                <?php } } }?>
-
-        <?php $winemenu = App\Models\HeaderMenu::getMenu(1); if($winemenu->status) { ?>
-        <li class="dropdown"><a href="{{ route('product.all') }}">{{ $winemenu->name }}<i class="fa fa-angle-down"></i></a>
-          <?php 
-          $protypes = App\Models\ShopProduct::getHeaderCats();
-            
-           if(count($protypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($protypes as $dd) { 
-                $type = App\Models\ProType::catByid($dd->protype);?>                    
-                <li><a href="{{ url('product/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-            <?php } ?>
-            </li>
-          <?php } ?>
-       
-     <?php $servcmenu = App\Models\HeaderMenu::getMenu(3); if($servcmenu->status) { ?>
-             <li class="dropdown"><a href="{{ route('services.all') }}">{{ $servcmenu->name }}<i class="fa fa-angle-down"></i></a>
-              <?php $stypes = App\Models\Service::getHeaderCats(); 
-
-               if(count($stypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($stypes as $dd) {
-               $type = App\Models\ServiceType::getSingleCat($dd->servicetype); ?>                    
-                <li><a href="{{ url('services/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-     
-    <?php $propmenu = App\Models\HeaderMenu::getMenu(4); if($propmenu->status) { ?>
-            <li><a href="{{ route('property.all') }}">{{ $propmenu->name }}</a></li>
-          <?php } ?>
-          <?php $accmenu = App\Models\HeaderMenu::getMenu(5); if($accmenu->status) { ?>
-            <li><a href="{{ route('accommodation.all') }}">{{ $accmenu->name }}</a></li>
-          <?php } ?>
-            <?php $thewine = App\Models\HeaderMenu::getMenu(2); if($thewine->status) { ?>
-            <li class="dropdown"><a href="{{ route('news') }}">{{ $thewine->name }}<i class="fa fa-angle-down"></i></a>
-              <?php $vinetypes = App\Models\Blog::getHeaderCats(); 
-               if(count($vinetypes) >=1) {
-                ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($vinetypes as $dd) {
-               $type = App\Models\NewsType::getsingleCat($dd->newstype);  ?>                    
-                <li><a href="{{ url('news/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-          <?php $portfmenu = App\Models\HeaderMenu::getMenu(12); if($portfmenu->status) { ?>
-             <li class="dropdown"><a href="{{ route('portfolio.all') }}">{{ $portfmenu->name }}<i class="fa fa-angle-down"></i></a>
-              <?php $stypes = App\Models\Portfolio::getHeaderCats(); 
-
-               if(count($stypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($stypes as $dd) {
-               $type = App\Models\PortfolioType::getSingleCat($dd->portfoliotype); ?>                    
-                <li><a href="{{ url('portfolio/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-
-           <?php $blogmenu = App\Models\HeaderMenu::getMenu(13); if($blogmenu->status) { ?>
-             <li class="dropdown"><a href="{{ route('blog.all') }}">{{ $blogmenu->name }}<i class="fa fa-angle-down"></i></a>
-              <?php $stypes = App\Models\NewBlog::getHeaderCats(); 
-
-               if(count($stypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($stypes as $dd) {
-               $type = App\Models\BlogType::getSingleCat($dd->blogtype); ?>                    
-                <li><a href="{{ url('blog/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-     <?php  $cmsCat = App\Models\Widget::getcmsCat();               
-              if(!empty($cmsCat)) { 
-                foreach($cmsCat as $cmcat) { 
-                 $subCat = App\Models\Widget::getcmsContent($cmcat->id);
-                
-                 if(count($subCat)>1)
-                 {
-                   ?>
-                   <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}<i class="fa fa-angle-down"></i></a>
-                       <ul role="menu" class="sub-menu">
-                        <?php foreach($subCat as $subc)  {
-                          if($subc->title!=$cmcat->title) {
-                                                       
-                        ?>
-                        <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
-                      <?php 
-                     
-                       } }?>
-                      </ul>
-                  </li>
-                  <?php } elseif ($cmcat->alias=='welcome') {
-                    
-                  }
-                  else { ?>
-                 
-                  <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
-                <?php } } }?>
-  
-
-         <?php $enqmenu = App\Models\HeaderMenu::getMenu(10); if($enqmenu->status) { ?>
-            <li><a href="{{ route('contact') }}">{{ $enqmenu->name }}</a></li>
-          <?php } ?>
-          
-
-
-        
-
-      </ul>
-    </div>
-    
-    <!-- toggler -->
-              <div class="nav-toggler">
-              <div class="nav-btn">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </div>
-              <div class="menu-bar">
-              <ul class="mobile-menu">
-                  <li><a href="{{ route('home') }}">Welcome</a></li>
-         <?php  $cmsCat = App\Models\Widget::getncmsCat();               
-              if(!empty($cmsCat)) { 
-                foreach($cmsCat as $cmcat) { 
-                 $subCat = App\Models\Widget::getcmsContent($cmcat->id);
-                
-                 if(count($subCat)>1)
-                 {
-                   ?>
-                   <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a><i class="fa fa-angle-down"></i>
-                        <ul role="menu" class="sub-menu">
-                        <?php foreach($subCat as $subc)  {
-                          if($subc->title!=$cmcat->title) {
-                                                       
-                        ?>
-                        <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
-                      <?php 
-                     
-                       } }?>
-                      </ul>
-                  </li>
-                  <?php } elseif ($cmcat->alias=='welcome') {
-                    
-                  }
-                  else { ?>
-                 
-                  <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
-                <?php } } }?>
-                  <?php $winemenu = App\Models\HeaderMenu::getMenu(1); if($winemenu->status) { ?>
-        <li class="dropdown rert"><a href="{{ route('product.all') }}">{{ $winemenu->name }}</a><i class="fa fa-angle-down"></i>
-          <?php 
-          $protypes = App\Models\ShopProduct::getHeaderCats();
-            
-           if(count($protypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($protypes as $dd) { 
-                $type = App\Models\ProType::catByid($dd->protype);?>                    
-                <li><a href="{{ url('product/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-            <?php } ?>
-            </li>
-          <?php } ?>
-
-          <?php $servcmenu = App\Models\HeaderMenu::getMenu(3); if($servcmenu->status) { ?>
-             <li class="dropdown"><a href="{{ route('services.all') }}">{{ $servcmenu->name }}</a><i class="fa fa-angle-down"></i>
-              <?php $stypes = App\Models\Service::getHeaderCats(); 
-
-               if(count($stypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($stypes as $dd) {
-               $type = App\Models\ServiceType::getSingleCat($dd->servicetype); ?>                    
-                <li><a href="{{ url('services/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-    
-            <?php $propmenu = App\Models\HeaderMenu::getMenu(4); if($propmenu->status) { ?>
-            <li><a href="{{ route('property.all') }}">{{ $propmenu->name }}</a></li>
-          <?php } ?>
-          <?php $accmenu = App\Models\HeaderMenu::getMenu(5); if($accmenu->status) { ?>
-            <li ><a href="{{ route('accommodation.all') }}">{{ $accmenu->name }}</a></li>
-          <?php } ?>
-            <?php $thewine = App\Models\HeaderMenu::getMenu(2); if($thewine->status) { ?>
-            <li class="dropdown"><a href="{{ route('news') }}">{{ $thewine->name }}</a><i class="fa fa-angle-down"></i>
-              <?php $vinetypes = App\Models\Blog::getHeaderCats(); 
-               if(count($vinetypes) >=1) {
-                ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($vinetypes as $dd) {
-               $type = App\Models\NewsType::getsingleCat($dd->newstype);  ?>                    
-                <li><a href="{{ url('news/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-          <?php $portfmenu = App\Models\HeaderMenu::getMenu(12); if($portfmenu->status) { ?>
-             <li class="dropdown"><a href="{{ route('portfolio.all') }}">{{ $portfmenu->name }}</a><i class="fa fa-angle-down"></i>
-              <?php $stypes = App\Models\Portfolio::getHeaderCats(); 
-
-               if(count($stypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($stypes as $dd) {
-               $type = App\Models\PortfolioType::getSingleCat($dd->portfoliotype); ?>                    
-                <li><a href="{{ url('portfolio/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
-          <?php $blogmenu = App\Models\HeaderMenu::getMenu(13); if($blogmenu->status) { ?>
-             <li class="dropdown"><a href="{{ route('blog.all') }}">{{ $blogmenu->name }}</a><i class="fa fa-angle-down"></i>
-              <?php $stypes = App\Models\NewBlog::getHeaderCats(); 
-
-               if(count($stypes) >=1) { ?>
-               <ul role="menu" class="sub-menu">   
-               <?php foreach ($stypes as $dd) {
-               $type = App\Models\BlogType::getSingleCat($dd->blogtype); ?>                    
-                <li><a href="{{ url('blog/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
-              <?php } ?>
-              </ul>
-              <?php } ?>
-            </li>
-          <?php } ?>
- <?php  $cmsCat = App\Models\Widget::getcmsCat();               
-              if(!empty($cmsCat)) { 
-                foreach($cmsCat as $cmcat) { 
-                 $subCat = App\Models\Widget::getcmsContent($cmcat->id);
-                
-                 if(count($subCat)>1)
-                 {
-                   ?>
-                   <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a><i class="fa fa-angle-down"></i>
-                        <ul role="menu" class="sub-menu">
-                        <?php foreach($subCat as $subc)  {
-                          if($subc->title!=$cmcat->title) {
-                                                       
-                        ?>
-                        <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
-                      <?php 
-                     
-                       } }?>
-                      </ul>
-                  </li>
-                  <?php } elseif ($cmcat->alias=='welcome') {
-                    
-                  }
-                  else { ?>
-                 
-                  <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
-                <?php } } }?>
-
-                <?php $enqmenu = App\Models\HeaderMenu::getMenu(10); if($enqmenu->status) { ?>
-            <li><a href="{{ route('contact') }}">{{ $enqmenu->name }}</a></li>
-          <?php } ?>
-         
-       
-              </ul>
-              </div>
-          </div>
-          <!-- toggler-ends -->
-    
-  </div>
   </div>
 </div>
+{{-- Moddle header end--}}
+        
+<header>
+  <div class="container">
+    <div class="header-inner">
+    <div class="header-content">
+      
+      <div class="navbar">
+        <ul class="nav navbar-nav collapse navbar-collapse">
+          <li><a href="{{ route('home') }}">Welcome</a></li>
+      <?php  $cmsCat = App\Models\Widget::getncmsCat();   
+
+
+                if(!empty($cmsCat)) { 
+                  foreach($cmsCat as $cmcat) { 
+                  $subCat = App\Models\Widget::getcmsContent($cmcat->id);
+                  
+                  if(count($subCat)>1)
+                  {
+
+                    ?>
+                    <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}<i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                          <?php foreach($subCat as $subc)  {
+                            if($subc->title!=$cmcat->title) {
+                                                        
+                          ?>
+                          <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
+                        <?php 
+                      
+                        } }?>
+                        </ul>
+                    </li>
+                    <?php } 
+                    else { ?>
+                  
+                    <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
+                  <?php } } }?>
+
+          <?php $winemenu = App\Models\HeaderMenu::getMenu(1); if($winemenu->status) { ?>
+          <li class="dropdown"><a href="{{ route('product.all') }}">{{ $winemenu->name }}<i class="fa fa-angle-down"></i></a>
+            <?php 
+            $protypes = App\Models\ShopProduct::getHeaderCats();
+              
+            if(count($protypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($protypes as $dd) { 
+                  $type = App\Models\ProType::catByid($dd->protype);?>                    
+                  <li><a href="{{ url('product/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+              <?php } ?>
+              </li>
+            <?php } ?>
+        
+      <?php $servcmenu = App\Models\HeaderMenu::getMenu(3); if($servcmenu->status) { ?>
+              <li class="dropdown"><a href="{{ route('services.all') }}">{{ $servcmenu->name }}<i class="fa fa-angle-down"></i></a>
+                <?php $stypes = App\Models\Service::getHeaderCats(); 
+
+                if(count($stypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($stypes as $dd) {
+                $type = App\Models\ServiceType::getSingleCat($dd->servicetype); ?>                    
+                  <li><a href="{{ url('services/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+      
+      <?php $propmenu = App\Models\HeaderMenu::getMenu(4); if($propmenu->status) { ?>
+              <li><a href="{{ route('property.all') }}">{{ $propmenu->name }}</a></li>
+            <?php } ?>
+            <?php $accmenu = App\Models\HeaderMenu::getMenu(5); if($accmenu->status) { ?>
+              <li><a href="{{ route('accommodation.all') }}">{{ $accmenu->name }}</a></li>
+            <?php } ?>
+              <?php $thewine = App\Models\HeaderMenu::getMenu(2); if($thewine->status) { ?>
+              <li class="dropdown"><a href="{{ route('news') }}">{{ $thewine->name }}<i class="fa fa-angle-down"></i></a>
+                <?php $vinetypes = App\Models\Blog::getHeaderCats(); 
+                if(count($vinetypes) >=1) {
+                  ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($vinetypes as $dd) {
+                $type = App\Models\NewsType::getsingleCat($dd->newstype);  ?>                    
+                  <li><a href="{{ url('news/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+            <?php $portfmenu = App\Models\HeaderMenu::getMenu(12); if($portfmenu->status) { ?>
+              <li class="dropdown"><a href="{{ route('portfolio.all') }}">{{ $portfmenu->name }}<i class="fa fa-angle-down"></i></a>
+                <?php $stypes = App\Models\Portfolio::getHeaderCats(); 
+
+                if(count($stypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($stypes as $dd) {
+                $type = App\Models\PortfolioType::getSingleCat($dd->portfoliotype); ?>                    
+                  <li><a href="{{ url('portfolio/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+
+            <?php $blogmenu = App\Models\HeaderMenu::getMenu(13); if($blogmenu->status) { ?>
+              <li class="dropdown"><a href="{{ route('blog.all') }}">{{ $blogmenu->name }}<i class="fa fa-angle-down"></i></a>
+                <?php $stypes = App\Models\NewBlog::getHeaderCats(); 
+
+                if(count($stypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($stypes as $dd) {
+                $type = App\Models\BlogType::getSingleCat($dd->blogtype); ?>                    
+                  <li><a href="{{ url('blog/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+      <?php  $cmsCat = App\Models\Widget::getcmsCat();               
+                if(!empty($cmsCat)) { 
+                  foreach($cmsCat as $cmcat) { 
+                  $subCat = App\Models\Widget::getcmsContent($cmcat->id);
+                  
+                  if(count($subCat)>1)
+                  {
+                    ?>
+                    <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}<i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                          <?php foreach($subCat as $subc)  {
+                            if($subc->title!=$cmcat->title) {
+                                                        
+                          ?>
+                          <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
+                        <?php 
+                      
+                        } }?>
+                        </ul>
+                    </li>
+                    <?php } elseif ($cmcat->alias=='welcome') {
+                      
+                    }
+                    else { ?>
+                  
+                    <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
+                  <?php } } }?>
+    
+
+          <?php $enqmenu = App\Models\HeaderMenu::getMenu(10); if($enqmenu->status) { ?>
+              <li><a href="{{ route('contact') }}">{{ $enqmenu->name }}</a></li>
+            <?php } ?>
+            
+
+
+          
+
+        </ul>
+      </div>
+      
+      <!-- toggler -->
+                <div class="nav-toggler">
+                <div class="nav-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-bar">
+                <ul class="mobile-menu">
+                    <li><a href="{{ route('home') }}">Welcome</a></li>
+          <?php  $cmsCat = App\Models\Widget::getncmsCat();               
+                if(!empty($cmsCat)) { 
+                  foreach($cmsCat as $cmcat) { 
+                  $subCat = App\Models\Widget::getcmsContent($cmcat->id);
+                  
+                  if(count($subCat)>1)
+                  {
+                    ?>
+                    <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a><i class="fa fa-angle-down"></i>
+                          <ul role="menu" class="sub-menu">
+                          <?php foreach($subCat as $subc)  {
+                            if($subc->title!=$cmcat->title) {
+                                                        
+                          ?>
+                          <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
+                        <?php 
+                      
+                        } }?>
+                        </ul>
+                    </li>
+                    <?php } elseif ($cmcat->alias=='welcome') {
+                      
+                    }
+                    else { ?>
+                  
+                    <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
+                  <?php } } }?>
+                    <?php $winemenu = App\Models\HeaderMenu::getMenu(1); if($winemenu->status) { ?>
+          <li class="dropdown rert"><a href="{{ route('product.all') }}">{{ $winemenu->name }}</a><i class="fa fa-angle-down"></i>
+            <?php 
+            $protypes = App\Models\ShopProduct::getHeaderCats();
+              
+            if(count($protypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($protypes as $dd) { 
+                  $type = App\Models\ProType::catByid($dd->protype);?>                    
+                  <li><a href="{{ url('product/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+              <?php } ?>
+              </li>
+            <?php } ?>
+
+            <?php $servcmenu = App\Models\HeaderMenu::getMenu(3); if($servcmenu->status) { ?>
+              <li class="dropdown"><a href="{{ route('services.all') }}">{{ $servcmenu->name }}</a><i class="fa fa-angle-down"></i>
+                <?php $stypes = App\Models\Service::getHeaderCats(); 
+
+                if(count($stypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($stypes as $dd) {
+                $type = App\Models\ServiceType::getSingleCat($dd->servicetype); ?>                    
+                  <li><a href="{{ url('services/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+      
+              <?php $propmenu = App\Models\HeaderMenu::getMenu(4); if($propmenu->status) { ?>
+              <li><a href="{{ route('property.all') }}">{{ $propmenu->name }}</a></li>
+            <?php } ?>
+            <?php $accmenu = App\Models\HeaderMenu::getMenu(5); if($accmenu->status) { ?>
+              <li ><a href="{{ route('accommodation.all') }}">{{ $accmenu->name }}</a></li>
+            <?php } ?>
+              <?php $thewine = App\Models\HeaderMenu::getMenu(2); if($thewine->status) { ?>
+              <li class="dropdown"><a href="{{ route('news') }}">{{ $thewine->name }}</a><i class="fa fa-angle-down"></i>
+                <?php $vinetypes = App\Models\Blog::getHeaderCats(); 
+                if(count($vinetypes) >=1) {
+                  ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($vinetypes as $dd) {
+                $type = App\Models\NewsType::getsingleCat($dd->newstype);  ?>                    
+                  <li><a href="{{ url('news/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+            <?php $portfmenu = App\Models\HeaderMenu::getMenu(12); if($portfmenu->status) { ?>
+              <li class="dropdown"><a href="{{ route('portfolio.all') }}">{{ $portfmenu->name }}</a><i class="fa fa-angle-down"></i>
+                <?php $stypes = App\Models\Portfolio::getHeaderCats(); 
+
+                if(count($stypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($stypes as $dd) {
+                $type = App\Models\PortfolioType::getSingleCat($dd->portfoliotype); ?>                    
+                  <li><a href="{{ url('portfolio/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+            <?php $blogmenu = App\Models\HeaderMenu::getMenu(13); if($blogmenu->status) { ?>
+              <li class="dropdown"><a href="{{ route('blog.all') }}">{{ $blogmenu->name }}</a><i class="fa fa-angle-down"></i>
+                <?php $stypes = App\Models\NewBlog::getHeaderCats(); 
+
+                if(count($stypes) >=1) { ?>
+                <ul role="menu" class="sub-menu">   
+                <?php foreach ($stypes as $dd) {
+                $type = App\Models\BlogType::getSingleCat($dd->blogtype); ?>                    
+                  <li><a href="{{ url('blog/category') }}/{{$type->alias}}">{{ $type->name }}</a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+            <?php } ?>
+  <?php  $cmsCat = App\Models\Widget::getcmsCat();               
+                if(!empty($cmsCat)) { 
+                  foreach($cmsCat as $cmcat) { 
+                  $subCat = App\Models\Widget::getcmsContent($cmcat->id);
+                  
+                  if(count($subCat)>1)
+                  {
+                    ?>
+                    <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a><i class="fa fa-angle-down"></i>
+                          <ul role="menu" class="sub-menu">
+                          <?php foreach($subCat as $subc)  {
+                            if($subc->title!=$cmcat->title) {
+                                                        
+                          ?>
+                          <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
+                        <?php 
+                      
+                        } }?>
+                        </ul>
+                    </li>
+                    <?php } elseif ($cmcat->alias=='welcome') {
+                      
+                    }
+                    else { ?>
+                  
+                    <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
+                  <?php } } }?>
+
+                  <?php $enqmenu = App\Models\HeaderMenu::getMenu(10); if($enqmenu->status) { ?>
+              <li><a href="{{ route('contact') }}">{{ $enqmenu->name }}</a></li>
+            <?php } ?>
+          
+        
+                </ul>
+                </div>
+            </div>
+            <!-- toggler-ends -->
+      
+    </div>
+    </div>
+  </div>
 </header>
