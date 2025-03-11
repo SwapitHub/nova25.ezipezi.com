@@ -362,18 +362,10 @@ $(document).ready(function () {
 
 /* ===========================  Scroll Animation Js Start Here  =========================== */
 
+
 $(document).ready(function(){
   // Initialize the slider
-  $('.banner-slider-main').slick({
-    autoplay: true,
-    dots: true,
-    arrows: true,
-    infinite: true,
-    speed: 500,
-	autoplay: true,
-    fade: true,
-    cssEase: 'linear'
-  });
+  
 
   // Function to animate out the current slide content
   function animateOut() {
