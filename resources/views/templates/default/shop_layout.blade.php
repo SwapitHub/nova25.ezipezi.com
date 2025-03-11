@@ -1,4 +1,4 @@
-{{-- @if (sc_config('SITE_STATUS') == 'off')
+@if (sc_config('SITE_STATUS') == 'off')
     @include($templatePath . '.maintenance')
     @php
         exit();
@@ -211,7 +211,7 @@
     <!--//Module bottom -->
 
 </body>
-<script>
+{{-- <script>
     document.addEventListener('contextmenu', event => event.preventDefault());
     $('body').bind('copy paste', function(e) {
         e.preventDefault();
@@ -233,143 +233,6 @@
             event.preventDefault();
         }
     });
-</script>
-
-</html> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ $description ?? sc_store('description') }}">
-    <meta name="keyword" content="{{ $keyword ?? sc_store('keyword') }}">
-    <title>{{ $title ?? sc_store('title') }}</title>
-    <meta property="og:image" content="{{ !empty($og_image) ? asset($og_image) : asset('images/org.jpg') }}" />
-    <meta property="og:url" content="{{ \Request::fullUrl() }}" />
-    <meta property="og:type" content="Website" />
-    <meta property="og:title" content="{{ $title ?? sc_store('title') }}" />
-    <meta property="og:description" content="{{ $description ?? sc_store('description') }}" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Link Style Sheet -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/css/intlTelInput.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-
-    <!-- Link Style Sheet -->
-    {{-- <link rel="stylesheet" href="css/custom.css"> --}}
-    <link href="{{ asset($templateFile . '/css/custom.css') }}" rel="stylesheet">
-
-    <!--Module meta -->
-    {{-- @isset($blocksContent['meta'])
-        @foreach ($blocksContent['meta'] as $layout)
-            @php
-                $arrPage = explode(',', $layout->page);
-            @endphp
-            @if ($layout->page == '*' || (isset($layout_page) && in_array($layout_page, $arrPage)))
-                @if ($layout->type == 'html')
-                    {!! $layout->text !!}
-                @endif
-            @endif
-        @endforeach
-    @endisset --}}
-    <!--//Module meta -->
-    <!--[if lt IE 9]>
-   <script src="{{ asset($templateFile . '/images/theme-images/') }}{{ asset($templateFile . '/js/html5shiv.js') }}">
-   </script>
-   <script src="{{ asset($templateFile . '/images/theme-images/') }}{{ asset($templateFile . '/js/respond.min.js') }}">
-   </script>
-  <![endif]-->
-    <link rel="shortcut icon" href="{{ asset(sc_store('favicon_icon')) }}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144"
-        href="{{ asset($templateFile . '/images/ico/apple-touch-icon-144-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114"
-        href="{{ asset($templateFile . '/images/ico/apple-touch-icon-114-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72"
-        href="{{ asset($templateFile . '/images/ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed"
-        href="{{ asset($templateFile . '/images/ico/apple-touch-icon-57-precomposed.png') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" />
-
-    <style>
-        body {
-            -moz-user-select: -moz-none;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-
-            /*
- Introduced in IE 10.
- See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
- */
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <!-- ================== Header Section Start Here ================== -->
-    @include($templatePath . '.header')
-
-    <!--Module banner -->
-    @isset($blocksContent['banner_top'])
-        @foreach ($blocksContent['banner_top'] as $layout)
-            @php
-                $arrPage = explode(',', $layout->page);
-            @endphp
-            @if ($layout->page == '*' || (isset($layout_page) && in_array($layout_page, $arrPage)))
-                @if ($layout->type == 'html')
-                    {!! $layout->text !!}
-                @elseif($layout->type == 'view')
-                    @if (view()->exists('block.' . $layout->text))
-                        @include('block.' . $layout->text)
-                    @endif
-                @elseif($layout->type == 'module')
-                    {!! sc_block_render($layout->text) !!}
-                @endif
-            @endif
-        @endforeach
-    @endisset
-    <!--//Module banner -->
-    <!-- ================== Header Section End Here ================== -->
-    <!-- ================== Banner Section Start Here ================== -->
-    @section('main')
-        @include($templatePath . '.center')
-    @show
-    <!-- ================== Footer Section Start Here ================== -->
-    @include($templatePath . '.footer')
-
-    <!-- ================== Footer Section End Here ================== -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/intlTelInput.js"></script>
-    {{-- <script src="{{ asset($templateFile . '/images/theme-images/') }}js/custom.js"></script> --}}
-    <script src="{{ asset($templateFile . '/js/custom.js') }}"></script>
-</body>
+</script> --}}
 
 </html>

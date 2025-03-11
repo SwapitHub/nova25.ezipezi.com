@@ -405,6 +405,10 @@ $(document).ready(function(){
 });
 /* ===========================  Scroll Animation  Js End Here  =========================== */
 
+
+
+/*================header-script===================*/
+
 document.querySelectorAll(".dropdown-menu-list").forEach((menu) => {
     menu.addEventListener("mouseenter", function () {
         let submenu = this.querySelector(".sub-menu-header-list");
@@ -490,3 +494,82 @@ $(window).scroll(function () {
         $(".back-to-top").removeClass("show");
     }
 });
+
+
+/*================header-script===================*/
+
+
+
+/*================about-page-slider===================*/
+
+$(".about-us-inner-slider").slick({
+    slidesToShow: 1,
+    infinite: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    dots: false,
+    adaptiveHeight: true,
+    speed: 600,
+    easing: 'ease-in-out',
+    cssEase: 'ease-in-out',
+    fade: false,
+});
+/*================about-page-slider===================*/
+
+
+/*================photo-gallery-page-tab===================*/
+ $(document).ready(function(){
+	$('.gallery-tab a').click(function(){
+		$('.gallery-tab a').removeClass('activelink');
+		$(this).addClass('activelink');
+		var tagid = $(this).data('tag');
+		$('.list').removeClass('active').addClass('hide');
+		$('#'+tagid).addClass('active').removeClass('hide');
+	});
+});
+/*================photo-gallery-page-tab===================*/
+
+/*================faq-page-accordion===================*/
+$(function() {
+    // Hide all panels except the one inside .is-active
+    $(".accordion-custom .accordion-panel").hide();
+    $(".accordion-custom > .accordion-item.is-active .accordion-panel").show(); 
+
+    $(".accordion-custom > .accordion-item").click(function() {
+        if (!$(this).hasClass("is-active")) {
+            $(".accordion-custom > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
+            $(this).addClass("is-active").children(".accordion-panel").slideDown();
+        }
+    });
+});
+
+
+$(function() {
+    // Hide all panels except the one inside .is-active
+    $(".accordion-custom-two .accordion-panel").hide();
+    $(".accordion-custom-two > .accordion-item.is-active .accordion-panel").show(); 
+
+    $(".accordion-custom-two > .accordion-item").click(function() {
+        if (!$(this).hasClass("is-active")) {
+            $(".accordion-custom-two > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
+            $(this).addClass("is-active").children(".accordion-panel").slideDown();
+        }
+    });
+});
+
+
+$(function() {
+    // Hide all panels except the one inside .is-active
+    $(".accordion-custom-three .accordion-panel").hide();
+    $(".accordion-custom-three > .accordion-item.is-active .accordion-panel").show(); 
+
+    $(".accordion-custom-three > .accordion-item").click(function() {
+        if (!$(this).hasClass("is-active")) {
+            $(".accordion-custom-three > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
+            $(this).addClass("is-active").children(".accordion-panel").slideDown();
+        }
+    });
+});
+
+/*================faq-page-accordion===================*/

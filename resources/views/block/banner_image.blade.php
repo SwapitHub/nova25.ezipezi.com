@@ -5,7 +5,7 @@
   
   ?>
   @if (!empty($slides))
-      {{-- <section class="banner-outer">
+      <section class="banner-outer">
           <div class="banner-slider">
               <?php $slcnt = 1; ?>
               @foreach ($slides as $banner)
@@ -23,10 +23,10 @@
                   <?php $slcnt++; ?>
               @endforeach
           </div>
-      </section> --}}
+      </section>
 
 
-      <section class="banner-bg">
+      {{-- <section class="banner-bg">
           <div class="container">
               <div class="banner-slider-main">
 
@@ -54,7 +54,6 @@
                               </div>
                           </div>
                           <div class="banner-img banner-img-one">
-                              {{-- <img src="{{ asset($templateFile . '/images/theme-images') }}/banner-image1.png"> --}}
                               <img src="{{ asset($banner->image) }}">
                           </div>
                       </div>
@@ -62,7 +61,6 @@
 
               </div>
 
-              {{--  second banner slider start  --}}
               <div class="banner-list-slider ctm-mt-30">
                   <div class="inner-banner-list-slider">
                       <ul>
@@ -107,7 +105,7 @@
                       </ul>
                   </div>
               </div>
-              {{-- second banner slider end  --}}
+
           </div>
-      </section>
+      </section> --}}
   @endif
