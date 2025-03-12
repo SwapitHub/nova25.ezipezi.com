@@ -298,7 +298,7 @@
         <div class="container">
             <div class="inner-product-fruniture" style=" background-image: url({{ asset('images/theme-images') }}/product-future-bg.jpg);background-repeat: no-repeat;background-size: cover;padding: 50px 140px;">
                 <div class="product-fruniture-slider">
-                    <div class="inner-product-fruniture-slider">
+                    <div class="inner-product-fruniture-slider" style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -310,7 +310,7 @@
                                 !</a>
                         </div>
                     </div>
-                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-two">
+                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-two" style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -322,7 +322,7 @@
                                 !</a>
                         </div>
                     </div>
-                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-three">
+                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-three" style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
