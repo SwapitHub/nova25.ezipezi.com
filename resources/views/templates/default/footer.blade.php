@@ -27,16 +27,16 @@
           </div>
         </div>
         
-        <div class="footer-bottom">
-          <?php $widget4 = App\Models\Widget::getSinglewidget('copyright'); 
-             echo $widget4->description; ?>
-        </div>  
+         
       </div>
       </div>
       <div class="disclaimer-outer">
       <div class="container">
         <div class="disclaimer">
-          
+			  <div class="footer-bottom">
+			  <?php $widget4 = App\Models\Widget::getSinglewidget('copyright'); 
+				 echo $widget4->description; ?>
+			</div> 
         </div>
       </div>
       </div>
