@@ -1,4 +1,15 @@
 
+// - banner from custom js start---
+$('.banner-slider-main').slick({
+    autoplay: true,
+    dots: true,
+    arrows: true,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    fade: true,
+    cssEase: 'linear'
+});
 
 /* ===========================  Banner Slider Js Start Here =========================== */
 
@@ -13,8 +24,8 @@ $(".deals-zene-slider").slick({
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
-responsive: [
-{
+    responsive: [
+        {
             breakpoint: 767, // Below 991px (Tablet)
             settings: {
                 slidesToShow: 2,
@@ -24,14 +35,14 @@ responsive: [
         {
             breakpoint: 575, // Below 768px (Mobile)
             settings: {
-                slidesToShow:1,
+                slidesToShow: 1,
                 centerPadding: "20px",
                 dots: true,
                 autoplay: true
             }
         }
-		
-		
+
+
     ]
 });
 
@@ -137,8 +148,8 @@ $(".social-media-post-slider").slick({
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
-	responsive: [
-       
+    responsive: [
+
         {
             breakpoint: 767, // Below 991px (Tablet)
             settings: {
@@ -180,8 +191,8 @@ $(".footer-logo-brand-slider").slick({
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
-	responsive: [
-       {
+    responsive: [
+        {
             breakpoint: 1024, // Below 991px (Tablet)
             settings: {
                 slidesToShow: 4,
@@ -363,37 +374,37 @@ $(document).ready(function () {
 /* ===========================  Scroll Animation Js Start Here  =========================== */
 
 
-$(document).ready(function(){
-  // Initialize the slider
-  
+$(document).ready(function () {
+    // Initialize the slider
 
-  // Function to animate out the current slide content
-  function animateOut() {
-    $('.slick-active .animated-banner-content').css({
-      opacity: 0,
-      transform: 'translateY(20px)'
+
+    // Function to animate out the current slide content
+    function animateOut() {
+        $('.slick-active .animated-banner-content').css({
+            opacity: 0,
+            transform: 'translateY(20px)'
+        });
+    }
+
+    // Function to animate in the new slide content
+    function animateIn() {
+        $('.slick-active .animated-banner-content').css({
+            opacity: 1,
+            transform: 'translateY(0)'
+        });
+    }
+
+    // Handle slide change event
+    $('.banner-slider-main').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        animateOut(); // Animate out the current slide content
     });
-  }
 
-  // Function to animate in the new slide content
-  function animateIn() {
-    $('.slick-active .animated-banner-content').css({
-      opacity: 1,
-      transform: 'translateY(0)'
+    $('.banner-slider-main').on('afterChange', function (event, slick, currentSlide) {
+        animateIn(); // Animate in the new slide content
     });
-  }
 
-  // Handle slide change event
-  $('.banner-slider-main').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-    animateOut(); // Animate out the current slide content
-  });
-
-  $('.banner-slider-main').on('afterChange', function(event, slick, currentSlide){
-    animateIn(); // Animate in the new slide content
-  });
-
-  // Trigger the animation on page load
-  animateIn(); // Animate in the initial slide content
+    // Trigger the animation on page load
+    animateIn(); // Animate in the initial slide content
 });
 /* ===========================  Scroll Animation  Js End Here  =========================== */
 
@@ -511,24 +522,24 @@ $(".about-us-inner-slider").slick({
 
 
 /*================photo-gallery-page-tab===================*/
- $(document).ready(function(){
-	$('.gallery-tab a').click(function(){
-		$('.gallery-tab a').removeClass('activelink');
-		$(this).addClass('activelink');
-		var tagid = $(this).data('tag');
-		$('.list').removeClass('active').addClass('hide');
-		$('#'+tagid).addClass('active').removeClass('hide');
-	});
+$(document).ready(function () {
+    $('.gallery-tab a').click(function () {
+        $('.gallery-tab a').removeClass('activelink');
+        $(this).addClass('activelink');
+        var tagid = $(this).data('tag');
+        $('.list').removeClass('active').addClass('hide');
+        $('#' + tagid).addClass('active').removeClass('hide');
+    });
 });
 /*================photo-gallery-page-tab===================*/
 
 /*================faq-page-accordion===================*/
-$(function() {
+$(function () {
     // Hide all panels except the one inside .is-active
     $(".accordion-custom .accordion-panel").hide();
-    $(".accordion-custom > .accordion-item.is-active .accordion-panel").show(); 
+    $(".accordion-custom > .accordion-item.is-active .accordion-panel").show();
 
-    $(".accordion-custom > .accordion-item").click(function() {
+    $(".accordion-custom > .accordion-item").click(function () {
         if (!$(this).hasClass("is-active")) {
             $(".accordion-custom > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
             $(this).addClass("is-active").children(".accordion-panel").slideDown();
@@ -537,12 +548,12 @@ $(function() {
 });
 
 
-$(function() {
+$(function () {
     // Hide all panels except the one inside .is-active
     $(".accordion-custom-two .accordion-panel").hide();
-    $(".accordion-custom-two > .accordion-item.is-active .accordion-panel").show(); 
+    $(".accordion-custom-two > .accordion-item.is-active .accordion-panel").show();
 
-    $(".accordion-custom-two > .accordion-item").click(function() {
+    $(".accordion-custom-two > .accordion-item").click(function () {
         if (!$(this).hasClass("is-active")) {
             $(".accordion-custom-two > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
             $(this).addClass("is-active").children(".accordion-panel").slideDown();
@@ -551,12 +562,12 @@ $(function() {
 });
 
 
-$(function() {
+$(function () {
     // Hide all panels except the one inside .is-active
     $(".accordion-custom-three .accordion-panel").hide();
-    $(".accordion-custom-three > .accordion-item.is-active .accordion-panel").show(); 
+    $(".accordion-custom-three > .accordion-item.is-active .accordion-panel").show();
 
-    $(".accordion-custom-three > .accordion-item").click(function() {
+    $(".accordion-custom-three > .accordion-item").click(function () {
         if (!$(this).hasClass("is-active")) {
             $(".accordion-custom-three > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
             $(this).addClass("is-active").children(".accordion-panel").slideDown();

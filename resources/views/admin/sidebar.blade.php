@@ -37,7 +37,7 @@
                       {{ sc_language_render($level0->title) }}
                   </li>
                   {{-- LEvel 1  --}}
-                  {{-- @foreach ($menus[$level0->id] as $level1)
+                  @foreach ($menus[$level0->id] as $level1)
                       @if ($level1->uri)
                           <li class=""><a href="{{ $level1->uri ? sc_url_render($level1->uri) : '#' }}"><i
                                       class="fa {{ $level1->icon }}"></i>
@@ -110,7 +110,7 @@
                            
                           </li>
                       @endif
-                  @endforeach --}}
+                  @endforeach
                   {{--  end level 1 --}}
               @endforeach
               {{-- end level 0 --}}
