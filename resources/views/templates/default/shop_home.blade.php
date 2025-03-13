@@ -296,9 +296,11 @@
     <!-- ================== Product Furniture Section Start Here ================== -->
     <section class="product-fruniture-bg ctm-section-margin">
         <div class="container">
-            <div class="inner-product-fruniture" style=" background-image: url({{ asset('images/theme-images') }}/product-future-bg.jpg);background-repeat: no-repeat;background-size: cover;padding: 50px 140px;">
+            <div class="inner-product-fruniture"
+                style=" background-image: url({{ asset('images/theme-images') }}/product-future-bg.jpg);background-repeat: no-repeat;background-size: cover;padding: 50px 140px;">
                 <div class="product-fruniture-slider">
-                    <div class="inner-product-fruniture-slider" style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
+                    <div class="inner-product-fruniture-slider"
+                        style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -310,7 +312,8 @@
                                 !</a>
                         </div>
                     </div>
-                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-two" style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
+                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-two"
+                        style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -322,7 +325,8 @@
                                 !</a>
                         </div>
                     </div>
-                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-three" style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
+                    <div class="inner-product-fruniture-slider inner-product-fruniture-slider-three"
+                        style="background-image: url({{ asset('images/theme-images') }}/inner-product-fruniture-bg1.jpg);background-repeat: no-repeat;background-size: cover;padding: 100px 80px;">
                         <h1 class="ctm-white-color">
                             Bedroom
                             <div>Furniture</div>
@@ -1520,111 +1524,79 @@
     <!-- ================== Main Section End Here ================== -->
     <!-- ================== Aside Section Start Here ================== -->
     <!-- ================== From the blog Section Start Here ================== -->
-    <section class="social-media-post-bg ctm-section-margin">
-        <div class="container">
-            <div class="inner-social-media-post ctm-flex-row ctm-justify-content-between ">
-                <div class="social-media-post-left ctm-text-center">
-                    <div class="social-media-post-content">
-                        <h2>Instagram</h2>
-                        <p class="ctm-mt-20">Use <a href="#" title="Nova">#Nova</a> for a chance to be
-                            featured.</p>
-                    </div>
-                    <div class="social-media-post-slider ctm-mt-40">
-                        <div class="inner-social-media-post-slider">
-                            <a href="#" title="Instagram Post">
-                                <div class="social-media-post-slider-image">
-                                    <img src="{{ asset('images/theme-images') }}/social-media-post-slider1.jpg"
-                                        alt="Instagram Post">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="inner-social-media-post-slider">
-                            <a href="#" title="Instagram Post">
-                                <div class="social-media-post-slider-image">
-                                    <img src="{{ asset('images/theme-images') }}/social-media-post-slider2.jpg"
-                                        alt="Instagram Post">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="inner-social-media-post-slider">
-                            <a href="#" title="Instagram Post">
-                                <div class="social-media-post-slider-image">
-                                    <img src="{{ asset('images/theme-images') }}/social-media-post-slider3.jpg"
-                                        alt="Instagram Post">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="inner-social-media-post-slider">
-                            <a href="#" title="Instagram Post">
-                                <div class="social-media-post-slider-image">
-                                    <img src="{{ asset('images/theme-images') }}/social-media-post-slider4.jpg"
-                                        alt="Instagram Post">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="inner-social-media-post-slider">
-                            <a href="#" title="Instagram Post">
-                                <div class="social-media-post-slider-image">
-                                    <img src="{{ asset('images/theme-images') }}/social-media-post-slider5.jpg"
-                                        alt="Instagram Post">
-                                </div>
-                            </a>
-                        </div>
-                        <div class="inner-social-media-post-slider">
-                            <a href="#" title="Instagram Post">
-                                <div class="social-media-post-slider-image">
-                                    <img src="{{ asset('images/theme-images') }}/social-media-post-slider6.jpg"
-                                        alt="Instagram Post">
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
-                        <p>Every pair of jeans needs something great to go with them. And wr’ve got it all.</p>
-                        <div class="view-gallery-btn ctm-mt-20">
-                            <a href="#" title="View gallery">View gallery</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="social-media-post-right">
-                    <div class="social-media-post-content ctm-text-center">
-                        <h2>From the blog</h2>
-                        <p class="ctm-mt-20">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
-                    </div>
-                    <div class="inner-social-media-post-right ctm-mt-40">
-                        <div class="social-media-post-slider">
-                            <div class="inner-social-media-post-slider">
-                                <a href="#" title="Instagram Post">
-                                    <div class="social-media-post-slider-image">
-                                        <img src="{{ asset('images/theme-images') }}/social-media-post-slider-right.jpg"
-                                            alt="Instagram Post">
-                                    </div>
-                                </a>
+    @if (count($blogs) > 0)
+        <section class="social-media-post-bg ctm-section-margin">
+            <div class="container">
+                <div class="inner-social-media-post ctm-flex-row ctm-justify-content-between ">
+                    @if (count($featured_blogs) > 0)
+                        <div class="social-media-post-left ctm-text-center">
+                            <div class="social-media-post-content">
+                                <h2>Featured</h2>
+                                <p class="ctm-mt-20">Use <a href="#" title="Nova">#{{ $title ?? sc_store('title') }}</a> for a chance to be
+                                    featured.</p>
                             </div>
-                            <div class="inner-social-media-post-slider">
-                                <a href="#" title="Instagram Post">
-                                    <div class="social-media-post-slider-image">
-                                        <img src="{{ asset('images/theme-images') }}/social-media-post-slider-right.jpg"
-                                            alt="Instagram Post">
+                            <div class="social-media-post-slider ctm-mt-40">
+                                @foreach ($featured_blogs as $featured_blog)
+                                    <div class="inner-social-media-post-slider">
+                                        <a href="#" title="Instagram Post">
+                                            <div class="social-media-post-slider-image">
+                                                {{-- <img src="{{ asset('images/theme-images') }}/social-media-post-slider1.jpg" alt="Instagram Post"> --}}
+                                                <img src="{{ $featured_blog->image }}" alt="Instagram Post">
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                @endforeach
+                            </div>
+                            <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
+                                <p>Every pair of jeans needs something great to go with them. And wr’ve got it all.</p>
+                                <div class="view-gallery-btn ctm-mt-20">
+                                    <a href="#" title="View gallery">View gallery</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="media-date-added-post">
-                            <div class="date-added">04</div>
-                            <div class="moth-added">Sep</div>
+                    @endif
+
+
+                    @if (count($blogs) > 0)
+                        <div class="social-media-post-right">
+                            <div class="social-media-post-content ctm-text-center">
+                                <h2>From the blog</h2>
+                                <p class="ctm-mt-20">Explore popular blogs that inspire, educate, and entertain.</p>
+                            </div>
+                            <div class="inner-social-media-post-right ctm-mt-40">
+                                <div class="social-media-post-slider">
+                                    @foreach ($blogs as $blog)
+                                    <div class="inner-social-media-post-slider">
+                                        <a href="#" title="Instagram Post">
+                                            <div class="social-media-post-slider-image">
+                                                <img src="{{ $blog->image }}/social-media-post-slider-right.jpg"
+                                                    alt="Instagram Post">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endforeach
+                                    
+                                </div>
+                                <div class="media-date-added-post">
+                                    <div class="date-added">{{ date('d',strtotime($blog->created_at)) }}</div>
+                                    <div class="moth-added">{{ date('M',strtotime($blog->created_at)) }}</div>
+                                </div>
+                            </div>
+                            <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
+                                <p>Every pair of jeans needs something great to go with them. And wr’ve got it all.</p>
+                                <div class="view-gallery-btn ctm-mt-20">
+                                    <a href="#" title="View gallery">View gallery</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
-                        <p>Every pair of jeans needs something great to go with them. And wr’ve got it all.</p>
-                        <div class="view-gallery-btn ctm-mt-20">
-                            <a href="#" title="View gallery">View gallery</a>
-                        </div>
-                    </div>
+                    @endif
+
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
+
     <!-- ================== From the blog Section End Here ================== -->
     <section class="about-us">
         <div class="container">
@@ -2271,5 +2243,4 @@ if(!empty($admin)) {
             ]
         });
     </script>
-
 @endpush
