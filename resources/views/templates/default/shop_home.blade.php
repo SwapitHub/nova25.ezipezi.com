@@ -3,122 +3,55 @@
 
 @section('center')
     <!-- ================== Main Section Start Here ================== -->
-    <!-- ================== Shop New Arrivals Section Start Here ================== -->
-    <section class="shop-new-arrivals-bg ctm-section-margin">
-        <div class="container">
-            <div class="inner-shop-new-arrivals ctm-text-center">
-                <h2>Shop New Arrivals</h2>
-                <p class="ctm-mt-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-            <div class="all-shop-new-arrivals ctm-flex-row ctm-mt-50">
-                <div class="inner-all-shop-new-arrivals-box">
-                    <div class="shop-new-arrivals-image">
-                        <a href="#" title="Drumstick bresao">
-                            <img src="{{ asset('images/theme-images') }}/new-arrivals1.jpg" alt="Drumstick bresao">
-                            <div class="drumstick-cart-sec">
-                                <ul class="ctm-flex-row">
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-shopping-cart"></i></button></li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-heart"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-search"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-refresh"></i></button></li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="shop-new-arrivals-content">
-                        <h5 class="ctm-mt-20"><a href="#" title="Drumstick bresao">Drumstick bresao </a></h5>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
-                        </div>
-                    </div>
+
+    @if (count($products_new) > 0)
+        <!-- ================== Shop New Arrivals Section Start Here ================== -->
+        <section class="shop-new-arrivals-bg ctm-section-margin">
+            <div class="container">
+                <div class="inner-shop-new-arrivals ctm-text-center">
+                    <h2>Shop New Arrivals</h2>
+                    <p class="ctm-mt-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 </div>
-                <div class="inner-all-shop-new-arrivals-box">
-                    <div class="shop-new-arrivals-image">
-                        <a href="#" title="Drum stick tempo">
-                            <img src="{{ asset('images/theme-images') }}/new-arrivals2.jpg" alt="Drum stick tempo">
-                            <div class="drumstick-cart-sec">
-                                <ul class="ctm-flex-row">
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-shopping-cart"></i></button></li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-heart"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-search"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-refresh"></i></button></li>
-                                </ul>
+                <div class="all-shop-new-arrivals ctm-flex-row ctm-mt-50">
+                    @foreach ($products_new as $new)
+                        <div class="inner-all-shop-new-arrivals-box">
+                            <div class="shop-new-arrivals-image">
+                                <a href="#" title="Drumstick bresao">
+                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}">
+                                    <div class="drumstick-cart-sec">
+                                        <ul class="ctm-flex-row">
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-shopping-cart"></i></button></li>
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-heart"></i></button>
+                                            </li>
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-search"></i></button>
+                                            </li>
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-refresh"></i></button></li>
+                                        </ul>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    <div class="shop-new-arrivals-content">
-                        <h5 class="ctm-mt-20"><a href="#" title="Drum stick tempo ">Drum stick tempo </a></h5>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-all-shop-new-arrivals-box">
-                    <div class="shop-new-arrivals-image">
-                        <a href="#" title="Doenpuis consuat">
-                            <img src="{{ asset('images/theme-images') }}/new-arrivals3.jpg" alt="Doenpuis consuat">
-                            <div class="drumstick-cart-sec">
-                                <ul class="ctm-flex-row">
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-shopping-cart"></i></button></li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-heart"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-search"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-refresh"></i></button></li>
-                                </ul>
+                            <div class="shop-new-arrivals-content">
+                                <h5 class="ctm-mt-20"><a href="#" title="Drumstick bresao">{{ $new->name }}</a></h5>
+                                <div class="product-price-sec ctm-mt-10">
+                                    <span class="price-text ctm-secondary-color">${{ $new->price }}</span>
+                                    {{-- <span class="old-price-del">$65.00</span> --}}
+                                </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="shop-new-arrivals-content">
-                        <h5 class="ctm-mt-20"><a href="#" title="Doenpuis consuat ">Doenpuis consuat </a></h5>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
                         </div>
-                    </div>
-                </div>
-                <div class="inner-all-shop-new-arrivals-box">
-                    <div class="shop-new-arrivals-image">
-                        <a href="#" title="Deniam frankfurte">
-                            <img src="{{ asset('images/theme-images') }}/new-arrivals4.jpg" alt="Deniam frankfurte">
-                            <div class="drumstick-cart-sec">
-                                <ul class="ctm-flex-row">
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-shopping-cart"></i></button></li>
-                                    <li><button type="button" class="ctm-white-color"><i class="fa fa-heart"></i></button>
-                                    </li>
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-search"></i></button></li>
-                                    <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-refresh"></i></button></li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="shop-new-arrivals-content">
-                        <h5 class="ctm-mt-20"><a href="#" title="Drumstick bresao ">Deniam frankfurte</a></h5>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
-                        </div>
-                    </div>
+                    @endforeach
+
+
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- ================== Shop New Arrivals Section End Here ================== -->
+        </section>
+        <!-- ================== Shop New Arrivals Section End Here ================== -->
+    @endif
+
+
     <!-- ================== SHOP BY CATEGORIES Section Start Here ================== -->
     <section class="shop-by-categoried-bg ctm-section-margin">
         <div class="container">
@@ -136,8 +69,8 @@
                                     alt="women-collection">
                                 <div class="women-man-collection-content">
                                     <h5 class="reddish-pink-color">WOMEN <br> COLLECTIONS</h5>
-                                    <button type="button"
-                                        class="common-secondary-button ctm-mt-10 reddish-pink-color">Shop Now</button>
+                                    <button type="button" class="common-secondary-button ctm-mt-10 reddish-pink-color">Shop
+                                        Now</button>
                                 </div>
                             </a>
                         </div>
@@ -165,8 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="women-man-collection-sec women-man-collection-sec-two ctm-flex-row ctm-justify-content-between">
+                <div class="women-man-collection-sec women-man-collection-sec-two ctm-flex-row ctm-justify-content-between">
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="">
@@ -218,8 +150,8 @@
                                         KID'S
                                         <div> COLLECTIONS</div>
                                     </h5>
-                                    <button type="button"
-                                        class="common-secondary-button ctm-mt-10 rusty-orange-color">Shop Now</button>
+                                    <button type="button" class="common-secondary-button ctm-mt-10 rusty-orange-color">Shop
+                                        Now</button>
                                 </div>
                             </a>
                         </div>
@@ -1532,7 +1464,8 @@
                         <div class="social-media-post-left ctm-text-center">
                             <div class="social-media-post-content">
                                 <h2>Featured</h2>
-                                <p class="ctm-mt-20">Use <a href="#" title="Nova">#{{ $title ?? sc_store('title') }}</a> for a chance to be
+                                <p class="ctm-mt-20">Use <a href="#"
+                                        title="Nova">#{{ $title ?? sc_store('title') }}</a> for a chance to be
                                     featured.</p>
                             </div>
                             <div class="social-media-post-slider ctm-mt-40">
@@ -1541,7 +1474,8 @@
                                         <a href="#" title="Instagram Post">
                                             <div class="social-media-post-slider-image">
                                                 {{-- <img src="{{ asset('images/theme-images') }}/social-media-post-slider1.jpg" alt="Instagram Post"> --}}
-                                                <img src="{{ $featured_blog->image }}" alt="{{ $featured_blog->imagealt }}">
+                                                <img src="{{ $featured_blog->image }}"
+                                                    alt="{{ $featured_blog->imagealt }}">
                                             </div>
                                         </a>
                                     </div>
@@ -1566,20 +1500,19 @@
                             <div class="inner-social-media-post-right ctm-mt-40">
                                 <div class="social-media-post-slider">
                                     @foreach ($blogs as $blog)
-                                    <div class="inner-social-media-post-slider">
-                                        <a href="#" title="Instagram Post">
-                                            <div class="social-media-post-slider-image">
-                                                <img src="{{ $blog->image }}"
-                                                    alt="{{ $blog->imagealt }}">
-                                            </div>
-                                        </a>
-                                    </div>
+                                        <div class="inner-social-media-post-slider">
+                                            <a href="#" title="Instagram Post">
+                                                <div class="social-media-post-slider-image">
+                                                    <img src="{{ $blog->image }}" alt="{{ $blog->imagealt }}">
+                                                </div>
+                                            </a>
+                                        </div>
                                     @endforeach
-                                    
+
                                 </div>
                                 <div class="media-date-added-post">
-                                    <div class="date-added">{{ date('d',strtotime($blog->created_at)) }}</div>
-                                    <div class="moth-added">{{ date('M',strtotime($blog->created_at)) }}</div>
+                                    <div class="date-added">{{ date('d', strtotime($blog->created_at)) }}</div>
+                                    <div class="moth-added">{{ date('M', strtotime($blog->created_at)) }}</div>
                                 </div>
                             </div>
                             <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
