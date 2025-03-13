@@ -1541,7 +1541,7 @@
                                         <a href="#" title="Instagram Post">
                                             <div class="social-media-post-slider-image">
                                                 {{-- <img src="{{ asset('images/theme-images') }}/social-media-post-slider1.jpg" alt="Instagram Post"> --}}
-                                                <img src="{{ $featured_blog->image }}" alt="Instagram Post">
+                                                <img src="{{ $featured_blog->image }}" alt="{{ $blog->imagealt }}">
                                             </div>
                                         </a>
                                     </div>
@@ -1569,8 +1569,8 @@
                                     <div class="inner-social-media-post-slider">
                                         <a href="#" title="Instagram Post">
                                             <div class="social-media-post-slider-image">
-                                                <img src="{{ $blog->image }}/social-media-post-slider-right.jpg"
-                                                    alt="Instagram Post">
+                                                <img src="{{ $blog->image }}"
+                                                    alt="{{ $blog->imagealt }}">
                                             </div>
                                         </a>
                                     </div>
