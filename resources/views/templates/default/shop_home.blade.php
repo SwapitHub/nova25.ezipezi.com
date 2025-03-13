@@ -2271,65 +2271,6 @@ if(!empty($admin)) {
             ]
         });
     </script>
-    $(document).ready(function () {
-        // Initialize Slick for all tabs (only once)
-        $(".tab-content .future-product-tabs-slider").each(function () {
-            $(this).slick({
-                slidesToShow: 4,
-                infinite: true,
-                arrows: false,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 1000,
-                dots: false,
-                speed: 600,
-                easing: "ease-in-out",
-                cssEase: "ease-in-out",
-                responsive: [
-                    {
-                        breakpoint: 1024, // Screen width less than 1200px
-                        settings: {
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                        },
-                    },
-                    {
-                        breakpoint: 991, // Screen width less than 992px
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 1,
-                        },
-                    },
-                    {
-                        breakpoint: 640, // Screen width less than 768px
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                        },
-                    },
-                ],
-            });
-        });
     
-        // Show the first tab content by default
-        $(".custom-tabs li.tab-link").first().addClass("current");
-        $(".tab-content").first().addClass("current").show();
-    
-        // Tab Switching Functionality
-        $(".custom-tabs li.tab-link").click(function () {
-            var tab_id = $(this).attr("data-id");
-    
-            // Remove 'current' class from all tabs and hide all tab content
-            $(".custom-tabs li.tab-link").removeClass("current");
-            $(".tab-content").removeClass("current").hide();
-    
-            // Add 'current' class to the clicked tab and show the corresponding content
-            $(this).addClass("current");
-            $("#" + tab_id).addClass("current").fadeIn(300);
-    
-            // Refresh the Slick slider to ensure proper width calculation
-            $("#" + tab_id + " .future-product-tabs-slider").slick("setPosition");
-        });
-    });
     
 @endpush

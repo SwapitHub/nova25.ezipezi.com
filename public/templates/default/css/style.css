@@ -192,17 +192,18 @@ header {
     height: 22px;
     border-radius: 11px;
 	position: relative;
-	border: 1px solid #ddd;
 	cursor:pointer;
 }
 /*
 .slick-slider .slick-dots li.slick-active{
 	border: 1px solid #fff;
 }
-*/
+
 .slick-slider button.slick-arrow{
 	display: none !important;
 }
+*/
+/*
 .slick-slider .slick-dots button{
 	width: 16px;
     height: 16px;
@@ -220,6 +221,7 @@ header {
 .slick-slider .slick-dots .slick-active button{
 	background-color: #008435;
 }
+*/
 .banner-content{
 	max-width: 600px;
 }
