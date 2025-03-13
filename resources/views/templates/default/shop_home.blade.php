@@ -1541,7 +1541,7 @@
                                         <a href="#" title="Instagram Post">
                                             <div class="social-media-post-slider-image">
                                                 {{-- <img src="{{ asset('images/theme-images') }}/social-media-post-slider1.jpg" alt="Instagram Post"> --}}
-                                                <img src="{{ $featured_blog->image }}" alt="{{ $blog->imagealt }}">
+                                                <img src="{{ $featured_blog->image }}" alt="{{ $featured_blog->imagealt }}">
                                             </div>
                                         </a>
                                     </div>
