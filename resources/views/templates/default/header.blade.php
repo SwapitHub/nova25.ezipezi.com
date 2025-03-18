@@ -255,13 +255,13 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
       <div class="topbar-selectbox">
 
         <ul>
-          <li><a href="">Login or Register</a></li>
+          <li><a href="{{ route('login') }}">Login or Register</a></li>
           <li>
               <select>
                   <option>currency</option>
               </select> 
           </li>
-          <li class="icon-cart">{{ Cart::instance('default')->count() }}</li>
+          <li class="icon-cart"><a href="{{ route('cart') }}">{{ Cart::instance('default')->count() }}</a></li>
         </ul>
         {{-- <label for="currency-select">Currency:</label> --}}
       
