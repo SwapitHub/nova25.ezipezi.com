@@ -218,7 +218,12 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
          <?php if($userAct->status) { ?>
         <ul class="user-meunu">
            @guest
-              <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Log in or Create an account </a></li>
+              {{-- <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Log in or Create an account </a></li> --}}
+              <li>
+                  <h2>{{ sc_store('title') }}</h2>
+                  <span>Call us now : {{sc_store('phone')}}</span> <br>
+                  <span>Email : {{sc_store('email')}}</span> <br>
+              </li>
               @else                
               <?php
               $user = Auth::user(); ?>
@@ -238,34 +243,28 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
               @php
               $cartsCount = \Cart::count();
               @endphp
-              <!-- <li><a href="{{ route('wishlist') }}"><span  class="cart-qty  sc-wishlist" id="shopping-wishlist">{{ Cart::instance('wishlist')->count() }}</span><i class="fa fa-star"></i> {{ trans('front.wishlist') }}</a></li> -->
-             <!--  <li><a href="{{ route('compare') }}"><span  class="cart-qty sc-compare" id="shopping-compare">{{ Cart::instance('compare')->count() }}</span><i class="fa fa-crosshairs"></i> {{ trans('front.compare') }}</a></li> -->
-              <li><a href="{{ route('cart') }}"><span class="cart-qty sc-cart" id="shopping-cart">{{ Cart::instance('default')->count() }}</span> view favourites</a>
+              {{-- <li><a href="{{ route('cart') }}"><span class="cart-qty sc-cart" id="shopping-cart">{{ Cart::instance('default')->count() }}</span> view favourites</a></li> --}}
+              <li>
+                <marquee behavior="scroll" direction="left">{{ sc_store('description') }}</marquee>
               </li>
-              
-             <!--  @guest
-              <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> {{ trans('front.login') }}</a></li>
-              @else
-              <li><a href="{{ route('member.index') }}"><i class="fa fa-user"></i> {{ trans('front.account') }}</a></li>
-              <li><a href="{{ route('logout') }}" rel="nofollow" onclick="event.preventDefault();
-                 document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ trans('front.logout') }}</a></li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-              @endguest -->
-
             </ul>
           <?php } ?>
-        <!-- @php
-        $cartsCount = \Cart::count();
-         @endphp
-        <a href="{{ route('cart') }}"><span class="cart-qty sc-cart" id="shopping-cart">{{ Cart::instance('default')->count() }}</span> view favourites</a> -->
       </div>
       <?php  if($currAct->status) { ?>
       <div class="topbar-selectbox">
-        <label for="currency-select">Currency:</label>
+
+        <ul>
+          <li><a href="">Login or Register</a></li>
+          <li>
+              <select>
+                  <option>currency</option>
+              </select> 
+          </li>
+          <li>Cart {{ Cart::instance('default')->count() }}</li>
+        </ul>
+        {{-- <label for="currency-select">Currency:</label> --}}
       
-        @if (count($currencies)>1)
+        {{-- @if (count($currencies)>1)
              <div class="btn-group locale">
               <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                 {{ sc_currency_info()['name'] }}
@@ -277,14 +276,7 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
                 @endforeach
               </ul>
             </div>
-            @endif 
-         
-       <!--  <select name="currency" id="currency-select">
-            <option selected value="">south african rand</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select> -->
+            @endif  --}}
       </div>
        <?php } ?>
     </div>

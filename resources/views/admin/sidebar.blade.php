@@ -51,7 +51,7 @@
                                       <i class="fa fa-angle-left pull-right"></i>
                                   </span>
                               </a>
-                        
+
                               <ul class="treeview-menu">
                                   @if (isset($menus[$level1->id]))
                                       @foreach ($menus[$level1->id] as $level2)
@@ -70,7 +70,7 @@
                                                       </span>
                                                   </a>
 
-                                                
+
                                                   <ul class="treeview-menu">
                                                       @if (isset($menus[$level2->id]))
                                                           @foreach ($menus[$level2->id] as $level3)
@@ -99,7 +99,7 @@
                                                       @endif
 
                                                   </ul>
-                                             
+
 
                                               </li>
                                           @endif
@@ -107,7 +107,7 @@
                                   @endif
 
                               </ul>
-                           
+
                           </li>
                       @endif
                   @endforeach

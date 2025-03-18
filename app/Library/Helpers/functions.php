@@ -167,17 +167,34 @@ if (!function_exists('sc_language_all')) {
 /*
 Render language
  */
+// if (!function_exists('sc_language_render')) {
+//     function sc_language_render($string)
+//     {
+//         $arrCheck = explode('lang::', $string);
+//         if (count($arrCheck) == 2) {
+//             return trans($arrCheck[1]);
+//         } else {
+//             return trans($string);
+//         }
+//     }
+// }
+
 if (!function_exists('sc_language_render')) {
     function sc_language_render($string)
     {
         $arrCheck = explode('lang::', $string);
-        if (count($arrCheck) == 2) {
-            return trans($arrCheck[1]);
-        } else {
-            return trans($string);
+        $translated = count($arrCheck) == 2 ? trans($arrCheck[1]) : trans($string);
+
+        // Ensure it returns a string
+        if (is_array($translated)) {
+            return json_encode($translated); // Convert to JSON string instead of array
         }
+
+        return (string) $translated; // Ensure it's a string
     }
 }
+
+
 /*
 Html render
  */

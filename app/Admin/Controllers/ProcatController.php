@@ -13,7 +13,6 @@ class ProcatController extends Controller
 
     public function index()
     {
-
         $data = [
             'title' => 'Product Categories',
             'sub_title' => '',
@@ -178,8 +177,8 @@ class ProcatController extends Controller
  */
     public function postCreate()
     {
+        
         $data = request()->all();
-
         $data['alias'] = !empty($data['alias'])?$data['alias']:$data['name'];
         $data['alias'] = sc_word_format_url($data['alias']);
         $data['alias'] = sc_word_limit($data['alias'], 100);
@@ -202,6 +201,7 @@ class ProcatController extends Controller
         }
         $dataInsert = [
             'name' => $data['name'],
+            'image' => $data['image'],
             'protype' => $data['protype'],
             'alias' => $data['alias'],
             'url' => $data['url'],
