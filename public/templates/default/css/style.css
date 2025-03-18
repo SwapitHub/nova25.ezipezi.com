@@ -23,6 +23,7 @@ h1, h2{
 
 .topbar {
     background-color: #388a95;
+    padding: 5px 0px;
 }
 .topbar-content{
 	display: flex;
@@ -45,11 +46,17 @@ h1, h2{
 	text-transform: capitalize;
 	display: inline-block;
 }
-.topbar-selectbox{
+.topbar-selectbox {
     display: flex;
     align-items: center;
     width: 300px;
-    justify-content: space-between;
+    justify-content: flex-end;
+    display: flex;
+	gap:10px;
+}
+.topbar-selectbox ul {
+    display: flex;
+    gap: 10px;
 }
 .topbar-selectbox label{
 	font-size: 16px;
@@ -57,14 +64,39 @@ h1, h2{
     color: #ffffff;
     font-weight: 400;
 }
-.topbar-selectbox select{
-	background-color: transparent;
-    border: 1px solid #f5f5f5;
-	padding: 6px;
-	width: 230px;
-	color: #fff;
-	text-transform: capitalize;
-	font-family: 'Poppins', sans-serif; 
+.topbar-selectbox select {
+    background-color: transparent;
+    /* border: 1px solid #f5f5f5; */
+    padding: 0;
+    width: auto;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+}
+.topbar-selectbox ul li + li {
+    border-left: 1px solid #ffff;
+}
+
+.topbar-selectbox ul li {
+    padding: 0px 7px;
+}
+li.icon-cart {
+    position: relative;
+    /* width: 40px; */
+    padding-left: 30px !important;
+}
+
+li.icon-cart:before {
+    content: "\f07a";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #fff;
+    font-size: 18px;
+    /* padding-right: 0.5em; */
+    position: absolute;
+    left: 7px;
 }
 .topbar-selectbox button.btn-default{
     background-color: transparent;
@@ -1411,8 +1443,6 @@ margin: 10px 0;
 ul.user-meunu li a {
     color: #fff;
     word-spacing: 2px;
-    border: 1px solid #fff;
-    padding: 4px 5px;
     border-radius: 2px;
 	text-decoration: none;
 }
@@ -1609,6 +1639,29 @@ h4.panel-title { position: relative;clear: both; }
     align-items: center;
     justify-content: flex-start;
 }
+
+/*============18-march-2025============*/
+.topbar-text h2 {
+    color: #fff;
+    font-size: 14px;
+}
+.topbar-text ul.user-meunu {
+    color: #fff;
+}
+.topbar-btn ul.nav.navbar-nav li {
+    color: #fff;
+}
+.topbar-selectbox li, .topbar-selectbox li a {
+    color: #fff;
+    justify-content: flex-end;
+}
+.topbar-selectbox ul {
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+/*============18-march-2025============*/
+
 .header-inner .navbar .navbar-nav {flex-wrap: wrap; justify-content: flex-end; }
 .service-page .accomo-img { height: 300px; }
 .service-page .accomo-img img{height: 100%;min-height: auto;}
@@ -1664,7 +1717,10 @@ p.header-warning { font-size: 14px; color: #f00; text-align: center; background:
 .banner-innerpage-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);width: 100%; padding: 0 15px;}
 
 
-.topbar-content{min-height: 65px;justify-content: flex-start;}
+.topbar-content {
+    min-height: 65px;
+    justify-content: space-between;
+}
 .topbar-text,.topbar-btn{ width: 33%; }
 .topbar-selectbox{ width: 33%; max-width: 300px;}
 

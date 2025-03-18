@@ -221,8 +221,9 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
               {{-- <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Log in or Create an account </a></li> --}}
               <li>
                   <h2>{{ sc_store('title') }}</h2>
-                  <span>Call us now : {{sc_store('phone')}}</span> <br>
-                  <span>Email : {{sc_store('email')}}</span> <br>
+                  <span><a href="tel:+27769762629">Call us now : {{sc_store('phone')}}</a></span> <br>
+                  <span><a href="mailto:webmaster@ezipezi.com">Email : {{sc_store('email')}}</a></span>
+				  <br>
               </li>
               @else                
               <?php
@@ -260,7 +261,7 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
                   <option>currency</option>
               </select> 
           </li>
-          <li>Cart {{ Cart::instance('default')->count() }}</li>
+          <li class="icon-cart">{{ Cart::instance('default')->count() }}</li>
         </ul>
         {{-- <label for="currency-select">Currency:</label> --}}
       
