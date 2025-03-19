@@ -178,16 +178,16 @@ header {
 .logo-img img{
 	width: 100%;
 	}
+/*	
 .navbar ul li{
 	display: inline-block;
 }
-
+*/
 .navbar ul li a {
     font-size: 14px;
     color: #000000;
     font-weight: 400;
     text-transform: capitalize;
-    padding: 10px 15px;
     display: inline-block;
     transition: .4s;
     letter-spacing: 2px;
@@ -2044,10 +2044,7 @@ h3.control-label {
 
 	
 	/*-------menubar----------*/
-	.nav-toggler{
-        display: block;
-        /* position: relative; */
-    }
+
 	.header-inner .navbar .navbar-nav{display: none !important;}
     .nav-toggler .nav-btn{
         position: absolute;
@@ -2132,9 +2129,7 @@ h3.control-label {
         padding: 5px 0;
         display: inline-block;
     }
-    .menu-bar ul li a:hover{
-        color: #37b726;
-    }
+
 .content-page { padding: 40px 15px;}
 .menu-bar li.dropdown .sub-menu{position: static;padding-left: 10px;background: none;}
 .dropdown .fa{display: block !important;color: #fff !important;padding-left: 10px;cursor: pointer;}
@@ -2206,6 +2201,13 @@ h2.title{font-size: 25px;}
 .meet-team-slide .slick-dots {width: 100%; text-align: center; }
 .listing-form-search form.search-product{padding: 20px 20px 10px;}
 .banner_product-listing{min-height: 400px;}
+	.nav-toggler{
+        display: block;
+        /* position: relative; */
+    }
+	.desktop-view-navigation {
+    display: none !important;
+}
 }
 
 
