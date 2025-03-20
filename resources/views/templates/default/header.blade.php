@@ -304,7 +304,7 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 					@foreach ($stypes as $dd) 
 				  <li>
 					<a href="#" title="menu">
-					  <img src="../images/theme-images//blog-col1.png">
+					  <img src="{{ $type->image }}">
 					</a>
 					<p class="menu-name">
 					  <a href="{{ url('blog/category') }}/{{$type->alias}}" title="menu">{{ $type->name }}</a>
