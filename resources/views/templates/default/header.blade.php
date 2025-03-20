@@ -362,39 +362,60 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 					<a href="{{url('/entry/'.$cmcat->alias)}}.php" title="menu">{{ $cmcat->title }} </a>			
 				</li>
 			  @endif
+
+
+			  {{-- products menus start --}}
+			  @php
+			     $winemenu = App\Models\HeaderMenu::getMenu(1);
+			  @endphp
 			  
 			  <li class="dropdown-menu-list">
-				<a href="#" title="menu">collections <span class="caret-icon">&nbsp;</span>
-				</a>
+				@if($winemenu->status)
+				<a href="{{ route('product.all') }}" title="menu">{{ $winemenu->name }} <span class="caret-icon">&nbsp;</span></a>
+			  @endif
+				
 				<ul class="sub-menu-header-list four-column">
-				  <li class="shop-page-drodown-col collection-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">
-						  <img src="../images/theme-images//image-1.jpg" alt="img">
-						</a>
-					  </li>
-					  <li>
-						<a href="#" class="title-shoppage">Kids</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Aspering</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Boy</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Consectetur</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Excepteur</a>
-					  </li>
-					</ul>
-				  </li>
-				  <li class="shop-page-drodown-col collection-menu-col">
+					@php
+					      use App\Models\ProCat;
+                          use App\Models\ProType;
+						  $protypes = ProType::all();
+					@endphp
+				  @foreach($protypes as $protype)
+					<li class="shop-page-drodown-col collection-menu-col">
+						<ul>
+						<li>
+							<a href="#" class="menuitem-shop" target="_top">
+							<img src="{{ $protype->image }}" alt="{{ $protype->name }}">
+							</a>
+						</li>
+						<li>
+							<a href="#" class="title-shoppage">{{ $protype->name }}</a>
+						</li>
+						@php
+						      
+							  $procats = ProCat::where('protype',$protype->id)->where('status',1)->get(); 
+						@endphp
+						@foreach($procats as $procat)
+							<li>
+								<a href="#" class="menuitem-shop" target="_top">{{ $procat->name }}</a>
+							</li>
+						@endforeach
+							{{-- <li>
+								<a href="#" class="menuitem-shop" target="_top">Boy</a>
+							</li>
+							<li>
+								<a href="#" class="menuitem-shop" target="_top">Consectetur</a>
+							</li>
+							<li>
+								<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+							</li>
+							<li>
+								<a href="#" class="menuitem-shop" target="_top">Excepteur</a>
+							</li> --}}
+						</ul>
+					</li>
+				  @endforeach
+				  {{-- <li class="shop-page-drodown-col collection-menu-col">
 					<ul>
 					  <li>
 						<a href="#" class="menuitem-shop" target="_top">
@@ -474,9 +495,12 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 						<a href="#" class="menuitem-shop" target="_top">Impact Wrehes</a>
 					  </li>
 					</ul>
-				  </li>
+				  </li> --}}
 				</ul>
 			  </li>
+			  {{-- products menus start --}}
+
+
 			  <li>
 				<a href="#" title="menu">womens</a>
 			  </li>
