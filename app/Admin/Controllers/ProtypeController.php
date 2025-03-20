@@ -198,6 +198,7 @@ class ProtypeController extends Controller
             'name' => $data['name'],
             'alias' => $data['alias'],
             'url' => $data['url'],
+            'image' => $data['image'],
             'sort' => (int) $data['sort'],
             'status' => (!empty($data['status']) ? 1 : 0),
         ];
@@ -259,6 +260,7 @@ class ProtypeController extends Controller
             'name' => $data['name'],
             'alias' => $data['alias'],
             'url' => $data['url'],
+            'image' => $data['image'],
             'sort' => (int) $data['sort'],
             'status' => (!empty($data['status']) ? 1 : 0),
 

@@ -35,7 +35,11 @@
                                 </a>
                             </div>
                             <div class="shop-new-arrivals-content">
-                                <h5 class="ctm-mt-20"><a href="#" title="Drumstick bresao">{{ $new->name }}</a></h5>
+                                <h5 class="ctm-mt-20">
+                                    {{-- <a href="#" title="Drumstick bresao">{{ $new->name }}</a> --}}
+                                    <a href="{{ $new->getUrl() }}"><p>{{ $new->name }}</p></a>
+                                
+                                </h5>
                                 <div class="product-price-sec ctm-mt-10">
                                     <span class="price-text ctm-secondary-color">${{ $new->price }}</span>
                                     {{-- <span class="old-price-del">$65.00</span> --}}

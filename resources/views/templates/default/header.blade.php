@@ -315,650 +315,997 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 {{-- Moddle header end--}}
         
 <header>
-  <div class="container">
-    <div class="header-inner">
-    <div class="header-content">
-      
-      <div class="navbar">
-	  
-		<ul class="main-list-parent desktop-view-navigation">
-						<li class="dropdown-menu-list dropdown-menu-list-layout">
-							<a href="#" title="menu">layouts <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list">
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images/home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home1</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images/home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home2</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images/home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home3</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home4</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home5</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home6</a></p>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown-menu-list dropdown-menu-list-features">
-							<a href="#" title="menu">features <span class="caret-icon">&nbsp;</span></a>
-								<ul class="sub-menu-header-list four-column">
-								<li class="shop-page-drodown-col feature-menu-col">
-									<a href="#" class="title-shoppage">Shop pages</a>
+	<div class="container">
+	  <div class="header-inner">
+		<div class="header-content">
+		  <div class="navbar">
+			<ul class="main-list-parent desktop-view-navigation">
+			  <li>
+					<a href="{{ route('home') }}">Welcome</a>
+			  </li>
+			  @php
+			  $cmsCat = App\Models\Widget::getncmsCat();
+			  @endphp
+			  @if(!empty($cmsCat))
+			    @if(count($cmsCat))
+                    @foreach($cmsCat as $cmcat)
+					  
+					<li class="dropdown-menu-list">
+						<a href="{{url('/entry/'.$cmcat->alias)}}.php" title="menu">{{ $cmcat->title }}<span class="caret-icon">&nbsp;</span>
+						</a>
+						<ul class="sub-menu-header-list four-column">
+							@php
+							$subCat = App\Models\Widget::getcmsContent($cmcat->id);
+							@endphp
+							@foreach($subCat as $subc)
+							<li class="shop-page-drodown-col collection-menu-col">
 								<ul>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Outside content) </span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Outside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left, right <span class="submenuitem">(Off Canvas)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">All sidebar <span class="submenuitem">(Layout Fluid)</span></a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Category features <span class="menu-label menu-label-new">new</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Refine search more</a></li>
+									<li>
+										<a href="#" class="menuitem-shop" target="_top">
+										  <img src="{{ $subc->image }}" alt="{{ $subc->title }}">
+										</a>
+									</li>
+									<li>
+										<a href="{{url('/entry/'.$subc->alias)}}.php" class="title-shoppage">{{ $subc->title }}</a>
+									</li>
 								</ul>
-								</li>
-							  <li class="feature-menu-col">
-									<a href="#" class="title-shoppage">Shop style</a>
-								<ul>
-								  <li class="submenu-shop">
-									<b class="fa fa-angle-right" aria-hidden="true"></b> 
-									<a href="#" class="menuitem-shop">Grid columns <span class="menu-label menu-label-hot">HOT</span></a>
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">2 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">3 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">4 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">5 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">List columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Table columns </a></li>
-									</ul>
-								  </li>
-								  
-								  <li class="submenu-shop">
-									<b class="fa fa-angle-right" aria-hidden="true"></b> 
-									<a href="#" class="menuitem-shop">Cart info <span class="menu-label menu-label-new">new</span> </a>
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align left</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align right </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align center </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align bottom </a></li>         
-									</ul>
-								  </li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Quick shop products </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Countdown of special offer </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Show orders</a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Out of stock</a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Color swatches pro <span class="menu-label menu-label-hot">HOT</span></a></li>
-								</ul>
-								</li>
-							  
-							  <li class="feature-menu-col">
-									<a href="#" class="title-shoppage">Product Page </a>
-								<ul>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Outside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Outside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left, right <span class="submenuitem">(Off Canvas)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">All sidebar <span class="submenuitem">(Layout Fluid)</span></a></li>
-								</ul>   
-								</li>
-							  <li class="feature-menu-col">
-									<a href="#" class="title-shoppage">Product style</a>
-								<ul>
-								  <li><a href="#" class="menuitem-shop">Checkbox and radio style </a></li>
-								  <li class="submenu-shop">
-									 <b class="fa fa-angle-right" aria-hidden="true"></b>
-									<a href="#" class="menuitem-shop">Product gallery <span class="menu-label menu-label-new">new</span></a>
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style bottom  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style left  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style grid  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style list  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style slider  </a></li>
-									</ul>
-								  </li>
-								
-								  <li><a href="#" class="menuitem-shop" target="_top">Zoom image </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Image size chart </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Tabs vertical </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Tabs horizontal </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Show orders</a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Color swatches pro</a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Countdown of special offer</a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Videos <span class="menu-label menu-label-new">new</span></a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Custom tab <span class="menu-label menu-label-new">new</span></a></li>
-								</ul>
-								  
-								</li>
-								
-								<div class="menu-header-image-dropdown">
-									<div class="two-col">
-										<div class="column-img">
-											<img src="../images/theme-images/menu-guide.jpg" alt="img">
-										</div>
-										<div class="column-img">
-											<img src="../images/theme-images/menu-guide.jpg" alt="img">
-										</div>
-									</div>
-								</div>
-							</ul>
-							
-							
-						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">collections <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list four-column">
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-1.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Kids</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Aspering</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Boy</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Consectetur</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Duis aute</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Excepteur</a></li>
-									</ul>
-								</li>
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-2.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Clothers</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dolor emque</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Mollit anim</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Speaker for car</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dash Cam</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Pampers</a></li>
-									</ul>
-								</li>
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-3.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Mens</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Accessories</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Food miles</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Food miles</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Milk</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Snacks</a></li>
-									</ul>
-								</li>
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-4.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Furniture</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Duis aute</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Esse cillum</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Excepteur</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Hand Tools</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Impact Wrehes</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" title="menu">womens</a>
-						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">new arrival <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list four-column two-column-menu">
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  
-									  <li><a href="#" class="title-shoppage">Womens</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">For boy</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">For girl</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Duis aute</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Laudantium</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">For boy</a></li>
-									</ul>
-									
-								</li>
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  <li><a href="#" class="title-shoppage">Clothers</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dash Cam</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dolor emque</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Screen TV</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Smartwatch</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Screen TV</a></li>
-									</ul>
-									
-								</li>
-								<div class="dropdown-single-image">
-									<img src="../images/theme-images/image-5.jpg" alt="img">
-								</div>
-							</ul>
-						</li>
-						<li>
-							<a href="#" title="menu">mens</a>
-						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">pages <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list four-column two-column-menu">
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">About Us</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Services</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">FAQs</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Contact us</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Support 24/7 Page</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Typography</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Photo Gallery</a></li>
-									</ul>
-									
-								</li>
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">SiteMap</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Page 404</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Coming Soon</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Testimonials</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Best Seller</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">New Arrivals</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Most Rated</a></li>
-									</ul>
-									
-								</li>
-								
-							</ul>
-						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">blog <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list blog-menu-col-five">
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog1</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog2</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog3</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog4</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog5</a></p>
-								</li>
-								
-								<div class="six-column-blog">
-									<div class="blog-menu-column">
-										<li>
-									<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog1</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog2</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog3</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog4</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog5</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog6</a></p>
-									</li>
-									</div>
-								</div>
-							</ul>
-						</li>
-						<li><a href="#" title="menu">sale </a></li>
+							</li>
+							@endforeach
+						</ul>
+					</li>	
+					@endforeach
+				@else
+				@endif
+				
+			  @else
+				<li>
+					<a href="{{url('/entry/'.$cmcat->alias)}}.php" title="menu">{{ $cmcat->title }} </a>			
+				</li>
+			  @endif
+			  
+			  <li class="dropdown-menu-list">
+				<a href="#" title="menu">collections <span class="caret-icon">&nbsp;</span>
+				</a>
+				<ul class="sub-menu-header-list four-column">
+				  <li class="shop-page-drodown-col collection-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">
+						  <img src="../images/theme-images//image-1.jpg" alt="img">
+						</a>
+					  </li>
+					  <li>
+						<a href="#" class="title-shoppage">Kids</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Aspering</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Boy</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Consectetur</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Excepteur</a>
+					  </li>
 					</ul>
-      </div>
-      
-      <!-- toggler -->
-                <div class="nav-toggler">
-                <div class="nav-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="menu-bar">
-				<div class="close-icon-for-mobile">
-						<span><i class="fa fa-times" aria-hidden="true"></i></span>
+				  </li>
+				  <li class="shop-page-drodown-col collection-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">
+						  <img src="../images/theme-images//image-2.jpg" alt="img">
+						</a>
+					  </li>
+					  <li>
+						<a href="#" class="title-shoppage">Clothers</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Dolor emque</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Mollit anim</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Speaker for car</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Dash Cam</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Pampers</a>
+					  </li>
+					</ul>
+				  </li>
+				  <li class="shop-page-drodown-col collection-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">
+						  <img src="../images/theme-images//image-3.jpg" alt="img">
+						</a>
+					  </li>
+					  <li>
+						<a href="#" class="title-shoppage">Mens</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Accessories</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Food miles</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Food miles</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Milk</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Snacks</a>
+					  </li>
+					</ul>
+				  </li>
+				  <li class="shop-page-drodown-col collection-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">
+						  <img src="../images/theme-images//image-4.jpg" alt="img">
+						</a>
+					  </li>
+					  <li>
+						<a href="#" class="title-shoppage">Furniture</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Esse cillum</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Excepteur</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Hand Tools</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Impact Wrehes</a>
+					  </li>
+					</ul>
+				  </li>
+				</ul>
+			  </li>
+			  <li>
+				<a href="#" title="menu">womens</a>
+			  </li>
+			  <li class="dropdown-menu-list">
+				<a href="#" title="menu">new arrival <span class="caret-icon">&nbsp;</span>
+				</a>
+				<ul class="sub-menu-header-list four-column two-column-menu">
+				  <li class="shop-page-drodown-col new-arrival-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="title-shoppage">Womens</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">For boy</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">For girl</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Laudantium</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">For boy</a>
+					  </li>
+					</ul>
+				  </li>
+				  <li class="shop-page-drodown-col new-arrival-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="title-shoppage">Clothers</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Dash Cam</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Dolor emque</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Screen TV</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Smartwatch</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Screen TV</a>
+					  </li>
+					</ul>
+				  </li>
+				  <div class="dropdown-single-image">
+					<img src="../images/theme-images/image-5.jpg" alt="img">
+				  </div>
+				</ul>
+			  </li>
+			  <li>
+				<a href="#" title="menu">mens</a>
+			  </li>
+			  <li class="dropdown-menu-list">
+				<a href="#" title="menu">pages <span class="caret-icon">&nbsp;</span>
+				</a>
+				<ul class="sub-menu-header-list four-column two-column-menu">
+				  <li class="shop-page-drodown-col new-arrival-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">About Us</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Services</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">FAQs</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Contact us</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Support 24/7 Page</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Typography</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Photo Gallery</a>
+					  </li>
+					</ul>
+				  </li>
+				  <li class="shop-page-drodown-col new-arrival-menu-col">
+					<ul>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">SiteMap</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Page 404</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Coming Soon</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Testimonials</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Best Seller</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">New Arrivals</a>
+					  </li>
+					  <li>
+						<a href="#" class="menuitem-shop" target="_top">Most Rated</a>
+					  </li>
+					</ul>
+				  </li>
+				</ul>
+			  </li>
+			  <li class="dropdown-menu-list">
+				<a href="#" title="menu">blog <span class="caret-icon">&nbsp;</span>
+				</a>
+				<ul class="sub-menu-header-list blog-menu-col-five">
+				  <li>
+					<a href="#" title="menu">
+					  <img src="../images/theme-images//blog-col1.png">
+					</a>
+					<p class="menu-name">
+					  <a href="#" title="menu">blog1</a>
+					</p>
+				  </li>
+				  <li>
+					<a href="#" title="menu">
+					  <img src="../images/theme-images//blog-col1.png">
+					</a>
+					<p class="menu-name">
+					  <a href="#" title="menu">blog2</a>
+					</p>
+				  </li>
+				  <li>
+					<a href="#" title="menu">
+					  <img src="../images/theme-images//blog-col1.png">
+					</a>
+					<p class="menu-name">
+					  <a href="#" title="menu">blog3</a>
+					</p>
+				  </li>
+				  <li>
+					<a href="#" title="menu">
+					  <img src="../images/theme-images//blog-col1.png">
+					</a>
+					<p class="menu-name">
+					  <a href="#" title="menu">blog4</a>
+					</p>
+				  </li>
+				  <li>
+					<a href="#" title="menu">
+					  <img src="../images/theme-images//blog-col1.png">
+					</a>
+					<p class="menu-name">
+					  <a href="#" title="menu">blog5</a>
+					</p>
+				  </li>
+				  <div class="six-column-blog">
+					<div class="blog-menu-column">
+					  <li>
+						<a href="#" title="menu">
+						  <img src="../images/theme-images//article-default.png">
+						</a>
+						<p class="menu-name">
+						  <a href="#" title="menu">blog1</a>
+						</p>
+					  </li>
+					  <li>
+						<a href="#" title="menu">
+						  <img src="../images/theme-images//article-default.png">
+						</a>
+						<p class="menu-name">
+						  <a href="#" title="menu">blog2</a>
+						</p>
+					  </li>
+					  <li>
+						<a href="#" title="menu">
+						  <img src="../images/theme-images//article-default.png">
+						</a>
+						<p class="menu-name">
+						  <a href="#" title="menu">blog3</a>
+						</p>
+					  </li>
+					  <li>
+						<a href="#" title="menu">
+						  <img src="../images/theme-images//article-default.png">
+						</a>
+						<p class="menu-name">
+						  <a href="#" title="menu">blog4</a>
+						</p>
+					  </li>
+					  <li>
+						<a href="#" title="menu">
+						  <img src="../images/theme-images//article-default.png">
+						</a>
+						<p class="menu-name">
+						  <a href="#" title="menu">blog5</a>
+						</p>
+					  </li>
+					  <li>
+						<a href="#" title="menu">
+						  <img src="../images/theme-images//article-default.png">
+						</a>
+						<p class="menu-name">
+						  <a href="#" title="menu">blog6</a>
+						</p>
+					  </li>
 					</div>
-                <ul class="main-list-parent mobile-view-navigation">
-						<li class="dropdown-menu-list dropdown-menu-list-layout">
-							<a href="#" title="menu">layouts <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list">
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images/home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home1</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images/home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home2</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images/home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home3</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home4</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home5</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//home1.jpg"></a>
-									<p class="menu-name"><a href="#" title="menu">home6</a></p>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown-menu-list dropdown-menu-list-features">
-							<a href="#" title="menu">features <span class="caret-icon">&nbsp;</span></a>
-								<ul class="sub-menu-header-list four-column">
-								<li class="shop-page-drodown-col feature-menu-col">
-									<a href="#" class="title-shoppage">Shop pages</a>
-								<ul>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Outside content) </span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Outside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left, right <span class="submenuitem">(Off Canvas)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">All sidebar <span class="submenuitem">(Layout Fluid)</span></a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Category features <span class="menu-label menu-label-new">new</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Refine search more</a></li>
-								</ul>
-								</li>
-							  <li class="feature-menu-col">
-									<a href="#" class="title-shoppage">Shop style</a>
-								<ul>
-								  <li class="submenu-shop">
-									<b class="fa fa-angle-right" aria-hidden="true"></b> 
-									<a href="#" class="menuitem-shop">Grid columns <span class="menu-label menu-label-hot">HOT</span></a>
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">2 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">3 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">4 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">5 columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">List columns </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Table columns </a></li>
-									</ul>
-								  </li>
-								  
-								  <li class="submenu-shop">
-									<b class="fa fa-angle-right" aria-hidden="true"></b> 
-									<a href="#" class="menuitem-shop">Cart info <span class="menu-label menu-label-new">new</span> </a>
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align left</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align right </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align center </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Align bottom </a></li>         
-									</ul>
-								  </li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Quick shop products </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Countdown of special offer </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Show orders</a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Out of stock</a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Color swatches pro <span class="menu-label menu-label-hot">HOT</span></a></li>
-								</ul>
-								</li>
-							  
-							  <li class="feature-menu-col">
-									<a href="#" class="title-shoppage">Product Page </a>
-								<ul>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Outside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Outside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Inside content)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Sidebar left, right <span class="submenuitem">(Off Canvas)</span></a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">All sidebar <span class="submenuitem">(Layout Fluid)</span></a></li>
-								</ul>   
-								</li>
-							  <li class="feature-menu-col">
-									<a href="#" class="title-shoppage">Product style</a>
-								<ul>
-								  <li><a href="#" class="menuitem-shop">Checkbox and radio style </a></li>
-								  <li class="submenu-shop">
-									 <b class="fa fa-angle-right" aria-hidden="true"></b>
-									<a href="#" class="menuitem-shop">Product gallery <span class="menu-label menu-label-new">new</span></a>
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style bottom  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style left  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style grid  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style list  </a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Style slider  </a></li>
-									</ul>
-								  </li>
-								
-								  <li><a href="#" class="menuitem-shop" target="_top">Zoom image </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Image size chart </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Tabs vertical </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Tabs horizontal </a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Show orders</a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Color swatches pro</a></li>
-								  <li><a href="#" class="menuitem-shop" target="_top">Countdown of special offer</a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Videos <span class="menu-label menu-label-new">new</span></a></li>
-								  <li class="submenu-shop"><a href="#" class="menuitem-shop" target="_top">Custom tab <span class="menu-label menu-label-new">new</span></a></li>
-								</ul>
-								  
-								</li>
-								
-								<div class="menu-header-image-dropdown">
-									<div class="two-col">
-										<div class="column-img">
-											<img src="../images/theme-images/menu-guide.jpg" alt="img">
-										</div>
-										<div class="column-img">
-											<img src="../images/theme-images/menu-guide.jpg" alt="img">
-										</div>
-									</div>
-								</div>
-							</ul>
-							
-							
-						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">collections <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list four-column">
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-1.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Kids</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Aspering</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Boy</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Consectetur</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Duis aute</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Excepteur</a></li>
-									</ul>
-								</li>
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-2.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Clothers</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dolor emque</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Mollit anim</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Speaker for car</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dash Cam</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Pampers</a></li>
-									</ul>
-								</li>
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-3.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Mens</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Accessories</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Food miles</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Food miles</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Milk</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Snacks</a></li>
-									</ul>
-								</li>
-								<li class="shop-page-drodown-col collection-menu-col">
-									
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top"><img src="../images/theme-images//image-4.jpg" alt="img"></a></li>
-									  <li><a href="#" class="title-shoppage">Furniture</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Duis aute</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Esse cillum</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Excepteur</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Hand Tools</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Impact Wrehes</a></li>
-									</ul>
-								</li>
-							</ul>
+				  </div>
+				</ul>
+			  </li>
+			  <li>
+				<a href="#" title="menu">sale </a>
+			  </li>
+			</ul>
+		  </div>
+		  <!-- toggler -->
+		  <div class="nav-toggler">
+			<div class="nav-btn">
+			  <span></span>
+			  <span></span>
+			  <span></span>
+			</div>
+			<div class="menu-bar">
+			  <div class="close-icon-for-mobile">
+				<span>
+				  <i class="fa fa-times" aria-hidden="true"></i>
+				</span>
+			  </div>
+			  <ul class="main-list-parent mobile-view-navigation">
+				<li class="dropdown-menu-list dropdown-menu-list-layout">
+				  <a href="#" title="menu">layouts <span class="caret-icon">&nbsp;</span>
+				  </a>
+				  <ul class="sub-menu-header-list">
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images/home1.jpg">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">home1</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images/home1.jpg">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">home2</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images/home1.jpg">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">home3</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//home1.jpg">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">home4</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//home1.jpg">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">home5</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//home1.jpg">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">home6</a>
+					  </p>
+					</li>
+				  </ul>
+				</li>
+				<li class="dropdown-menu-list dropdown-menu-list-features">
+				  <a href="#" title="menu">features <span class="caret-icon">&nbsp;</span>
+				  </a>
+				  <ul class="sub-menu-header-list four-column">
+					<li class="shop-page-drodown-col feature-menu-col">
+					  <a href="#" class="title-shoppage">Shop pages</a>
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Outside content) </span>
+						  </a>
 						</li>
 						<li>
-							<a href="#" title="menu">womens</a>
-						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">new arrival <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list four-column two-column-menu">
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  
-									  <li><a href="#" class="title-shoppage">Womens</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">For boy</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">For girl</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Duis aute</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Laudantium</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">For boy</a></li>
-									</ul>
-									
-								</li>
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  <li><a href="#" class="title-shoppage">Clothers</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dash Cam</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Dolor emque</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Screen TV</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Smartwatch</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Screen TV</a></li>
-									</ul>
-									
-								</li>
-								<div class="dropdown-single-image">
-									<img src="../images/theme-images/image-5.jpg" alt="img">
-								</div>
-							</ul>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Inside content)</span>
+						  </a>
 						</li>
 						<li>
-							<a href="#" title="menu">mens</a>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Outside content)</span>
+						  </a>
 						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">pages <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list four-column two-column-menu">
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">About Us</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Services</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">FAQs</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Contact us</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Support 24/7 Page</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Typography</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Photo Gallery</a></li>
-									</ul>
-									
-								</li>
-								<li class="shop-page-drodown-col new-arrival-menu-col">
-									<ul>
-									  <li><a href="#" class="menuitem-shop" target="_top">SiteMap</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Page 404</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Coming Soon</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Testimonials</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Best Seller</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">New Arrivals</a></li>
-									  <li><a href="#" class="menuitem-shop" target="_top">Most Rated</a></li>
-									</ul>
-									
-								</li>
-								
-							</ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Inside content)</span>
+						  </a>
 						</li>
-						<li class="dropdown-menu-list">
-							<a href="#" title="menu">blog <span class="caret-icon">&nbsp;</span></a>
-							<ul class="sub-menu-header-list blog-menu-col-five">
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog1</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog2</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog3</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog4</a></p>
-								</li>
-								<li>
-									<a href="#" title="menu"><img src="../images/theme-images//blog-col1.png"></a>
-									<p class="menu-name"><a href="#" title="menu">blog5</a></p>
-								</li>
-								
-								<div class="six-column-blog">
-									<div class="blog-menu-column">
-										<li>
-									<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog1</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog2</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog3</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog4</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog5</a></p>
-									</li>
-									<li>
-										<a href="#" title="menu"><img src="../images/theme-images//article-default.png"></a>
-										<p class="menu-name"><a href="#" title="menu">blog6</a></p>
-									</li>
-									</div>
-								</div>
-							</ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar left, right <span class="submenuitem">(Off Canvas)</span>
+						  </a>
 						</li>
-						<li><a href="#" title="menu">sale </a></li>
-					</ul>
-                </div>
-            </div>
-            <!-- toggler-ends -->
-      
-    </div>
-    </div>
-  </div>
-</header>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">All sidebar <span class="submenuitem">(Layout Fluid)</span>
+						  </a>
+						</li>
+						<li class="submenu-shop">
+						  <a href="#" class="menuitem-shop" target="_top">Category features <span class="menu-label menu-label-new">new</span>
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Refine search more</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="feature-menu-col">
+					  <a href="#" class="title-shoppage">Shop style</a>
+					  <ul>
+						<li class="submenu-shop">
+						  <b class="fa fa-angle-right" aria-hidden="true"></b>
+						  <a href="#" class="menuitem-shop">Grid columns <span class="menu-label menu-label-hot">HOT</span>
+						  </a>
+						  <ul>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">2 columns </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">3 columns </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">4 columns </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">5 columns </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">List columns </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Table columns </a>
+							</li>
+						  </ul>
+						</li>
+						<li class="submenu-shop">
+						  <b class="fa fa-angle-right" aria-hidden="true"></b>
+						  <a href="#" class="menuitem-shop">Cart info <span class="menu-label menu-label-new">new</span>
+						  </a>
+						  <ul>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Align left</a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Align right </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Align center </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Align bottom </a>
+							</li>
+						  </ul>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Quick shop products </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Countdown of special offer </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Show orders</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Out of stock</a>
+						</li>
+						<li class="submenu-shop">
+						  <a href="#" class="menuitem-shop" target="_top">Color swatches pro <span class="menu-label menu-label-hot">HOT</span>
+						  </a>
+						</li>
+					  </ul>
+					</li>
+					<li class="feature-menu-col">
+					  <a href="#" class="title-shoppage">Product Page </a>
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Outside content)</span>
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar left <span class="submenuitem">(Inside content)</span>
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Outside content)</span>
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar right <span class="submenuitem">(Inside content)</span>
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Sidebar left, right <span class="submenuitem">(Off Canvas)</span>
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">All sidebar <span class="submenuitem">(Layout Fluid)</span>
+						  </a>
+						</li>
+					  </ul>
+					</li>
+					<li class="feature-menu-col">
+					  <a href="#" class="title-shoppage">Product style</a>
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop">Checkbox and radio style </a>
+						</li>
+						<li class="submenu-shop">
+						  <b class="fa fa-angle-right" aria-hidden="true"></b>
+						  <a href="#" class="menuitem-shop">Product gallery <span class="menu-label menu-label-new">new</span>
+						  </a>
+						  <ul>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Style bottom </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Style left </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Style grid </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Style list </a>
+							</li>
+							<li>
+							  <a href="#" class="menuitem-shop" target="_top">Style slider </a>
+							</li>
+						  </ul>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Zoom image </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Image size chart </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Tabs vertical </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Tabs horizontal </a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Show orders</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Color swatches pro</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Countdown of special offer</a>
+						</li>
+						<li class="submenu-shop">
+						  <a href="#" class="menuitem-shop" target="_top">Videos <span class="menu-label menu-label-new">new</span>
+						  </a>
+						</li>
+						<li class="submenu-shop">
+						  <a href="#" class="menuitem-shop" target="_top">Custom tab <span class="menu-label menu-label-new">new</span>
+						  </a>
+						</li>
+					  </ul>
+					</li>
+					<div class="menu-header-image-dropdown">
+					  <div class="two-col">
+						<div class="column-img">
+						  <img src="../images/theme-images/menu-guide.jpg" alt="img">
+						</div>
+						<div class="column-img">
+						  <img src="../images/theme-images/menu-guide.jpg" alt="img">
+						</div>
+					  </div>
+					</div>
+				  </ul>
+				</li>
+				<li class="dropdown-menu-list">
+				  <a href="#" title="menu">collections <span class="caret-icon">&nbsp;</span>
+				  </a>
+				  <ul class="sub-menu-header-list four-column">
+					<li class="shop-page-drodown-col collection-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">
+							<img src="../images/theme-images//image-1.jpg" alt="img">
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="title-shoppage">Kids</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Aspering</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Boy</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Consectetur</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Excepteur</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="shop-page-drodown-col collection-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">
+							<img src="../images/theme-images//image-2.jpg" alt="img">
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="title-shoppage">Clothers</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Dolor emque</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Mollit anim</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Speaker for car</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Dash Cam</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Pampers</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="shop-page-drodown-col collection-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">
+							<img src="../images/theme-images//image-3.jpg" alt="img">
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="title-shoppage">Mens</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Accessories</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Food miles</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Food miles</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Milk</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Snacks</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="shop-page-drodown-col collection-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">
+							<img src="../images/theme-images//image-4.jpg" alt="img">
+						  </a>
+						</li>
+						<li>
+						  <a href="#" class="title-shoppage">Furniture</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Esse cillum</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Excepteur</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Hand Tools</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Impact Wrehes</a>
+						</li>
+					  </ul>
+					</li>
+				  </ul>
+				</li>
+				<li>
+				  <a href="#" title="menu">womens</a>
+				</li>
+				<li class="dropdown-menu-list">
+				  <a href="#" title="menu">new arrival <span class="caret-icon">&nbsp;</span>
+				  </a>
+				  <ul class="sub-menu-header-list four-column two-column-menu">
+					<li class="shop-page-drodown-col new-arrival-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="title-shoppage">Womens</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">For boy</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">For girl</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Duis aute</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Laudantium</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">For boy</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="shop-page-drodown-col new-arrival-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="title-shoppage">Clothers</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Dash Cam</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Dolor emque</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Screen TV</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Smartwatch</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Screen TV</a>
+						</li>
+					  </ul>
+					</li>
+					<div class="dropdown-single-image">
+					  <img src="../images/theme-images/image-5.jpg" alt="img">
+					</div>
+				  </ul>
+				</li>
+				<li>
+				  <a href="#" title="menu">mens</a>
+				</li>
+				<li class="dropdown-menu-list">
+				  <a href="#" title="menu">pages <span class="caret-icon">&nbsp;</span>
+				  </a>
+				  <ul class="sub-menu-header-list four-column two-column-menu">
+					<li class="shop-page-drodown-col new-arrival-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">About Us</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Services</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">FAQs</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Contact us</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Support 24/7 Page</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Typography</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Photo Gallery</a>
+						</li>
+					  </ul>
+					</li>
+					<li class="shop-page-drodown-col new-arrival-menu-col">
+					  <ul>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">SiteMap</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Page 404</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Coming Soon</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Testimonials</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Best Seller</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">New Arrivals</a>
+						</li>
+						<li>
+						  <a href="#" class="menuitem-shop" target="_top">Most Rated</a>
+						</li>
+					  </ul>
+					</li>
+				  </ul>
+				</li>
+				<li class="dropdown-menu-list">
+				  <a href="#" title="menu">blog <span class="caret-icon">&nbsp;</span>
+				  </a>
+				  <ul class="sub-menu-header-list blog-menu-col-five">
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//blog-col1.png">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">blog1</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//blog-col1.png">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">blog2</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//blog-col1.png">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">blog3</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//blog-col1.png">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">blog4</a>
+					  </p>
+					</li>
+					<li>
+					  <a href="#" title="menu">
+						<img src="../images/theme-images//blog-col1.png">
+					  </a>
+					  <p class="menu-name">
+						<a href="#" title="menu">blog5</a>
+					  </p>
+					</li>
+					<div class="six-column-blog">
+					  <div class="blog-menu-column">
+						<li>
+						  <a href="#" title="menu">
+							<img src="../images/theme-images//article-default.png">
+						  </a>
+						  <p class="menu-name">
+							<a href="#" title="menu">blog1</a>
+						  </p>
+						</li>
+						<li>
+						  <a href="#" title="menu">
+							<img src="../images/theme-images//article-default.png">
+						  </a>
+						  <p class="menu-name">
+							<a href="#" title="menu">blog2</a>
+						  </p>
+						</li>
+						<li>
+						  <a href="#" title="menu">
+							<img src="../images/theme-images//article-default.png">
+						  </a>
+						  <p class="menu-name">
+							<a href="#" title="menu">blog3</a>
+						  </p>
+						</li>
+						<li>
+						  <a href="#" title="menu">
+							<img src="../images/theme-images//article-default.png">
+						  </a>
+						  <p class="menu-name">
+							<a href="#" title="menu">blog4</a>
+						  </p>
+						</li>
+						<li>
+						  <a href="#" title="menu">
+							<img src="../images/theme-images//article-default.png">
+						  </a>
+						  <p class="menu-name">
+							<a href="#" title="menu">blog5</a>
+						  </p>
+						</li>
+						<li>
+						  <a href="#" title="menu">
+							<img src="../images/theme-images//article-default.png">
+						  </a>
+						  <p class="menu-name">
+							<a href="#" title="menu">blog6</a>
+						  </p>
+						</li>
+					  </div>
+					</div>
+				  </ul>
+				</li>
+				<li>
+				  <a href="#" title="menu">sale </a>
+				</li>
+			  </ul>
+			</div>
+		  </div>
+		  <!-- toggler-ends -->
+		</div>
+	  </div>
+	</div>
+  </header>
+
+
+  

@@ -60,6 +60,34 @@
                                         @endif
                                     </div>
                                 </div>
+
+                                <div class="form-group   {{ $errors->has('image') ? ' has-error' : '' }}">
+                                    <label for="image" class="col-sm-2  control-label">image</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <input type="text" id="image" name="image"
+                                                value="{!! old('image', $producttype['image'] ?? '') !!}" class="form-control input-sm image"
+                                                placeholder="" />
+                                            <span class="input-group-btn">
+                                                <a data-input="image" data-preview="preview_image" data-type="slider"
+                                                    class="btn btn-sm btn-primary lfm">
+                                                    <i class="fa fa-picture-o"></i> {{ trans('product.admin.choose_image') }}
+                                                </a>
+                                            </span>
+                                        </div>
+                                        @if ($errors->has('image'))
+                                            <span class="help-block">
+                                                {{ $errors->first('image') }}
+                                            </span>
+                                        @endif
+                                        <div id="preview_image" class="img_holder">
+                                            @if (old('image', $producttype['image'] ?? ''))
+                                                <img src="{{ asset(old('image', $producttype['image'] ?? '')) }}">
+                                            @endif
+    
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                 <div class="form-group   {{ $errors->has('url') ? ' has-error' : '' }}">
                                     <label for="url" class="col-sm-2  control-label">{{ trans('url') }}</label>

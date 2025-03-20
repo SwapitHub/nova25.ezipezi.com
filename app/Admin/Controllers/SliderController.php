@@ -244,6 +244,8 @@ class SliderController extends Controller
             'status' => !empty($data['status']) ? 1 : 0,
             'sort' => (int) $data['sort'],
             'page' => $data['page'],
+            'startdate' => $data['startdate'],
+            'expire' => $data['expire'],
         ];
         $id = Slider::insertGetId($dataInsert);
         $dataDes = [];
@@ -328,6 +330,8 @@ class SliderController extends Controller
             'top' => empty($data['top']) ? 0 : 1,
             'status' => empty($data['status']) ? 0 : 1,
             'page' => $data['page'],
+            'startdate' => $data['startdate'],
+            'expire' => $data['expire'],
         ];
 
         $slider->update($dataUpdate);
