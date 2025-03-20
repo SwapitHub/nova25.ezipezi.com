@@ -315,6 +315,33 @@ $cmsCat = App\Models\Widget::getncmsCat();
 			  </li>
 			@endif
 
+			<?php $cmsCat = App\Models\Widget::getcmsCat();
+			if (!empty($cmsCat)) {
+			  foreach ($cmsCat as $cmcat) {
+				$subCat = App\Models\Widget::getcmsContent($cmcat->id);
+
+				if (count($subCat) > 1) {
+			?>
+				  <li class="dropdown"><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}<i class="fa fa-angle-down"></i></a>
+					<ul role="menu" class="sub-menu">
+					  <?php foreach ($subCat as $subc) {
+						if ($subc->title != $cmcat->title) {
+
+					  ?>
+						  <li><a href="{{url('/entry/'.$subc->alias)}}.php">{{ $subc->title }} </a></li>
+					  <?php
+
+						}
+					  } ?>
+					</ul>
+				  </li>
+				<?php } elseif ($cmcat->alias == 'welcome') {
+				} else { ?>
+
+				  <li><a href="{{url('/entry/'.$cmcat->alias)}}.php">{{ $cmcat->title }}</a></li>
+			<?php }
+			  }
+			} ?>
 			  {{-- <li>
 				<a href="#" title="menu">sale </a>
 			  </li> --}}
