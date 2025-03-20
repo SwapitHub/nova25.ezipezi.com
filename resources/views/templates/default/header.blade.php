@@ -302,6 +302,9 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 				@if(count($stypes) >= 1)
 				<ul class="sub-menu-header-list blog-menu-col-five">
 					@foreach ($stypes as $dd) 
+					@php
+					$type = App\Models\BlogType::getSingleCat($dd->blogtype);
+					@endphp
 				  <li>
 					<a href="#" title="menu">
 					  <img src="{{ $type->image }}">
