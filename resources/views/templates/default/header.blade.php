@@ -197,7 +197,7 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 						@endphp
 						@foreach($procats as $procat)
 							<li>
-								<a href="#" class="menuitem-shop" target="_top">{{ $procat->name }}</a>
+								<a href="{{ url('product/category') }}/{{$procat->alias}}" class="menuitem-shop" target="_top">{{ $procat->name }}</a>
 							</li>
 						@endforeach
 
@@ -318,9 +318,11 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 				@endif
 			  </li>
 			@endif
-			  <li>
+
+			  {{-- <li>
 				<a href="#" title="menu">sale </a>
-			  </li>
+			  </li> --}}
+			  
 			</ul>
 		  </div>
 
