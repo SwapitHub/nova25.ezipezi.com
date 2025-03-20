@@ -144,7 +144,7 @@ $cmsCat = App\Models\Widget::getncmsCat();
                                 <img src="{{ $subc->image }}" alt="{{ $subc->title }}">
                             </a>
                             <p class="menu-name">
-                                <a href="#" title="{{ $subc->title }}">{{ $subc->title }}</a>
+                                <a href="{{url('/entry/'.$subc->alias)}}.php" title="{{ $subc->title }}">{{ $subc->title }}</a>
                             </p>
                         </li>
                     @endforeach
@@ -208,38 +208,35 @@ $cmsCat = App\Models\Widget::getncmsCat();
 			  {{-- products menus start --}}
 
 			  {{-- service menu start --}}
-			@php
-			$servcmenu = App\Models\HeaderMenu::getMenu(3);
-			@endphp
-			@if($servcmenu->status)
-			<li class="dropdown-menu-list">
-				<a href="{{ route('services.all') }}" title="menu">{{ $servcmenu->name }}<span class="caret-icon">&nbsp;</span>
-				</a>
+			  @php
+			  $servcmenu = App\Models\HeaderMenu::getMenu(3);
+			  @endphp
+			  @if($servcmenu->status)
+			  <li class="dropdown-menu-list">
+				<a href="{{ route('services.all') }}" title="menu">{{ $servcmenu->name }}<span class="caret-icon">&nbsp;</span></a>
 				@php
 				$stypes = App\Models\Service::getHeaderCats();
 				@endphp
 				@if(count($stypes) >= 1)
-				<ul class="sub-menu-header-list four-column two-column-menu">
-				@foreach($stypes as $dd)
-				@php
-				$type = App\Models\ServiceType::getSingleCat($dd->servicetype); 
-				@endphp
-					<li class="shop-page-drodown-col new-arrival-menu-col">
-						<ul>
-							<li>
-								<a href="{{ url('services/category') }}/{{$type->alias}}" class="title-shoppage">{{ $type->name }}</a>
-							</li>
-						</ul>
+				<ul class="sub-menu-header-list blog-menu-col-five">
+					@foreach($stypes as $dd)
+					@php
+						$type = App\Models\ServiceType::getSingleCat($dd->servicetype);
+					@endphp
+					<li>
+						<a href="{{ url('services/category') }}/{{$type->alias}}" title="menu">
+							<img src="{{ $type->image }}">
+						</a>
+						<p class="menu-name">
+							<a href="{{ url('services/category') }}/{{$type->alias}}" title="menu">{{ $type->name }}</a>
+						</p>
 					</li>
-				  @endforeach
-				  
+					@endforeach
 				</ul>
 				@endif
-			  </li>
+			</li>
 			@endif
-			  
-
-			   {{-- service menu start --}}
+			   {{-- service menu end --}}
 			@php
 			$propmenu = App\Models\HeaderMenu::getMenu(4);
 			@endphp
