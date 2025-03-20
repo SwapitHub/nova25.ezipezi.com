@@ -124,45 +124,42 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 			  <li>
 					<a href="{{ route('home') }}">Welcome</a>
 			  </li>
+			  {{-- about menus start here  --}}
 			  @php
-			  $cmsCat = App\Models\Widget::getncmsCat();
-			  @endphp
-			  @if(!empty($cmsCat))
-			    @if(count($cmsCat))
-                    @foreach($cmsCat as $cmcat)  
-					<li class="dropdown-menu-list">
-						<a href="#" title="menu">{{ $cmcat->title }}<span class="caret-icon">&nbsp;</span>
-						</a>
-						@php
-						$subCat = App\Models\Widget::getcmsContent($cmcat->id);
-						@endphp
-						@foreach($subCat as $subc)
-						<ul class="sub-menu-header-list four-column">
-						  <li class="shop-page-drodown-col collection-menu-col">
-							<ul>
-							  <li>
-								<a href="#" class="menuitem-shop" target="_top">
-								  <img src="{{ $subc->image }}" alt="{{ $subc->title }}">
-								</a>
-							  </li>
-							  <li>
-								<a href="#" class="title-shoppage">{{ $subc->title }}</a>
-							  </li>
-							</ul>
-						  </li>
-						</ul>
-						@endforeach
+$cmsCat = App\Models\Widget::getncmsCat();
+@endphp
 
-					  </li>
-					@endforeach
-				@else
-				@endif
-				
-			  @else
-				<li>
-					<a href="{{url('/entry/'.$cmcat->alias)}}.php" title="menu">{{ $cmcat->title }} </a>			
-				</li>
-			  @endif
+@if(!empty($cmsCat) && count($cmsCat))
+    @foreach($cmsCat as $cmcat)
+        <li class="dropdown-menu-list">
+            <a href="#" title="menu">{{ $cmcat->title }} <span class="caret-icon">&nbsp;</span></a>
+            @php
+            $subCat = App\Models\Widget::getcmsContent($cmcat->id);
+            @endphp
+            @if(!empty($subCat) && count($subCat))
+                <ul class="sub-menu-header-list blog-menu-col-five">
+                    @foreach($subCat as $subc)
+                        <li>
+                            <a href="#" title="{{ $subc->title }}">
+                                <img src="{{ $subc->image }}" alt="{{ $subc->title }}">
+                            </a>
+                            <p class="menu-name">
+                                <a href="#" title="{{ $subc->title }}">{{ $subc->title }}</a>
+                            </p>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </li>
+    @endforeach
+@else
+    <li>
+        <a href="{{ url('/entry/'.$cmcat->alias) }}" title="menu">{{ $cmcat->title }}</a>
+    </li>
+@endif
+
+
+			  {{-- about menu ends here --}}
 
 
 			  {{-- products menus start --}}
@@ -189,15 +186,17 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 							</a>
 						</li>
 						<li>
-							<a href="#" class="title-shoppage">{{ $protype->name }}</a>
+							<a href="{{ url('product/category') }}/{{$protype->alias}}" class="title-shoppage">{{ $protype->name }}</a>
 						</li>
 						@php
-						      
 							  $procats = ProCat::where('protype',$protype->id)->where('status',1)->get(); 
 						@endphp
 						@foreach($procats as $procat)
 							<li>
-								<a href="{{ url('product/category') }}/{{$procat->alias}}" class="menuitem-shop" target="_top">{{ $procat->name }}</a>
+								{{-- <a href="{{ url('search.php?protype=11&procat=2') }}/{{ $protype->id }}" class="menuitem-shop" target="_top">{{ $procat->name }}</a> --}}
+								<a href="{{ url('search.php?protype=' . $protype->id . '&procat=' . $procat->id) }}" class="menuitem-shop" target="_top">
+									{{ $procat->name }}
+								</a>
 							</li>
 						@endforeach
 
