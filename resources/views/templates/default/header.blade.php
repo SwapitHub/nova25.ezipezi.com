@@ -1,202 +1,3 @@
-<?php /*  <header id="header"><!--header-->
-  <div class="header_top"><!--header_top-->
-    <div class="container">
-      <div class="row">
-        
-        <div class="col-sm-6">
-          <div class="btn-group pull-right">
-            <div class="btn-group locale">
-              @if (count($languages)>1)
-              <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown"><img src="{{ asset($languages[app()->getLocale()]['icon']) }}" style="height: 25px;">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                @foreach ($languages as $key => $language)
-                  <li><a href="{{ url('locale/'.$key) }}"><img src="{{ asset($language['icon']) }}" style="height: 25px;"></a></li>
-                @endforeach
-              </ul>
-              @endif
-            </div>
-            @if (count($currencies)>1)
-             <div class="btn-group locale">
-              <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                {{ sc_currency_info()['name'] }}
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                @foreach ($currencies as $key => $currency)
-                  <li><a href="{{ url('currency/'.$currency->code) }}">{{ $currency->name }}</a></li>
-                @endforeach
-              </ul>
-            </div>
-            @endif 
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="contactinfo">
-            <ul class="nav nav-pills">
-              <li><a href="tel:{{ sc_store('phone') }}" target="_blank"><i class="fa fa-phone"></i> {{ sc_store('phone') }}</a></li>
-              <li> <span>Follow us</span> <a href="http://www.facebook.com/PaisajesEspanoles"><i class="fa fa-facebook fa-lg"></i> </a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!--/header_top-->
-  <div class="header-middle"><!--header-middle-->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="logo pull-left">
-            <a href="{{ route('home') }}"><img style="width: 150px;" src="{{ asset(sc_store('logo')) }}" alt="" /></a>
-          </div>
-        </div>
-        <div class="col-sm-4">
-
-       <!--  <form method="post">
-          <div class="input-group">
-                <input type="text" name="Dbusqueda" value="" placeholder="Buscar..." autocomplete="off"><button type="submit" class="search-btn">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div><div class="autocomplete-suggestions " style="display: none;"></div>
-            <?php $provincia = App\Models\Provincia::GetProvincias(); 
-             
-           
-             ?>
-          <select name="provincia" class="provincia">
-            <option value="">Provincia</option>
-            <?php foreach ($provincia as $pro ) { ?>
-                <option value="{{ $pro->id }}">{{ $pro->name }}</option>
-            <?php } ?>
-          </select>
-          <select name="localidad" class="localidad">
-            <option value="">Localidad</option>
-          </select>
-
-          </form> -->
-        </div>
-        <div class="col-sm-5">
-          <div class="shop-menu pull-right">
-            <ul class="nav navbar-nav">
-              @php
-              $cartsCount = \Cart::count();
-              @endphp
-              <!-- <li><a href="{{ route('wishlist') }}"><span  class="cart-qty  sc-wishlist" id="shopping-wishlist">{{ Cart::instance('wishlist')->count() }}</span><i class="fa fa-star"></i> {{ trans('front.wishlist') }}</a></li> -->
-             <!--  <li><a href="{{ route('compare') }}"><span  class="cart-qty sc-compare" id="shopping-compare">{{ Cart::instance('compare')->count() }}</span><i class="fa fa-crosshairs"></i> {{ trans('front.compare') }}</a></li> -->
-              <li><a href="{{ route('cart') }}"><span class="cart-qty sc-cart" id="shopping-cart">{{ Cart::instance('default')->count() }}</span> view favourites</a>
-              </li>
-              @guest
-              <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> {{ trans('front.login') }}</a></li>
-              @else
-              <li><a href="{{ route('member.index') }}"><i class="fa fa-user"></i> {{ trans('front.account') }}</a></li>
-              <li><a href="{{ route('logout') }}" rel="nofollow" onclick="event.preventDefault();
-                 document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> {{ trans('front.logout') }}</a></li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
-              @endguest
-
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!--/header-middle-->
-
-  <div class="header-bottom"><!--header-bottom-->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-          <div class="mainmenu pull-left">
-            <ul class="nav navbar-nav collapse navbar-collapse">
-            
-                <!--<li class="dropdown"><a href="#">{{ trans('front.shop') }}<i class="fa fa-angle-down"></i></a>
-                  <ul role="menu" class="sub-menu">
-                      <li><a href="{{ route('product.all') }}">{{ trans('front.all_product') }}</a></li>
-                      <li><a href="{{ route('compare') }}">{{ trans('front.compare') }}</a></li>
-                      <li><a href="{{ route('cart') }}">{{ trans('front.cart_title') }}</a></li>
-                      <li><a href="{{ route('categories') }}">{{ trans('front.categories') }}</a></li>
-                      <li><a href="{{ route('brands') }}">{{ trans('front.brands') }}</a></li>
-                      <li><a href="{{ route('vendors') }}">{{ trans('front.vendors') }}</a></li>
-                  </ul>
-              </li> -->
-              <?php  $cmsCat = App\Models\Widget::getcmsCat();
-                
-               
-          
-              if(!empty($cmsCat)) { 
-                foreach($cmsCat as $cmcat) { 
-                 $subCat = App\Models\Widget::getcmsContent($cmcat->id);
-
-                 if(count($subCat)>1)
-                 {
-                   ?>
-                   <li class="dropdown"><a href="#">{{ $cmcat->title }}<i class="fa fa-angle-down"></i></a>
-                       <ul role="menu" class="sub-menu">
-                        <?php foreach($subCat as $subc) { ?>
-                        <li><a href="{{url('/entry/'.$subc->alias)}}">{{ $subc->title }}</a></li>
-                      <?php } ?>
-                      </ul>
-                  </li>
-                  <?php } else { ?>
-                 
-                  <li><a href="{{ $cmcat->alias }}">{{ $cmcat->title }}</a></li>
-                <?php } } }?>
-
-             <!--  <li><a href="{{ route('news') }}">{{ trans('front.blog') }}</a></li> -->
-
-             <!--  @if (!empty(sc_config('Content')))
-              <li class="dropdown"><a href="#">{{ trans('front.cms_category') }}<i class="fa fa-angle-down"></i></a>
-                  <ul role="menu" class="sub-menu">
-                    @php
-                      $nameSpace = sc_get_module_namespace('Cms','Content').'\Models\CmsCategory';
-                      $cmsCategories = (new $nameSpace)->where('status', 1)->get();
-                    @endphp
-                    @foreach ($cmsCategories as $cmsCategory)
-                      <li><a href="{{ $cmsCategory->getUrl() }}">{{ sc_language_render($cmsCategory->title) }}</a></li>
-                    @endforeach
-                  </ul> 
-              
-              @php
-                      $nameSpace = sc_get_module_namespace('Cms','Content').'\Models\CmsCategory';
-                      $cmsCategories = (new $nameSpace)->where('status', 1)->get();
-                    @endphp
-                    @foreach ($cmsCategories as $cmsCategory)
-                      <li><a href="{{url('/entry/'.$cmsCategory->alias)}}">{{ sc_language_render($cmsCategory->title) }}</a></li>
-                    @endforeach<li></li>
-              @endif -->
-
-                @if (!empty($layoutsUrl['menu']))
-                  @foreach ($layoutsUrl['menu'] as $url)
-                    <li><a {{ ($url->target =='_blank')?'target=_blank':''  }} href="{{ sc_url_render($url->url) }}">{{ sc_language_render($url->name) }}</a>
-                  @endforeach
-                @endif
-            </ul>
-          </div>
-        </div>
-       <!--  <div class="col-sm-3">
-          <div class="search_box pull-right">
-            <form id="searchbox" method="get" action="{{ route('search') }}" >
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="{{ trans('front.search_form.keyword') }}..." name="keyword">
-              </div>
-            </form>
-          </div>
-        </div> -->
-      </div>
-    </div>
-  </div><!--/header-bottom-->
-</header><!--/header-->
-*/?>
 <?php $expshow = date("Y-m-d", strtotime("+45 day"));
 if(sc_store('enddate')<=date('Y-m-d')) { ?> 
 <script>window.location.href = "{{ route('expire')}}";</script>"; <?php } ?>
@@ -373,7 +174,6 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 				@if($winemenu->status)
 				<a href="{{ route('product.all') }}" title="menu">{{ $winemenu->name }} <span class="caret-icon">&nbsp;</span></a>
 			  @endif
-				
 				<ul class="sub-menu-header-list four-column">
 					@php
 					      use App\Models\ProCat;
@@ -400,325 +200,131 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 								<a href="#" class="menuitem-shop" target="_top">{{ $procat->name }}</a>
 							</li>
 						@endforeach
-							{{-- <li>
-								<a href="#" class="menuitem-shop" target="_top">Boy</a>
-							</li>
-							<li>
-								<a href="#" class="menuitem-shop" target="_top">Consectetur</a>
-							</li>
-							<li>
-								<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
-							</li>
-							<li>
-								<a href="#" class="menuitem-shop" target="_top">Excepteur</a>
-							</li> --}}
+
 						</ul>
 					</li>
 				  @endforeach
-				  {{-- <li class="shop-page-drodown-col collection-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">
-						  <img src="../images/theme-images//image-2.jpg" alt="img">
-						</a>
-					  </li>
-					  <li>
-						<a href="#" class="title-shoppage">Clothers</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Dolor emque</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Mollit anim</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Speaker for car</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Dash Cam</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Pampers</a>
-					  </li>
-					</ul>
-				  </li>
-				  <li class="shop-page-drodown-col collection-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">
-						  <img src="../images/theme-images//image-3.jpg" alt="img">
-						</a>
-					  </li>
-					  <li>
-						<a href="#" class="title-shoppage">Mens</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Accessories</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Food miles</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Food miles</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Milk</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Snacks</a>
-					  </li>
-					</ul>
-				  </li>
-				  <li class="shop-page-drodown-col collection-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">
-						  <img src="../images/theme-images//image-4.jpg" alt="img">
-						</a>
-					  </li>
-					  <li>
-						<a href="#" class="title-shoppage">Furniture</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Esse cillum</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Excepteur</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Hand Tools</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Impact Wrehes</a>
-					  </li>
-					</ul>
-				  </li> --}}
 				</ul>
 			  </li>
 			  {{-- products menus start --}}
 
+			  {{-- service menu start --}}
+			@php
+			$servcmenu = App\Models\HeaderMenu::getMenu(3);
+			@endphp
+			@if($servcmenu->status)
+			<li class="dropdown-menu-list">
+				<a href="{{ route('services.all') }}" title="menu">{{ $servcmenu->name }}<span class="caret-icon">&nbsp;</span>
+				</a>
+				@php
+				$stypes = App\Models\Service::getHeaderCats();
+				@endphp
+				@if(count($stypes) >= 1)
+				<ul class="sub-menu-header-list four-column two-column-menu">
+				@foreach($stypes as $dd)
+				@php
+				$type = App\Models\ServiceType::getSingleCat($dd->servicetype); 
+				@endphp
+					<li class="shop-page-drodown-col new-arrival-menu-col">
+						<ul>
+							<li>
+								<a href="{{ url('services/category') }}/{{$type->alias}}" class="title-shoppage">{{ $type->name }}</a>
+							</li>
+						</ul>
+					</li>
+				  @endforeach
+				  
+				</ul>
+				@endif
+			  </li>
+			@endif
+			  
 
+			   {{-- service menu start --}}
+			@php
+			$propmenu = App\Models\HeaderMenu::getMenu(4);
+			@endphp
+			@if($propmenu->status)
 			  <li>
-				<a href="#" title="menu">womens</a>
+				<a href="{{ route('property.all') }}" title="menu">{{ $propmenu->name }}</a>
 			  </li>
-			  <li class="dropdown-menu-list">
-				<a href="#" title="menu">new arrival <span class="caret-icon">&nbsp;</span>
-				</a>
-				<ul class="sub-menu-header-list four-column two-column-menu">
-				  <li class="shop-page-drodown-col new-arrival-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="title-shoppage">Womens</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">For boy</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">For girl</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Duis aute</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Laudantium</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">For boy</a>
-					  </li>
-					</ul>
-				  </li>
-				  <li class="shop-page-drodown-col new-arrival-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="title-shoppage">Clothers</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Dash Cam</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Dolor emque</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Screen TV</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Smartwatch</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Screen TV</a>
-					  </li>
-					</ul>
-				  </li>
-				  <div class="dropdown-single-image">
-					<img src="../images/theme-images/image-5.jpg" alt="img">
-				  </div>
-				</ul>
-			  </li>
+			@endif
+
+			@php
+			$accmenu = App\Models\HeaderMenu::getMenu(5);
+			@endphp
+			@if($accmenu->status)
 			  <li>
-				<a href="#" title="menu">mens</a>
+				<a href="{{ route('accommodation.all') }}" title="menu">{{ $accmenu->name }}</a>
 			  </li>
+			@endif
+
+			{{-- news section seart here --}}
+			@php
+			$thewine = App\Models\HeaderMenu::getMenu(2);
+			@endphp
+			@if($thewine->status)
 			  <li class="dropdown-menu-list">
-				<a href="#" title="menu">pages <span class="caret-icon">&nbsp;</span>
+				<a href="{{ route('news') }}" title="menu">{{ $thewine->name }}<span class="caret-icon">&nbsp;</span>
 				</a>
+				@php
+				$vinetypes = App\Models\Blog::getHeaderCats();
+				@endphp
+				@if(count($vinetypes))
 				<ul class="sub-menu-header-list four-column two-column-menu">
+				  @foreach($vinetypes as $dd)
+				  @php
+				  $type = App\Models\NewsType::getsingleCat($dd->newstype); 
+				  @endphp
 				  <li class="shop-page-drodown-col new-arrival-menu-col">
 					<ul>
 					  <li>
-						<a href="#" class="menuitem-shop" target="_top">About Us</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Services</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">FAQs</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Contact us</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Support 24/7 Page</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Typography</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Photo Gallery</a>
+						<a href="{{ url('news/category') }}/{{$type->alias}}" class="menuitem-shop" target="_top">{{ $type->name }}</a>
 					  </li>
 					</ul>
 				  </li>
-				  <li class="shop-page-drodown-col new-arrival-menu-col">
-					<ul>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">SiteMap</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Page 404</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Coming Soon</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Testimonials</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Best Seller</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">New Arrivals</a>
-					  </li>
-					  <li>
-						<a href="#" class="menuitem-shop" target="_top">Most Rated</a>
-					  </li>
-					</ul>
-				  </li>
+				  @endforeach
 				</ul>
+				@endif
 			  </li>
+			@endif
+			  {{-- news section seart here --}}
+			@php
+			$blogmenu = App\Models\HeaderMenu::getMenu(13);
+			@endphp
+			@if($blogmenu->status)
 			  <li class="dropdown-menu-list">
-				<a href="#" title="menu">blog <span class="caret-icon">&nbsp;</span>
+				<a href="{{ route('blog.all') }}" title="menu">{{ $blogmenu->name }} <span class="caret-icon">&nbsp;</span>
 				</a>
+				@php
+				$stypes = App\Models\NewBlog::getHeaderCats();
+				@endphp
+				@if(count($stypes) >= 1)
 				<ul class="sub-menu-header-list blog-menu-col-five">
+					@foreach ($stypes as $dd) 
 				  <li>
 					<a href="#" title="menu">
 					  <img src="../images/theme-images//blog-col1.png">
 					</a>
 					<p class="menu-name">
-					  <a href="#" title="menu">blog1</a>
+					  <a href="{{ url('blog/category') }}/{{$type->alias}}" title="menu">{{ $type->name }}</a>
 					</p>
 				  </li>
-				  <li>
-					<a href="#" title="menu">
-					  <img src="../images/theme-images//blog-col1.png">
-					</a>
-					<p class="menu-name">
-					  <a href="#" title="menu">blog2</a>
-					</p>
-				  </li>
-				  <li>
-					<a href="#" title="menu">
-					  <img src="../images/theme-images//blog-col1.png">
-					</a>
-					<p class="menu-name">
-					  <a href="#" title="menu">blog3</a>
-					</p>
-				  </li>
-				  <li>
-					<a href="#" title="menu">
-					  <img src="../images/theme-images//blog-col1.png">
-					</a>
-					<p class="menu-name">
-					  <a href="#" title="menu">blog4</a>
-					</p>
-				  </li>
-				  <li>
-					<a href="#" title="menu">
-					  <img src="../images/theme-images//blog-col1.png">
-					</a>
-					<p class="menu-name">
-					  <a href="#" title="menu">blog5</a>
-					</p>
-				  </li>
-				  <div class="six-column-blog">
-					<div class="blog-menu-column">
-					  <li>
-						<a href="#" title="menu">
-						  <img src="../images/theme-images//article-default.png">
-						</a>
-						<p class="menu-name">
-						  <a href="#" title="menu">blog1</a>
-						</p>
-					  </li>
-					  <li>
-						<a href="#" title="menu">
-						  <img src="../images/theme-images//article-default.png">
-						</a>
-						<p class="menu-name">
-						  <a href="#" title="menu">blog2</a>
-						</p>
-					  </li>
-					  <li>
-						<a href="#" title="menu">
-						  <img src="../images/theme-images//article-default.png">
-						</a>
-						<p class="menu-name">
-						  <a href="#" title="menu">blog3</a>
-						</p>
-					  </li>
-					  <li>
-						<a href="#" title="menu">
-						  <img src="../images/theme-images//article-default.png">
-						</a>
-						<p class="menu-name">
-						  <a href="#" title="menu">blog4</a>
-						</p>
-					  </li>
-					  <li>
-						<a href="#" title="menu">
-						  <img src="../images/theme-images//article-default.png">
-						</a>
-						<p class="menu-name">
-						  <a href="#" title="menu">blog5</a>
-						</p>
-					  </li>
-					  <li>
-						<a href="#" title="menu">
-						  <img src="../images/theme-images//article-default.png">
-						</a>
-						<p class="menu-name">
-						  <a href="#" title="menu">blog6</a>
-						</p>
-					  </li>
-					</div>
-				  </div>
+				  @endforeach
 				</ul>
+				@endif
 			  </li>
+			@endif
 			  <li>
 				<a href="#" title="menu">sale </a>
 			  </li>
 			</ul>
 		  </div>
+
+
+
+
+		  
 		  <!-- toggler -->
 		  <div class="nav-toggler">
 			<div class="nav-btn">
@@ -1165,6 +771,7 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 				<li>
 				  <a href="#" title="menu">mens</a>
 				</li>
+				{{-- pages start here --}}
 				<li class="dropdown-menu-list">
 				  <a href="#" title="menu">pages <span class="caret-icon">&nbsp;</span>
 				  </a>
@@ -1221,9 +828,20 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 					</li>
 				  </ul>
 				</li>
+				{{-- pages end here --}}
+
+				{{-- blog start here --}}
+				@php
+				  $blogmenu = App\Models\HeaderMenu::getMenu(13);
+				@endphp
+				@if($blogmenu->status)
 				<li class="dropdown-menu-list">
-				  <a href="#" title="menu">blog <span class="caret-icon">&nbsp;</span>
+				  <a href="{{ route('blog.all') }}" title="menu">{{ $blogmenu->name }}<span class="caret-icon">&nbsp;</span>
 				  </a>
+				  @php
+				   $stypes = App\Models\NewBlog::getHeaderCats();
+				  @endphp
+				  @if(count($stypes) >= 1)
 				  <ul class="sub-menu-header-list blog-menu-col-five">
 					<li>
 					  <a href="#" title="menu">
@@ -1318,10 +936,14 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 					  </div>
 					</div>
 				  </ul>
+				  @endif
 				</li>
-				<li>
+				@endif
+				
+				{{-- blog end here  --}}
+				{{-- <li>
 				  <a href="#" title="menu">sale </a>
-				</li>
+				</li> --}}
 			  </ul>
 			</div>
 		  </div>
