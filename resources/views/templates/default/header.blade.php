@@ -328,31 +328,31 @@ $currAct = App\Models\HeaderMenu::getMenu(6);
 			  @endphp
 			  @if(!empty($cmsCat))
 			    @if(count($cmsCat))
-                    @foreach($cmsCat as $cmcat)
-					  
+                    @foreach($cmsCat as $cmcat)  
 					<li class="dropdown-menu-list">
-						<a href="{{url('/entry/'.$cmcat->alias)}}.php" title="menu">{{ $cmcat->title }}<span class="caret-icon">&nbsp;</span>
+						<a href="#" title="menu">{{ $cmcat->title }}<span class="caret-icon">&nbsp;</span>
 						</a>
+						@php
+						$subCat = App\Models\Widget::getcmsContent($cmcat->id);
+						@endphp
+						@foreach($subCat as $subc)
 						<ul class="sub-menu-header-list four-column">
-							@php
-							$subCat = App\Models\Widget::getcmsContent($cmcat->id);
-							@endphp
-							@foreach($subCat as $subc)
-							<li class="shop-page-drodown-col collection-menu-col">
-								<ul>
-									<li>
-										<a href="#" class="menuitem-shop" target="_top">
-										  <img src="{{ $subc->image }}" alt="{{ $subc->title }}">
-										</a>
-									</li>
-									<li>
-										<a href="{{url('/entry/'.$subc->alias)}}.php" class="title-shoppage">{{ $subc->title }}</a>
-									</li>
-								</ul>
-							</li>
-							@endforeach
+						  <li class="shop-page-drodown-col collection-menu-col">
+							<ul>
+							  <li>
+								<a href="#" class="menuitem-shop" target="_top">
+								  <img src="{{ $subc->image }}" alt="{{ $subc->title }}">
+								</a>
+							  </li>
+							  <li>
+								<a href="#" class="title-shoppage">{{ $subc->title }}</a>
+							  </li>
+							</ul>
+						  </li>
 						</ul>
-					</li>	
+						@endforeach
+
+					  </li>
 					@endforeach
 				@else
 				@endif
