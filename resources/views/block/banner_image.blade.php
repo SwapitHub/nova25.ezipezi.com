@@ -55,7 +55,7 @@ $banners = \App\Models\ShopBanner::where('status', 1)->where('type', 0)->sort()-
                     </div>
                     <div class="banner-img banner-img-one">
                         {{-- <img src="{{ asset($templateFile . '/images/theme-images') }}/banner-image1.png"> --}}
-                        <img src="{{ asset($banner->image) }}">
+                        <img src="{{ asset($banner->image) }}" alt="{{ $banner->image_alt }}">
                     </div>
                 </div>
             @endforeach

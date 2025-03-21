@@ -27,94 +27,83 @@
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu tree" data-widget="tree">
-              @php
-                  $menus = Admin::getMenuVisible();
-              @endphp
-              {{-- Level 0 --}}
-              @foreach ($menus[0] as $level0)
-                  <li class="header">
-                      {{ sc_language_render($level0->title) }}
-                  </li>
-                  {{-- LEvel 1  --}}
-                  @foreach ($menus[$level0->id] as $level1)
-                      @if ($level1->uri)
-                          <li class=""><a href="{{ $level1->uri ? sc_url_render($level1->uri) : '#' }}"><i
-                                      class="fa {{ $level1->icon }}"></i>
-                                  <span>{{ sc_language_render($level1->title) }}</span></a></li>
-                      @else
-                          <li class="treeview">
-                              <a href="#">
-                                  <i class="fa {{ $level1->icon }}"></i>
-                                  <span>{{ sc_language_render($level1->title) }}</span>
-                                  <span class="pull-right-container">
-                                      <i class="fa fa-angle-left pull-right"></i>
-                                  </span>
-                              </a>
-
-                              <ul class="treeview-menu">
-                                  @if (isset($menus[$level1->id]))
-                                      @foreach ($menus[$level1->id] as $level2)
-                                          @if ($level2->uri)
-                                              <li class=""><a
-                                                      href="{{ $level2->uri ? sc_url_render($level2->uri) : '#' }}"><i
-                                                          class="fa {{ $level2->icon }}"></i>
-                                                      <span>{{ sc_language_render($level2->title) }}</span></a></li>
-                                          @else
-                                              <li class="treeview">
-                                                  <a href="#">
-                                                      <i class="fa {{ $level2->icon }}"></i>
-                                                      <span>{{ sc_language_render($level2->title) }}</span>
-                                                      <span class="pull-right-container">
-                                                          <i class="fa fa-angle-left pull-right"></i>
-                                                      </span>
-                                                  </a>
-
-
-                                                  <ul class="treeview-menu">
-                                                      @if (isset($menus[$level2->id]))
-                                                          @foreach ($menus[$level2->id] as $level3)
-                                                              @if ($level3->uri)
-                                                                  <li class=""><a
-                                                                          href="{{ $level3->uri ? sc_url_render($level3->uri) : '#' }}"><i
-                                                                              class="fa {{ $level3->icon }}"></i>
-                                                                          <span>{{ sc_language_render($level3->title) }}</span></a>
-                                                                  </li>
-                                                              @else
-                                                                  <li class="treeview">
-                                                                      <a href="#">
-                                                                          <i class="fa {{ $level3->icon }}"></i>
-                                                                          <span>{{ sc_language_render($level3->title) }}</span>
-                                                                          <span class="pull-right-container">
-                                                                              <i
-                                                                                  class="fa fa-angle-left pull-right"></i>
-                                                                          </span>
-                                                                      </a>
-
-
-
-                                                                  </li>
-                                                              @endif
-                                                          @endforeach
-                                                      @endif
-
-                                                  </ul>
-
-
-                                              </li>
-                                          @endif
-                                      @endforeach
-                                  @endif
-
-                              </ul>
-
-                          </li>
-                      @endif
-                  @endforeach
-                  {{--  end level 1 --}}
-              @endforeach
-              {{-- end level 0 --}}
-
-          </ul>
+            @php
+                $menus = Admin::getMenuVisible();
+                $visibleForAdmin = ['ADMIN SHOP', 'ADMIN EXTENSION', 'ADMIN SYSTEM'];
+                $isAdmin = Admin::user()->id == 1; // Check if the user is an admin
+            @endphp
+        
+            {{-- Level 0 --}}
+            @foreach ($menus[0] as $level0)
+                {{-- Check if the menu should be hidden for non-admins --}}
+                @if ($isAdmin || !in_array(sc_language_render($level0->title), $visibleForAdmin))
+                    <li class="header">
+                        {{ sc_language_render($level0->title) }} 
+                    </li>
+        
+                    {{-- Level 1 --}}
+                    @foreach ($menus[$level0->id] as $level1)
+                        @if ($level1->uri)
+                            <li><a href="{{ sc_url_render($level1->uri) }}"><i class="fa {{ $level1->icon }}"></i>
+                                <span>{{ sc_language_render($level1->title) }}</span></a></li>
+                        @else
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa {{ $level1->icon }}"></i>
+                                    <span>{{ sc_language_render($level1->title) }}</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+        
+                                <ul class="treeview-menu">
+                                    @if (isset($menus[$level1->id]))
+                                        @foreach ($menus[$level1->id] as $level2)
+                                            @if ($level2->uri)
+                                                <li><a href="{{ sc_url_render($level2->uri) }}"><i class="fa {{ $level2->icon }}"></i>
+                                                    <span>{{ sc_language_render($level2->title) }}</span></a></li>
+                                            @else
+                                                <li class="treeview">
+                                                    <a href="#">
+                                                        <i class="fa {{ $level2->icon }}"></i>
+                                                        <span>{{ sc_language_render($level2->title) }}</span>
+                                                        <span class="pull-right-container">
+                                                            <i class="fa fa-angle-left pull-right"></i>
+                                                        </span>
+                                                    </a>
+        
+                                                    <ul class="treeview-menu">
+                                                        @if (isset($menus[$level2->id]))
+                                                            @foreach ($menus[$level2->id] as $level3)
+                                                                @if ($level3->uri)
+                                                                    <li><a href="{{ sc_url_render($level3->uri) }}"><i class="fa {{ $level3->icon }}"></i>
+                                                                        <span>{{ sc_language_render($level3->title) }}</span></a></li>
+                                                                @else
+                                                                    <li class="treeview">
+                                                                        <a href="#">
+                                                                            <i class="fa {{ $level3->icon }}"></i>
+                                                                            <span>{{ sc_language_render($level3->title) }}</span>
+                                                                            <span class="pull-right-container">
+                                                                                <i class="fa fa-angle-left pull-right"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </li>
+                        @endif
+                    @endforeach
+                @endif
+            @endforeach
+        </ul>
+        
 
           @include('admin.component.sidebar_bottom')
 
