@@ -337,7 +337,6 @@ class EventController extends Controller
             }
             
         }
-
         return redirect()->route('admin_event.index')->with('success', trans('Event created successfully!'));
 
     }
@@ -391,7 +390,7 @@ class EventController extends Controller
  */
     public function postEdit($id)
     {
-        $portfolio = Portfolio::find($id);
+        $event = Event::find($id);
          $admin = Admin::user();
         $data = request()->all();
         $data['alias'] = !empty($data['alias'])?$data['alias']:$data['name'];
@@ -403,13 +402,13 @@ class EventController extends Controller
             'provincia' => 'required',
             'localidad' => 'required',
             'location' => 'required',
-            'portfoliotype' => 'required',
+            'eventtype' => 'required',
             'branch' => 'required',
             'expire' => 'required',
-            'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:portfolio,alias,' . $portfolio->id . ',id|string|max:100',
+            'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:events,alias,' . $event->id . ',id|string|max:100',
             'sort' => 'numeric|min:0',
         ], [
-            'name.required' => trans('validation.required', ['attribute' => trans('portfolio')]),
+            'name.required' => trans('validation.required', ['attribute' => trans('event')]),
             'alias.regex' => trans('localidad.alias_validate'),
             'provincia.required' => 'The country field is required.',
             'localidad.required' => 'The state field is required.',
@@ -453,7 +452,7 @@ class EventController extends Controller
             'sort' => (int) $data['sort'],
             // 'expire' => $data['expire'],
             'startdate' => $data['startdate'],
-            'portfoliotype' => $data['portfoliotype'],
+            'eventtype' => $data['eventtype'],
             'branch' => $data['branch'],
             'author' => $author,
             'tags' => $tags,
@@ -491,7 +490,7 @@ class EventController extends Controller
             'blogorder' => $data['blogorder'],
         ];
 
-        $portfolio->update($dataUpdate);
+        $event->update($dataUpdate);
 
         
        
