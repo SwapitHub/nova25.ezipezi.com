@@ -24,6 +24,7 @@ class CreateEventtabTable extends Migration
             $table->timestamps(); // Adds created_at and updated_at columns
         });
     }
+
     /**
      * Reverse the migrations.
      *
