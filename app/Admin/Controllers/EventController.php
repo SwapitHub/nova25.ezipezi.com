@@ -360,7 +360,7 @@ class EventController extends Controller
         $add_subloc =  ShopProduct::getLocalidads($event->add_subloc);
         $subloc =  ShopProduct::getSubloc($event->state);
         $add_loc =  ShopProduct::getSubloc($event->add_loc);
-        $subImages = PortfolioImages::getImages($id);  
+        $subImages = EventImages::getImages($id);  
         if ($event === null) {
             return 'no data';
         }
@@ -444,8 +444,14 @@ class EventController extends Controller
             'provincia' => $data['provincia'],
             'state' => $data['localidad'],
             'location' => $data['location'],
+            'rsvp_link' => $data['rsvp_link'],
+            'read_more_link' => $data['read_more_link'],
+            'eventtype' => $data['eventtype'],
+            'eventtime' => $data['eventtime'],
+            'tickets_available' => $data['tickets_available'],
+            'audience_type' => $data['audience_type'],
             'sort' => (int) $data['sort'],
-            'expire' => $data['expire'],
+            // 'expire' => $data['expire'],
             'startdate' => $data['startdate'],
             'portfoliotype' => $data['portfoliotype'],
             'branch' => $data['branch'],
@@ -497,7 +503,7 @@ class EventController extends Controller
        {
         $imageid =  count($data['imageid']);
         for($i=0; $i<$imageid; $i++) {
-            $blogimg = PortfolioImages::find($data['imageid'][$i]);           
+            $blogimg = EventImages::find($data['imageid'][$i]);           
             
                $dataImage = [
                         'image' => $data['sub_image'][$i],                    
@@ -516,10 +522,10 @@ class EventController extends Controller
                $datanImage = [
                         'image' => $data['new_image'][$j], 
                         'imagealt' => $data['nimagealt'][$j],                  
-                        'portfolio_id' => $id                    
+                        'event_id' => $id                    
                     ];
 
-               PortfolioImages::create($datanImage);
+               EventImages::create($datanImage);
                 } 
         }
                 
