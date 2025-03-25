@@ -472,14 +472,14 @@
 
 
                               <div class="form-group {{ $errors->has('eventtypt') ? ' has-error' : '' }}">
-                                <label for="eventtypt" class="col-sm-2 control-label">Event type</label>
+                                <label for="eventtype" class="col-sm-2 control-label">Event type</label>
                                 <div class="col-sm-8">
                                     <select class="form-control input-sm eventtypt select2" style="width: 100%;"
-                                    name="eventtypt">
+                                    name="eventtype">
                                     <option value=""></option>
                                     <?php foreach($eventtype as $type) { ?>
-                                    <option value="{{ $type->id }}" <?php if(isset($event['eventtypt'])) { 
-                                        if($event['eventtypt']==$type->id) echo "selected"; }  ?>  >
+                                    <option value="{{ $type->id }}" <?php if(isset($event['eventtype'])) { 
+                                        if($event['eventtype']==$type->id) echo "selected"; }  ?>  >
                                         
                                             {{ $type->name  }}</option>
                                     <?php } ?>

@@ -404,7 +404,7 @@ class EventController extends Controller
             'location' => 'required',
             'eventtype' => 'required',
             'branch' => 'required',
-            'expire' => 'required',
+            // 'expire' => 'required',
             'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:events,alias,' . $event->id . ',id|string|max:100',
             'sort' => 'numeric|min:0',
         ], [
@@ -413,7 +413,6 @@ class EventController extends Controller
             'provincia.required' => 'The country field is required.',
             'localidad.required' => 'The state field is required.',
         ]);
-
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
