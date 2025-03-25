@@ -230,7 +230,7 @@ class EventController extends Controller
             'sort' => 'numeric|min:0',
             'provincia' => 'required',
             'localidad' => 'required',
-            'expire' => 'required',
+            // 'expire' => 'required',
             'url' => 'url|nullable',
         ],[
             'name.required' => trans('validation.required', ['attribute' => trans('event')]),
@@ -243,6 +243,9 @@ class EventController extends Controller
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput($data);
+                // dd($data);
+
+
         }
 
         if(!empty($data['tags'])) $tags =  implode(",",$data['tags']);  
@@ -278,7 +281,7 @@ class EventController extends Controller
             'branch' => $data['branch'],
             'author' =>$author,
             'tags' => $tags,
-            'expire' => $data['expire'],
+            // 'expire' => $data['expire'],
             'startdate' => $data['startdate'],
             'add_regname' => $data['add_regname'],
             'add_fname' => $data['add_fname'],
@@ -316,6 +319,7 @@ class EventController extends Controller
             'blogorder' => $data['blogorder'],
             
         ];
+        // dd($dataInsert);
         $blogid = Event::create($dataInsert);
         //Insert sub mages
         if ($subImages) { 
