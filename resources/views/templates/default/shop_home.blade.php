@@ -4,155 +4,85 @@
 @section('center')
 
     <!-- ================== TALK OF THE SHOW START HERE  ================== -->
+    {{-- <section class="recommended-bg ctm-section-margin">
+        <div class="container">
+            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
+                <h2>TALK OF THE TOWN</h2>
+                <p class="ctm-mt-20">What is Lorem Ipsum?</p>
+            </div>
+            <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
+
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section> --}}
+
     <section class="recommended-bg ctm-section-margin">
         <div class="container">
             <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
                 <h2>TALK OF THE TOWN</h2>
                 <p class="ctm-mt-20">What is Lorem Ipsum?</p>
-                <!--<div class="view-more-btn">
-                    <a href="#" title="View All" class="common-primary-button">View All</a>
-                </div>-->
             </div>
+    
+            <!-- Carousel Wrapper -->
             <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
+                @foreach($carouselItems as $item)
+                    <div class="inner-barber-shop-recommended">
+                        <div class="inner-barber-shop-img">
+                            <img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="recommended">
+                        </div>
+    
+                        <div class="barber-shop-box-main">
+                            <h5>{{ $item->title ?? $item->name }}</h5>
+                            <div class="location-section">
+                                <ul class="custom-justify-start">
+                                    <li><i class="fa-solid fa-location-dot"></i></li>
+                                    <li>
+                                        <p>{{ $item->introduction ?? 'Location not available' }}</p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+    
 
     <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
 

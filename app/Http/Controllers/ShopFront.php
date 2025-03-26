@@ -7,6 +7,7 @@ use App\Models\ShopBrand;
 use App\Models\Blog;
 use App\Models\Accommodation;
 use App\Models\Service;
+use App\Models\Event;
 use App\Models\Property;
 use App\Models\ShopBanner;
 use App\Models\ShopCategory;
@@ -63,6 +64,22 @@ class ShopFront extends GeneralController
             $footerBlog = (new NewBlog)->footerNewBlog($homedata->blogorder);
         }
 
+        // make all togethor for talk of the show carousal
+        $services = Service::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
+        $blogs = Blog::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
+        $events = Event::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
+        $properties = Property::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
+        $accommodations = accommodation::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
+
+        // Merge and shuffle data
+        $carouselItems = collect()
+            ->merge($services)
+            ->merge($blogs)
+            ->merge($events)
+            ->merge($properties)
+            ->shuffle(); // To mix recent and random items
+        // make all togethor for talk of the show carousal
+
         // dd($homedata);
 
         return view(
@@ -88,8 +105,9 @@ class ShopFront extends GeneralController
                 'admin' => $admin,
                 'footerPort' => $footerPort ?? [],
                 'footerBlog' => $footerBlog ?? [],
-                'blogs'=>NewBlog::latest()->take(5)->get(),
-                'featured_blogs'=>NewBlog::where('featured',1)->limit(5)->get(),
+                'blogs' => NewBlog::latest()->take(5)->get(),
+                'featured_blogs' => NewBlog::where('featured', 1)->limit(5)->get(),
+                'carouselItems'=>$carouselItems,
 
             )
         );
