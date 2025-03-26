@@ -8,6 +8,7 @@
         <div class="container">
             <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom">
                 <h2>TALK OF THE TOWN</h2>
+                <p>What is Lorem Ipsum?</p>
                 <div class="view-more-btn">
                     <a href="#" title="View All" class="common-primary-button">View All</a>
                 </div>
@@ -15,7 +16,7 @@
             <div class="barber-shop-recommended custom-justify-space-between">
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-1.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -32,7 +33,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-2.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -49,7 +50,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-3.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -66,7 +67,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-4.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -83,7 +84,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-1.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -100,7 +101,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-2.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -117,7 +118,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-3.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
@@ -134,7 +135,7 @@
                 </div>
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
-                        <img src="images/recommended-4.jpg" alt="recommended">
+                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
                     </div>
 
                     <div class="barber-shop-box-main">
