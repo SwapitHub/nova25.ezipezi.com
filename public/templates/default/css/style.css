@@ -45,6 +45,7 @@ h1, h2{
 	padding: 6px 22px;
 	text-transform: capitalize;
 	display: inline-block;
+	    
 }
 .topbar-selectbox {
     display: flex;
@@ -55,7 +56,6 @@ h1, h2{
 	gap:10px;
 }
 .topbar-selectbox ul {
-    display: flex;
     gap: 10px;
 }
 .topbar-selectbox label{
@@ -78,15 +78,15 @@ h1, h2{
 }
 
 .topbar-selectbox ul li {
-    padding: 0px 7px;
+    padding: 0px 12px;
 }
-li.icon-cart {
+.topbar-selectbox li.icon-cart {
     position: relative;
     /* width: 40px; */
-    padding-left: 30px !important;
+    padding-left: 32px !important;
 }
 
-li.icon-cart:before {
+.topbar-selectbox li.icon-cart:before {
     content: "\f07a";
     font-family: FontAwesome;
     font-style: normal;
@@ -96,19 +96,22 @@ li.icon-cart:before {
     font-size: 18px;
     /* padding-right: 0.5em; */
     position: absolute;
-    left: 7px;
+    left: 12px;
 }
-.topbar-selectbox button.btn-default{
+.topbar-selectbox button.btn-default {
     background-color: transparent;
-    border: 1px solid #f5f5f5;
-	padding: 6.5px 10px;
+    border: none;
+    padding: 6.5px 10px;
     margin-bottom: 12px;
-	width: 190px;
-	color: #fff;
-	text-transform: capitalize;
-	font-family: 'Poppins', sans-serif; 
+    width: 190px;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
     text-align: left;
     position: relative;
+    margin: 0 !important;
+    width: auto;
+	min-height:auto !important;
 }
 .topbar-selectbox button.btn-default .caret {
     margin-left: 0;
@@ -116,12 +119,35 @@ li.icon-cart:before {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+	display:none;
 }
 .open .dropdown-toggle.btn-default {
     color: #fff;
 }
-.topbar-selectbox ul.dropdown-menu{
+.topbar-selectbox ul.dropdown-menu {
     width: 100%;
+    top: 40px;
+    height: 400px;
+    overflow-y: auto;
+    min-width: 150px !important;
+    padding: 0;
+	left:-22px;
+}
+.topbar-selectbox .dropdown-menu>li>a {
+    display: flex;
+    padding: 9px 20px;
+    line-height: normal;
+	font-family: 'Raleway', sans-serif !important;
+	
+}
+.dropdown-menu  li  a:hover, .dropdown-menu  li  a:focus {
+    background-color: #388a95;
+}
+.topbar-selectbox ul li button.btn.btn-default {
+    padding: 0 !important;
+}
+.topbar-selectbox > ul >  li > a {
+    color: #fff;
 }
 .topbar-selectbox option{
 	font-size: 12px;
@@ -129,7 +155,13 @@ li.icon-cart:before {
     color: #000;
     font-weight: 300;
 }
-
+.topbar-selectbox ul.dropdown-menu li {
+    padding: 0 !important;
+    border: none;
+}
+.topbar-selectbox ul.dropdown-menu li + li a{
+	border-top: 1px solid #ddd;
+}
 header {
     min-height: auto;
     position: relative;
@@ -1651,13 +1683,16 @@ h4.panel-title { position: relative;clear: both; }
 .topbar-btn ul.nav.navbar-nav li {
     color: #fff;
 }
-.topbar-selectbox li, .topbar-selectbox li a {
+.topbar-selectbox li {
     color: #fff;
     justify-content: flex-end;
 }
 .topbar-selectbox ul {
-    display: flex;
     gap: 0;
+    align-items: center;
+}
+.topbar-selectbox > ul {
+    display: flex;
     align-items: center;
 }
 /*============18-march-2025============*/
