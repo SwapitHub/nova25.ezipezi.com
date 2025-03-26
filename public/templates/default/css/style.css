@@ -129,9 +129,12 @@ h1, h2{
     top: 40px;
     height: 400px;
     overflow-y: auto;
-    min-width: 150px !important;
+    min-width: 190px !important;
     padding: 0;
 	left:-22px;
+}
+.topbar-selectbox > ul > li {
+    flex: 1 0 auto;
 }
 .topbar-selectbox .dropdown-menu>li>a {
     display: flex;
@@ -1984,7 +1987,163 @@ h3.control-label {
     font-size: 14px;
     font-weight: bold;
 }
+
+
+
 /*===================25-11-2021 end=============================*/
+
+
+
+
+
+
+
+
+/*===================25-03-2025 start=============================*/
+
+.barber-shop-recommended {
+    gap: 14px;
+}
+
+.inner-barber-shop-recommended {
+    width: calc(100%/4 - 14px);
+    margin: 0 10px;
+    position: relative;
+    outline: none;
+}
+
+.inner-recommended.custom-text-center {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.inner-barber-shop-img {
+    border-radius: 5px 5px 0 0;
+    height: 200px;
+    overflow: hidden;
+}
+
+.location-section ul {
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.location-section ul li i {
+    color: #EC5598;
+    font-size: 20px;
+}
+
+.location-section ul li:first-child {
+    width: 6%;
+}
+
+.location-section ul li:last-child {
+    width: calc(94% - 8px);
+}
+
+.barber-shop-box-main {
+    padding: 18px 12px 26px 12px;
+    box-shadow: 0px 0px 7px 0px #0000002B;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+}
+
+.location-section {
+    margin-top: 12px;
+}
+
+.barber-shop-recommended .slick-list.draggable {
+    padding: 0 0 6px 0;
+    margin: 0 -10px;
+}
+
+.barber-shop-box-main h5 a {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #252525;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Button-Start */
+.barber-shop-recommended button.slick-prev,
+.barber-shop-recommended button.slick-next {
+    position: absolute;
+    top: 50%;
+    font-size: 0;
+    padding: 0;
+    border: 0;
+    z-index: 1;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 4px 0px #0000002E;
+    background: #fff;
+
+}
+
+.barber-shop-recommended button.slick-prev:after {
+    transform: rotate(45deg);
+    left: 18px;
+}
+
+.barber-shop-recommended button.slick-next:after,
+.barber-shop-recommended button.slick-prev:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: solid;
+    border-width: 0px 0px 2px 2px;
+    position: absolute;
+    padding: 5px;
+    color: #ec5598;
+}
+
+.barber-shop-recommended button.slick-next::before,
+.barber-shop-recommended button.slick-prev::before {
+    display: none;
+}
+
+.barber-shop-recommended button.slick-next:after {
+    transform: rotate(-135deg);
+}
+
+.barber-shop-recommended .slick-next {
+    right: -56px;
+}
+
+.barber-shop-recommended .slick-prev {
+    left: -56px;
+}
+
+/* Button-End */
+
+
+.saloon-button {
+    background-color: #F2EFF6;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid #E9E1F9;
+    color: #EC5598;
+    pointer-events: none;
+}
+/*===================25-03-2025 start=============================*/
+/* ===================== Recommended Section End Here ===================== */
+
+
+
+
+
+
 
 /*---------------------------------------- responsive --------------------------------------*/
 
