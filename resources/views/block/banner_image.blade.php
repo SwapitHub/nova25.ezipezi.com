@@ -31,9 +31,13 @@ $banners = \App\Models\ShopBanner::where('status', 1)->where('type', 0)->sort()-
         <div class="banner-slider-main">
 
             @foreach ($slides as $banner)
+            @php
+                            dd($banner);
+                        @endphp
                 <div class="inner-banner-slider">
                     <div class="animated-banner-content">
-                        <h2 class="animate fade-down3"><span class="ctm-gray-light-color">introducing</span></h2>
+                        
+                        {{-- <h2 class="animate fade-down3"><span class="ctm-gray-light-color">introducing</span></h2>
                         <h1 class="ctm-dark-black animate fade-down2">Peace, Love & Prints</h1>
                         <p class="ctm-mt-10 animate fade-down">Welcome long days at the beach with our collection
                             of
@@ -51,10 +55,9 @@ $banners = \App\Models\ShopBanner::where('status', 1)->where('type', 0)->sort()-
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="banner-img banner-img-one">
-                        {{-- <img src="{{ asset($templateFile . '/images/theme-images') }}/banner-image1.png"> --}}
                         <img src="{{ asset($banner->image) }}" alt="{{ $banner->image_alt }}">
                     </div>
                 </div>

@@ -71,12 +71,12 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                 <div class="btn-group locale">
                                     <button type="button" class="btn btn-default dropdown-toggle usa"
                                         data-toggle="dropdown">
-                                        {{ sc_currency_info()['code'] }}
+                                        {{ sc_currency_info()['name'] }}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
                                         @foreach ($currencies as $key => $currency)
-                                            <li><a href="{{ url('currency/' . $currency->code) }}">{{ $currency->code }}</a>
+                                            <li><a href="{{ url('currency/' . $currency->code) }}">{{ $currency->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
