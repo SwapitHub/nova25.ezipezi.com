@@ -63,7 +63,7 @@
                 @foreach($carouselItems as $item)
                     <div class="inner-barber-shop-recommended">
                         <div class="inner-barber-shop-img">
-                            <img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="recommended">
+                            <img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="recommended" style="height:260;width:357px">
                         </div>
     
                         <div class="barber-shop-box-main">
