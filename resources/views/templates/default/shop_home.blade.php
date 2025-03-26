@@ -57,17 +57,22 @@
                 <h2>TALK OF THE TOWN</h2>
                 <p class="ctm-mt-20">What is Lorem Ipsum?</p>
             </div>
-    
+
             <!-- Carousel Wrapper -->
             <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
-                @foreach($carouselItems as $item)
+                @foreach ($carouselItems as $item)
+                    @php
+                        $url = url("/{$item->type}/{$item->alias}");
+                    @endphp
                     <div class="inner-barber-shop-recommended">
+                        
                         <div class="inner-barber-shop-img">
-                            <img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="recommended" style="height:260;width:357px">
+                            <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="recommended"
+                                style="height:260;width:357px"></a>
                         </div>
-    
+
                         <div class="barber-shop-box-main">
-                            <h5>{{ $item->title ?? $item->name }}</h5>
+                        <a href="{{ $url }}"> <h5>{{ ucfirst($item->title ?? $item->name) }}</h5></a>
                             <div class="location-section">
                                 <ul class="custom-justify-start">
                                     <li><i class="fa-solid fa-location-dot"></i></li>
@@ -82,7 +87,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
 
@@ -226,7 +231,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="women-man-collection-sec women-man-collection-sec-three ctm-flex-row ctm-justify-content-between">
+                <div
+                    class="women-man-collection-sec women-man-collection-sec-three ctm-flex-row ctm-justify-content-between">
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="KID'S COLLECTIONS">
@@ -237,7 +243,8 @@
                                         KID'S
                                         <div> COLLECTIONS</div>
                                     </h5>
-                                    <button type="button" class="common-secondary-button ctm-mt-10 rusty-orange-color">Shop
+                                    <button type="button"
+                                        class="common-secondary-button ctm-mt-10 rusty-orange-color">Shop
                                         Now</button>
                                 </div>
                             </a>
@@ -267,7 +274,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="women-man-collection-sec women-man-collection-sec-four ctm-flex-row ctm-justify-content-between">
+                <div
+                    class="women-man-collection-sec women-man-collection-sec-four ctm-flex-row ctm-justify-content-between">
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="STORES HOMEWARE">
@@ -309,7 +317,7 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
     <!-- ================== SHOP BY CATEGORIES Section End Here ================== -->
     <!-- ================== Product Furniture Section Start Here ================== -->
@@ -1573,7 +1581,7 @@
                                 <div class="view-gallery-btn ctm-mt-20">
                                     <a href="#" title="View gallery">View gallery</a>
                                 </div>
-                                </div>
+                            </div>
                         </div>
                     @endif
 

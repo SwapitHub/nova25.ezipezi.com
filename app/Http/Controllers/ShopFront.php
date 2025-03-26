@@ -72,16 +72,54 @@ class ShopFront extends GeneralController
         $accommodations = accommodation::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
 
         // Merge and shuffle data
+        $services = Service::where('sorder', 'recent')
+            ->orWhere('sorder', 'featured')
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'services';
+                return $item;
+            });
+
+        $blogs = Blog::where('sorder', 'recent')
+            ->orWhere('sorder', 'featured')
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'blog';
+                return $item;
+            });
+
+        $events = Event::where('sorder', 'recent')
+            ->orWhere('sorder', 'featured')
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'event';
+                return $item;
+            });
+
+        $properties = Property::where('sorder', 'recent')
+            ->orWhere('sorder', 'featured')
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'property';
+                return $item;
+            });
+
+        $accommodations = Accommodation::where('sorder', 'recent')
+            ->orWhere('sorder', 'featured')
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'accommodation';
+                return $item;
+            });
+
+        // Merge all data into a single collection
         $carouselItems = collect()
             ->merge($services)
             ->merge($blogs)
             ->merge($events)
             ->merge($properties)
-            ->shuffle(); // To mix recent and random items
-        // make all togethor for talk of the show carousal
-
-        // dd($homedata);
-
+            ->merge($accommodations)
+            ->shuffle(); // Shuffle for randomness
         return view(
             $this->templatePath . '.shop_home',
             array(
@@ -107,7 +145,7 @@ class ShopFront extends GeneralController
                 'footerBlog' => $footerBlog ?? [],
                 'blogs' => NewBlog::latest()->take(5)->get(),
                 'featured_blogs' => NewBlog::where('featured', 1)->limit(5)->get(),
-                'carouselItems'=>$carouselItems,
+                'carouselItems' => $carouselItems,
 
             )
         );
