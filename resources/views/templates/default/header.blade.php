@@ -67,28 +67,31 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                         <ul>
                             <li><a href="{{ route('login') }}">Login or Register</a></li>
                             <li>
-                                <select>
+                                @if (count($currencies) > 1)
+                                <div class="btn-group locale">
+                                    <button type="button" class="btn btn-default dropdown-toggle usa"
+                                        data-toggle="dropdown">
+                                        {{ sc_currency_info()['code'] }}
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        @foreach ($currencies as $key => $currency)
+                                            <li><a href="{{ url('currency/' . $currency->code) }}">{{ $currency->code }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                                {{-- <select>
                                     <option>currency</option>
-                                </select>
+                                </select> --}}
                             </li>
                             <li class="icon-cart"><a
                                     href="{{ route('cart') }}">{{ Cart::instance('default')->count() }}</a></li>
                         </ul>
                         {{-- <label for="currency-select">Currency:</label> --}}
 
-                        {{-- @if (count($currencies) > 1)
-             <div class="btn-group locale">
-              <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                {{ sc_currency_info()['name'] }}
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                @foreach ($currencies as $key => $currency)
-                  <li><a href="{{ url('currency/'.$currency->code) }}">{{ $currency->name }}</a></li>
-                @endforeach
-              </ul>
-            </div>
-            @endif  --}}
+                       
                     </div>
                     <?php } ?>
                 </div>
@@ -123,7 +126,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -282,36 +285,38 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                             @endif
 
                             {{-- news section seart here --}}
-							@php
-							$thewine = App\Models\HeaderMenu::getMenu(2);
-						@endphp
-						@if ($thewine->status)
-							<li class="dropdown-menu-list">
-								<a href="{{ route('news') }}" title="menu">{{ $thewine->name }}<span
-										class="caret-icon">&nbsp;</span>
-								</a>
-								    @php
+                            @php
+                                $thewine = App\Models\HeaderMenu::getMenu(2);
+                            @endphp
+                            @if ($thewine->status)
+                                <li class="dropdown-menu-list">
+                                    <a href="{{ route('news') }}" title="menu">{{ $thewine->name }}<span
+                                            class="caret-icon">&nbsp;</span>
+                                    </a>
+                                    @php
                                         $vinetypes = App\Models\Blog::getHeaderCats();
                                     @endphp
                                     @if (count($vinetypes))
-									<ul class="sub-menu-header-list blog-menu-col-five">
-										@foreach ($vinetypes as $dd)
-										@php
-											$type = App\Models\NewsType::getsingleCat($dd->newstype);
-										@endphp
-										<li>
-											<a href="{{ url('news/category') }}/{{ $type->alias }}" title="menu">
-												<img src="{{ $type->image }}">
-											</a>
-											<p class="menu-name">
-												<a href="{{ url('news/category') }}/{{ $type->alias }}" title="menu">{{ $type->name }}</a>
-											</p>
-										</li>
-										@endforeach
-									</ul>
-									@endif
-							</li>
-							@endif
+                                        <ul class="sub-menu-header-list blog-menu-col-five">
+                                            @foreach ($vinetypes as $dd)
+                                                @php
+                                                    $type = App\Models\NewsType::getsingleCat($dd->newstype);
+                                                @endphp
+                                                <li>
+                                                    <a href="{{ url('news/category') }}/{{ $type->alias }}"
+                                                        title="menu">
+                                                        <img src="{{ $type->image }}">
+                                                    </a>
+                                                    <p class="menu-name">
+                                                        <a href="{{ url('news/category') }}/{{ $type->alias }}"
+                                                            title="menu">{{ $type->name }}</a>
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endif
                             {{-- news section seart here --}}
                             @php
                                 $blogmenu = App\Models\HeaderMenu::getMenu(13);
@@ -484,90 +489,98 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                 {{-- product mobile menu end  here  --}}
 
                                 {{-- services menu start here --}}
-								@php
-                                $servcmenu = App\Models\HeaderMenu::getMenu(3);
-                            @endphp
-                            @if ($servcmenu->status)
-                                <li class="dropdown-menu-list">
-                                    <a href="{{ route('services.all') }}" title="menu">{{ $servcmenu->name }}<span class="caret-icon">&nbsp;</span>
-                                    </a>
-									@php
-									$stypes = App\Models\Service::getHeaderCats();
-								@endphp
-								@if (count($stypes) >= 1)
-                                    <ul class="sub-menu-header-list blog-menu-col-five">
-										@foreach ($stypes as $dd)
-										@php
-											$type = App\Models\ServiceType::getSingleCat($dd->servicetype);
-										@endphp
-                                        <li>
-                                            <a href="{{ url('services/category') }}/{{ $type->alias }}" title="menu">
-                                                <img src="{{ $type->image }}" alt="{{ $type->name }}">
-                                            </a>
-                                            <p class="menu-name">
-                                                <a href="{{ url('services/category') }}/{{ $type->alias }}" title="menu">{{ $type->name }}</a>
-                                            </p>
-                                        </li>
-										@endforeach
-                                    </ul>
-									@endif
-                                </li>
-								@endif
+                                @php
+                                    $servcmenu = App\Models\HeaderMenu::getMenu(3);
+                                @endphp
+                                @if ($servcmenu->status)
+                                    <li class="dropdown-menu-list">
+                                        <a href="{{ route('services.all') }}"
+                                            title="menu">{{ $servcmenu->name }}<span
+                                                class="caret-icon">&nbsp;</span>
+                                        </a>
+                                        @php
+                                            $stypes = App\Models\Service::getHeaderCats();
+                                        @endphp
+                                        @if (count($stypes) >= 1)
+                                            <ul class="sub-menu-header-list blog-menu-col-five">
+                                                @foreach ($stypes as $dd)
+                                                    @php
+                                                        $type = App\Models\ServiceType::getSingleCat($dd->servicetype);
+                                                    @endphp
+                                                    <li>
+                                                        <a href="{{ url('services/category') }}/{{ $type->alias }}"
+                                                            title="menu">
+                                                            <img src="{{ $type->image }}"
+                                                                alt="{{ $type->name }}">
+                                                        </a>
+                                                        <p class="menu-name">
+                                                            <a href="{{ url('services/category') }}/{{ $type->alias }}"
+                                                                title="menu">{{ $type->name }}</a>
+                                                        </p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endif
                                 {{-- services menu end here --}}
 
-								@php
-                                $propmenu = App\Models\HeaderMenu::getMenu(4);
-								@endphp
-								@if ($propmenu->status)
-									<li>
-										<a href="{{ route('property.all') }}" title="menu">{{ $propmenu->name }}</a>
-									</li>
-								@endif
+                                @php
+                                    $propmenu = App\Models\HeaderMenu::getMenu(4);
+                                @endphp
+                                @if ($propmenu->status)
+                                    <li>
+                                        <a href="{{ route('property.all') }}"
+                                            title="menu">{{ $propmenu->name }}</a>
+                                    </li>
+                                @endif
 
 
-								@php
-                                $accmenu = App\Models\HeaderMenu::getMenu(5);
-								@endphp
-								@if ($accmenu->status)
-									<li>
-										<a href="{{ route('accommodation.all') }}"
-											title="menu">{{ $accmenu->name }}</a>
-									</li>
-								@endif
+                                @php
+                                    $accmenu = App\Models\HeaderMenu::getMenu(5);
+                                @endphp
+                                @if ($accmenu->status)
+                                    <li>
+                                        <a href="{{ route('accommodation.all') }}"
+                                            title="menu">{{ $accmenu->name }}</a>
+                                    </li>
+                                @endif
 
-								{{-- news menu start here --}}
-								@php
-                                $thewine = App\Models\HeaderMenu::getMenu(2);
-                               @endphp
-							   @if ($thewine->status)
-								<li class="dropdown-menu-list">
-									<a href="{{ route('news') }}" title="menu">{{ $thewine->name }}<span
-											class="caret-icon">&nbsp;</span>
-									</a>
-									@php
-									$vinetypes = App\Models\Blog::getHeaderCats();
-									@endphp
-									@if (count($vinetypes))
-										<ul class="sub-menu-header-list blog-menu-col-five">
-											@foreach ($vinetypes as $dd)
-											@php
-												$type = App\Models\NewsType::getsingleCat($dd->newstype);
-											@endphp
-											<li>
-												<a href="{{ url('news/category') }}/{{ $type->alias }}" title="menu">
-													<img src="{{ $type->image }}" alt="{{ $type->name }}">
-												</a>
-												<p class="menu-name">
-													<a href="#" title="menu">{{ $type->name }}</a>
-												</p>
-											</li>
-											@endforeach
-										</ul>
-		 							@endif
-								</li>
-								@endif
-						
-								{{-- news menu end here --}}
+                                {{-- news menu start here --}}
+                                @php
+                                    $thewine = App\Models\HeaderMenu::getMenu(2);
+                                @endphp
+                                @if ($thewine->status)
+                                    <li class="dropdown-menu-list">
+                                        <a href="{{ route('news') }}" title="menu">{{ $thewine->name }}<span
+                                                class="caret-icon">&nbsp;</span>
+                                        </a>
+                                        @php
+                                            $vinetypes = App\Models\Blog::getHeaderCats();
+                                        @endphp
+                                        @if (count($vinetypes))
+                                            <ul class="sub-menu-header-list blog-menu-col-five">
+                                                @foreach ($vinetypes as $dd)
+                                                    @php
+                                                        $type = App\Models\NewsType::getsingleCat($dd->newstype);
+                                                    @endphp
+                                                    <li>
+                                                        <a href="{{ url('news/category') }}/{{ $type->alias }}"
+                                                            title="menu">
+                                                            <img src="{{ $type->image }}"
+                                                                alt="{{ $type->name }}">
+                                                        </a>
+                                                        <p class="menu-name">
+                                                            <a href="#" title="menu">{{ $type->name }}</a>
+                                                        </p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endif
+
+                                {{-- news menu end here --}}
 
                                 {{-- blog start here --}}
                                 @php
@@ -575,7 +588,8 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                 @endphp
                                 @if ($blogmenu->status)
                                     <li class="dropdown-menu-list">
-                                        <a href="{{ route('blog.all') }}" title="menu">{{ $blogmenu->name }}<span
+                                        <a href="{{ route('blog.all') }}"
+                                            title="menu">{{ $blogmenu->name }}<span
                                                 class="caret-icon">&nbsp;</span>
                                         </a>
                                         @php
@@ -583,52 +597,56 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                         @endphp
                                         @if (count($stypes) >= 1)
                                             <ul class="sub-menu-header-list blog-menu-col-five">
-												@foreach ($stypes as $dd)
-                                                @php
-                                                    $type = App\Models\BlogType::getSingleCat($dd->blogtype);
-                                                @endphp
-                                                <li>
-                                                    <a href="{{ url('blog/category') }}/{{ $type->alias }}" title="menu">
-                                                        <img src="{{ $type->image }}" alt="{{ $type->name }}">
-                                                    </a>
-                                                    <p class="menu-name">
-                                                        <a href="{{ url('blog/category') }}/{{ $type->alias }}" title="menu">{{ $type->name }}</a>
-                                                    </p>
-                                                </li> 
-												@endforeach                   
+                                                @foreach ($stypes as $dd)
+                                                    @php
+                                                        $type = App\Models\BlogType::getSingleCat($dd->blogtype);
+                                                    @endphp
+                                                    <li>
+                                                        <a href="{{ url('blog/category') }}/{{ $type->alias }}"
+                                                            title="menu">
+                                                            <img src="{{ $type->image }}"
+                                                                alt="{{ $type->name }}">
+                                                        </a>
+                                                        <p class="menu-name">
+                                                            <a href="{{ url('blog/category') }}/{{ $type->alias }}"
+                                                                title="menu">{{ $type->name }}</a>
+                                                        </p>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         @endif
                                     </li>
                                 @endif
 
-								<?php $cmsCat = App\Models\Widget::getcmsCat();
+                                <?php $cmsCat = App\Models\Widget::getcmsCat();
 								if (!empty($cmsCat)) {
 								  foreach ($cmsCat as $cmcat) {
 									$subCat = App\Models\Widget::getcmsContent($cmcat->id);
 					
 									if (count($subCat) > 1) {
 								?>
-												<li class="dropdown"><a
-														href="{{ url('/entry/' . $cmcat->alias) }}.php">{{ $cmcat->title }}<i
-															class="fa fa-angle-down"></i></a>
-													<ul role="menu" class="sub-menu">
-														<?php foreach ($subCat as $subc) {
+                                <li class="dropdown"><a
+                                        href="{{ url('/entry/' . $cmcat->alias) }}.php">{{ $cmcat->title }}<i
+                                            class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <?php foreach ($subCat as $subc) {
 											if ($subc->title != $cmcat->title) {
 					
 										  ?>
-														<li><a href="{{ url('/entry/' . $subc->alias) }}.php">{{ $subc->title }} </a>
-														</li>
-														<?php
+                                        <li><a href="{{ url('/entry/' . $subc->alias) }}.php">{{ $subc->title }}
+                                            </a>
+                                        </li>
+                                        <?php
 					
 											}
 										  } ?>
-													</ul>
-												</li>
-												<?php } elseif ($cmcat->alias == 'welcome') {
+                                    </ul>
+                                </li>
+                                <?php } elseif ($cmcat->alias == 'welcome') {
 									} else { ?>
-					
-												<li><a href="{{ url('/entry/' . $cmcat->alias) }}.php">{{ $cmcat->title }}</a></li>
-												<?php }
+
+                                <li><a href="{{ url('/entry/' . $cmcat->alias) }}.php">{{ $cmcat->title }}</a></li>
+                                <?php }
 								  }
 								} ?>
 
