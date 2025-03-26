@@ -7,7 +7,7 @@
     <section class="recommended-bg custom_fixed_margin">
         <div class="container">
             <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom">
-                <h2>Recommended</h2>
+                <h2>TALK OF THE TOWN</h2>
                 <div class="view-more-btn">
                     <a href="#" title="View All" class="common-primary-button">View All</a>
                 </div>
