@@ -217,9 +217,9 @@
                             </tr>
 
                             <!--  <tr>
-         <td>Google Analytics Key </td>
-         <td><a href="#" class="fied-required editable editable-click" data-name="googlekey" data-type="text" data-pk="" data-source="" data-url="{{ route('admin_store_info.update') }}" data-title="googlekey" data-value="{{ $infos->googlekey }}" data-original-title="" title="">{{ $infos->googlekey }}</a></td>
-        </tr> -->
+             <td>Google Analytics Key </td>
+             <td><a href="#" class="fied-required editable editable-click" data-name="googlekey" data-type="text" data-pk="" data-source="" data-url="{{ route('admin_store_info.update') }}" data-title="googlekey" data-value="{{ $infos->googlekey }}" data-original-title="" title="">{{ $infos->googlekey }}</a></td>
+            </tr> -->
 
                             <tr>
                                 <td>Payfast (0 sandbox, 1 live)</td>
@@ -421,12 +421,12 @@
         //Logo
         $('[name="logo"]').change(function(event) {
             var APP_URL = {!! json_encode(url('/')) !!};
-            APP_URL = APP_URL;
+            APP_URL = APP_URL.replace(/\/$/, ''); // Ensure no trailing slash in APP_URL
 
             var imageInput = $('#image');
             console.log("Before replace:", imageInput.val());
 
-            var replit = imageInput.val().replace(APP_URL, "");
+            var replit = imageInput.val().replace(APP_URL, '').replace(/^\/\//, '/'); // Ensure single leading /
             console.log("After replace:", replit);
 
             imageInput.val(replit);
