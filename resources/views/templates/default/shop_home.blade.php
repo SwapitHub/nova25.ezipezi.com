@@ -2,12 +2,157 @@
 
 
 @section('center')
-    <!-- ================== Main Section Start Here ================== -->
-
-
 
     <!-- ================== TALK OF THE SHOW START HERE  ================== -->
-      {{-- here need to create a slider  --}}
+    <section class="recommended-bg custom_fixed_margin">
+        <div class="container">
+            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom">
+                <h2>Recommended</h2>
+                <div class="view-more-btn">
+                    <a href="#" title="View All" class="common-primary-button">View All</a>
+                </div>
+            </div>
+            <div class="barber-shop-recommended custom-justify-space-between">
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-1.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-2.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-3.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-4.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-1.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-2.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-3.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner-barber-shop-recommended">
+                    <div class="inner-barber-shop-img">
+                        <img src="images/recommended-4.jpg" alt="recommended">
+                    </div>
+
+                    <div class="barber-shop-box-main">
+                        <h5>VM Barber Shop</h5>
+                        <div class="location-section">
+                            <ul class="custom-justify-start">
+                                <li><i class="fa-solid fa-location-dot"></i></li>
+                                <li>
+                                    <p>Marlton, NJ, 08053 US</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
 
     @if (count($products_new) > 0)
