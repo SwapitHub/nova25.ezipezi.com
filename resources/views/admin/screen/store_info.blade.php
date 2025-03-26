@@ -32,7 +32,7 @@
                                 </td>
                                 <td>
                                     <div class="input-group">
-                                        <input type="text" id="image" name="logo" value="{{ $infos->logo }}"
+                                        <input type="hidden" id="image" name="logo" value="{{ $infos->logo }}"
                                             class="form-control input-sm image" placeholder="" />
                                     </div>
                                     @if ($errors->has('image'))
