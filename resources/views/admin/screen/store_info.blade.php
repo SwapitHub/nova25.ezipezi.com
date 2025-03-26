@@ -328,6 +328,7 @@
 	
 	//Logo
 	$('[name="logo"]').change(function(event) {
+		console.log($(this).val())
 		var APP_URL = {!! json_encode(url('/')) !!}
 		APP_URL = APP_URL;
 		var replit = $('#image').val().replace(APP_URL,"");

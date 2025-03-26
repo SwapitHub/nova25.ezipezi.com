@@ -41,11 +41,9 @@ class AdminStoreInfoController extends Controller
         }
 
         $infos = AdminStore::first();
-        dd($infos);
         $data['infos'] = $infos;
         $data['infosDescription'] = $infosDescription;
         $data['languages'] = $languages;
-
         return view('admin.screen.store_info')
             ->with($data);
     }
