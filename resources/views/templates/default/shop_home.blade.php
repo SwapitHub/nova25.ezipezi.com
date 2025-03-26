@@ -4,6 +4,12 @@
 @section('center')
     <!-- ================== Main Section Start Here ================== -->
 
+
+
+    <!-- ================== TALK OF THE SHOW START HERE  ================== -->
+      {{-- here need to create a slider  --}}
+    <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
+
     @if (count($products_new) > 0)
         <!-- ================== Shop New Arrivals Section Start Here ================== -->
         <section class="shop-new-arrivals-bg ctm-section-margin">
@@ -37,8 +43,10 @@
                             <div class="shop-new-arrivals-content">
                                 <h5 class="ctm-mt-20">
                                     {{-- <a href="#" title="Drumstick bresao">{{ $new->name }}</a> --}}
-                                    <a href="{{ $new->getUrl() }}"><p>{{ $new->name }}</p></a>
-                                
+                                    <a href="{{ $new->getUrl() }}">
+                                        <p>{{ $new->name }}</p>
+                                    </a>
+
                                 </h5>
                                 <div class="product-price-sec ctm-mt-10">
                                     <span class="price-text ctm-secondary-color">${{ $new->price }}</span>
@@ -142,8 +150,7 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="women-man-collection-sec women-man-collection-sec-three ctm-flex-row ctm-justify-content-between">
+                <div class="women-man-collection-sec women-man-collection-sec-three ctm-flex-row ctm-justify-content-between">
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="KID'S COLLECTIONS">
@@ -184,8 +191,7 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="women-man-collection-sec women-man-collection-sec-four ctm-flex-row ctm-justify-content-between">
+                <div class="women-man-collection-sec women-man-collection-sec-four ctm-flex-row ctm-justify-content-between">
                     <div class="women-man-collection-sec-left">
                         <div class="women-man-collection-img">
                             <a href="#" title="STORES HOMEWARE">
@@ -227,6 +233,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
     <!-- ================== SHOP BY CATEGORIES Section End Here ================== -->
     <!-- ================== Product Furniture Section Start Here ================== -->
@@ -1490,7 +1497,7 @@
                                 <div class="view-gallery-btn ctm-mt-20">
                                     <a href="#" title="View gallery">View gallery</a>
                                 </div>
-                            </div>
+                                </div>
                         </div>
                     @endif
 
@@ -1735,8 +1742,8 @@ $proData = App\Models\HeaderMenu::getMenu(4);
           $ncnt++;?>
                     <div class="featured-news news-{{ $ncnt }}">
                         <div class="news-img">
-                            <a href="{{ url('property') }}/{{ $news->alias }}"><img src="{{ asset($news->image) }}"
-                                    alt="accommodation"></a>
+                            <a href="{{ url('property') }}/{{ $news->alias }}"><img
+                                    src="{{ asset($news->image) }}" alt="accommodation"></a>
                         </div>
                         <div class="news-details">
                             <h5>{{ $news->name }}</h5>
