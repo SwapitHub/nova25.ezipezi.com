@@ -4,16 +4,16 @@
 @section('center')
 
     <!-- ================== TALK OF THE SHOW START HERE  ================== -->
-    <section class="recommended-bg custom_fixed_margin">
+    <section class="recommended-bg ctm-section-margin">
         <div class="container">
-            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom">
+            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
                 <h2>TALK OF THE TOWN</h2>
-                <p>What is Lorem Ipsum?</p>
-                <div class="view-more-btn">
+                <p class="ctm-mt-20">What is Lorem Ipsum?</p>
+                <!--<div class="view-more-btn">
                     <a href="#" title="View All" class="common-primary-button">View All</a>
-                </div>
+                </div>-->
             </div>
-            <div class="barber-shop-recommended custom-justify-space-between">
+            <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
                 <div class="inner-barber-shop-recommended">
                     <div class="inner-barber-shop-img">
                         <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
