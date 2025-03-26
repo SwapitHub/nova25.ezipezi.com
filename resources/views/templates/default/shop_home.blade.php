@@ -55,9 +55,8 @@
         <div class="container">
             <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
                 <h2>TALK OF THE TOWN</h2>
-                <p class="ctm-mt-20">What is Lorem Ipsum?</p>
+                <p class="ctm-mt-20">ADVERTISING SPOTS MUST HAVE START AND EXPIRY DATE</p>
             </div>
-
             <!-- Carousel Wrapper -->
             <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
                 @foreach ($carouselItems as $item)
