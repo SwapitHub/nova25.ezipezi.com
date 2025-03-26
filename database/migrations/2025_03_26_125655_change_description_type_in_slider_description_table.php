@@ -14,7 +14,7 @@ class ChangeDescriptionTypeInSliderDescriptionTable extends Migration
     public function up()
     {
         Schema::table('slider_description', function (Blueprint $table) {
-            //
+            $table->text('description')->change(); // Change VARCHAR to TEXT
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeDescriptionTypeInSliderDescriptionTable extends Migration
     public function down()
     {
         Schema::table('slider_description', function (Blueprint $table) {
-            //
+            $table->string('description', 255)->change(); // Revert back to VARCHAR(255)
         });
     }
 }
