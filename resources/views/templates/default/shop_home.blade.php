@@ -366,7 +366,7 @@
                             <div class="deals-zene-counter-right">
                                 <h5><a href="#" title="Benderloin officia">{{ $event->name }}</a></h5>
                                 <p class="ctm-mt-10">
-                                    {{ \Illuminate\Support\Str::words($event->introduction, 100, '...') }}</p>
+                                    {!! \Illuminate\Support\Str::words($event->introduction, 30, '...') !!}</p>
                                 <div class="product-price-sec ctm-mt-10">
                                     <span class="price-text ctm-secondary-color">Ticket available :
                                         {{ $event->tickets_available }}</span>
