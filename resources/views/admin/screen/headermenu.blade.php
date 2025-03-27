@@ -44,19 +44,22 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
-                                    <label for="description" class="col-sm-2 control-label">Description</label>
+                                <div class="form-group   {{ $errors->has('description') ? ' has-error' : '' }}">
+                                    <label for="url" class="col-sm-2  control-label">{{ trans('description') }}</label>
                                     <div class="col-sm-8">
-                                        <textarea id="description" name="description" class="editor">
-                                    {!! old('description', $headermenu['description'] ?? '') !!}
-                                </textarea>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                                            <textarea name="description" id="description" cols="30" rows="10" class="form-control">{!! old('description',($headermenu['description']??'')) !!}</textarea>
+                                        </div>
                                         @if ($errors->has('description'))
-                                            <span class="help-block">
-                                                {{ $errors->first('description') }}
-                                            </span>
+                                        <span class="help-block">
+                                            {{ $errors->first('description') }}
+                                        </span>
                                         @endif
                                     </div>
                                 </div>
+
+                           
                             <div class="form-group   {{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="image" class="col-sm-2  control-label">Banner image</label>
                             <div class="col-sm-8">
@@ -121,7 +124,23 @@
                                     </div>
                                 </div>      
                                
-                                
+                                <div class="form-group   {{ $errors->has('description') ? ' has-error' : '' }}">
+                                    <label for="url" class="col-sm-2  control-label">{{ trans('description') }}</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                                            <textarea name="description" id="description" cols="30" rows="10" class="form-control">{!! old('description',($headermenu['description']??'')) !!}</textarea>
+                                            {{-- <input type="text" id="url" name="url"
+                                                value="{!! old('url',($headermenu['url']??'')) !!}" class="form-control"
+                                                placeholder="" /> --}}
+                                        </div>
+                                        @if ($errors->has('description'))
+                                        <span class="help-block">
+                                            {{ $errors->first('description') }}
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
                               
 
                                 <div class="form-group  ">
