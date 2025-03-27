@@ -58,19 +58,20 @@
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Drumstick bresao">
-                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}">
+                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:270px; width:360px">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
                                             <li><button type="button" class="ctm-white-color"><i
+                                                class="fa fa-eye"></i></button></li>
+                                            <li><button type="button" class="ctm-white-color"><i
                                                         class="fa fa-shopping-cart"></i></button></li>
-                                            <li><button type="button" class="ctm-white-color"><i
+                                            {{-- <li><button type="button" class="ctm-white-color"><i
                                                         class="fa fa-heart"></i></button>
-                                            </li>
-                                            <li><button type="button" class="ctm-white-color"><i
+                                            </li> --}}
+                                            {{-- <li><button type="button" class="ctm-white-color"><i
                                                         class="fa fa-search"></i></button>
-                                            </li>
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-refresh"></i></button></li>
+                                            </li> --}}
+                                            
                                         </ul>
                                     </div>
                                 </a>
