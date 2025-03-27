@@ -20,7 +20,7 @@
                     <div class="inner-barber-shop-recommended">
                         
                         <div class="inner-barber-shop-img">
-                            <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="recommended"
+                            <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="{{ $item->image_alt  }}"
                                 style="height:260;width:357px"></a>
                         </div>
 
@@ -1533,7 +1533,7 @@
                             <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
                                 <p>Every pair of jeans needs something great to go with them. And wr’ve got it all.</p>
                                 <div class="view-gallery-btn ctm-mt-20">
-                                    <a href="#" title="View gallery">View gallery</a>
+                                    <a href="{{ url('blog') }}" title="View gallery">View All</a>
                                 </div>
                             </div>
                         </div>
@@ -1567,7 +1567,7 @@
                             <div class="social-media-post-content-para ctm-mt-30 ctm-text-center">
                                 <p>Every pair of jeans needs something great to go with them. And wr’ve got it all.</p>
                                 <div class="view-gallery-btn ctm-mt-20">
-                                    <a href="#" title="View gallery">View gallery</a>
+                                    <a href="{{ url('blog') }}" title="View gallery">View all</a>
                                 </div>
                             </div>
                         </div>
