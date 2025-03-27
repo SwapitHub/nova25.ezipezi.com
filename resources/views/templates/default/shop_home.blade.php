@@ -4,53 +4,7 @@
 @section('center')
 
     <!-- ================== TALK OF THE SHOW START HERE  ================== -->
-    {{-- <section class="recommended-bg ctm-section-margin">
-        <div class="container">
-            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
-                <h2>TALK OF THE TOWN</h2>
-                <p class="ctm-mt-20">What is Lorem Ipsum?</p>
-            </div>
-            <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
-
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="inner-barber-shop-recommended">
-                    <div class="inner-barber-shop-img">
-                        <img src="{{ asset('images/theme-images') }}/women-collection-image1.jpg" alt="recommended">
-                    </div>
-
-                    <div class="barber-shop-box-main">
-                        <h5>VM Barber Shop</h5>
-                        <div class="location-section">
-                            <ul class="custom-justify-start">
-                                <li><i class="fa-solid fa-location-dot"></i></li>
-                                <li>
-                                    <p>Marlton, NJ, 08053 US</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section> --}}
-
+    @if(count($carouselItems) > 0)
     <section class="recommended-bg ctm-section-margin">
         <div class="container">
             <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
@@ -86,6 +40,7 @@
             </div>
         </div>
     </section>
+    @endif
 
 
     <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
@@ -320,7 +275,7 @@
     </section>
     <!-- ================== SHOP BY CATEGORIES Section End Here ================== -->
     <!-- ================== Product Furniture Section Start Here ================== -->
-    <section class="product-fruniture-bg ctm-section-margin">
+    {{-- <section class="product-fruniture-bg ctm-section-margin">
         <div class="container">
             <div class="inner-product-fruniture"
                 style=" background-image: url({{ asset('images/theme-images') }}/product-future-bg.jpg);background-repeat: no-repeat;background-size: cover;padding: 50px 140px;">
@@ -375,10 +330,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ================== Product Furniture Section End Here ================== -->
     <!-- ================== Deals zone Section Start Here ================== -->
-    <section class="deals-zene-bg ctm-section-margin">
+    {{-- <section class="deals-zene-bg ctm-section-margin">
         <div class="container">
             <div class="inner-deals-zene ctm-text-center">
                 <h2>Deals zone</h2>
@@ -528,10 +483,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ================== Deals zone Section End Here ================== -->
     <!-- ================== feature products Section Start Here ================== -->
-    <section class="future-product-tabs-bg ctm-section-margin">
+    {{-- <section class="future-product-tabs-bg ctm-section-margin">
         <div class="container">
             <div class="inner-future-product-tabs ctm-text-center">
                 <h2>feature products</h2>
@@ -1545,7 +1500,7 @@
             </div>
         </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ================== feature products Section End Here ================== -->
     <!-- ================== Main Section End Here ================== -->
     <!-- ================== Aside Section Start Here ================== -->
