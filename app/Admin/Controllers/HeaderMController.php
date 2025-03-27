@@ -192,6 +192,7 @@ class HeaderMController extends Controller
             'name' => $data['name'],
             'alias' => $data['alias'],
             'url' => $data['url'],
+            'description' => $data['description'],
             'status' => (!empty($data['status']) ? 1 : 0),
         ];
         HeaderMenu::create($dataInsert);
@@ -251,6 +252,7 @@ class HeaderMController extends Controller
             'name' => $data['name'],
             'alias' => $data['alias'],
             'url' => $data['url'],
+            'description' => $data['description'],
             'image' => $data['image'],
             'status' => (!empty($data['status']) ? 1 : 0),
 
