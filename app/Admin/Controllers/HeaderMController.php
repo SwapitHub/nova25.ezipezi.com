@@ -257,7 +257,6 @@ class HeaderMController extends Controller
             'status' => (!empty($data['status']) ? 1 : 0),
 
         ];
-
         $headermenu->update($dataUpdate);
 
 //
