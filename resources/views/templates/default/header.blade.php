@@ -68,20 +68,21 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                             <li><a href="{{ route('login') }}">Login or Register</a></li>
                             <li>
                                 @if (count($currencies) > 1)
-                                <div class="btn-group locale">
-                                    <button type="button" class="btn btn-default dropdown-toggle usa"
-                                        data-toggle="dropdown">
-                                        {{ sc_currency_info()['name'] }}
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($currencies as $key => $currency)
-                                            <li><a href="{{ url('currency/' . $currency->code) }}">{{ $currency->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                                    <div class="btn-group locale">
+                                        <button type="button" class="btn btn-default dropdown-toggle usa"
+                                            data-toggle="dropdown">
+                                            {{ sc_currency_info()['name'] }}
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($currencies as $key => $currency)
+                                                <li><a
+                                                        href="{{ url('currency/' . $currency->code) }}">{{ $currency->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 {{-- <select>
                                     <option>currency</option>
                                 </select> --}}
@@ -91,7 +92,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                         </ul>
                         {{-- <label for="currency-select">Currency:</label> --}}
 
-                       
+
                     </div>
                     <?php } ?>
                 </div>
@@ -111,7 +112,8 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                     </ul>
                 </div>
                 <div class="middle-header-column middle-header-column-two">
-                   <a href="{{ url('/') }}"> <img src="{{ asset(sc_store('logo')) }}" alt="{{ sc_store('logo_alt') }}"></a>
+                    <a href="{{ url('/') }}"> <img src="{{ asset(sc_store('logo')) }}"
+                            alt="{{ sc_store('logo_alt') }}"></a>
                 </div>
                 <div class="middle-header-column middle-header-column-three">
                     <div id="sosearchpro-custom" class="sosearchpro-wrapper so-search ">
@@ -130,7 +132,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
             </div>
         </div>
     </div>
-    {{-- Moddle header end --}}
+    {{-- Middle header end --}}
 
     <header>
         <div class="container">
@@ -179,7 +181,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                             @endif
 
 
-                            {{-- about menu ends here --}}
+                            {{-- blog menu ends here --}}
 
 
                             {{-- products menus start --}}
@@ -349,6 +351,40 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                     @endif
                                 </li>
                             @endif
+
+                            {{-- portfolio start here --}}
+                            @php
+                                $portfolio = App\Models\HeaderMenu::getMenu(12);
+                            @endphp
+                            @if ($portfolio->status)
+                                <li class="dropdown-menu-list">
+                                    <a href="{{ route('blog.all') }}" title="menu">{{ $portfolio->name }} <span
+                                            class="caret-icon">&nbsp;</span>
+                                    </a>
+                                    @php
+                                        $stypes = App\Models\Portfolio::getHeaderCats();
+                                    @endphp
+                                    @if (count($stypes) >= 1)
+                                        <ul class="sub-menu-header-list blog-menu-col-five">
+                                            @foreach ($stypes as $dd)
+                                                @php
+                                                    $type = App\Models\PortfolioType::getSingleCat($dd->portfoliotype);
+                                                @endphp
+                                                <li>
+                                                    <a href="#" title="menu">
+                                                        <img src="{{ $type->image }}">
+                                                    </a>
+                                                    <p class="menu-name">
+                                                        <a href="{{ url('portfolio/category') }}/{{ $type->alias }}"
+                                                            title="menu">{{ $type->name }}</a>
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endif
+                            {{-- portfolio end here --}}
 
                             <?php $cmsCat = App\Models\Widget::getcmsCat();
 			if (!empty($cmsCat)) {
