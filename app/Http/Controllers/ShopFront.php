@@ -63,6 +63,7 @@ class ShopFront extends GeneralController
         if ($homedata->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($homedata->blogorder);
         }
+        $eventList = Event::where('status',1)->latest()->take(5)->get();
 
         // make all togethor for talk of the show carousal
         $services = Service::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
@@ -144,6 +145,7 @@ class ShopFront extends GeneralController
                 'footerPort' => $footerPort ?? [],
                 'footerBlog' => $footerBlog ?? [],
                 'blogs' => NewBlog::latest()->take(5)->get(),
+                'events' => $eventList,
                 'featured_blogs' => NewBlog::where('featured', 1)->limit(5)->get(),
                 'carouselItems' => $carouselItems,
 

@@ -4,42 +4,44 @@
 @section('center')
 
     <!-- ================== TALK OF THE SHOW START HERE  ================== -->
-    @if(count($carouselItems) > 0)
-    <section class="recommended-bg ctm-section-margin">
-        <div class="container">
-            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
-                <h2>TALK OF THE TOWN</h2>
-                <p class="ctm-mt-20">ADVERTISING SPOTS MUST HAVE START AND EXPIRY DATE</p>
-            </div>
-            <!-- Carousel Wrapper -->
-            <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
-                @foreach ($carouselItems as $item)
-                    @php
-                        $url = url("/{$item->type}/{$item->alias}");
-                    @endphp
-                    <div class="inner-barber-shop-recommended">
-                        
-                        <div class="inner-barber-shop-img">
-                            <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="{{ $item->image_alt  }}"
-                                style="height:260;width:357px"></a>
-                        </div>
+    @if (count($carouselItems) > 0)
+        <section class="recommended-bg ctm-section-margin">
+            <div class="container">
+                <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
+                    <h2>TALK OF THE TOWN</h2>
+                    <p class="ctm-mt-20">ADVERTISING SPOTS MUST HAVE START AND EXPIRY DATE</p>
+                </div>
+                <!-- Carousel Wrapper -->
+                <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
+                    @foreach ($carouselItems as $item)
+                        @php
+                            $url = url("/{$item->type}/{$item->alias}");
+                        @endphp
+                        <div class="inner-barber-shop-recommended">
 
-                        <div class="barber-shop-box-main">
-                        <a href="{{ $url }}"> <h5>{{ ucfirst($item->title ?? $item->name) }}</h5></a>
-                            <div class="location-section">
-                                <ul class="custom-justify-start">
-                                    <li><i class="fa-solid fa-location-dot"></i></li>
-                                    <li>
-                                        <p>{{ $item->introduction ?? 'Location not available' }}</p>
-                                    </li>
-                                </ul>
+                            <div class="inner-barber-shop-img">
+                                <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}"
+                                        alt="{{ $item->image_alt }}" style="height:260;width:357px"></a>
+                            </div>
+
+                            <div class="barber-shop-box-main">
+                                <a href="{{ $url }}">
+                                    <h5>{{ ucfirst($item->title ?? $item->name) }}</h5>
+                                </a>
+                                <div class="location-section">
+                                    <ul class="custom-justify-start">
+                                        <li><i class="fa-solid fa-location-dot"></i></li>
+                                        <li>
+                                            <p>{{ $item->introduction ?? 'Location not available' }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
 
@@ -57,24 +59,24 @@
                     @foreach ($products_new as $new)
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
-                                <a href="#" title="Drumstick bresao">
-                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:350px">
-                                    <div class="drumstick-cart-sec">
-                                        <ul class="ctm-flex-row">
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                class="fa fa-eye"></i></button></li>
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-shopping-cart"></i></button></li>
-                                            {{-- <li><button type="button" class="ctm-white-color"><i
+                                {{-- <a href="#" title="Drumstick bresao"> --}}
+                                <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:350px">
+                                <div class="drumstick-cart-sec">
+                                    <ul class="ctm-flex-row">
+                                        <li><button type="button" class="ctm-white-color"><i
+                                                    class="fa fa-eye"></i></button></li>
+                                        <li><button type="button" onClick="addToCartAjax('{{ $new->id }}','default')"
+                                                class="ctm-white-color"><i class="fa fa-shopping-cart"></i></button></li>
+                                        {{-- <li><button type="button" class="ctm-white-color"><i
                                                         class="fa fa-heart"></i></button>
                                             </li> --}}
-                                            {{-- <li><button type="button" class="ctm-white-color"><i
+                                        {{-- <li><button type="button" class="ctm-white-color"><i
                                                         class="fa fa-search"></i></button>
                                             </li> --}}
-                                            
-                                        </ul>
-                                    </div>
-                                </a>
+
+                                    </ul>
+                                </div>
+                                {{-- </a> --}}
                             </div>
                             <div class="shop-new-arrivals-content">
                                 <h5 class="ctm-mt-20">
@@ -333,159 +335,67 @@
         </div>
     </section> --}}
     <!-- ================== Product Furniture Section End Here ================== -->
-    <!-- ================== Deals zone Section Start Here ================== -->
-    {{-- <section class="deals-zene-bg ctm-section-margin">
-        <div class="container">
-            <div class="inner-deals-zene ctm-text-center">
-                <h2>Deals zone</h2>
-                <p class="ctm-mt-20">pair of jeans needs something great to go with them. And wr’ve got it all.</p>
-            </div>
-            <div class="deals-zene-slider ctm-mt-50">
-                <div class="deals-zene-counter-bg ">
-                    <div class="deals-zene-counter-left">
-                        <div class="inner-all-shop-new-arrivals-box">
-                            <div class="shop-new-arrivals-image">
-                                <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset('images/theme-images') }}/deals-zone-1.jpg"
-                                        alt="Benderloin officia">
-                                    <div class="drumstick-cart-sec">
-                                        <ul class="ctm-flex-row">
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-heart"></i></button></li>
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-search"></i></button></li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="deals-zene-counter-right">
-                        <h5><a href="#" title="Benderloin officia">Benderloin officia</a></h5>
-                        <p class="ctm-mt-10">Lorem ipsum dolor sit amet, consectetur adipisicin..</p>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
-                        </div>
-                        <div class="five-star ctm-mt-10">
-                            <ul class="ctm-flex-row">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="countdown-section ctm-mt-30">
-                            <div class="cound-doun-time">
-                                <div id="timer" class="inner-cound-doun-time">
-                                    <div class="days"></div>
-                                    <div class="hours"></div>
-                                    <div class="minutes"></div>
-                                    <div class="seconds"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ================== Events  Section Start Here ================== -->
+    @if (count($events) > 0)
+        <section class="deals-zene-bg ctm-section-margin">
+            <div class="container">
+                <div class="inner-deals-zene ctm-text-center">
+                    <h2>Events</h2>
+                    <p class="ctm-mt-20">pair of jeans needs something great to go with them. And wr’ve got it all.</p>
                 </div>
-                <div class="deals-zene-counter-bg  ">
-                    <div class="deals-zene-counter-left">
-                        <div class="inner-all-shop-new-arrivals-box">
-                            <div class="shop-new-arrivals-image">
-                                <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset('images/theme-images') }}/deals-zone-1.jpg"
-                                        alt="Benderloin officia">
-                                    <div class="drumstick-cart-sec">
-                                        <ul class="ctm-flex-row">
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-heart"></i></button></li>
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-search"></i></button></li>
-                                        </ul>
+                <div class="deals-zene-slider ctm-mt-50">
+                    @foreach ($events as $event)
+                        <div class="deals-zene-counter-bg  ">
+                            <div class="deals-zene-counter-left">
+                                <div class="inner-all-shop-new-arrivals-box">
+                                    <div class="shop-new-arrivals-image">
+                                        <a href="#" title="Benderloin officia">
+                                            <img src="{{ $event->image }}" alt="{{ $event->imagealt }}">
+                                            <div class="drumstick-cart-sec">
+                                                <ul class="ctm-flex-row">
+                                                    <li><button type="button" class="ctm-white-color"><i
+                                                                class="fa fa-heart"></i></button></li>
+                                                    <li><button type="button" class="ctm-white-color"><i
+                                                                class="fa fa-search"></i></button></li>
+                                                </ul>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="deals-zene-counter-right">
-                        <h5><a href="#" title="Benderloin officia">Benderloin officia</a></h5>
-                        <p class="ctm-mt-10">Lorem ipsum dolor sit amet, consectetur adipisicin..</p>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
-                        </div>
-                        <div class="five-star ctm-mt-10">
-                            <ul class="ctm-flex-row">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="countdown-section ctm-mt-30">
-                            <div class="cound-doun-time">
-                                <div id="timer" class="inner-cound-doun-time">
-                                    <div class="days"></div>
-                                    <div class="hours"></div>
-                                    <div class="minutes"></div>
-                                    <div class="seconds"></div>
+                            <div class="deals-zene-counter-right">
+                                <h5><a href="#" title="Benderloin officia">{{ $event->name }}</a></h5>
+                                <p class="ctm-mt-10">
+                                    {{ \Illuminate\Support\Str::words($event->introduction, 100, '...') }}</p>
+                                <div class="product-price-sec ctm-mt-10">
+                                    <span class="price-text ctm-secondary-color">Ticket available :
+                                        {{ $event->tickets_available }}</span>
+                                    {{-- <span class="old-price-del">$65.00</span> --}}
+                                </div>
+                                <div class="five-star ctm-mt-10">
+                                    <p>Audience Type : {{ $event->audience_type }}</p>
+                                </div>
+                                @php
+                                    $eventDateTime = $event->startdate . ' ' . $event->eventtime;
+                                @endphp
+                                <div class="countdown-section ctm-mt-30">
+                                    <div class="cound-doun-time">
+                                        <div id="timer" class="inner-cound-doun-time">
+                                            <div class="days"></div>
+                                            <div class="hours"></div>
+                                            <div class="minutes"></div>
+                                            <div class="seconds"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="deals-zene-counter-bg  ">
-                    <div class="deals-zene-counter-left">
-                        <div class="inner-all-shop-new-arrivals-box">
-                            <div class="shop-new-arrivals-image">
-                                <a href="#" title="Benderloin officia">
-                                    <img src="{{ asset('images/theme-images') }}/deals-zone-1.jpg"
-                                        alt="Benderloin officia">
-                                    <div class="drumstick-cart-sec">
-                                        <ul class="ctm-flex-row">
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-heart"></i></button></li>
-                                            <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-search"></i></button></li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="deals-zene-counter-right">
-                        <h5><a href="#" title="Benderloin officia">Benderloin officia</a></h5>
-                        <p class="ctm-mt-10">Lorem ipsum dolor sit amet, consectetur adipisicin..</p>
-                        <div class="product-price-sec ctm-mt-10">
-                            <span class="price-text ctm-secondary-color">$60.00</span>
-                            <span class="old-price-del">$65.00</span>
-                        </div>
-                        <div class="five-star ctm-mt-10">
-                            <ul class="ctm-flex-row">
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                                <li><i class="fa-solid fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="countdown-section ctm-mt-30">
-                            <div class="cound-doun-time">
-                                <div id="timer" class="inner-cound-doun-time">
-                                    <div class="days"></div>
-                                    <div class="hours"></div>
-                                    <div class="minutes"></div>
-                                    <div class="seconds"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section> --}}
-    <!-- ================== Deals zone Section End Here ================== -->
+        </section>
+    @endif
+    <!-- ================== Events Section End Here ================== -->
     <!-- ================== feature products Section Start Here ================== -->
     {{-- <section class="future-product-tabs-bg ctm-section-margin">
         <div class="container">
@@ -1752,8 +1662,8 @@
           $ncnt++;?>
                     <div class="featured-news news-{{ $ncnt }}">
                         <div class="news-img">
-                            <a href="{{ url('product') }}/{{ $news->alias }}.php"><img
-                                    src="{{ asset($news->image) }}" alt="accommodation"></a>
+                            <a href="{{ url('product') }}/{{ $news->alias }}.php"><img src="{{ asset($news->image) }}"
+                                    alt="accommodation"></a>
                         </div>
                         <div class="news-details">
                             <h5>{{ $news->name }}</h5>
@@ -1781,8 +1691,8 @@ $proData = App\Models\HeaderMenu::getMenu(4);
           $ncnt++;?>
                     <div class="featured-news news-{{ $ncnt }}">
                         <div class="news-img">
-                            <a href="{{ url('property') }}/{{ $news->alias }}"><img
-                                    src="{{ asset($news->image) }}" alt="accommodation"></a>
+                            <a href="{{ url('property') }}/{{ $news->alias }}"><img src="{{ asset($news->image) }}"
+                                    alt="accommodation"></a>
                         </div>
                         <div class="news-details">
                             <h5>{{ $news->name }}</h5>
@@ -1840,8 +1750,8 @@ $accData = App\Models\HeaderMenu::getMenu(5);
           $ncnt++;?>
                     <div class="featured-news news-{{ $ncnt }}">
                         <div class="news-img">
-                            <a href="{{ url('services') }}/{{ $news->alias }}"><img
-                                    src="{{ asset($news->image) }}" alt="accommodation"></a>
+                            <a href="{{ url('services') }}/{{ $news->alias }}"><img src="{{ asset($news->image) }}"
+                                    alt="accommodation"></a>
                         </div>
                         <div class="news-details">
                             <h5>{{ $news->name }}</h5>
@@ -1869,8 +1779,8 @@ $accData = App\Models\HeaderMenu::getMenu(5);
           $ncnt++;?>
                     <div class="featured-news news-{{ $ncnt }}">
                         <div class="news-img">
-                            <a href="{{ url('portfolio') }}/{{ $port->alias }}"><img
-                                    src="{{ asset($port->image) }}" alt="portfolio"></a>
+                            <a href="{{ url('portfolio') }}/{{ $port->alias }}"><img src="{{ asset($port->image) }}"
+                                    alt="portfolio"></a>
                         </div>
                         <div class="news-details">
                             <h5>{{ $port->name }}</h5>
@@ -2225,5 +2135,33 @@ if(!empty($admin)) {
                 // instead of a settings object
             ]
         });
+    </script>
+    <script>
+        // Get event date-time from PHP and convert it to JavaScript Date object
+        let eventDateTime = new Date("{{ $eventDateTime }}").getTime();
+
+        function updateCountdown() {
+            let now = new Date().getTime();
+            let timeLeft = eventDateTime - now;
+
+            if (timeLeft > 0) {
+                let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.querySelector(".days").innerText = days + "d";
+                document.querySelector(".hours").innerText = hours + "h";
+                document.querySelector(".minutes").innerText = minutes + "m";
+                document.querySelector(".seconds").innerText = seconds + "s";
+            } else {
+                document.getElementById("timer").innerHTML = "<p>Event Started</p>";
+                clearInterval(countdownInterval);
+            }
+        }
+
+        // Run the function every second
+        let countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 @endpush
