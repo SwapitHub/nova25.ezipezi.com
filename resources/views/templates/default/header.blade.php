@@ -358,7 +358,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                             @endphp
                             @if ($portfolio->status)
                                 <li class="dropdown-menu-list">
-                                    <a href="{{ route('blog.all') }}" title="menu">{{ $portfolio->name }} <span
+                                    <a href="{{ route('portfolio.all') }}" title="menu">{{ $portfolio->name }} <span
                                             class="caret-icon">&nbsp;</span>
                                     </a>
                                     @php
