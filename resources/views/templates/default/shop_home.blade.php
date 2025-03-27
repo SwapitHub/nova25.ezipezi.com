@@ -103,7 +103,7 @@
 
 
     <!-- ================== SHOP BY CATEGORIES Section Start Here ================== -->
-    <section class="shop-by-categoried-bg ctm-section-margin">
+    {{-- <section class="shop-by-categoried-bg ctm-section-margin">
         <div class="container">
             <div class="inner-shop-by-categories ctm-text-center">
                 <h2>SHOP BY CATEGORIES</h2>
@@ -275,7 +275,7 @@
             </div>
         </div>
 
-    </section>
+    </section> --}}
     <!-- ================== SHOP BY CATEGORIES Section End Here ================== -->
     <!-- ================== Product Furniture Section Start Here ================== -->
     {{-- <section class="product-fruniture-bg ctm-section-margin">
