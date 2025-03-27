@@ -58,7 +58,7 @@
                         <div class="inner-all-shop-new-arrivals-box">
                             <div class="shop-new-arrivals-image">
                                 <a href="#" title="Drumstick bresao">
-                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:360px; width:270px">
+                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:350px">
                                     <div class="drumstick-cart-sec">
                                         <ul class="ctm-flex-row">
                                             <li><button type="button" class="ctm-white-color"><i
