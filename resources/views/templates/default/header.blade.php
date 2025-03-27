@@ -368,7 +368,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                         <ul class="sub-menu-header-list blog-menu-col-five">
                                             @foreach ($stypes as $dd)
                                                 <li>
-                                                    <a href="#" title="menu">
+                                                    <a href="{{ url('portfolio/category') }}/{{ $dd->alias }}" title="menu">
                                                         <img src="{{ $dd->image }}">
                                                     </a>
                                                     <p class="menu-name">
