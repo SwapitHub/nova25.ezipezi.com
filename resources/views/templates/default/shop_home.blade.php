@@ -341,7 +341,7 @@
             <div class="container">
                 <div class="inner-deals-zene ctm-text-center">
                     <h2>Events</h2>
-                    <p class="ctm-mt-20">pair of jeans needs something great to go with them. And wr’ve got it all.</p>
+                    <p class="ctm-mt-20">Stay Updated on the Latest Events</p>
                 </div>
                 <div class="deals-zene-slider ctm-mt-50">
                     @foreach ($events as $event)
