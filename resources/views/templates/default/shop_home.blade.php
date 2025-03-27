@@ -80,7 +80,7 @@
                                 <h5 class="ctm-mt-20">
                                     {{-- <a href="#" title="Drumstick bresao">{{ $new->name }}</a> --}}
                                     <a href="{{ $new->getUrl() }}">
-                                        <p>{{ $new->name }}</p>
+                                        <p>{{ ucfirst($new->name) }}</p>
                                     </a>
 
                                 </h5>
