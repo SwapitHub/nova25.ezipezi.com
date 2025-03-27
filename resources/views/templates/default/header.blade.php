@@ -111,7 +111,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                     </ul>
                 </div>
                 <div class="middle-header-column middle-header-column-two">
-                    <img src="{{ asset(sc_store('logo')) }}" alt="{{ sc_store('logo_alt') }}">
+                   <a href="{{ url('/') }}"> <img src="{{ asset(sc_store('logo')) }}" alt="{{ sc_store('logo_alt') }}"></a>
                 </div>
                 <div class="middle-header-column middle-header-column-three">
                     <div id="sosearchpro-custom" class="sosearchpro-wrapper so-search ">
