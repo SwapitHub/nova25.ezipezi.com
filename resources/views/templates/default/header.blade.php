@@ -362,21 +362,18 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                             class="caret-icon">&nbsp;</span>
                                     </a>
                                     @php
-                                        $stypes = App\Models\Portfolio::getHeaderCats();
+                                        $stypes = App\Models\PortfolioType::GetPortfolioTypes();
                                     @endphp
                                     @if (count($stypes) >= 1)
                                         <ul class="sub-menu-header-list blog-menu-col-five">
                                             @foreach ($stypes as $dd)
-                                                @php
-                                                    $type = App\Models\PortfolioType::getSingleCat($dd->portfoliotype);
-                                                @endphp
                                                 <li>
                                                     <a href="#" title="menu">
-                                                        <img src="{{ $type->image }}">
+                                                        <img src="{{ $dd->image }}">
                                                     </a>
                                                     <p class="menu-name">
-                                                        <a href="{{ url('portfolio/category') }}/{{ $type->alias }}"
-                                                            title="menu">{{ $type->name }}</a>
+                                                        <a href="{{ url('portfolio/category') }}/{{ $dd->alias }}"
+                                                            title="menu">{{ $dd->name }}</a>
                                                     </p>
                                                 </li>
                                             @endforeach
