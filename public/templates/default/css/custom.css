@@ -355,7 +355,7 @@ li {
 }
 
 .middle-header {
-    padding: 41px 0;
+    padding: 17px 0;
     padding-bottom: 17px;
 }
 
@@ -1988,10 +1988,37 @@ button#show-megamenu-mobile {
 
 /* ================== From the blog Section End Here ================== */
 
+.event-button {
+    padding-top: 20px;
+}
 
-
-
-
+.event-button .common-primary-button {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    font-family: Raleway;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.event-button .btn-gray-custom-bg {
+    background: #495057;
+    border: none;
+}
+.event-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.event-button .btn-gray-custom-bg:hover {
+    background: #204d74;
+    color: #fff !important;
+}
 /* ================== Footer Logo Brand Section Start Here ================== */
 
 .footer-logo-brand-bg {

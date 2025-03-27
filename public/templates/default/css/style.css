@@ -2019,10 +2019,16 @@ h3.control-label {
 
 .inner-barber-shop-img {
     border-radius: 5px 5px 0 0;
-    height: 200px;
+    max-height: 200px;
     overflow: hidden;
+    min-height: 200px;
+    object-fit: cover;
 }
-
+.inner-barber-shop-img img {
+    max-height: 200px;
+    min-height: 200px;
+    object-fit: cover;
+}
 .location-section ul {
     align-items: flex-start;
     gap: 8px;
@@ -2124,8 +2130,35 @@ h3.control-label {
 }
 
 /* Button-End */
+.inner-barber-shop-recommended {
+    min-height: 320px !important;
+}
+.barber-shop-box-main {
+    padding: 18px 12px 26px 12px;
+    box-shadow: 0px 0px 7px 0px #0000002B;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 
-
+.barber-shop-box-main h5{
+	display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+	    font-size: 14px;
+    color: #222;
+    font-weight: 600;
+}
+.barber-shop-box-main p{
+	display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .saloon-button {
     background-color: #F2EFF6;
     padding: 8px 16px;

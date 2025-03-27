@@ -388,6 +388,11 @@
                                         </div>
                                     </div>
                                 </div>
+								<div class="event-button">
+									<a class="btn-gray-custom-bg common-primary-button " href="#">Read More</a>
+									<a class=" btn-gray-custom-bg common-primary-button" href="#">Book Now</a>
+								</div>
+								
                             </div>
                         </div>
                     @endforeach
