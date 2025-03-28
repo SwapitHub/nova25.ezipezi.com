@@ -213,22 +213,34 @@ class ContentFront extends GeneralController
      * Render news
      * @return [type] [description]
      */
-    public function news()
+    public function news(Request $request)
     {
-        return view($this->templatePath . '.news-summary');
-        /*$newstype = NewsType::GetNewsTypes();
-       $news = (new Blog)->getAllNews();  
-          
-        return view(
-            $this->templatePath . '.news_list',
-            array(
-                'title' => 'News',
-                'description' => sc_store('description'),
-                'keyword' => sc_store('keyword'),
-                'news' => $news,
-                'newstype' => $newstype,
-            )
-        );*/
+        $sort = $request->query('sort', 'featured');
+        $limit = $request->query('limit', 8);
+
+        $portfolioQuery = Blog::where('status', 1);
+        if ($sort === 'latest') {
+            $portfolioQuery->latest();
+        } else {
+            $portfolioQuery->where('featured', 1)->latest();
+        }
+
+        // Append sort and limit to pagination links
+        $portfolios = $portfolioQuery->paginate($limit)->appends([
+            'sort' => $sort,
+            'limit' => $limit
+        ]);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                'nextPageUrl' => $portfolios->nextPageUrl(),
+            ]);
+        }
+
+        return view($this->templatePath . '.news-summary', compact('portfolios'));
+        // return view($this->templatePath . '.news-summary');
     }
 
     public function newsSearch(Request $request)
@@ -309,22 +321,34 @@ class ContentFront extends GeneralController
         }
     }
 
-    public function allservices()
+    public function allservices(Request $request)
     {
-        return view($this->templatePath . '.service-summary');
-        /* $servicetype = ServiceType::GetServiceTypes();
-       $services = (new Service)->getAllServices();  
-          
-        return view(
-            $this->templatePath . '.service_list',
-            array(
-                'title' => 'Services',
-                'description' => sc_store('description'),
-                'keyword' => sc_store('keyword'),
-                'services' => $services,
-                'servicetype' => $servicetype,
-            )
-        );*/
+        $sort = $request->query('sort', 'featured');
+        $limit = $request->query('limit', 8);
+
+        $portfolioQuery = Service::where('status', 1);
+        if ($sort === 'latest') {
+            $portfolioQuery->latest();
+        } else {
+            $portfolioQuery->where('featured', 1)->latest();
+        }
+
+        // Append sort and limit to pagination links
+        $portfolios = $portfolioQuery->paginate($limit)->appends([
+            'sort' => $sort,
+            'limit' => $limit
+        ]);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                'nextPageUrl' => $portfolios->nextPageUrl(),
+            ]);
+        }
+
+        return view($this->templatePath . '.service-summary', compact('portfolios'));
+        // return view($this->templatePath . '.service-summary');
     }
 
     /**
@@ -764,9 +788,34 @@ class ContentFront extends GeneralController
         exit();
     }
 
-    public function allblog()
+    public function allblog(Request $request)
     {
-        return view($this->templatePath . '.blog-summary');
+        $sort = $request->query('sort', 'featured');
+        $limit = $request->query('limit', 8);
+
+        $portfolioQuery = NewBlog::where('status', 1);
+        if ($sort === 'latest') {
+            $portfolioQuery->latest();
+        } else {
+            $portfolioQuery->where('featured', 1)->latest();
+        }
+
+        // Append sort and limit to pagination links
+        $portfolios = $portfolioQuery->paginate($limit)->appends([
+            'sort' => $sort,
+            'limit' => $limit
+        ]);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                'nextPageUrl' => $portfolios->nextPageUrl(),
+            ]);
+        }
+
+        return view($this->templatePath . '.blog-summary', compact('portfolios'));
+        // return view($this->templatePath . '.blog-summary');
     }
 
     public function blogSearch(Request $request)
@@ -871,22 +920,6 @@ class ContentFront extends GeneralController
             )
         );
     }
-
-    // public function allportfolio(Request $request)
-    // {
-    //     $defaultSort = 'featured'; 
-    //     $defaultLimit = 8; 
-    //     $sort = $request->query('sort', $defaultSort);
-    //     $limit = $request->query('limit', $defaultLimit);
-    //     $portfolioQuery = Portfolio::where('status', 1);
-    //     if ($sort === 'latest') {
-    //         $portfolioQuery->latest();
-    //     } else {
-    //         $portfolioQuery->where('featured', 1)->latest();
-    //     }
-    //     $feturedList = $portfolioQuery->take($limit)->get();
-    //     return view($this->templatePath . '.portfolio-summary', compact('feturedList'));
-    // }
     public function allportfolio(Request $request)
     {
         $sort = $request->query('sort', 'featured');
