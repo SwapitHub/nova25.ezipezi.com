@@ -34,6 +34,8 @@ $(".barber-shop-recommended").slick({
 });
 
 
+
+
 /* ===========================  Banner Slider Js Start Here =========================== */
 
 $(".deals-zene-slider").slick({
@@ -47,8 +49,8 @@ $(".deals-zene-slider").slick({
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
-    responsive: [
-        {
+responsive: [
+{
             breakpoint: 767, // Below 991px (Tablet)
             settings: {
                 slidesToShow: 2,
@@ -58,14 +60,14 @@ $(".deals-zene-slider").slick({
         {
             breakpoint: 575, // Below 768px (Mobile)
             settings: {
-                slidesToShow: 1,
+                slidesToShow:1,
                 centerPadding: "20px",
                 dots: true,
                 autoplay: true
             }
         }
-
-
+		
+		
     ]
 });
 
@@ -171,8 +173,8 @@ $(".social-media-post-slider").slick({
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
-    responsive: [
-
+	responsive: [
+       
         {
             breakpoint: 767, // Below 991px (Tablet)
             settings: {
@@ -214,8 +216,8 @@ $(".footer-logo-brand-slider").slick({
     speed: 600,
     easing: 'ease-in-out',
     cssEase: 'ease-in-out',
-    responsive: [
-        {
+	responsive: [
+       {
             breakpoint: 1024, // Below 991px (Tablet)
             settings: {
                 slidesToShow: 4,
@@ -396,46 +398,46 @@ $(document).ready(function () {
 
 /* ===========================  Scroll Animation Js Start Here  =========================== */
 
-$(document).ready(function () {
-    // Initialize the slider
-    $('.banner-slider-main').slick({
-        autoplay: true,
-        dots: true,
-        arrows: true,
-        infinite: true,
-        speed: 500,
-        autoplay: true,
-        fade: true,
-        cssEase: 'linear'
+$(document).ready(function(){
+  // Initialize the slider
+  $('.banner-slider-main').slick({
+    autoplay: true,
+    dots: true,
+    arrows: true,
+    infinite: true,
+    speed: 500,
+	autoplay: true,
+    fade: true,
+    cssEase: 'linear'
+  });
+
+  // Function to animate out the current slide content
+  function animateOut() {
+    $('.slick-active .animated-banner-content').css({
+      opacity: 0,
+      transform: 'translateY(20px)'
     });
+  }
 
-    // Function to animate out the current slide content
-    function animateOut() {
-        $('.slick-active .animated-banner-content').css({
-            opacity: 0,
-            transform: 'translateY(20px)'
-        });
-    }
-
-    // Function to animate in the new slide content
-    function animateIn() {
-        $('.slick-active .animated-banner-content').css({
-            opacity: 1,
-            transform: 'translateY(0)'
-        });
-    }
-
-    // Handle slide change event
-    $('.banner-slider-main').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        animateOut(); // Animate out the current slide content
+  // Function to animate in the new slide content
+  function animateIn() {
+    $('.slick-active .animated-banner-content').css({
+      opacity: 1,
+      transform: 'translateY(0)'
     });
+  }
 
-    $('.banner-slider-main').on('afterChange', function (event, slick, currentSlide) {
-        animateIn(); // Animate in the new slide content
-    });
+  // Handle slide change event
+  $('.banner-slider-main').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    animateOut(); // Animate out the current slide content
+  });
 
-    // Trigger the animation on page load
-    animateIn(); // Animate in the initial slide content
+  $('.banner-slider-main').on('afterChange', function(event, slick, currentSlide){
+    animateIn(); // Animate in the new slide content
+  });
+
+  // Trigger the animation on page load
+  animateIn(); // Animate in the initial slide content
 });
 /* ===========================  Scroll Animation  Js End Here  =========================== */
 
@@ -553,24 +555,24 @@ $(".about-us-inner-slider").slick({
 
 
 /*================photo-gallery-page-tab===================*/
-$(document).ready(function () {
-    $('.gallery-tab a').click(function () {
-        $('.gallery-tab a').removeClass('activelink');
-        $(this).addClass('activelink');
-        var tagid = $(this).data('tag');
-        $('.list').removeClass('active').addClass('hide');
-        $('#' + tagid).addClass('active').removeClass('hide');
-    });
+ $(document).ready(function(){
+	$('.gallery-tab a').click(function(){
+		$('.gallery-tab a').removeClass('activelink');
+		$(this).addClass('activelink');
+		var tagid = $(this).data('tag');
+		$('.list').removeClass('active').addClass('hide');
+		$('#'+tagid).addClass('active').removeClass('hide');
+	});
 });
 /*================photo-gallery-page-tab===================*/
 
 /*================faq-page-accordion===================*/
-$(function () {
+$(function() {
     // Hide all panels except the one inside .is-active
     $(".accordion-custom .accordion-panel").hide();
-    $(".accordion-custom > .accordion-item.is-active .accordion-panel").show();
+    $(".accordion-custom > .accordion-item.is-active .accordion-panel").show(); 
 
-    $(".accordion-custom > .accordion-item").click(function () {
+    $(".accordion-custom > .accordion-item").click(function() {
         if (!$(this).hasClass("is-active")) {
             $(".accordion-custom > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
             $(this).addClass("is-active").children(".accordion-panel").slideDown();
@@ -579,12 +581,12 @@ $(function () {
 });
 
 
-$(function () {
+$(function() {
     // Hide all panels except the one inside .is-active
     $(".accordion-custom-two .accordion-panel").hide();
-    $(".accordion-custom-two > .accordion-item.is-active .accordion-panel").show();
+    $(".accordion-custom-two > .accordion-item.is-active .accordion-panel").show(); 
 
-    $(".accordion-custom-two > .accordion-item").click(function () {
+    $(".accordion-custom-two > .accordion-item").click(function() {
         if (!$(this).hasClass("is-active")) {
             $(".accordion-custom-two > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
             $(this).addClass("is-active").children(".accordion-panel").slideDown();
@@ -593,12 +595,12 @@ $(function () {
 });
 
 
-$(function () {
+$(function() {
     // Hide all panels except the one inside .is-active
     $(".accordion-custom-three .accordion-panel").hide();
-    $(".accordion-custom-three > .accordion-item.is-active .accordion-panel").show();
+    $(".accordion-custom-three > .accordion-item.is-active .accordion-panel").show(); 
 
-    $(".accordion-custom-three > .accordion-item").click(function () {
+    $(".accordion-custom-three > .accordion-item").click(function() {
         if (!$(this).hasClass("is-active")) {
             $(".accordion-custom-three > .accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
             $(this).addClass("is-active").children(".accordion-panel").slideDown();
@@ -607,3 +609,249 @@ $(function () {
 });
 
 /*================faq-page-accordion===================*/
+
+
+
+/*=================range-slider-script==========================*/
+
+const rangeInput = document.querySelectorAll(".range-input input"),
+  priceInput = document.querySelectorAll(".price-input input"),
+  range = document.querySelector(".slider .progress");
+let priceGap = 1000;
+
+priceInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minPrice = parseInt(priceInput[0].value),
+      maxPrice = parseInt(priceInput[1].value);
+
+    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+      if (e.target.className === "input-min") {
+        rangeInput[0].value = minPrice;
+        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+      } else {
+        rangeInput[1].value = maxPrice;
+        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+      }
+    }
+  });
+});
+
+rangeInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minVal = parseInt(rangeInput[0].value),
+      maxVal = parseInt(rangeInput[1].value);
+
+    if (maxVal - minVal < priceGap) {
+      if (e.target.className === "range-min") {
+        rangeInput[0].value = maxVal - priceGap;
+      } else {
+        rangeInput[1].value = minVal + priceGap;
+      }
+    } else {
+      priceInput[0].value = minVal;
+      priceInput[1].value = maxVal;
+      range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+      range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+    }
+  });
+});
+
+
+
+/*=================range-slider-script==========================*/
+
+
+
+$(document).ready(function () {
+    $(".so-filter-heading").click(function () {
+        $(this).toggleClass("active").next(".so-filter-content-custom").stop(true, true).slideToggle(300);
+    });
+});
+
+
+$(document).ready(function () {
+    let itemsToShow = 5; // Number of divs to show initially
+    let totalItems = $(".item-box").length; // Total number of items
+
+    $(".item-box").hide().slice(0, itemsToShow).show(); // Hide all and show first 5
+
+    $(".add-more-btn").click(function () {
+        let visibleItems = $(".item-box:visible").length;
+        let nextItems = visibleItems + 5;
+
+        $(".item-box").slice(visibleItems, nextItems).slideDown();
+
+        if (nextItems >= totalItems) {
+            $(".add-more-btn").hide(); // Hide button when all items are shown
+            $(".show-less-btn").show(); // Show "Show Less" button
+        }
+    });
+
+    $(".show-less-btn").click(function () {
+        $(".item-box").slice(itemsToShow).slideUp();
+        $(".add-more-btn").show();
+        $(this).hide(); // Hide "Show Less" button
+    });
+});
+
+
+
+$(document).ready(function(){
+    $('ul.tabsfilter-on-shop-by li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+
+        // Remove 'current' class from sibling li elements
+        $(this).siblings().removeClass('current');
+        $('.tab-content').removeClass('current');
+
+        // Add 'current' class to clicked li
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+    });
+});
+
+
+
+/*========min-max-quantity-script=======================*/
+
+(function () {
+  const quantityContainer = document.querySelector(".quantity");
+  const minusBtn = quantityContainer.querySelector(".minus");
+  const plusBtn = quantityContainer.querySelector(".plus");
+  const inputBox = quantityContainer.querySelector(".input-box");
+
+  updateButtonStates();
+
+  quantityContainer.addEventListener("click", handleButtonClick);
+  inputBox.addEventListener("input", handleQuantityChange);
+
+  function updateButtonStates() {
+    const value = parseInt(inputBox.value);
+    minusBtn.disabled = value <= 1;
+    plusBtn.disabled = value >= parseInt(inputBox.max);
+  }
+
+  function handleButtonClick(event) {
+    if (event.target.classList.contains("minus")) {
+      decreaseValue();
+    } else if (event.target.classList.contains("plus")) {
+      increaseValue();
+    }
+  }
+
+  function decreaseValue() {
+    let value = parseInt(inputBox.value);
+    value = isNaN(value) ? 1 : Math.max(value - 1, 1);
+    inputBox.value = value;
+    updateButtonStates();
+    handleQuantityChange();
+  }
+
+  function increaseValue() {
+    let value = parseInt(inputBox.value);
+    value = isNaN(value) ? 1 : Math.min(value + 1, parseInt(inputBox.max));
+    inputBox.value = value;
+    updateButtonStates();
+    handleQuantityChange();
+  }
+
+  function handleQuantityChange() {
+    let value = parseInt(inputBox.value);
+    value = isNaN(value) ? 1 : value;
+
+    // Execute your code here based on the updated quantity value
+    console.log("Quantity changed:", value);
+  }
+})();
+
+/*========min-max-quantity-script=======================*/
+
+$(".related-product-slider").slick({
+    slidesToShow: 4,
+    infinite: true,
+    arrows: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    dots: false,
+    adaptiveHeight: true,
+    speed: 600,
+    easing: 'ease-in-out',
+    cssEase: 'ease-in-out',
+	responsive: [
+       {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 4,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 767,
+            settings: {
+                slidesToShow: 3,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 575,
+            settings: {
+                slidesToShow: 2,
+                dots: true,
+                autoplay: true
+            }
+        }
+    ]
+});
+
+
+
+
+$(document).ready(function () {
+    $(".vertical-tab-on-pro-page .tab-link").click(function (e) {
+        e.preventDefault();
+        
+        var tab_id = $(this).data("tab");
+
+        // Remove active class from all tabs and tab content
+        $(".vertical-tab-on-pro-page .tab-link").removeClass("active");
+        $(".vertical-tab-on-pro-page .tab-content-product").removeClass("active");
+
+        // Add active class to the clicked tab and corresponding content
+        $(this).addClass("active");
+        $("#" + tab_id).addClass("active");
+    });
+});
+
+
+$(document).ready(function () {
+    // Initially hide the paragraph with class "show-on-more"
+    $(".show-on-more").hide();
+
+    $(".button-toggle .showmore").click(function (e) {
+        e.preventDefault();
+
+        // Toggle visibility of the show-on-more paragraph
+        $(".show-on-more").slideToggle();
+
+        // Toggle active class for button
+        $(this).toggleClass("active");
+
+        // Toggle text visibility
+        if ($(this).hasClass("active")) {
+            $(".toggle-more").hide();
+            $(".toggle-less").show();
+        } else {
+            $(".toggle-more").show();
+            $(".toggle-less").hide();
+        }
+    });
+
+    // Initially hide "Show Less"
+    $(".toggle-less").hide();
+});
+
+
+
+
+  
