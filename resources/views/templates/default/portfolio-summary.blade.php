@@ -100,6 +100,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="input-limit">Show:</label>
                                 <select id="input-limit" class="form-control">
+                                    <option value="1" {{ request('limit') == '10' ? 'selected' : '' }}>1</option>
                                     <option value="10" {{ request('limit') == '10' ? 'selected' : '' }}>10</option>
                                     <option value="15" {{ request('limit') == '15' ? 'selected' : '' }}>15</option>
                                     <option value="25" {{ request('limit') == '25' ? 'selected' : '' }}>25</option>
