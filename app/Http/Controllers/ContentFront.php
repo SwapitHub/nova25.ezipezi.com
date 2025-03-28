@@ -1060,17 +1060,6 @@ class ContentFront extends GeneralController
 
     public function eventDetails($alias)
     {
-
-        DB::table('headermenu')->insert([
-            'name' => 'event',
-            'alias' => 'event',
-            'image' => '/data/banner/index.jpg',
-            'url' => null,
-            'description' => null,
-            'status' => 1,
-        ]);
-
-        return "Data inserted successfully!";
         $admin = Admin::user();
         $status = '';
         if (empty($admin)) $status = 1;
