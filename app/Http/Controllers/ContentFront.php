@@ -872,21 +872,46 @@ class ContentFront extends GeneralController
         );
     }
 
+    // public function allportfolio(Request $request)
+    // {
+    //     $defaultSort = 'featured'; 
+    //     $defaultLimit = 8; 
+    //     $sort = $request->query('sort', $defaultSort);
+    //     $limit = $request->query('limit', $defaultLimit);
+    //     $portfolioQuery = Portfolio::where('status', 1);
+    //     if ($sort === 'latest') {
+    //         $portfolioQuery->latest();
+    //     } else {
+    //         $portfolioQuery->where('featured', 1)->latest();
+    //     }
+    //     $feturedList = $portfolioQuery->take($limit)->get();
+    //     return view($this->templatePath . '.portfolio-summary', compact('feturedList'));
+    // }
     public function allportfolio(Request $request)
     {
-        $defaultSort = 'featured'; 
-        $defaultLimit = 8; 
-        $sort = $request->query('sort', $defaultSort);
-        $limit = $request->query('limit', $defaultLimit);
+        $sort = $request->query('sort', 'featured');
+        $limit = $request->query('limit', 8);
+
         $portfolioQuery = Portfolio::where('status', 1);
         if ($sort === 'latest') {
             $portfolioQuery->latest();
         } else {
             $portfolioQuery->where('featured', 1)->latest();
         }
-        $feturedList = $portfolioQuery->take($limit)->get();
-        return view($this->templatePath . '.portfolio-summary', compact('feturedList'));
+
+        $portfolios = $portfolioQuery->paginate($limit);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                'nextPageUrl' => $portfolios->nextPageUrl()
+            ]);
+        }
+
+        return view($this->templatePath . '.portfolio-summary', compact('portfolios'));
     }
+
 
     public function portfolioDetails($alias)
     {

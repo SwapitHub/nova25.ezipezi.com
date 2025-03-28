@@ -78,9 +78,11 @@
                         <div class="thirty-col filter-tab-col-left-shop-by">
                             <div class="btn btn-gridview">Grid View:</div>
                             <ul class="tabsfilter-on-shop-by">
-                                <li class="tab-link current" data-tab="filtertab-1"><span><i class="fa-solid fa-list"></i></span>
+                                <li class="tab-link current" data-tab="filtertab-1">
+                                    <span><i class="fa-solid fa-list"></i></span>
                                 </li>
-                                <li class="tab-link" data-tab="filtertab-2"><span><i class="fa-solid fa-table"></i></span>
+                                <li class="tab-link" data-tab="filtertab-2">
+                                    <span><i class="fa-solid fa-table"></i></span>
                                 </li>
                             </ul>
                         </div>
@@ -88,121 +90,50 @@
                         <div class="seventy-col filter-tab-right-col-shop-by">
                             <div class="form-group short-by">
                                 <label class="control-label" for="input-sort">Sort By:</label>
-                                <select id="input-sort" class="form-control" onchange="location = this.value;">
-                                    <option selected="selected">Featured</option>
-                                    <option>Latest</option>
+                                <select id="input-sort" class="form-control">
+                                    <option value="featured" {{ request('sort') == 'featured' ? 'selected' : '' }}>Featured
+                                    </option>
+                                    <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest
+                                    </option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="input-limit">Show:</label>
-                                <select id="input-limit" class="form-control" onchange="location = this.value;">
-                                    <option>10</option>
-                                    <option>15</option>
-                                    <option>25</option>
-                                    <option>50</option>
-                                    <option>75</option>
-                                    <option>100</option>
+                                <select id="input-limit" class="form-control">
+                                    <option value="10" {{ request('limit') == '10' ? 'selected' : '' }}>10</option>
+                                    <option value="15" {{ request('limit') == '15' ? 'selected' : '' }}>15</option>
+                                    <option value="25" {{ request('limit') == '25' ? 'selected' : '' }}>25</option>
+                                    <option value="50" {{ request('limit') == '50' ? 'selected' : '' }}>50</option>
+                                    <option value="75" {{ request('limit') == '75' ? 'selected' : '' }}>75</option>
+                                    <option value="100" {{ request('limit') == '100' ? 'selected' : '' }}>100</option>
                                 </select>
                             </div>
-
                         </div>
-
                     </div>
 
                     <div class="filter-content-tab">
-                        {{-- list tab start --}}
-                        <div id="filtertab-1" class="tab-content ">
-                            @foreach ($feturedList as $fetured)
-                                <div class="filter-list-design-inner">
-                                    <div class="filter-list-left-col">
-                                        <div class="inner-all-shop-new-arrivals-box">
-                                            <div class="shop-new-arrivals-image">
-                                                <a href="#" title="Drumstick bresao">
-                                                    <img src="{{ $fetured->image }}" alt="{{ $fetured->imagealt }}">
-                                                </a>
-                                                <div class="box-label">
-                                                    <span class="label-product label-sale">-8%</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="filter-list-right-column">
-                                        <h4><a href="#">{{ $fetured->name }}</a></h4>
-                                        <div class="rate-history">
-                                            <div class="ratings">
-                                                <div class="rating-box">
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                            class="fa fa-star-o fa-stack-1x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                            class="fa fa-star-o fa-stack-1x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                            class="fa fa-star-o fa-stack-1x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                            class="fa fa-star-o fa-stack-1x"></i></span>
-                                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i
-                                                            class="fa fa-star-o fa-stack-1x"></i></span>
-                                                    <a class="rating-num" href="#">(1)</a>
-                                                </div>
-                                            </div>
-                                            {{-- <div class="price">
-                                            <span class="price">$87.00 </span>
-                                        </div> --}}
-                                            <p>
-                                                {!! \Illuminate\Support\Str::words($fetured->introduction, 30, '...') !!}
-                                            </p>
-                                        </div>
-                                        <div class="drumstick-cart-sec  drumstick-cart-sec-on-filter">
-                                            <ul class="ctm-flex-row">
-                                                <button class="addToCart" type="button" title="Add to Cart"
-                                                    onclick="cart.add('110', '1');"><span>Add to Cart</span></button>
-                                                <li><button type="button" class="ctm-white-color"><i
-                                                            class="fa fa-heart"></i></button></li>
-                                                <li><button type="button" class="ctm-white-color"><i
-                                                            class="fa fa-refresh"></i></button></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        {{-- grid tab start --}}
-                        <div id="filtertab-2" class="tab-content ">
-                            <div class="d-flex-custom tab-two-col-inner">
-                                @foreach ($feturedList as $fetured)
-                                    <div class="four-col tab-two-col">
-                                        <div class="inner-all-shop-new-arrivals-box">
-                                            <div class="shop-new-arrivals-image">
-                                                <a href="#" title="Drumstick bresao">
-                                                    <img src="{{ $fetured->image }}" alt="{{ $fetured->imagealt }}">
-                                                    <div class="drumstick-cart-sec">
-                                                        <ul class="ctm-flex-row">
-                                                            <li><button type="button" class="ctm-white-color"><i
-                                                                        class="fa fa-shopping-cart"></i></button></li>
-                                                            <li><button type="button" class="ctm-white-color"><i
-                                                                        class="fa fa-heart"></i></button></li>
-                                                            <li><button type="button" class="ctm-white-color"><i
-                                                                        class="fa fa-search"></i></button></li>
-                                                            <li><button type="button" class="ctm-white-color"><i
-                                                                        class="fa fa-refresh"></i></button></li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                                {{-- <div class="box-label">
-                                                <span class="label-product label-sale">-8%</span>
-                                            </div> --}}
-                                            </div>
-                                            <div class="shop-new-arrivals-content">
-                                                <h5 class="ctm-mt-20"><a href="#"
-                                                        title="Drumstick bresao">{{ $fetured->name }}</a></h5>
-                                                <div class="product-price-sec ctm-mt-10">
-                                                    <span class="price-text ctm-secondary-color">$60.00</span>
-                                                    <span class="old-price-del">$65.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                        {{-- List View Tab --}}
+                        <div id="filtertab-1" class="tab-content">
+                            <div id="portfolio-list">
+                                @include('partials.portfolio-items', ['portfolios' => $portfolios])
                             </div>
+                        </div>
+
+                        {{-- Grid View Tab --}}
+                        <div id="filtertab-2" class="tab-content">
+                            <div class="d-flex-custom tab-two-col-inner" id="portfolio-grid">
+                                @include('partials.portfolio-grid-items', ['portfolios' => $portfolios])
+                            </div>
+                        </div>
+
+                        {{-- Load More Button --}}
+                        <div class="text-center">
+                            @if ($portfolios->hasMorePages())
+                                <button id="load-more" class="btn btn-primary"
+                                    data-next-url="{{ $portfolios->nextPageUrl() }}">
+                                    Load More
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -217,26 +148,52 @@
 @push('scripts')
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const sortSelect = document.getElementById("input-sort");
-            const limitSelect = document.getElementById("input-limit");
+            let loadMoreButton = document.getElementById("load-more");
+
+            if (loadMoreButton) {
+                loadMoreButton.addEventListener("click", function() {
+                    let nextUrl = loadMoreButton.getAttribute("data-next-url");
+
+                    if (!nextUrl) {
+                        loadMoreButton.style.display = "none";
+                        return;
+                    }
+
+                    fetch(nextUrl, {
+                            headers: {
+                                "X-Requested-With": "XMLHttpRequest"
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.listView) {
+                                document.getElementById("portfolio-list").insertAdjacentHTML(
+                                    "beforeend", data.listView);
+                            }
+                            if (data.gridView) {
+                                document.getElementById("portfolio-grid").insertAdjacentHTML(
+                                    "beforeend", data.gridView);
+                            }
+
+                            if (data.nextPageUrl) {
+                                loadMoreButton.setAttribute("data-next-url", data.nextPageUrl);
+                            } else {
+                                loadMoreButton.style.display = "none";
+                            }
+                        })
+                        .catch(error => console.error("Error loading more portfolios:", error));
+                });
+            }
+
+            // Handle Sorting and Limit Change
+            document.getElementById("input-sort").addEventListener("change", updateUrl);
+            document.getElementById("input-limit").addEventListener("change", updateUrl);
 
             function updateUrl() {
                 const url = new URL(window.location.href);
-                url.searchParams.set("sort", sortSelect.value);
-                url.searchParams.set("limit", limitSelect.value);
+                url.searchParams.set("sort", document.getElementById("input-sort").value);
+                url.searchParams.set("limit", document.getElementById("input-limit").value);
                 window.location.href = url.toString();
-            }
-
-            sortSelect.addEventListener("change", updateUrl);
-            limitSelect.addEventListener("change", updateUrl);
-
-            // Preserve current selected values on reload
-            const params = new URLSearchParams(window.location.search);
-            if (params.has("sort")) {
-                sortSelect.value = params.get("sort");
-            }
-            if (params.has("limit")) {
-                limitSelect.value = params.get("limit");
             }
         });
     </script>
