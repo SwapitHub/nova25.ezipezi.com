@@ -111,7 +111,7 @@
 
                     <div class="filter-content-tab">
                         {{-- list tab start --}}
-                        <div id="filtertab-1" class="tab-content">
+                        <div id="filtertab-1" class="tab-content ">
                             @foreach ($feturedList as $fetured)
                                 <div class="filter-list-design-inner">
                                     <div class="filter-list-left-col">
@@ -166,7 +166,7 @@
                             @endforeach
                         </div>
                         {{-- grid tab start --}}
-                        <div id="filtertab-2" class="tab-content current">
+                        <div id="filtertab-2" class="tab-content ">
                             <div class="d-flex-custom tab-two-col-inner">
                                 @foreach ($feturedList as $fetured)
                                     <div class="four-col tab-two-col">
