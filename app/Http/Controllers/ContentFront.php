@@ -1062,14 +1062,12 @@ class ContentFront extends GeneralController
     {
 
         DB::table('headermenu')->insert([
-            'title' => 'event',
+            'name' => 'event',
             'slug' => 'event',
             'image' => '/data/banner/index.jpg',
-            'parent_id' => null,
-            'extra_data' => null,
+            'url' => null,
+            'description' => null,
             'status' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
         return "Data inserted successfully!";
