@@ -1064,7 +1064,6 @@ class ContentFront extends GeneralController
         $status = '';
         if (empty($admin)) $status = 1;
         $portfolio = (new Event)->getEvent($alias, $status);
-
         $previous = Event::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $portfolio->id)->orderBy('id', 'desc')->first();
         $next = Event::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '>', $portfolio->id)->orderBy('id')->first();
         $portfolioimgs = (new EventImages)->getImages($portfolio->id);
@@ -1091,7 +1090,7 @@ class ContentFront extends GeneralController
         if ($portfolio->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($portfolio->blogorder);
         }
-        $portcat = EventType::getSingleCat($portfolio->portfoliotype);
+        $portcat = EventType::getSingleCat($portfolio->eventtype);
         return view(
             $this->templatePath . '.event_details',
             array(
