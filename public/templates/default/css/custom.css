@@ -5144,6 +5144,11 @@ aside.content-aside .panel-body ul li a i {
     }
 }
 
+.filter-tab-col-left-shop-by li.tab-link.current {
+    display: block;
+    }
+
+
 
 @media(max-width:575px) {
     .deals-zene-counter-bg {
@@ -5152,8 +5157,9 @@ aside.content-aside .panel-body ul li a i {
 
     .rate-history .rating-box {
         margin-top: 0;
-        }
-        .rate-history .ratings .fa {
+    }
+
+    .rate-history .ratings .fa {
         color: #000;
         font-size: 16px;
-        }
+    }
