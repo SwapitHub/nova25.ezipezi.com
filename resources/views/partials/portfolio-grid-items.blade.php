@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="shop-new-arrivals-content">
-                <h5 class="ctm-mt-20"><a href="#" title="{{ $portfolio->name }}">{{ $portfolio->name }}</a></h5>
+                <h5 class="ctm-mt-20"><a href="{{ $type }}/{{ $portfolio->alias }}" title="{{ $portfolio->name }}">{{ $portfolio->name }}</a></h5>
             </div>
         </div>
     </div>

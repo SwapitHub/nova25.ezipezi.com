@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="filter-list-right-column">
-            <h4><a href="#">{{ $portfolio->name }}</a></h4>
+            <h4><a href="{{ $type }}/{{ $portfolio->alias }}">{{ $portfolio->name }}</a></h4>
             <p>{!! \Illuminate\Support\Str::words($portfolio->introduction, 30, '...') !!}</p>
         </div>
     </div>

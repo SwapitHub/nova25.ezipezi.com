@@ -349,15 +349,15 @@
                             <div class="deals-zene-counter-left">
                                 <div class="inner-all-shop-new-arrivals-box">
                                     <div class="shop-new-arrivals-image">
-                                        <a href="#" title="Benderloin officia">
+                                        <a href="{{ url('event') }}/{{ $event->alias }}" title="Benderloin officia">
                                             <img src="{{ $event->image }}" alt="{{ $event->imagealt }}">
                                             <div class="drumstick-cart-sec">
-                                                <ul class="ctm-flex-row">
+                                                {{-- <ul class="ctm-flex-row">
                                                     <li><button type="button" class="ctm-white-color"><i
                                                                 class="fa fa-heart"></i></button></li>
                                                     <li><button type="button" class="ctm-white-color"><i
                                                                 class="fa fa-search"></i></button></li>
-                                                </ul>
+                                                </ul> --}}
                                             </div>
                                         </a>
                                     </div>

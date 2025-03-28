@@ -1,7 +1,7 @@
 <?php
 #app/Http/Controller/ContentFront.php
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\ShopEmailTemplate;
 use App\Models\ShopNews;
 use App\Models\ShopPage;
@@ -15,6 +15,10 @@ use App\Models\PropertyImages;
 use App\Models\PropertytagType;
 use App\Models\ProCat;
 use App\Models\Blog;
+use App\Models\Event;
+use App\Models\EventType;
+use App\Models\EventtagType;
+use App\Models\EventImages;
 use App\Models\BlogImages;
 use App\Models\NewstagType;
 use App\Models\NewsType;
@@ -1048,6 +1052,81 @@ class ContentFront extends GeneralController
                 'keyword' => sc_store('keyword'),
                 'portfolio' => $portfolio,
                 'portfoliotype' => $portfoliotype,
+            )
+        );
+    }
+
+    ## event start here 
+
+    public function eventDetails($alias)
+    {
+
+        DB::table('headermenu')->insert([
+            'title' => 'event',
+            'slug' => 'event',
+            'image' => '/data/banner/index.jpg',
+            'parent_id' => null,
+            'extra_data' => null,
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return "Data inserted successfully!";
+        $admin = Admin::user();
+        $status = '';
+        if (empty($admin)) $status = 1;
+        $portfolio = (new Event)->getEvent($alias, $status);
+
+        $previous = Event::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $portfolio->id)->orderBy('id', 'desc')->first();
+        $next = Event::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '>', $portfolio->id)->orderBy('id')->first();
+        $portfolioimgs = (new EventImages)->getImages($portfolio->id);
+        $tagtype = (new EventtagType)->GetEventtagTypes();
+
+        if ($portfolio->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($portfolio->accorder);
+        }
+        if ($portfolio->fnews) {
+            $footerNews = (new Blog)->footerNews($portfolio->norder);
+        }
+        if ($portfolio->fprop) {
+            $footerProperty = (new Property)->footerProperty($portfolio->porder);
+        }
+        if ($portfolio->fproduct) {
+            $footerProduct = (new ShopProduct)->footerProduct($portfolio->proorder);
+        }
+        if ($portfolio->fservice) {
+            $footerService = (new Service)->footerService($portfolio->sorder);
+        }
+        if ($portfolio->faport) {
+            $footerPort = (new Portfolio)->footerPortfolio($portfolio->portorder);
+        }
+        if ($portfolio->fablog) {
+            $footerBlog = (new NewBlog)->footerNewBlog($portfolio->blogorder);
+        }
+        $portcat = EventType::getSingleCat($portfolio->portfoliotype);
+        return view(
+            $this->templatePath . '.event_details',
+            array(
+                'title' => $portfolio->name,
+                'description' => sc_store('description'),
+                'keyword' => sc_store('keyword'),
+                'portfolio' => $portfolio,
+                'portfolioimgs' => $portfolioimgs,
+                'tagtype' => $tagtype,
+                'admin' => $admin,
+                'footerAccommmo' => $footerAccommmo ?? [],
+                'footerNews' => $footerNews ?? [],
+                'footerService' => $footerService ?? [],
+                'footerProduct' => $footerProduct ?? [],
+                'footerProperty' => $footerProperty ?? [],
+                'team' => (new AdminUser)->GetTeamMember(),
+                'portcat' => $portcat,
+                'next' => $next,
+                'previous' => $previous,
+                'footerPort' => $footerPort ?? [],
+                'footerBlog' => $footerBlog ?? [],
+
             )
         );
     }

@@ -94,6 +94,10 @@
 		Portfolio
 	*/
 	require_once 'component/portfolio.php';
+
+
+
+	require_once 'component/event.php';
 	/*
 		Blog
 	*/
