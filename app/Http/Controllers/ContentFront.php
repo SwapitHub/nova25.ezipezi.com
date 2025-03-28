@@ -75,10 +75,10 @@ class ContentFront extends GeneralController
      * @return [type]           [description]
      */
 
-    
+
     public function postContact(Request $request)
     {
-       
+
         $validator = $request->validate([
             'name' => 'required',
             'title' => 'required',
@@ -97,85 +97,83 @@ class ContentFront extends GeneralController
         //Send email
         $data = $request->all();
 
-         if(isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response'])) {
+        if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response'])) {
 
             // Google secret API
-                $secretAPIkey = sc_store('reCaptcha_secret_key');
+            $secretAPIkey = sc_store('reCaptcha_secret_key');
 
-                // reCAPTCHA response verification              
+            // reCAPTCHA response verification              
 
-                $coregister = curl_init();
-                $insertCoregister = 'https://www.google.com/recaptcha/api/siteverify?secret='.$secretAPIkey.'&response='.$data['g-recaptcha-response'];
-                curl_setopt($coregister, CURLOPT_URL, $insertCoregister);
-                // Set the result output to be a string.
-                curl_setopt($coregister, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($coregister, CURLOPT_TIMEOUT, 0);
+            $coregister = curl_init();
+            $insertCoregister = 'https://www.google.com/recaptcha/api/siteverify?secret=' . $secretAPIkey . '&response=' . $data['g-recaptcha-response'];
+            curl_setopt($coregister, CURLOPT_URL, $insertCoregister);
+            // Set the result output to be a string.
+            curl_setopt($coregister, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($coregister, CURLOPT_TIMEOUT, 0);
 
-                $output_coregister = curl_exec($coregister);
-                curl_close($coregister);
-                $response = json_decode($output_coregister);
-                
+            $output_coregister = curl_exec($coregister);
+            curl_close($coregister);
+            $response = json_decode($output_coregister);
 
-                    if($response->success){
-        $data['content'] = str_replace("\n", "<br>", $data['content']);
 
-        if (sc_config('contact_to_admin')) {
-            $checkContent = (new ShopEmailTemplate)
-                ->where('group', 'contact_to_admin')
-                ->where('status', 1)
-                ->first();
-            if ($checkContent) {
-                $content = $checkContent->text;
-                $dataFind = [
-                    '/\{\{\$title\}\}/',
-                    '/\{\{\$name\}\}/',
-                    '/\{\{\$email\}\}/',
-                    '/\{\{\$phone\}\}/',
-                    '/\{\{\$content\}\}/',
-                ];
-                $dataReplace = [
-                    $data['title'],
-                    $data['name'],
-                    $data['email'],
-                    $data['phone'],
-                    $data['content'],
-                ];
-                $content = preg_replace($dataFind, $dataReplace, $content);
-                $data_email = [
-                    'content' => $content,
-                ];
+            if ($response->success) {
+                $data['content'] = str_replace("\n", "<br>", $data['content']);
 
-                $config = [
-                    'to' => 'swap.taranjit@gmail.com',
-                    'replyTo' => $data['email'],
-                    'subject' => $data['title'],
-                ];
-                /*sc_send_mail('mail.contact_to_admin', $data_email, $config, []);*/
+                if (sc_config('contact_to_admin')) {
+                    $checkContent = (new ShopEmailTemplate)
+                        ->where('group', 'contact_to_admin')
+                        ->where('status', 1)
+                        ->first();
+                    if ($checkContent) {
+                        $content = $checkContent->text;
+                        $dataFind = [
+                            '/\{\{\$title\}\}/',
+                            '/\{\{\$name\}\}/',
+                            '/\{\{\$email\}\}/',
+                            '/\{\{\$phone\}\}/',
+                            '/\{\{\$content\}\}/',
+                        ];
+                        $dataReplace = [
+                            $data['title'],
+                            $data['name'],
+                            $data['email'],
+                            $data['phone'],
+                            $data['content'],
+                        ];
+                        $content = preg_replace($dataFind, $dataReplace, $content);
+                        $data_email = [
+                            'content' => $content,
+                        ];
 
-                $to      = sc_store('admin_email');
-                $subject = $data['title'];
-                $message = $content;
-                $headers = 'From: '.sc_store('email'). "\r\n" .
-                             "Reply-To:". $data['email'] . "\r\n" .
-                             'X-Mailer: PHP/' . phpversion(). "\r\n" .
-                             'Content-type: text/html';                
+                        $config = [
+                            'to' => 'swap.taranjit@gmail.com',
+                            'replyTo' => $data['email'],
+                            'subject' => $data['title'],
+                        ];
+                        /*sc_send_mail('mail.contact_to_admin', $data_email, $config, []);*/
 
-                mail($to, $subject, $message, $headers);
+                        $to      = sc_store('admin_email');
+                        $subject = $data['title'];
+                        $message = $content;
+                        $headers = 'From: ' . sc_store('email') . "\r\n" .
+                            "Reply-To:" . $data['email'] . "\r\n" .
+                            'X-Mailer: PHP/' . phpversion() . "\r\n" .
+                            'Content-type: text/html';
 
-                mail($data['email'], $subject, $message, $headers);
+                        mail($to, $subject, $message, $headers);
+
+                        mail($data['email'], $subject, $message, $headers);
+                    }
+                }
+
+                return redirect()->back()->with('success', trans('front.thank_contact'));
             }
-        }
-
-        return redirect()->back()->with('success', trans('front.thank_contact'));
+        } else {
+            return redirect()
+                ->route('contact')
+                ->with('warning', 'reCaptcha not verified');
         }
     }
-    else{
-         return redirect()
-            ->route('contact')
-            ->with('warning', 'reCaptcha not verified');
-
-    }
-}
 
     /**
      * Render page
@@ -215,7 +213,7 @@ class ContentFront extends GeneralController
      * Render news
      * @return [type] [description]
      */
-    public function news() 
+    public function news()
     {
         return view($this->templatePath . '.news-summary');
         /*$newstype = NewsType::GetNewsTypes();
@@ -238,9 +236,9 @@ class ContentFront extends GeneralController
         $keyword = request('name') ?? '';
         $type = request('newstype') ?? '';
 
-       $newstype = NewsType::GetNewsTypes();
-       $news = (new Blog)->search($keyword,$type);  
-          
+        $newstype = NewsType::GetNewsTypes();
+        $news = (new Blog)->search($keyword, $type);
+
         return view(
             $this->templatePath . '.news_list',
             array(
@@ -253,14 +251,14 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function serviceSearch(Request $request)
+    public function serviceSearch(Request $request)
     {
         $keyword = request('name') ?? '';
         $type = request('servicetype') ?? '';
 
-       $servicetype = ServiceType::GetServiceTypes();
-       $services = (new Service)->search($keyword,$type);  
-          
+        $servicetype = ServiceType::GetServiceTypes();
+        $services = (new Service)->search($keyword, $type);
+
         return view(
             $this->templatePath . '.service_list',
             array(
@@ -311,10 +309,10 @@ class ContentFront extends GeneralController
         }
     }
 
-    public function allservices() 
+    public function allservices()
     {
-       return view($this->templatePath . '.service-summary');
-       /* $servicetype = ServiceType::GetServiceTypes();
+        return view($this->templatePath . '.service-summary');
+        /* $servicetype = ServiceType::GetServiceTypes();
        $services = (new Service)->getAllServices();  
           
         return view(
@@ -338,7 +336,7 @@ class ContentFront extends GeneralController
     {
         $validator = $request->validate([
             'subscribe_email' => 'required|email',
-            ], [
+        ], [
             'email.required' => trans('validation.required'),
             'email.email'    => trans('validation.email'),
         ]);
@@ -352,10 +350,10 @@ class ContentFront extends GeneralController
             ->with(['success' => trans('subscribe.subscribe_success')]);
     }
 
-      public function allAccommo()
+    public function allAccommo()
     {
-         return view($this->templatePath . '.accommo-summary');
-       /* $accommodation = (new Accommodation)->getAccomo();
+        return view($this->templatePath . '.accommo-summary');
+        /* $accommodation = (new Accommodation)->getAccomo();
          $acctype = AccommodationType::GetAccommodationTypes();
 
         return view(
@@ -368,37 +366,37 @@ class ContentFront extends GeneralController
                 'acctype' => $acctype,
             )
         );*/
-    }  
+    }
 
     public function accommoDetail($alias)
     {
         $admin = Admin::user();
         $status = '';
-        if(empty($admin)) $status = 1;
-        $accommodation = (new Accommodation)->getAcc($alias,$status);
-        
+        if (empty($admin)) $status = 1;
+        $accommodation = (new Accommodation)->getAcc($alias, $status);
+
         $accimgs = (new AccommodationImages)->getImages($accommodation->id);
         $tagtype = (new AccommodationtagType)->GetAccommodationtagTypes();
-        
-          if($accommodation->faccommo){
-        $footerAccommmo = (new Accommodation)->footerAccommo($accommodation->accorder);
-         }
-     if($accommodation->fnews){
+
+        if ($accommodation->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($accommodation->accorder);
+        }
+        if ($accommodation->fnews) {
             $footerNews = (new Blog)->footerNews($accommodation->norder);
         }
-         if($accommodation->fprop){
+        if ($accommodation->fprop) {
             $footerProperty = (new Property)->footerProperty($accommodation->porder);
         }
-         if($accommodation->fproduct){
+        if ($accommodation->fproduct) {
             $footerProduct = (new ShopProduct)->footerProduct($accommodation->proorder);
         }
-         if($accommodation->fservice){
+        if ($accommodation->fservice) {
             $footerService = (new Service)->footerService($accommodation->sorder);
         }
-        if($accommodation->faport){
+        if ($accommodation->faport) {
             $footerPort = (new Portfolio)->footerPortfolio($accommodation->portorder);
         }
-        if($accommodation->fablog){
+        if ($accommodation->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($accommodation->blogorder);
         }
         return view(
@@ -428,8 +426,8 @@ class ContentFront extends GeneralController
         $keyword = request('name') ?? '';
         $type = request('acctype') ?? '';
 
-        $accommodation = (new Accommodation)->search($keyword,$type);
-         $acctype = AccommodationType::GetAccommodationTypes();
+        $accommodation = (new Accommodation)->search($keyword, $type);
+        $acctype = AccommodationType::GetAccommodationTypes();
 
         return view(
             $this->templatePath . '.accommo_list',
@@ -443,9 +441,9 @@ class ContentFront extends GeneralController
         );
     }
 
-      public function allProperty()
+    public function allProperty()
     {
-         return view($this->templatePath . '.property-summary');
+        return view($this->templatePath . '.property-summary');
         /*$property = (new Property)->getProperty();
          $protype = PropertyType::GetPropertyTypes();
 
@@ -461,13 +459,13 @@ class ContentFront extends GeneralController
         );*/
     }
 
-     public function propertySearch(Request $request)
+    public function propertySearch(Request $request)
     {
-         $keyword = request('name') ?? '';
+        $keyword = request('name') ?? '';
         $type = request('protype') ?? '';
 
-        $property = (new Property)->search($keyword,$type);
-         $protype = PropertyType::GetPropertyTypes();
+        $property = (new Property)->search($keyword, $type);
+        $protype = PropertyType::GetPropertyTypes();
 
         return view(
             $this->templatePath . '.property_list',
@@ -481,49 +479,50 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function getProcats()
+    public function getProcats()
     {
         $types = ShopProduct::getSubCats($_POST['type']);
-       
-        
-        echo '<option value="">Choose Category</option>';
-         if(count($types) >=1) {
-        foreach($types as $dd) { 
-            $type = ProCat::getProcat($dd->procat);?>
 
-            <option value="<?php echo $type->id; ?>" ><?php echo $type->name; ?>
-            </option>
-        <?php } }
+
+        echo '<option value="">Choose Category</option>';
+        if (count($types) >= 1) {
+            foreach ($types as $dd) {
+                $type = ProCat::getProcat($dd->procat); ?>
+
+                <option value="<?php echo $type->id; ?>"><?php echo $type->name; ?>
+                </option>
+<?php }
+        }
     }
 
-      public function newsDetails($alias)
+    public function newsDetails($alias)
     {
         $admin = Admin::user();
         $status = '';
-        if(empty($admin)) $status = 1;
-        $news = (new Blog)->getNews($alias,$status);
+        if (empty($admin)) $status = 1;
+        $news = (new Blog)->getNews($alias, $status);
         $newsimgs = (new BlogImages)->getImages($news->id);
         $tagtype = (new NewstagType)->GetNewstagTypes();
 
-          if($news->faccommo){
-        $footerAccommmo = (new Accommodation)->footerAccommo($news->accorder);
-         }
-     if($news->fnews){
+        if ($news->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($news->accorder);
+        }
+        if ($news->fnews) {
             $footerNews = (new Blog)->footerNews($news->norder);
         }
-         if($news->fprop){
+        if ($news->fprop) {
             $footerProperty = (new Property)->footerProperty($news->porder);
         }
-         if($news->fproduct){
+        if ($news->fproduct) {
             $footerProduct = (new ShopProduct)->footerProduct($news->proorder);
         }
-         if($news->fservice){
+        if ($news->fservice) {
             $footerService = (new Service)->footerService($news->sorder);
         }
-        if($news->faport){
+        if ($news->faport) {
             $footerPort = (new Portfolio)->footerPortfolio($news->portorder);
         }
-        if($news->fablog){
+        if ($news->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($news->blogorder);
         }
         return view(
@@ -548,34 +547,34 @@ class ContentFront extends GeneralController
         );
     }
 
-      public function serviceDetails($alias)
+    public function serviceDetails($alias)
     {
         $admin = Admin::user();
         $status = '';
-        if(empty($admin)) $status = 1;
-        $service = (new Service)->getServices($alias,$status);
+        if (empty($admin)) $status = 1;
+        $service = (new Service)->getServices($alias, $status);
         $serviceimgs = (new ServiceImages)->getImages($service->id);
         $tagtype = (new ServicetagType)->GetServicetagTypes();
 
-         if($service->faccommo){
-        $footerAccommmo = (new Accommodation)->footerAccommo($service->accorder);
-         }
-     if($service->fnews){
+        if ($service->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($service->accorder);
+        }
+        if ($service->fnews) {
             $footerNews = (new Blog)->footerNews($service->norder);
         }
-         if($service->fprop){
+        if ($service->fprop) {
             $footerProperty = (new Property)->footerProperty($service->porder);
         }
-         if($service->fproduct){
+        if ($service->fproduct) {
             $footerProduct = (new ShopProduct)->footerProduct($service->proorder);
         }
-         if($service->fservice){
+        if ($service->fservice) {
             $footerService = (new Service)->footerService($service->sorder);
         }
-         if($service->faport){
+        if ($service->faport) {
             $footerPort = (new Portfolio)->footerPortfolio($service->portorder);
         }
-        if($service->fablog){
+        if ($service->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($service->blogorder);
         }
         return view(
@@ -600,18 +599,18 @@ class ContentFront extends GeneralController
         );
     }
 
-       public function productCat($alias)
+    public function productCat($alias)
     {
         $protype = ProType::GetProTypes();
         $cat = (new ProType)->getCat($alias);
         $products = array();
-        if($cat) 
-        {
-           $products = (new ShopProduct)->searchProduct('',$cat->id);
+        if ($cat) {
+            $products = (new ShopProduct)->searchProduct('', $cat->id);
         }
-        
-        
-        return view($this->templatePath . '.shop_products_list',
+
+
+        return view(
+            $this->templatePath . '.shop_products_list',
             array(
                 'title' => trans('front.all_product'),
                 'keyword' => '',
@@ -621,7 +620,8 @@ class ContentFront extends GeneralController
                 'protype' => $protype,
                 'proc' => [],
                 'filter_sort' => [],
-            ));
+            )
+        );
     }
 
     public function newsCat($alias)
@@ -629,12 +629,11 @@ class ContentFront extends GeneralController
 
         $cat = (new NewsType)->getCat($alias);
         $newstype = NewsType::GetNewsTypes();
-         $news = array();
-        if($cat) 
-        {
-           $news = (new Blog)->getCatNews($cat->id); 
+        $news = array();
+        if ($cat) {
+            $news = (new Blog)->getCatNews($cat->id);
         }
-               
+
         return view(
             $this->templatePath . '.news_list',
             array(
@@ -647,18 +646,17 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function serviceCat($alias)
+    public function serviceCat($alias)
     {
 
         $cat = (new ServiceType)->getCat($alias);
         $services = array();
-        if($cat) 
-        {
+        if ($cat) {
             $services = (new Service)->getCatServices($cat->id);
         }
         $servicetype = ServiceType::GetServiceTypes();
-        
-                
+
+
         return view(
             $this->templatePath . '.service_list',
             array(
@@ -671,35 +669,35 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function propertyDetail($alias)
+    public function propertyDetail($alias)
     {
         $admin = Admin::user();
         $status = '';
-        if(empty($admin)) $status = 1;
-        $property = (new Property)->getProAlias($alias,$status);        
+        if (empty($admin)) $status = 1;
+        $property = (new Property)->getProAlias($alias, $status);
         $proimgs = (new PropertyImages)->getImages($property->id);
-         
+
         $tagtype = (new PropertytagType)->GetPropertytagTypes();
 
-        if($property->faccommo){
-        $footerAccommmo = (new Accommodation)->footerAccommo($property->accorder);
-         }
-     if($property->fnews){
+        if ($property->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($property->accorder);
+        }
+        if ($property->fnews) {
             $footerNews = (new Blog)->footerNews($property->norder);
         }
-         if($property->fprop){
+        if ($property->fprop) {
             $footerProperty = (new Property)->footerProperty($property->porder);
         }
-         if($property->fproduct){
+        if ($property->fproduct) {
             $footerProduct = (new ShopProduct)->footerProduct($property->proorder);
         }
-         if($property->fservice){
+        if ($property->fservice) {
             $footerService = (new Service)->footerService($property->sorder);
         }
-          if($property->faport){
+        if ($property->faport) {
             $footerPort = (new Portfolio)->footerPortfolio($property->portorder);
         }
-        if($property->fablog){
+        if ($property->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($property->blogorder);
         }
 
@@ -726,33 +724,30 @@ class ContentFront extends GeneralController
     }
 
 
-      public function getState()
+    public function getState()
     {
         $states = (new States)->getStatesId($_POST['cid']);
         echo '<option value="">Province</option>';
-        foreach($states as $state){
-            echo '<option value="'.$state->id.'">'.$state->name.'</option>';
+        foreach ($states as $state) {
+            echo '<option value="' . $state->id . '">' . $state->name . '</option>';
         }
         exit();
     }
 
-     public function summary()
+    public function summary()
     {
         return view($this->templatePath . '.summary');
     }
 
-     public function addtofav()
+    public function addtofav()
     {
         if (Auth::user()) {
             $user = Auth::user();
-            $checkExist = Wishlist::checkExist($user->id,$_POST['id'],$_POST['tbl']);
-            if($checkExist)
-            {
+            $checkExist = Wishlist::checkExist($user->id, $_POST['id'], $_POST['tbl']);
+            if ($checkExist) {
                 echo '<span class="danger">This item is already in favourite list.</span>';
-            }
-            else
-            {
-                 $dataInsert = [
+            } else {
+                $dataInsert = [
                     'user_id' => $user->id,
                     'page_data' => $_POST['page'],
                     'post_id' => $_POST['id'],
@@ -762,30 +757,26 @@ class ContentFront extends GeneralController
                 Wishlist::create($dataInsert);
                 echo '<span class="success">Added to favourite list</span>';
             }
-           
-        }
-        else
-        {
+        } else {
             echo '<span class="danger">Login required to add to favourite</span>';
         }
 
         exit();
     }
 
-      public function allblog() 
+    public function allblog()
     {
-       return view($this->templatePath . '.blog-summary');
-       
+        return view($this->templatePath . '.blog-summary');
     }
 
-     public function blogSearch(Request $request)
+    public function blogSearch(Request $request)
     {
         $keyword = request('name') ?? '';
         $type = request('blogtype') ?? '';
 
-       $blogtype = BlogType::GetBlogTypes();
-       $blog = (new NewBlog)->search($keyword,$type);  
-          
+        $blogtype = BlogType::GetBlogTypes();
+        $blog = (new NewBlog)->search($keyword, $type);
+
         return view(
             $this->templatePath . '.blog_list',
             array(
@@ -798,37 +789,37 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function blogDetails($alias)
+    public function blogDetails($alias)
     {
         $admin = Admin::user();
         $status = '';
-        if(empty($admin)) $status = 1;
-        $blog = (new NewBlog)->getBlog($alias,$status);
-              
-        $previous = NewBlog::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $blog->id)->orderBy('id','desc')->first();        
+        if (empty($admin)) $status = 1;
+        $blog = (new NewBlog)->getBlog($alias, $status);
+
+        $previous = NewBlog::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $blog->id)->orderBy('id', 'desc')->first();
         $next = NewBlog::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '>', $blog->id)->orderBy('id')->first();
         $blogimgs = (new NewBlogImages)->getImages($blog->id);
         $tagtype = (new BlogtagType)->GetBlogtagTypes();
 
-         if($blog->faccommo){
-        $footerAccommmo = (new Accommodation)->footerAccommo($blog->accorder);
-         }
-     if($blog->fnews){
+        if ($blog->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($blog->accorder);
+        }
+        if ($blog->fnews) {
             $footerNews = (new Blog)->footerNews($blog->norder);
         }
-         if($blog->fprop){
+        if ($blog->fprop) {
             $footerProperty = (new Property)->footerProperty($blog->porder);
         }
-         if($blog->fproduct){
+        if ($blog->fproduct) {
             $footerProduct = (new ShopProduct)->footerProduct($blog->proorder);
         }
-         if($blog->fservice){
+        if ($blog->fservice) {
             $footerService = (new Service)->footerService($blog->sorder);
         }
-        if($blog->faport){
+        if ($blog->faport) {
             $footerPort = (new Portfolio)->footerPortfolio($blog->portorder);
         }
-        if($blog->fablog){
+        if ($blog->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($blog->blogorder);
         }
         $blogcat = BlogType::getSingleCat($blog->blogtype);
@@ -853,7 +844,7 @@ class ContentFront extends GeneralController
                 'previous' => $previous,
                 'footerPort' => $footerPort ?? [],
                 'footerBlog' => $footerBlog ?? [],
-                
+
             )
         );
     }
@@ -863,13 +854,12 @@ class ContentFront extends GeneralController
 
         $cat = (new BlogType)->getCat($alias);
         $blog = array();
-        if($cat) 
-        {
+        if ($cat) {
             $blog = (new NewBlog)->getCatBlog($cat->id);
         }
         $blogtype = BlogType::GetBlogTypes();
-        
-                
+
+
         return view(
             $this->templatePath . '.blog_list',
             array(
@@ -882,43 +872,48 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function allportfolio() 
+    public function allportfolio()
     {
-       return view($this->templatePath . '.portfolio-summary');
-       
+        $feturedList = Portfolio::where('status', 1)
+            ->where('featured', 1)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return view($this->templatePath . '.portfolio-summary', compact('feturedList'));
     }
 
     public function portfolioDetails($alias)
     {
         $admin = Admin::user();
         $status = '';
-        if(empty($admin)) $status = 1;
-        $portfolio = (new Portfolio)->getPortfolio($alias,$status);
-              
-        $previous = Portfolio::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $portfolio->id)->orderBy('id','desc')->first();        
+        if (empty($admin)) $status = 1;
+        $portfolio = (new Portfolio)->getPortfolio($alias, $status);
+
+        $previous = Portfolio::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $portfolio->id)->orderBy('id', 'desc')->first();
         $next = Portfolio::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '>', $portfolio->id)->orderBy('id')->first();
         $portfolioimgs = (new PortfolioImages)->getImages($portfolio->id);
         $tagtype = (new PortfoliotagType)->GetPortfoliotagTypes();
 
-         if($portfolio->faccommo){
-        $footerAccommmo = (new Accommodation)->footerAccommo($portfolio->accorder);
-         }
-     if($portfolio->fnews){
+        if ($portfolio->faccommo) {
+            $footerAccommmo = (new Accommodation)->footerAccommo($portfolio->accorder);
+        }
+        if ($portfolio->fnews) {
             $footerNews = (new Blog)->footerNews($portfolio->norder);
         }
-         if($portfolio->fprop){
+        if ($portfolio->fprop) {
             $footerProperty = (new Property)->footerProperty($portfolio->porder);
         }
-         if($portfolio->fproduct){
+        if ($portfolio->fproduct) {
             $footerProduct = (new ShopProduct)->footerProduct($portfolio->proorder);
         }
-         if($portfolio->fservice){
+        if ($portfolio->fservice) {
             $footerService = (new Service)->footerService($portfolio->sorder);
         }
-         if($portfolio->faport){
+        if ($portfolio->faport) {
             $footerPort = (new Portfolio)->footerPortfolio($portfolio->portorder);
         }
-        if($portfolio->fablog){
+        if ($portfolio->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($portfolio->blogorder);
         }
         $portcat = PortfolioType::getSingleCat($portfolio->portfoliotype);
@@ -943,23 +938,22 @@ class ContentFront extends GeneralController
                 'previous' => $previous,
                 'footerPort' => $footerPort ?? [],
                 'footerBlog' => $footerBlog ?? [],
-                
+
             )
         );
     }
 
-     public function portfolioCat($alias)
+    public function portfolioCat($alias)
     {
 
         $cat = (new PortfolioType)->getCat($alias);
         $portfolio = array();
-        if($cat) 
-        {
+        if ($cat) {
             $portfolio = (new Portfolio)->getCatPortfolio($cat->id);
         }
         $portfoliotype = PortfolioType::GetPortfolioTypes();
-        
-                
+
+
         return view(
             $this->templatePath . '.portfolio_list',
             array(
@@ -972,14 +966,14 @@ class ContentFront extends GeneralController
         );
     }
 
-     public function portfolioSearch(Request $request)
+    public function portfolioSearch(Request $request)
     {
         $keyword = request('name') ?? '';
         $type = request('portfoliotype') ?? '';
 
-       $portfoliotype = PortfolioType::GetPortfolioTypes();
-       $portfolio = (new Portfolio)->search($keyword,$type);  
-          
+        $portfoliotype = PortfolioType::GetPortfolioTypes();
+        $portfolio = (new Portfolio)->search($keyword, $type);
+
         return view(
             $this->templatePath . '.portfolio_list',
             array(

@@ -424,7 +424,7 @@ section.banner-bg .container {
 }
 
 ul.main-list-parent li a {
-    padding: 15px 22px;
+    padding: 15px 16px;
     letter-spacing: 2px;
     font-size: 13px;
     font-weight: 700;
@@ -433,6 +433,9 @@ ul.main-list-parent li a {
     color: #222;
     display: block;
 }
+.navbar ul li:last-child a {
+    padding-right: 0;
+    }
 
 ul.main-list-parent li ul li a{
 	display: inline-block;
