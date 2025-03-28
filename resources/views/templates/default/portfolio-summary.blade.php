@@ -80,7 +80,7 @@
                             <ul class="tabsfilter-on-shop-by">
                                 <li class="tab-link" data-tab="filtertab-1"><span><i class="fa-solid fa-list"></i></span>
                                 </li>
-                                <li class="tab-link" data-tab="filtertab-2"><span><i class="fa-solid fa-table"></i></span>
+                                <li class="tab-link current" data-tab="filtertab-2"><span><i class="fa-solid fa-table"></i></span>
                                 </li>
                             </ul>
                         </div>
