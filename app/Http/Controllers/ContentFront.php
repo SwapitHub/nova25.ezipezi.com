@@ -872,14 +872,19 @@ class ContentFront extends GeneralController
         );
     }
 
-    public function allportfolio()
+    public function allportfolio(Request $request)
     {
-        $feturedList = Portfolio::where('status', 1)
-            ->where('featured', 1)
-            ->latest()
-            ->take(5)
-            ->get();
-
+        $defaultSort = 'featured'; 
+        $defaultLimit = 8; 
+        $sort = $request->query('sort', $defaultSort);
+        $limit = $request->query('limit', $defaultLimit);
+        $portfolioQuery = Portfolio::where('status', 1);
+        if ($sort === 'latest') {
+            $portfolioQuery->latest();
+        } else {
+            $portfolioQuery->where('featured', 1)->latest();
+        }
+        $feturedList = $portfolioQuery->take($limit)->get();
         return view($this->templatePath . '.portfolio-summary', compact('feturedList'));
     }
 
