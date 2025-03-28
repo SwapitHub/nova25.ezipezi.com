@@ -1,14 +1,13 @@
 @extends($templatePath.'.shop_layout')  
 
 @section('center')  
-<?php $pageData = App\Models\HeaderMenu::getMenu(12); ?>
+<?php $pageData = App\Models\HeaderMenu::getMenu(14); ?>
           <div class="product-details container">
 
             <div class="portfolio-header">
               <h2>{{ $pageData->name }}   </h2>
-              {{-- <span class="portfolio-breadcrumb">{{ $portcat->name }} - {{ $portfolio->name }}</span> --}}
-              <span class="portfolio-breadcrumb">Event - {{ $portfolio->name }}</span>
-             
+              <span class="portfolio-breadcrumb">{{ $portcat->name }} - {{ $portfolio->name }}</span>
+            
             </div>
             <div class="row">
             <div class="col-sm-6 left-slider">
