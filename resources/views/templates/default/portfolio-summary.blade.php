@@ -99,14 +99,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="input-limit">Show:</label>
-								<select id="input-limit" class="form-control">
-									<option value="10" {{ request('limit') == '10' ? 'selected' : '' }}>10</option>
-									<option value="15" {{ request('limit') == '15' ? 'selected' : '' }}>15</option>
-									<option value="25" {{ request('limit') == '25' ? 'selected' : '' }}>25</option>
-									<option value="50" {{ request('limit') == '50' ? 'selected' : '' }}>50</option>
-									<option value="75" {{ request('limit') == '75' ? 'selected' : '' }}>75</option>
-									<option value="100" {{ request('limit') == '100' ? 'selected' : '' }}>100</option>
-								</select>
+                                <select id="input-limit" class="form-control">
+                                    <option value="10" {{ request('limit') == '10' ? 'selected' : '' }}>10</option>
+                                    <option value="15" {{ request('limit') == '15' ? 'selected' : '' }}>15</option>
+                                    <option value="25" {{ request('limit') == '25' ? 'selected' : '' }}>25</option>
+                                    <option value="50" {{ request('limit') == '50' ? 'selected' : '' }}>50</option>
+                                    <option value="75" {{ request('limit') == '75' ? 'selected' : '' }}>75</option>
+                                    <option value="100" {{ request('limit') == '100' ? 'selected' : '' }}>100</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -159,6 +159,11 @@
                         return;
                     }
 
+                    // Store original state and disable button
+                    const originalText = loadMoreButton.textContent;
+                    loadMoreButton.disabled = true;
+                    loadMoreButton.textContent = "Loading...";
+
                     fetch(nextUrl, {
                             headers: {
                                 "X-Requested-With": "XMLHttpRequest"
@@ -176,12 +181,23 @@
                             }
 
                             if (data.nextPageUrl) {
-								loadMoreButton.setAttribute("data-next-url", data.nextPageUrl);
-							} else {
-								loadMoreButton.style.display = "none";
-							}
+                                loadMoreButton.setAttribute("data-next-url", data.nextPageUrl);
+                            } else {
+                                loadMoreButton.style.display = "none";
+                            }
                         })
-                        .catch(error => console.error("Error loading more portfolios:", error));
+                        .catch(error => {
+                            console.error("Error loading more portfolios:", error);
+                            // Optional: Show error message to user
+                            loadMoreButton.textContent = "Error - Click to retry";
+                        })
+                        .finally(() => {
+                            // Only reset if button still exists and is visible
+                            if (loadMoreButton.style.display !== "none") {
+                                loadMoreButton.disabled = false;
+                                loadMoreButton.textContent = originalText;
+                            }
+                        });
                 });
             }
 
@@ -196,6 +212,5 @@
                 window.location.href = url.toString();
             }
         });
-		
     </script>
 @endpush
