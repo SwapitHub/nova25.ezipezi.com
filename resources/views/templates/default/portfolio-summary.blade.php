@@ -99,15 +99,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="input-limit">Show:</label>
-                                <select id="input-limit" class="form-control">
-                                    <option value="1" {{ request('limit') == '10' ? 'selected' : '' }}>1</option>
-                                    <option value="10" {{ request('limit') == '10' ? 'selected' : '' }}>10</option>
-                                    <option value="15" {{ request('limit') == '15' ? 'selected' : '' }}>15</option>
-                                    <option value="25" {{ request('limit') == '25' ? 'selected' : '' }}>25</option>
-                                    <option value="50" {{ request('limit') == '50' ? 'selected' : '' }}>50</option>
-                                    <option value="75" {{ request('limit') == '75' ? 'selected' : '' }}>75</option>
-                                    <option value="100" {{ request('limit') == '100' ? 'selected' : '' }}>100</option>
-                                </select>
+								<select id="input-limit" class="form-control">
+									<option value="10" {{ request('limit') == '10' ? 'selected' : '' }}>10</option>
+									<option value="15" {{ request('limit') == '15' ? 'selected' : '' }}>15</option>
+									<option value="25" {{ request('limit') == '25' ? 'selected' : '' }}>25</option>
+									<option value="50" {{ request('limit') == '50' ? 'selected' : '' }}>50</option>
+									<option value="75" {{ request('limit') == '75' ? 'selected' : '' }}>75</option>
+									<option value="100" {{ request('limit') == '100' ? 'selected' : '' }}>100</option>
+								</select>
                             </div>
                         </div>
                     </div>
@@ -177,10 +176,10 @@
                             }
 
                             if (data.nextPageUrl) {
-                                loadMoreButton.setAttribute("data-next-url", data.nextPageUrl);
-                            } else {
-                                loadMoreButton.style.display = "none";
-                            }
+								loadMoreButton.setAttribute("data-next-url", data.nextPageUrl);
+							} else {
+								loadMoreButton.style.display = "none";
+							}
                         })
                         .catch(error => console.error("Error loading more portfolios:", error));
                 });
@@ -197,32 +196,6 @@
                 window.location.href = url.toString();
             }
         });
-
-        $(document).ready(function() {
-            $("#load-more").on("click", function() {
-                let button = $(this);
-                let page = button.data("page"); // Get the current page
-
-                $.ajax({
-                    url: "{{ route('portfolio.loadMore') }}?page=" + (page + 1),
-                    type: "GET",
-                    beforeSend: function() {
-                        button.text("Loading...");
-                    },
-                    success: function(response) {
-                        if (response.html) {
-                            $("#portfolio-list").append(response.html);
-                            button.data("page", page + 1);
-                            button.text("Load More");
-                        } else {
-                            button.remove(); // Hide button if no more items
-                        }
-                    },
-                    error: function() {
-                        button.text("Load More");
-                    },
-                });
-            });
-        });
+		
     </script>
 @endpush
