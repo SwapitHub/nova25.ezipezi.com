@@ -8,4 +8,6 @@ Route::group(['prefix' => $prefixnews], function ($router) use($suffix) {
     $router->get('/search', 'ContentFront@portfolioSearch');
     $router->get('/{alias}', 'ContentFront@portfolioDetails');
     $router->get('/category/{alias}', 'ContentFront@portfolioCat');  
+    $router->get('/load-more', 'ContentFront@loadMore')->name('portfolio.loadMore');
+
 });

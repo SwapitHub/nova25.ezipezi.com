@@ -912,6 +912,34 @@ class ContentFront extends GeneralController
         return view($this->templatePath . '.portfolio-summary', compact('portfolios'));
     }
 
+    public function loadMore(Request $request)
+    {
+        $limit = request('limit', 8); // Get limit from request or default to 8
+        $sort = request('sort', 'Featured'); // Get sort order
+        $page = request('page', 1); // Get page number
+
+        // Define query based on sort order
+        $query = Portfolio::where('status', 1);
+
+        if ($sort === 'Latest') {
+            $query->latest();
+        } else {
+            $query->where('featured', 1)->latest();
+        }
+
+        // Get paginated results
+        $portfolios = $query->paginate($limit, ['*'], 'page', $page);
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('partials.portfolio-items', compact('portfolios'))->render(),
+            ]);
+        }
+
+        return redirect()->route('portfolio.allportfolio');
+    }
+
+
 
     public function portfolioDetails($alias)
     {

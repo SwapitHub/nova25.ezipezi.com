@@ -197,5 +197,32 @@
                 window.location.href = url.toString();
             }
         });
+
+        $(document).ready(function() {
+            $("#load-more").on("click", function() {
+                let button = $(this);
+                let page = button.data("page"); // Get the current page
+
+                $.ajax({
+                    url: "{{ route('portfolio.loadMore') }}?page=" + (page + 1),
+                    type: "GET",
+                    beforeSend: function() {
+                        button.text("Loading...");
+                    },
+                    success: function(response) {
+                        if (response.html) {
+                            $("#portfolio-list").append(response.html);
+                            button.data("page", page + 1);
+                            button.text("Load More");
+                        } else {
+                            button.remove(); // Hide button if no more items
+                        }
+                    },
+                    error: function() {
+                        button.text("Load More");
+                    },
+                });
+            });
+        });
     </script>
 @endpush
