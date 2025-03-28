@@ -31,7 +31,7 @@ else $image = $templateFile.'/images/home/product-listing-bg.png';
 		   foreach($types as $tt) {
             $subtype = App\Models\ProCat::getProcat($tt->procat);
             $count = App\Models\ShopProduct::SubCatCount($tt->procat);?>
-		  <a href="{{ route('search') }}?protype={{ $dd->protype }}&procat={{ $tt->procat }}"><b>{{ $type->name }} : {{ $subtype->name  }}</b> ({{$count}})</a>
+		  <a href="{{ route('search') }}?protype={{ $dd->protype }}&procat={{ $tt->procat }}"><b>{{ $type->name??'' }} : {{ $subtype->name  }}</b> ({{$count}})</a>
 		<?php } } } ?>
 		  
 		 </div>
