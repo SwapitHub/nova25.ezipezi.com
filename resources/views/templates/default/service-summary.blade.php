@@ -114,14 +114,14 @@
 						{{-- List View Tab --}}
 						<div id="filtertab-1" class="tab-content">
 							<div id="portfolio-list">
-								@include('partials.portfolio-items', ['portfolios' => $portfolios])
+								@include('partials.portfolio-items', ['portfolios' => $portfolios,'type'=>'services'])
 							</div>
 						</div>
 	
 						{{-- Grid View Tab --}}
 						<div id="filtertab-2" class="tab-content">
 							<div class="d-flex-custom tab-two-col-inner" id="portfolio-grid">
-								@include('partials.portfolio-grid-items', ['portfolios' => $portfolios])
+								@include('partials.portfolio-grid-items', ['portfolios' => $portfolios,'type'=>'services'])
 							</div>
 						</div>
 	

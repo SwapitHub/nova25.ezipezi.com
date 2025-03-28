@@ -937,7 +937,6 @@ class ContentFront extends GeneralController
             'sort' => $sort,
             'limit' => $limit
         ]);
-
         if ($request->ajax()) {
             return response()->json([
                 'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),

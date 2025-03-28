@@ -1,9 +1,10 @@
 @foreach ($portfolios as $portfolio)
+
     <div class="filter-list-design-inner">
         <div class="filter-list-left-col">
             <div class="inner-all-shop-new-arrivals-box">
                 <div class="shop-new-arrivals-image">
-                    <a href="#" title="{{ $portfolio->name }}">
+                    <a href="{{ $type }}/{{ $portfolio->alias }}" title="{{ $portfolio->name }}">
                         <img src="{{ $portfolio->image }}" alt="{{ $portfolio->imagealt }}">
                     </a>
                 </div>
