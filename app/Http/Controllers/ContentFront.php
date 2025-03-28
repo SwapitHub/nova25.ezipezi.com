@@ -1063,7 +1063,7 @@ class ContentFront extends GeneralController
 
         DB::table('headermenu')->insert([
             'name' => 'event',
-            'slug' => 'event',
+            'alias' => 'event',
             'image' => '/data/banner/index.jpg',
             'url' => null,
             'description' => null,
