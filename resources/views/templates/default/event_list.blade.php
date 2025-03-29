@@ -55,10 +55,10 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
         <div class="accomo_listing-inner">
             <div class="accomo_listing-box">
             @if (count($event) ==0)
-                {{ trans('No portfolio') }}
+                {{ trans('No Events') }}
               @else
                   @foreach ($event as  $service )
-               <a href="{{ url('portfolio') }}/{{$service->alias}}" class="single-accomo-main col-md-4 col-sm-6 col-xs-12">
+               <a href="{{ url('event') }}/{{$service->alias}}" class="single-accomo-main col-md-4 col-sm-6 col-xs-12">
                 <div class="single-accomo">
                     <div class="accomo-img">
                         <img src="{{ asset($service->image) }}" alt="{{$service->imagealt}}">
