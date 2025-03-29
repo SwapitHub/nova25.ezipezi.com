@@ -60,7 +60,8 @@ class Event extends Model
 
     public function getCatEvent($id)
     {
-        return $query = (new Event)->where('status', 1)->where('eventtype', $id)->where('expire', '>', now())->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
+        // return $query = (new Event)->where('status', 1)->where('eventtype', $id)->where('expire', '>', now())->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
+        return $query = (new Event)->where('status', 1)->where('eventtype', $id)->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
     }
 
 
