@@ -76,7 +76,6 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
                 </ul>
             </div>
             @endif
-                
             </div>
         </div>
     </div>
