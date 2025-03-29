@@ -83,7 +83,7 @@ class Event extends Model
         return $query =  DB::table('events')
             ->select(DB::raw('eventtype'))
             ->where('status', 1)
-            ->where('expire', '>', now())
+            // ->where('expire', '>', now())
             ->where('startdate', '<', now())
             ->groupBy('eventtype')
             ->get();
