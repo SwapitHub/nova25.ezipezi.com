@@ -358,8 +358,8 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                             @endphp
                             @if ($portfolio->status)
                                 <li class="dropdown-menu-list">
-                                    <a href="{{ route('portfolio.all') }}" title="menu">{{ $portfolio->name }} <span
-                                            class="caret-icon">&nbsp;</span>
+                                    <a href="{{ route('portfolio.all') }}" title="menu">{{ $portfolio->name }}
+                                        <span class="caret-icon">&nbsp;</span>
                                     </a>
                                     @php
                                         $stypes = App\Models\PortfolioType::GetPortfolioTypes();
@@ -368,7 +368,8 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                         <ul class="sub-menu-header-list blog-menu-col-five">
                                             @foreach ($stypes as $dd)
                                                 <li>
-                                                    <a href="{{ url('portfolio/category') }}/{{ $dd->alias }}" title="menu">
+                                                    <a href="{{ url('portfolio/category') }}/{{ $dd->alias }}"
+                                                        title="menu">
                                                         <img src="{{ $dd->image }}">
                                                     </a>
                                                     <p class="menu-name">
@@ -382,6 +383,37 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                 </li>
                             @endif
                             {{-- portfolio end here --}}
+                            {{-- event end here --}}
+                            @php
+                                $event = App\Models\HeaderMenu::getMenu(14);
+                            @endphp
+                            @if ($event->status)
+                                <li class="dropdown-menu-list">
+                                    <a href="{{ route('event.all') }}" title="menu">{{ $event->name }} <span
+                                            class="caret-icon">&nbsp;</span>
+                                    </a>
+                                    @php
+                                        $stypes = App\Models\EventType::GetEventTypes();
+                                    @endphp
+                                    @if (count($stypes) >= 1)
+                                        <ul class="sub-menu-header-list blog-menu-col-five">
+                                            @foreach ($stypes as $dd)
+                                                <li>
+                                                    <a href="{{ url('event/category') }}/{{ $dd->alias }}"
+                                                        title="menu">
+                                                        <img src="{{ $dd->image }}">
+                                                    </a>
+                                                    <p class="menu-name">
+                                                        <a href="{{ url('event/category') }}/{{ $dd->alias }}"
+                                                            title="menu">{{ $dd->name }}</a>
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </li>
+                            @endif
+                            {{-- event end here --}}
 
                             <?php $cmsCat = App\Models\Widget::getcmsCat();
 			if (!empty($cmsCat)) {
@@ -650,6 +682,41 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                                         @endif
                                     </li>
                                 @endif
+                                {{-- blog section end  --}}
+
+                                {{-- portfolio section start  --}}
+                                @php
+                                    $portfolio = App\Models\HeaderMenu::getMenu(12);
+                                @endphp
+                                @if ($portfolio->status)
+                                    <li class="dropdown-menu-list">
+                                        <a href="{{ route('portfolio.all') }}"
+                                            title="menu">{{ $portfolio->name }}<span
+                                                class="caret-icon">&nbsp;</span>
+                                        </a>
+                                        @php
+                                            $stypes = App\Models\PortfolioType::GetPortfolioTypes();
+                                        @endphp
+                                        @if (count($stypes) >= 1)
+                                            <ul class="sub-menu-header-list blog-menu-col-five">
+                                                @foreach ($stypes as $dd)
+                                                    <li>
+                                                        <a href="{{ url('portfolio/category') }}/{{ $dd->alias }}"
+                                                            title="menu">
+                                                            <img src="{{ $dd->image }}"
+                                                                alt="{{ $dd->name }}">
+                                                        </a>
+                                                        <p class="menu-name">
+                                                            <a href="{{ url('portfolio/category') }}/{{ $dd->alias }}"
+                                                                title="menu">{{ $dd->name }}</a>
+                                                        </p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endif
+                                {{-- portfolio section end  --}}
 
                                 <?php $cmsCat = App\Models\Widget::getcmsCat();
 								if (!empty($cmsCat)) {

@@ -1,6 +1,7 @@
 <?php
 #app/Http/Controller/ContentFront.php
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\ShopEmailTemplate;
 use App\Models\ShopNews;
@@ -1058,6 +1059,54 @@ class ContentFront extends GeneralController
 
     ## event start here 
 
+    public function allevents(Request $request)
+    {
+        $sort = $request->query('sort', 'featured');
+        $limit = $request->query('limit', 8);
+
+        $eventQuery = Event::where('status', 1);
+        if ($sort === 'latest') {
+            $eventQuery->latest();
+        } else {
+            $eventQuery->where('featured', 1)->latest();
+        }
+
+        // Append sort and limit to pagination links
+        $portfolios = $eventQuery->paginate($limit)->appends([
+            'sort' => $sort,
+            'limit' => $limit
+        ]);
+        if ($request->ajax()) {
+            return response()->json([
+                'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                'nextPageUrl' => $portfolios->nextPageUrl(),
+            ]);
+        }
+
+        return view($this->templatePath . '.event-summary', compact('portfolios'));
+    }
+
+    public function eventCat($alias)
+    {
+        $cat = (new EventType)->getCat($alias);
+        $event = array();
+        if ($cat) {
+            $event = (new Event)->getCatEvent($cat->id);
+        }
+        $eventtype = EventType::GetEventTypes();
+        return view(
+            $this->templatePath . '.event_list',
+            array(
+                'title' => 'Event',
+                'description' => sc_store('description'),
+                'keyword' => sc_store('keyword'),
+                'event' => $event,
+                'eventtype' => $eventtype,
+            )
+        );
+    }
+
     public function eventDetails($alias)
     {
         $admin = Admin::user();
@@ -1113,6 +1162,26 @@ class ContentFront extends GeneralController
                 'footerPort' => $footerPort ?? [],
                 'footerBlog' => $footerBlog ?? [],
 
+            )
+        );
+    }
+
+    public function eventSearch(Request $request)
+    {
+        $keyword = request('name') ?? '';
+        $type = request('eventtype') ?? '';
+
+        $eventtype = EventType::GetEventTypes();
+        $event = (new Event)->search($keyword, $type);
+
+        return view(
+            $this->templatePath . '.event_list',
+            array(
+                'title' => 'Event',
+                'description' => sc_store('description'),
+                'keyword' => sc_store('keyword'),
+                'event' => $event,
+                'eventtype' => $eventtype,
             )
         );
     }

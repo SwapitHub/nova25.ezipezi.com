@@ -99,8 +99,8 @@
                                             </span>
                                         @endif
                                         <div id="preview_image" class="img_holder">
-                                            @if (old('image', $producttype['image'] ?? ''))
-                                                <img src="{{ asset(old('image', $producttype['image'] ?? '')) }}">
+                                            @if (old('image', $portfolio['image'] ?? ''))
+                                                <img src="{{ asset(old('image', $portfolio['image'] ?? '')) }}">
                                             @endif
     
                                         </div>

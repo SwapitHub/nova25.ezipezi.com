@@ -80,7 +80,7 @@ class Event extends Model
 
     public static function getHeaderCats()
     {
-        return $query =  DB::table('event')
+        return $query =  DB::table('events')
             ->select(DB::raw('eventtype'))
             ->where('status', 1)
             ->where('expire', '>', now())
@@ -91,7 +91,7 @@ class Event extends Model
 
     public static function catCount($newstype)
     {
-        return  $query = Event::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('event', $newstype)->count();
+        return  $query = Event::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('eventtype', $newstype)->count();
     }
 
     public static function getFavItem($tbl, $id)
