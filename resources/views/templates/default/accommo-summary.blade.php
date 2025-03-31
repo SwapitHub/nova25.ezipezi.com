@@ -19,6 +19,7 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
     <div class="container">
 	  <div class="left-column">
 	    <p><b>{{ $pageData->name }}  |</b> | Latest {{ $pageData->name }}</p>
+		<p>{{ $pageData->description }}</p>
 		 <div class="wine-list-type">
 		<?php $acctype = App\Models\Accommodation::getHeaderCats();
                             if(count($acctype) >=1) { 

@@ -22,6 +22,7 @@
         <div class="container">
             <div class="left-column">
                 <p><b>{{ $pageData->name }} |</b> | Latest {{ $pageData->name }}</p>
+                <p>{{ $pageData->description }}</p>
                 <div class="wine-list-type">
                     <?php 
                     
@@ -30,7 +31,7 @@
                         foreach($stypes as $dd) {
                             $count = App\Models\Event::catCount($dd->eventtype);
                                 $type = App\Models\EventType::getSingleCat($dd->eventtype) ?>
-                                <a href="{{ url('event/search') }}?eventtype={{ $dd->eventtype }}"><b>{{ $type->name }}
+                    <a href="{{ url('event/search') }}?eventtype={{ $dd->eventtype }}"><b>{{ $type->name }}
                         </b>({{ $count }})</a>
                     <?php } } ?>
 
@@ -114,19 +115,29 @@
                     </div>
 
                     <div class="filter-content-tab">
-                        {{-- List View Tab --}}
-                        <div id="filtertab-1" class="tab-content">
-                            <div id="portfolio-list">
-                                @include('partials.portfolio-items', ['portfolios' => $portfolios,'type'=>'portfolio'])
+                        @if (count($portfolios) > 0)
+                            {{-- List View Tab --}}
+                            <div id="filtertab-1" class="tab-content">
+                                <div id="portfolio-list">
+                                    @include('partials.portfolio-items', [
+                                        'portfolios' => $portfolios,
+                                        'type' => 'portfolio',
+                                    ])
+                                </div>
                             </div>
-                        </div>
 
-                        {{-- Grid View Tab --}}
-                        <div id="filtertab-2" class="tab-content">
-                            <div class="d-flex-custom tab-two-col-inner" id="portfolio-grid">
-                                @include('partials.portfolio-grid-items', ['portfolios' => $portfolios,'type'=>'portfolio'])
+                            {{-- Grid View Tab --}}
+                            <div id="filtertab-2" class="tab-content">
+                                <div class="d-flex-custom tab-two-col-inner" id="portfolio-grid">
+                                    @include('partials.portfolio-grid-items', [
+                                        'portfolios' => $portfolios,
+                                        'type' => 'portfolio',
+                                    ])
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <center><h3>No Portfolio found </h3></center>
+                        @endif
 
                         {{-- Load More Button --}}
                         <div class="text-center">

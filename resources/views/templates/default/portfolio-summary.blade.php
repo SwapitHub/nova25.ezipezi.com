@@ -22,6 +22,7 @@
         <div class="container">
             <div class="left-column">
                 <p><b>{{ $pageData->name }} |</b> | Latest {{ $pageData->name }}</p>
+                <p>{{ $pageData->description }}</p>
                 <div class="wine-list-type">
                     <?php $stypes = App\Models\Portfolio::getHeaderCats();
            if(count($stypes) >=1) {
