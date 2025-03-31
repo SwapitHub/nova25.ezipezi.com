@@ -371,8 +371,7 @@ section.banner-bg .container {
 }
 
 .middle-header {
-    padding: 41px 0;
-    padding-bottom: 17px;
+    padding: 0px;
 }
 
 .middle-header-inner {
@@ -439,7 +438,7 @@ section.banner-bg .container {
 }
 
 ul.main-list-parent li a {
-    padding: 15px 16px;
+    padding: 15px 11px;
     letter-spacing: 2px;
     font-size: 13px;
     font-weight: 700;
@@ -2869,6 +2868,12 @@ hr {
     border-top: 1px solid #eee;
 }
 
+section.header {
+    position: relative;
+}
+
+
+
 @media (min-width: 1200px) {
     .service-box-one .title-decimal {
         font-size: 26px;
@@ -4712,18 +4717,16 @@ aside.content-aside .panel-body ul li a i {
         display: block;
     }
 
-    .middle-header {
-        padding-bottom: 47px;
-    }
-
     button#show-megamenu-mobile {
         right: 20px;
         top: -40px;
     }
 
-    .main-header-menu {
-        position: relative;
-    }
+   .main-header-menu {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+}
 
     .close-icon-for-mobile {
         text-align: right;
@@ -4761,20 +4764,19 @@ aside.content-aside .panel-body ul li a i {
     }
 
     span.caret-icon:before {
-        content: "";
-        display: inline-block;
-        width: 13px;
-        height: 3px;
-        margin-left: 2px;
-        vertical-align: middle;
-        border-top: 4px solid\9;
-        background: #fff;
-        position: absolute;
-        transform: rotate(90deg);
-        top: 6.7px;
-        left: 5px;
-    }
-
+    content: "";
+    display: inline-block;
+    width: 13px;
+    height: 3px;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid\9;
+    background: #fff;
+    position: absolute;
+    transform: rotate(90deg);
+    top: 8px;
+    left: 6px;
+}
     ul.main-list-parent li {
         display: block;
         position: relative;
@@ -4871,6 +4873,12 @@ aside.content-aside .panel-body ul li a i {
     .filter-table-layout {
         overflow: auto;
     }
+	.menu-bar ul li{
+		Margin:0 !important;
+	}
+	.menu-bar ul li a {
+    padding: 10px 0 !important;
+}
 }
 
 
@@ -5108,6 +5116,12 @@ aside.content-aside .panel-body ul li a i {
     .prod-midd-right {
         padding: 15px;
     }
+	.middle-header {
+    padding-bottom: 0;
+}	
+.middle-header-column img {
+    max-width: 90px !important;
+}
 }
 
 @media(max-width:640px) {

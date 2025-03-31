@@ -3,6 +3,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
 <script>
     window.location.href = "{{ route('expire') }}";
 </script>"; <?php } ?>
+
 <div class="wrapper">
     <?php $admUser = App\Admin\Admin::user();
     if (!empty($admUser)) {
@@ -16,6 +17,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
     $cartAct = App\Models\HeaderMenu::getMenu(8);
     $currAct = App\Models\HeaderMenu::getMenu(6);
     ?>
+	<section class="header">
     <div class="topbar" style="<?php //if($userAct->status==0 && $currAct->status==0 && $cartAct->status==0 ) echo 'display: none';
     ?>">
         <div class="container">
@@ -134,7 +136,7 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
     </div>
     {{-- Middle header end --}}
 
-    <header>
+    <div class="main-header-menu">
         <div class="container">
             <div class="header-inner">
                 <div class="header-content">
@@ -763,4 +765,5 @@ if(sc_store('enddate')<=date('Y-m-d')) { ?>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+	</section>
