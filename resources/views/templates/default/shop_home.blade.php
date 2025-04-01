@@ -30,7 +30,7 @@
                                 </a>
                                 <div class="location-section">
                                     <ul class="custom-justify-start">
-                                        <li><i class="fa-solid fa-location-dot"></i></li>
+                                        {{-- <li><i class="fa-solid fa-location-dot"></i></li> --}}
                                         <li>
                                             <p>{{ $item->introduction ?? 'Location not available' }}</p>
                                         </li>
