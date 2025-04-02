@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Localidad;
 use App\Models\Portfolio;
+use App\Models\Gallary;
 use App\Models\PortfolioImages;
 use App\Models\PortfolioType;
 use App\Models\Branch;

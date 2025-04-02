@@ -108,7 +108,6 @@
     ondrop="return false;">
 
     @include($templatePath . '.header')
-
     <!--Module banner -->
     @isset($blocksContent['banner_top'])
         @foreach ($blocksContent['banner_top'] as $layout)
