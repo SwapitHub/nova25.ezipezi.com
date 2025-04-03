@@ -2873,6 +2873,11 @@ section.header {
 }
 
 
+.banner-slider-main ul.slick-dots {
+transform:inherit;
+}
+
+
 
 @media (min-width: 1200px) {
     .service-box-one .title-decimal {
