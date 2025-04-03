@@ -35,11 +35,11 @@
 
                 @foreach ($slides as $banner)
                     <div class="inner-banner-slider">
-                        @if ($banner->startdate <= $currentDate && $banner->expity >= $currentDate)
+                        {{-- @if ($banner->startdate <= $currentDate && $banner->expity >= $currentDate) --}}
                             <div class="animated-banner-content">
                                 {!! $banner->description !!}
                             </div>
-                        @endif
+                        {{-- @endif --}}
                         <div class="banner-img banner-img-one">
                             <img src="{{ asset($banner->image) }}" alt="{{ $banner->image_alt }}">
                         </div>
