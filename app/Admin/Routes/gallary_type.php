@@ -1,5 +1,5 @@
 <?php
-$router->group(['prefix' => 'gallary-types'], function ($router) {
+$router->group(['prefix' => 'gallery-types'], function ($router) {
     $router->get('/', 'GallarytypeController@index')->name('gallary_type.index');
     $router->get('create', 'GallarytypeController@create')->name('gallary_type.create');
     $router->post('/create', 'GallarytypeController@postCreate')->name('gallary_type.create');

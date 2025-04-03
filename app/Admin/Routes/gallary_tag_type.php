@@ -1,5 +1,5 @@
 <?php
-$router->group(['prefix' => 'gallary-tag-type'], function ($router) {
+$router->group(['prefix' => 'gallery-tag-type'], function ($router) {
     $router->get('/', 'ImageGallaryTagTypeController@index')->name('gallary_tag_type.index');
     $router->get('create', 'ImageGallaryTagTypeController@create')->name('gallary_tag_type.create');
     $router->post('/create', 'ImageGallaryTagTypeController@postCreate')->name('gallary_tag_type.create');

@@ -1,5 +1,5 @@
 <?php
-$router->group(['prefix' => 'gallary-tag'], function ($router) {
+$router->group(['prefix' => 'gallery-tag'], function ($router) {
     $router->get('/', 'GallarytagController@index')->name('gallary_tag.index');
     $router->get('create', 'GallarytagController@create')->name('gallary_tag.create');
     $router->post('/create', 'GallarytagController@postCreate')->name('gallary_tag.create');
