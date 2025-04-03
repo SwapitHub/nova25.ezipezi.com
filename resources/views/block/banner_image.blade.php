@@ -34,12 +34,18 @@
                 @endphp
 
                 @foreach ($slides as $banner)
+                    @php
+                        $currentDate = now();
+                        $isActive =
+                            $banner->startdate <= $currentDate &&
+                            (empty($banner->expity) || $banner->expity >= $currentDate);
+                    @endphp
                     <div class="inner-banner-slider">
-                        {{-- @if ($banner->startdate <= $currentDate && $banner->expity >= $currentDate) --}}
+                        @if ($isActive)
                             <div class="animated-banner-content">
                                 {!! $banner->description !!}
                             </div>
-                        {{-- @endif --}}
+                        @endif
                         <div class="banner-img banner-img-one">
                             <img src="{{ asset($banner->image) }}" alt="{{ $banner->image_alt }}">
                         </div>
