@@ -68,7 +68,6 @@ class ShopFront extends GeneralController
         // make all togethor for talk of the show carousal
         $services = Service::where('status', 1)->where('tott', 1)->get();
         $blogs = NewBlog::where('status', 1)->where('tott', 1)->get();
-        dd($blogs);
         $events = Event::where('status', 1)->where('tott', 1)->get();
         $properties = Property::where('status', 1)->where('tott', 1)->get();
         $accommodations = accommodation::where('status', 1)->where('tott', 1)->get();
@@ -83,7 +82,7 @@ class ShopFront extends GeneralController
                 return $item;
             });
 
-        $blogs = Blog::where('tott', 1)
+        $blogs = NewBlog::where('tott', 1)
         ->where('status', 1)
             ->get()
             ->map(function ($item) {
