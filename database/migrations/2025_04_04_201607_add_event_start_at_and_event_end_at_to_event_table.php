@@ -14,7 +14,7 @@ class AddEventStartAtAndEventEndAtToEventTable extends Migration
     public function up()
     {
         Schema::table('event', function (Blueprint $table) {
-            $table->timestamp('event_start_at')->nullable()->after('existing_column'); // Replace 'existing_column' with the column after which you want to add it
+            $table->timestamp('event_start_at')->nullable()->after('expire'); // Replace 'existing_column' with the column after which you want to add it
             $table->timestamp('event_end_at')->nullable()->after('event_start_at');
         });
     }
