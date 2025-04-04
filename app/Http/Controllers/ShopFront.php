@@ -66,47 +66,48 @@ class ShopFront extends GeneralController
         $eventList = Event::where('status',1)->latest()->take(5)->get();
 
         // make all togethor for talk of the show carousal
-        $services = Service::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
-        $blogs = Blog::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
-        $events = Event::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
-        $properties = Property::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
-        $accommodations = accommodation::where('sorder', 'recent')->orWhere('sorder', 'featured')->get();
+        $services = Service::where('status', 1)->where('tott', 1)->get();
+        $blogs = Blog::where('status', 1)->where('tott', 1)->get();
+        $events = Event::where('status', 1)->where('tott', 1)->get();
+        $properties = Property::where('status', 1)->where('tott', 1)->get();
+        $accommodations = accommodation::where('status', 1)->where('tott', 1)->get();
 
         // Merge and shuffle data
-        $services = Service::where('sorder', 'recent')
-            ->orWhere('sorder', 'featured')
+    
+        $services = Service::where('tott', 1)
+            ->where('status', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'services';
                 return $item;
             });
 
-        $blogs = Blog::where('sorder', 'recent')
-            ->orWhere('sorder', 'featured')
+        $blogs = Blog::where('tott', 1)
+        ->where('status', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'blog';
                 return $item;
             });
 
-        $events = Event::where('sorder', 'recent')
-            ->orWhere('sorder', 'featured')
+        $events = Event::where('tott', 1)
+        ->where('status', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'event';
                 return $item;
             });
 
-        $properties = Property::where('sorder', 'recent')
-            ->orWhere('sorder', 'featured')
+        $properties = Property::where('tott', 1)
+        ->where('status', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'property';
                 return $item;
             });
 
-        $accommodations = Accommodation::where('sorder', 'recent')
-            ->orWhere('sorder', 'featured')
+        $accommodations = Accommodation::where('tott', 1)
+        ->where('status', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'accommodation';
