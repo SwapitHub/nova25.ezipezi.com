@@ -286,7 +286,7 @@
 
 
                                     <div class="form-group  kind kind0 kind1  {{ $errors->has('startdate') ? ' has-error' : '' }}">
-                                        <label for="startdate" class="col-sm-2  control-label">Event Date</label>
+                                        <label for="startdate" class="col-sm-2  control-label">Date Listed</label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i
@@ -303,27 +303,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group  kind kind0 kind1  {{ $errors->has('eventtime') ? ' has-error' : '' }}">
-                                        <label for="eventtime" class="col-sm-2  control-label">Event Time</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="fa fa-clock-o fa-fw"></i></span>
-                                                <input type="time" style="width: 100px;" id="eventtime"
-                                                    name="eventtime" value="{!! old('eventtime', date('Y-m-d') ?? '') !!}"
-                                                    class="form-control input-sm eventtime " placeholder="" />
-                                            </div>
-                                            @if ($errors->has('eventtime'))
-                                                <span class="help-block">
-                                                    <i class="fa fa-info-circle"></i> {{ $errors->first('eventtime') }}
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    
-
-                                    {{-- <div
-                                        class="form-group  kind kind0 kind1  {{ $errors->has('expire') ? ' has-error' : '' }}">
+                                    <div class="form-group  kind kind0 kind1  {{ $errors->has('expire') ? ' has-error' : '' }}">
                                         <label for="expire" class="col-sm-2  control-label">Expiry Date</label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
@@ -339,8 +319,47 @@
                                                 </span>
                                             @endif
                                         </div>
-                                    </div> --}}
+                                    </div>
 
+
+                                    <div class="form-group  kind kind0 kind1  {{ $errors->has('event_start_at') ? ' has-error' : '' }}">
+                                        <label for="event_start_at" class="col-sm-2  control-label">Event start at</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i
+                                                        class="fa fa-clock-o fa-fw"></i></span>
+                                                <input type="datetime-local" style="width: 100px;" id="event_start_at"
+                                                    name="event_start_at" value="{!! old('event_start_at') !!}"
+                                                    class="form-control input-sm event_start_at " placeholder="" />
+                                            </div>
+                                            @if ($errors->has('event_start_at'))
+                                                <span class="help-block">
+                                                    <i class="fa fa-info-circle"></i> {{ $errors->first('event_start_at') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group  kind kind0 kind1  {{ $errors->has('event_end_at') ? ' has-error' : '' }}">
+                                        <label for="event_end_at" class="col-sm-2  control-label">Event end at</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i
+                                                        class="fa fa-clock-o fa-fw"></i></span>
+                                                <input type="datetime-local" style="width: 100px;" id="event_end_at"
+                                                    name="event_end_at" value="{!! old('event_end_at') !!}"
+                                                    class="form-control input-sm event_end_at " placeholder="" />
+                                            </div>
+                                            @if ($errors->has('event_end_at'))
+                                                <span class="help-block">
+                                                    <i class="fa fa-info-circle"></i> {{ $errors->first('event_end_at') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    
+
+                                    
                                     <div class="form-group   {{ $errors->has('alias') ? ' has-error' : '' }}">
                                         <label for="alias"
                                             class="col-sm-2  control-label">Tickets Available</label>
