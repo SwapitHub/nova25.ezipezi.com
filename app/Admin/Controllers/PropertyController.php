@@ -392,6 +392,7 @@ class PropertyController extends Controller
         $admin = Admin::user();
         $property = Property::find($id);
         $data = request()->all();
+        // dd($data);
         $data['alias'] = !empty($data['alias'])?$data['alias']:$data['name'];
         $data['alias'] = sc_word_format_url($data['alias']);
         $data['alias'] = sc_word_limit($data['alias'], 100);
@@ -488,6 +489,7 @@ class PropertyController extends Controller
             'faccommo' => !empty($data['faccommo']) ? 1 : 0,
              'testimonial' => !empty($data['testimonial']) ? 1 : 0,
              'fablog' => !empty($data['fablog']) ? 1 : 0,
+             'tott' => !empty($data['tott']) ? 1 : 0,
             'faport' => !empty($data['faport']) ? 1 : 0,
             'portorder' => $data['portorder'],
             'blogorder' => $data['blogorder'],

@@ -1021,6 +1021,15 @@
                         </div>
 
                         <div class="form-group  ">
+                            <label for="tott"
+                                class="col-sm-2  control-label">Talk of the town</label>
+                            <div class="col-sm-8">
+                                <input type="checkbox" name="tott"
+                                    {{  old('tott',(empty($accommodation['tott'])?0:1))?'checked':''}}>
+                            </div>
+                        </div>
+
+                        <div class="form-group  ">
                                     <label for="testimonial"
                                         class="col-sm-2  control-label">Meet the team</label>
                                     <div class="col-sm-8">
@@ -1077,7 +1086,7 @@
 <script src="{{ asset('admin/plugin/bootstrap-switch.min.js')}}"></script>
 
 <script type="text/javascript">
-    $("[name='top'],[name='status'],[name='featured'],[name='fprop'],[name='fnews'],[name='fproduct'],[name='fservice'],[name='faccommo'],[name='testimonial'],[name='faport'],[name='fablog']").bootstrapSwitch();
+    $("[name='tott'],[name='top'],[name='status'],[name='featured'],[name='fprop'],[name='fnews'],[name='fproduct'],[name='fservice'],[name='faccommo'],[name='testimonial'],[name='faport'],[name='fablog']").bootstrapSwitch();
 </script>
 
 <script type="text/javascript">
