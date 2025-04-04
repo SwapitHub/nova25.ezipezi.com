@@ -8,6 +8,7 @@ use App\Models\Blog;
 use App\Models\Accommodation;
 use App\Models\Service;
 use App\Models\Event;
+use App\Models\HeaderMenu;
 use App\Models\Property;
 use App\Models\ShopBanner;
 use App\Models\ShopCategory;
@@ -63,65 +64,156 @@ class ShopFront extends GeneralController
         if ($homedata->fablog) {
             $footerBlog = (new NewBlog)->footerNewBlog($homedata->blogorder);
         }
-        $eventList = Event::where('status',1)->latest()->take(5)->get();
+        $eventList = Event::where('status', 1)->latest()->take(5)->get();
 
-        // make all togethor for talk of the show carousal
-        $services = Service::where('status', 1)->where('tott', 1)->get();
-        $blogs = NewBlog::where('status', 1)->where('tott', 1)->get();
-        $events = Event::where('status', 1)->where('tott', 1)->get();
-        $properties = Property::where('status', 1)->where('tott', 1)->get();
-        $accommodations = accommodation::where('status', 1)->where('tott', 1)->get();
 
-        // Merge and shuffle data
-    
-        $services = Service::where('tott', 1)
-            ->where('status', 1)
-            ->get()
-            ->map(function ($item) {
-                $item->type = 'services';
-                return $item;
-            });
 
-        $blogs = NewBlog::where('tott', 1)
-        ->where('status', 1)
-            ->get()
-            ->map(function ($item) {
-                $item->type = 'blog';
-                return $item;
-            });
+        // // make all togethor for talk of the show carousal
+        // $services = Service::where('status', 1)->where('tott', 1)->get();
+        // $blogs = NewBlog::where('status', 1)->where('tott', 1)->get();
+        // $events = Event::where('status', 1)->where('tott', 1)->get();
+        // $properties = Property::where('status', 1)->where('tott', 1)->get();
+        // $accommodations = accommodation::where('status', 1)->where('tott', 1)->get();
 
-        $events = Event::where('tott', 1)
-        ->where('status', 1)
-            ->get()
-            ->map(function ($item) {
-                $item->type = 'event';
-                return $item;
-            });
+        // // Merge and shuffle data
 
-        $properties = Property::where('tott', 1)
-        ->where('status', 1)
-            ->get()
-            ->map(function ($item) {
-                $item->type = 'property';
-                return $item;
-            });
 
-        $accommodations = Accommodation::where('tott', 1)
-        ->where('status', 1)
-            ->get()
-            ->map(function ($item) {
-                $item->type = 'accommodation';
-                return $item;
-            });
+        // $services = Service::where('tott', 1)
+        //     ->where('status', 1)
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'services';
+        //         return $item;
+        //     });
 
-        // Merge all data into a single collection
+        // $blogs = NewBlog::where('tott', 1)
+        // ->where('status', 1)
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'blog';
+        //         return $item;
+        //     });
+
+        // $events = Event::where('tott', 1)
+        // ->where('status', 1)
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'event';
+        //         return $item;
+        //     });
+
+        // $properties = Property::where('tott', 1)
+        // ->where('status', 1)
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'property';
+        //         return $item;
+        //     });
+
+        // $accommodations = Accommodation::where('tott', 1)
+        // ->where('status', 1)
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'accommodation';
+        //         return $item;
+        //     });
+
+        // // Merge all data into a single collection
+        // $carouselItems = collect()
+        //     ->merge($services)
+        //     ->merge($blogs)
+        //     ->merge($events)
+        //     ->merge($properties)
+        //     ->merge($accommodations)
+        //     ->shuffle(); // Shuffle for randomness
+
+        // Check if header menus are active (replace IDs with your actual menu IDs)
+        $eventMenu = HeaderMenu::find(14);  
+        $blogMenu = HeaderMenu::find(13);     
+        $serviceMenu = HeaderMenu::find(3);    
+        $portfolioMenu = HeaderMenu::find(12);
+        $propertyMenu = HeaderMenu::find(14);  
+        $accommodationMenu = HeaderMenu::find(3); 
+
+
+        // Initialize empty collections for each section
+        $services = collect();
+        $blogs = collect();
+        $events = collect();
+        $properties = collect();
+        $accommodations = collect();
+
+        // Fetch data ONLY if the corresponding menu is active
+        if ($serviceMenu && $serviceMenu->status == 1) {
+            $services = Service::where('tott', 1)
+                ->where('status', 1)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'services';
+                    return $item;
+                });
+        }
+        if ($portfolioMenu && $portfolioMenu->status == 1) {
+            $services = Portfolio::where('tott', 1)
+                ->where('status', 1)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'portfolio';
+                    return $item;
+                });
+        }
+
+        if ($blogMenu && $blogMenu->status == 1) {
+            $blogs = NewBlog::where('tott', 1)
+                ->where('status', 1)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'blog';
+                    return $item;
+                });
+        }
+
+        if ($eventMenu && $eventMenu->status == 1) {
+            $events = Event::where('tott', 1)
+                ->where('status', 1)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'event';
+                    return $item;
+                });
+        }
+
+        if ($propertyMenu && $propertyMenu->status == 1) {
+            $properties = Property::where('tott', 1)
+                ->where('status', 1)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'property';
+                    return $item;
+                });
+        }
+
+        if ($accommodationMenu && $accommodationMenu->status == 1) {
+            $accommodations = Accommodation::where('tott', 1)
+                ->where('status', 1)
+                ->get()
+                ->map(function ($item) {
+                    $item->type = 'accommodation';
+                    return $item;
+                });
+        }
+
+        // Merge all active sections into a shuffled collection
         $carouselItems = collect()
             ->merge($services)
             ->merge($blogs)
             ->merge($events)
             ->merge($properties)
             ->merge($accommodations)
-            ->shuffle(); // Shuffle for randomness
+            ->shuffle();
+
+
+
         return view(
             $this->templatePath . '.shop_home',
             array(
