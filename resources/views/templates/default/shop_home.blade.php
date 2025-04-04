@@ -23,7 +23,7 @@
                                 <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}"
                                         alt="{{ $item->image_alt }}" style="height:260;width:357px"></a>
                             <div class="ribben-box">
-							<h5>Dummy Content</h5>
+							<h5>{{ $item->type }}</h5>
 							</div>
 							
 							</div>
