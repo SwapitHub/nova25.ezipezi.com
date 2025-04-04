@@ -938,44 +938,44 @@ button#show-megamenu-mobile {
     -moz-transform: scale(1.1);
 }
 
+
+
 /* Base styles for .animated-banner-content */
 .animated-banner-content {
     opacity: 0;
     transform: translateY(-100px);
     transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
+  position: absolute;
     top: 30%;
     left: 80px;
-}
 
-/* Active state for .animated-banner-content */
-.inner-banner-slider.slick-slide.slick-current.slick-active .animated-banner-content {
-    opacity: 1;
-    transform: translateY(0);
-    /* Move content down to its original position */
 }
+ .inner-banner-slider.slick-slide.slick-current.slick-active .animated-banner-content { 
+ opacity: 1; 
+    transform: translateY(0);
+    } 
 
 /* Styles for h2 */
 .animated-banner-content h2 {
     opacity: 0;
     transform: translateY(-250px);
-    /* Move h2 up initially */
+    Move h2 up initially 
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, transform 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
-    /* Delay for h2 */
+   /* Delay for h2 */
 }
 
 /* Active state for h2 */
 .inner-banner-slider.slick-slide.slick-current.slick-active .animated-banner-content h2 {
     opacity: 1;
     transform: translateY(0);
-    /* Move h2 down to its original position */
+   /* Move h2 down to its original position */
 }
 
-/* Styles for h1 */
+/* Styles for h1*/
 .animated-banner-content h1 {
     opacity: 0;
     transform: translateY(-100px);
-    /* Move h1 up initially */
+    /* Move h1 up initially */ 
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, transform 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
     /* Delay for h1 */
 }
@@ -993,11 +993,12 @@ button#show-megamenu-mobile {
     transform: translateY(-50px);
     /* Move p up initially */
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s, transform 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.7s;
-    /* Delay for p */
+  /*Delay for p */
     font-size: 16px;
 }
 
 /* Active state for p */
+
 .inner-banner-slider.slick-slide.slick-current.slick-active .animated-banner-content p {
     opacity: 1;
     transform: translateY(0);
@@ -1127,15 +1128,17 @@ section.banner-bg .inner-banner-list-slider {
 
 
 /* list Start*/
+
 .banner-slider-main ul.slick-dots {
     justify-content: center;
     align-items: center;
     display: flex;
-    position: absolute;
-    bottom: 20px;
+    position: static;
+    bottom:0px;
     left: 0;
     right: 0;
     gap: 10px;
+	margin-top:10px;
 }
 
 .banner-slider-main ul.slick-dots li {
@@ -1146,12 +1149,12 @@ section.banner-bg .inner-banner-list-slider {
     margin: 0;
     border: 2px solid #fff;
     cursor: pointer;
+	outline:1px solid #919191;
 }
 
 .banner-slider-main ul.slick-dots li.slick-active {
-    background-color: transparent;
+    background-color: #a6a6a6;
 }
-
 .banner-slider-main ul.slick-dots li button {
     display: none;
 }
@@ -2877,6 +2880,11 @@ section.header {
 transform:inherit;
 }
 
+/* .banner-slider-main.slick-slider .inner-banner-slider {
+	display:flex;
+	flex-direction:column-reverse;
+} */
+
 
 
 @media (min-width: 1200px) {
@@ -3399,6 +3407,27 @@ h2.sub-title {
 .error-four-zeero-four-col p {
     margin-bottom: 10px;
 }
+
+.inner-barber-shop-img {
+  position: relative;
+}
+.ribben-box {
+	position: absolute;
+	bottom: 10px;
+	left: 0;
+}
+.ribben-box h5 {
+	background-color: #f4695f;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+	padding: 6px 10px;
+	line-height: normal;
+}
+
+
+
 
 @media(min-width:767px) {
     .error-four-zeero-four-col-two {
@@ -4884,6 +4913,11 @@ aside.content-aside .panel-body ul li a i {
 	.menu-bar ul li a {
     padding: 10px 0 !important;
 }
+
+.banner-slider-main ul.slick-dots {
+	bottom: 100px;
+}
+
 }
 
 
@@ -4904,17 +4938,17 @@ aside.content-aside .panel-body ul li a i {
         padding: 0px;
     }
 
-    .inner-banner-slider {
+/*     .inner-banner-slider {
         display: flex !important;
         flex-direction: column-reverse;
-        /* gap: 90px; */
-    }
+        /* gap: 90px; 
+    } */
 
-    .animated-banner-content {
+/*     .animated-banner-content {
         position: static;
         margin-top: 30px;
         text-align: center;
-    }
+    } */
 
     h1 {
         font-size: 25px;
@@ -5161,7 +5195,20 @@ aside.content-aside .panel-body ul li a i {
     .women-man-collection-sec-left {
         width: 100%;
     }
+	
+	
+.animated-banner-content {
+	left:0;
+	right:0;
+	padding-left:15px;
+	padding-right:15px;
+	
+	}
+	
+	
 }
+
+
 
 .filter-tab-col-left-shop-by li.tab-link.current {
     display: block;
@@ -5181,4 +5228,21 @@ aside.content-aside .panel-body ul li a i {
     .rate-history .ratings .fa {
         color: #000;
         font-size: 16px;
-    }
+}
+}
+
+@media(max-width:479px) {
+	
+	.animated-banner-content {
+	top: 20%;
+}
+
+.animated-banner-content h2, .animated-banner-content h3 {
+	font-size:15px;
+}
+
+.animated-banner-content h1 {
+	font-size:18px;
+}
+
+}

@@ -22,7 +22,11 @@
                             <div class="inner-barber-shop-img">
                                 <a href="{{ $url }}"><img src="{{ asset($item->image ?? 'images/default.jpg') }}"
                                         alt="{{ $item->image_alt }}" style="height:260;width:357px"></a>
-                            </div>
+                            <div class="ribben-box">
+							<h5>Dummy Content</h5>
+							</div>
+							
+							</div>
 
                             <div class="barber-shop-box-main">
                                 <a href="{{ $url }}">
