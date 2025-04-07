@@ -419,7 +419,8 @@
                                             <input type="hidden" name="newimage" class="newimage">
                                             <button type="button" id="add_sub_image" class="btn btn-flat btn-success">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
-                                                {{ trans('product.admin.add_sub_image') }}
+                                                {{-- {{ trans('product.admin.add_sub_image') }} --}}
+                                                Add more videos
                                             </button>
 
                                         </div>
