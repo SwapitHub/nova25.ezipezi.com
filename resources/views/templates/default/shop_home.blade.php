@@ -1611,6 +1611,58 @@
         </div>
     </section>
 
+    {{-- Image and video gallery carousal start --}}
+    @if ($filteredItems->count() > 0)
+        <section class="recommended-bg ctm-section-margin">
+            <div class="container">
+                <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
+                    <h2>ARMCHAIR ADVENTURE – BROWSE OUR GALLERIES – WATCH OUR VIDEOS</h2>
+                    <p class="ctm-mt-20">Can include advertising spots for clients (must have start & expiry dates)</p>
+                </div>
+                <!-- Carousel Wrapper -->
+                <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
+                    @foreach ($filteredItems as $item)
+                        @php
+                            $url = url("/{$item->type}/{$item->alias}");
+                        @endphp
+                        <div class="inner-barber-shop-recommended">
+                            <div class="inner-barber-shop-img">
+                                <a href="{{ $url }}">
+                                    <img src="{{ asset($item->image ?? 'images/default.jpg') }}"
+                                        alt="{{ $item->image_alt }}" style="height:260px;width:357px">
+                                </a>
+                                <div class="ribben-box">
+                                    <h5>{{ $item->type }}</h5>
+                                </div>
+                            </div>
+                            <div class="barber-shop-box-main">
+                                <a href="{{ $url }}">
+                                    <h5>{{ ucfirst($item->title ?? $item->name) }}</h5>
+                                </a>
+                                <div class="location-section">
+                                    <ul class="custom-justify-start">
+                                        @php
+                                            $intro = strip_tags($item->introduction ?? 'Location not available');
+                                            $words = str_word_count($intro, 1);
+                                            $limitedIntro =
+                                                count($words) > 150
+                                                    ? implode(' ', array_slice($words, 0, 150)) . '...'
+                                                    : $intro;
+                                        @endphp
+                                        <li>
+                                            <p>{!! $limitedIntro !!}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+    {{-- Image and video gallery carousal end  --}}
+
 
     <section class="testimonial-sec" style="background-image: url('{{ asset($testtitle->image) }}');">
         <div class="container">
