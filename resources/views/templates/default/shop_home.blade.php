@@ -48,54 +48,61 @@
     @endif --}}
 
     @php
-    // Filter out expired items
-    $filteredItems = $carouselItems->filter(function ($item) {
-        return is_null($item->expire) || \Carbon\Carbon::now()->lt($item->expire);
-    });
-@endphp
+        // Filter out expired items
+        $filteredItems = $carouselItems->filter(function ($item) {
+            return is_null($item->expire) || \Carbon\Carbon::now()->lt($item->expire);
+        });
+    @endphp
 
-@if ($filteredItems->count() > 0)
-    <section class="recommended-bg ctm-section-margin">
-        <div class="container">
-            <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
-                <h2>TALK OF THE TOWN</h2>
-                <p class="ctm-mt-20">ADVERTISING SPOTS MUST HAVE START AND EXPIRY DATE</p>
-            </div>
-            <!-- Carousel Wrapper -->
-            <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
-                @foreach ($filteredItems as $item)
-                    @php
-                        $url = url("/{$item->type}/{$item->alias}");
-                    @endphp
-                    <div class="inner-barber-shop-recommended">
-                        <div class="inner-barber-shop-img">
-                            <a href="{{ $url }}">
-                                <img src="{{ asset($item->image ?? 'images/default.jpg') }}" 
-                                     alt="{{ $item->image_alt }}" 
-                                     style="height:260px;width:357px">
-                            </a>
-                            <div class="ribben-box">
-                                <h5>{{ $item->type }}</h5>
+    @if ($filteredItems->count() > 0)
+        <section class="recommended-bg ctm-section-margin">
+            <div class="container">
+                <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
+                    <h2>TALK OF THE TOWN</h2>
+                    <p class="ctm-mt-20">ADVERTISING SPOTS MUST HAVE START AND EXPIRY DATE</p>
+                </div>
+                <!-- Carousel Wrapper -->
+                <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
+                    @foreach ($filteredItems as $item)
+                        @php
+                            $url = url("/{$item->type}/{$item->alias}");
+                        @endphp
+                        <div class="inner-barber-shop-recommended">
+                            <div class="inner-barber-shop-img">
+                                <a href="{{ $url }}">
+                                    <img src="{{ asset($item->image ?? 'images/default.jpg') }}" alt="{{ $item->image_alt }}"
+                                        style="height:260px;width:357px">
+                                </a>
+                                <div class="ribben-box">
+                                    <h5>{{ $item->type }}</h5>
+                                </div>
+                            </div>
+                            <div class="barber-shop-box-main">
+                                <a href="{{ $url }}">
+                                    <h5>{{ ucfirst($item->title ?? $item->name) }}</h5>
+                                </a>
+                                <div class="location-section">
+                                    <ul class="custom-justify-start">
+                                        @php
+                                            $intro = strip_tags($item->introduction ?? 'Location not available');
+                                            $words = str_word_count($intro, 1);
+                                            $limitedIntro =
+                                                count($words) > 150
+                                                    ? implode(' ', array_slice($words, 0, 150)) . '...'
+                                                    : $intro;
+                                        @endphp
+                                        <li>
+                                            <p>{!! $limitedIntro !!}</p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="barber-shop-box-main">
-                            <a href="{{ $url }}">
-                                <h5>{{ ucfirst($item->title ?? $item->name) }}</h5>
-                            </a>
-                            <div class="location-section">
-                                <ul class="custom-justify-start">
-                                    <li>
-                                        <p>{!! $item->introduction ?? 'Location not available' !!}</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
-@endif
+        </section>
+    @endif
 
 
     <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
