@@ -85,7 +85,7 @@ class VideoController extends Controller
             $dataTr[] = [
                 'id' => $row['id'],
                 'name' => $row['name'],
-                'image' => sc_image_render($row['image'], '50px'),
+                'thumbnail' => sc_image_render($row['image'], '50px'),
                 'country' => $prov->name,
                 'state' => $state->name,
                 'expire' => $row['expire'],
