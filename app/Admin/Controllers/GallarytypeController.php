@@ -218,7 +218,7 @@ class GallarytypeController extends Controller
             return 'no data';
         }
         $data = [
-            'title' => 'Event type edit',
+            'title' => 'gallery type edit',
             'sub_title' => '',
             'title_description' => '',
             'icon' => 'fa fa-pencil-square-o',
