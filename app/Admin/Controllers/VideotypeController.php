@@ -160,7 +160,7 @@ class VideotypeController extends Controller
             'sub_title' => '',
             'title_description' => 'Add Video type',
             'icon' => 'fa fa-plus',
-            'gallary' => [],
+            'video' => [],
             'url_action' => route('video_type.create'),
         ];
         return view('admin.screen.videotype')
