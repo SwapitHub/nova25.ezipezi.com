@@ -44,7 +44,7 @@ class VideoController extends Controller
         $listTh = [
             'id' => trans('id'),
             'name' => trans('name'),
-            'image' => trans('image'),
+            'Thumbnail' => trans('image'),
             'country' => trans('country'),
             'state' => trans('state'),
             'expire' => 'Expiry Date',
@@ -85,7 +85,7 @@ class VideoController extends Controller
             $dataTr[] = [
                 'id' => $row['id'],
                 'name' => $row['name'],
-                'Thumbnail' => sc_image_render($row['image'], '50px'),
+                'image' => sc_image_render($row['image'], '50px'),
                 'country' => $prov->name,
                 'state' => $state->name,
                 'expire' => $row['expire'],
