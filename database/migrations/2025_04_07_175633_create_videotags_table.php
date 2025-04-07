@@ -13,7 +13,7 @@ class CreateVideotagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('videotags', function (Blueprint $table) {
+        Schema::create('videotag', function (Blueprint $table) {
             $table->id(); // id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
             $table->unsignedInteger('protype')->index(); // protype INT(10) UNSIGNED
             $table->string('name', 100); // name VARCHAR(100) NOT NULL
@@ -33,6 +33,6 @@ class CreateVideotagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('videotags');
+        Schema::dropIfExists('videotag');
     }
 }
