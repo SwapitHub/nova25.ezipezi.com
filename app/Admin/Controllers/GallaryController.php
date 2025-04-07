@@ -302,6 +302,8 @@ class GallaryController extends Controller
             'faccommo' => !empty($data['faccommo']) ? 1 : 0,
             'testimonial' => !empty($data['testimonial']) ? 1 : 0,
             'fablog' => !empty($data['fablog']) ? 1 : 0,
+            'tott' => !empty($data['tott']) ? 1 : 0,
+            'aa' => !empty($data['aa']) ? 1 : 0,
             'faport' => !empty($data['faport']) ? 1 : 0,
             'portorder' => $data['portorder'],
             'blogorder' => $data['blogorder'],
@@ -467,6 +469,8 @@ class GallaryController extends Controller
             'testimonial' => !empty($data['testimonial']) ? 1 : 0,
             'fablog' => !empty($data['fablog']) ? 1 : 0,
             'faport' => !empty($data['faport']) ? 1 : 0,
+            'tott' => !empty($data['tott']) ? 1 : 0,
+            'aa' => !empty($data['aa']) ? 1 : 0,
             'portorder' => $data['portorder'],
             'blogorder' => $data['blogorder'],
         ];
