@@ -24,6 +24,8 @@ use App\Models\TestTitle;
 use App\Models\HomeFront;
 use App\Models\Portfolio;
 use App\Models\NewBlog;
+use App\Models\Video;
+use App\Models\Gallary;
 use App\Admin\Admin;
 use Session;
 use App\Admin\Models\AdminUser;
@@ -66,74 +68,13 @@ class ShopFront extends GeneralController
         }
         $eventList = Event::where('status', 1)->latest()->take(5)->get();
 
-
-
-        // // make all togethor for talk of the show carousal
-        // $services = Service::where('status', 1)->where('tott', 1)->get();
-        // $blogs = NewBlog::where('status', 1)->where('tott', 1)->get();
-        // $events = Event::where('status', 1)->where('tott', 1)->get();
-        // $properties = Property::where('status', 1)->where('tott', 1)->get();
-        // $accommodations = accommodation::where('status', 1)->where('tott', 1)->get();
-
-        // // Merge and shuffle data
-
-
-        // $services = Service::where('tott', 1)
-        //     ->where('status', 1)
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'services';
-        //         return $item;
-        //     });
-
-        // $blogs = NewBlog::where('tott', 1)
-        // ->where('status', 1)
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'blog';
-        //         return $item;
-        //     });
-
-        // $events = Event::where('tott', 1)
-        // ->where('status', 1)
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'event';
-        //         return $item;
-        //     });
-
-        // $properties = Property::where('tott', 1)
-        // ->where('status', 1)
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'property';
-        //         return $item;
-        //     });
-
-        // $accommodations = Accommodation::where('tott', 1)
-        // ->where('status', 1)
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'accommodation';
-        //         return $item;
-        //     });
-
-        // // Merge all data into a single collection
-        // $carouselItems = collect()
-        //     ->merge($services)
-        //     ->merge($blogs)
-        //     ->merge($events)
-        //     ->merge($properties)
-        //     ->merge($accommodations)
-        //     ->shuffle(); // Shuffle for randomness
-
         // Check if header menus are active (replace IDs with your actual menu IDs)
-        $eventMenu = HeaderMenu::find(14);  
-        $blogMenu = HeaderMenu::find(13);     
-        $serviceMenu = HeaderMenu::find(3);    
+        $eventMenu = HeaderMenu::find(14);
+        $blogMenu = HeaderMenu::find(13);
+        $serviceMenu = HeaderMenu::find(3);
         $portfolioMenu = HeaderMenu::find(12);
-        $propertyMenu = HeaderMenu::find(14);  
-        $accommodationMenu = HeaderMenu::find(3); 
+        $propertyMenu = HeaderMenu::find(14);
+        $accommodationMenu = HeaderMenu::find(3);
 
 
         // Initialize empty collections for each section
@@ -142,6 +83,9 @@ class ShopFront extends GeneralController
         $events = collect();
         $properties = collect();
         $accommodations = collect();
+
+        $images = collect();
+        $videos = collect();
 
         // Fetch data ONLY if the corresponding menu is active
         if ($serviceMenu && $serviceMenu->status == 1) {
@@ -214,6 +158,27 @@ class ShopFront extends GeneralController
 
 
 
+        $images = Gallary::where('aa', 1)
+            ->where('status', 1)
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'Gallery';
+                return $item;
+            });
+
+        $videos = Video::where('aa', 1)
+            ->where('status', 1)
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'Video';
+                return $item;
+            });
+
+        $armtureCollection  = collect()
+            ->merge($images)
+            ->merge($videos)
+            ->shuffle();
+
         return view(
             $this->templatePath . '.shop_home',
             array(
@@ -241,7 +206,7 @@ class ShopFront extends GeneralController
                 'events' => $eventList,
                 'featured_blogs' => NewBlog::where('featured', 1)->limit(5)->get(),
                 'carouselItems' => $carouselItems,
-
+                'armtureCollection' => $armtureCollection,
             )
         );
     }

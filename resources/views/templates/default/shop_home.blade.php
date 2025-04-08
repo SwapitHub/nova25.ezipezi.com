@@ -1612,7 +1612,7 @@
     </section>
 
     {{-- Image and video gallery carousal start --}}
-    {{-- @if ($filteredItems->count() > 0)
+    @if ($armtureCollection->count() > 0)
         <section class="recommended-bg ctm-section-margin">
             <div class="container">
                 <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
@@ -1621,7 +1621,7 @@
                 </div>
                 <!-- Carousel Wrapper -->
                 <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
-                    @foreach ($filteredItems as $item)
+                    @foreach ($armtureCollection as $item)
                         @php
                             $url = url("/{$item->type}/{$item->alias}");
                         @endphp
@@ -1660,7 +1660,7 @@
                 </div>
             </div>
         </section>
-    @endif --}}
+    @endif
     {{-- Image and video gallery carousal end  --}}
 
 
