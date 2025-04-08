@@ -30,7 +30,7 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
                            foreach($stypes as $dd) {
                             $type = App\Models\GallaryType::getSingleCat($dd->gallarytype) ?>
                     
-                              <option value="{{ $type->id }}" <?php if(isset($_GET['gallarytype'])) { if($_GET['gallarytype']==$type->id) echo "selected"; }  ?> >
+                              <option value="{{ $type->id }}" <?php if(isset($_GET['gallerytype'])) { if($_GET['gallerytype']==$type->id) echo "selected"; }  ?> >
                                   {{ $type->name  }}</option>
                               <?php }  } ?>
                         </select>
