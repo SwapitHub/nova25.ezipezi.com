@@ -37,7 +37,7 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
                     </div>
                     <div class="product-category">
                         <label for="category">{{ $pageData->name }} Name</label>
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="{{ isset($_GET['name']) ? $_GET['name'] : '' }}">
                     </div>
                     <div class="search-input-btn">
                         <label for="">&nbsp;</label>
