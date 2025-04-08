@@ -58,8 +58,9 @@
         <section class="recommended-bg ctm-section-margin">
             <div class="container">
                 <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
-                    <h2>TALK OF THE TOWN</h2>
-                    <p class="ctm-mt-20">ADVERTISING SPOTS MUST HAVE START AND EXPIRY DATE</p>
+                    {{-- <h2>TALK OF THE TOWN</h2> --}}
+                    <h2>{{sc_store('section_heading1')}}</h2>
+                    <p class="ctm-mt-20">{{sc_store('desc_section_heading1')}}</p>
                 </div>
                 <!-- Carousel Wrapper -->
                 <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
@@ -1616,8 +1617,8 @@
         <section class="recommended-bg ctm-section-margin">
             <div class="container">
                 <div class="inner-recommended custom-justify-align-items custom_fixed_margin_bottom ctm-text-center">
-                    <h2>ARMCHAIR ADVENTURE – BROWSE OUR GALLERIES – WATCH OUR VIDEOS</h2>
-                    <p class="ctm-mt-20">Can include advertising spots for clients (must have start & expiry dates)</p>
+                    <h2>{{ sc_store('section_heading2') }}</h2>
+                    <p class="ctm-mt-20">{{ sc_store('desc_section_heading2') }}</p>
                 </div>
                 <!-- Carousel Wrapper -->
                 <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">

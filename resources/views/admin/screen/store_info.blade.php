@@ -71,6 +71,15 @@
                             </tr>
 
                             <tr>
+                                <td>Logo alt</td>
+                                <td><a href="#" class="fied-required editable editable-click" data-name="logo_alt"
+                                        data-type="text" data-pk="" data-source=""
+                                        data-url="{{ route('admin_store_info.update') }}"
+                                        data-title="logo_alt" data-value="{{ $infos->logo_alt }}"
+                                        data-original-title="" title="">{{ $infos->logo_alt }}</a></td>
+                            </tr>
+
+                            <tr>
                                 <td>{{ trans('store_info.phone') }}</td>
                                 <td><a href="#" class="fied-required editable editable-click" data-name="phone"
                                         data-type="number" data-pk="" data-source=""
@@ -216,6 +225,38 @@
                                         title="">{{ $infos->enddate }}</a></td>
                             </tr>
 
+                            <tr>
+                                <td>Talk of the town </td>
+                                <td><a href="#" class="fied-required editable editable-click" data-name="section_heading1"
+                                        data-type="text" data-pk="" data-source=""
+                                        data-url="{{ route('admin_store_info.update') }}" data-title="section_heading1"
+                                        data-value="{{ $infos->section_heading1 }}" data-original-title=""
+                                        title="">{{ $infos->section_heading1 }}</a></td>
+                            </tr>
+                            <tr>
+                                <td>Talk of the town description</td>
+                                <td><a href="#" class="fied-required editable editable-click" data-name="desc_section_heading1"
+                                        data-type="text" data-pk="" data-source=""
+                                        data-url="{{ route('admin_store_info.update') }}" data-title="desc_section_heading1"
+                                        data-value="{{ $infos->desc_section_heading1 }}" data-original-title=""
+                                        title="">{{ $infos->desc_section_heading1 }}</a></td>
+                            </tr>
+                            <tr>
+                                <td>Armchair adventure </td>
+                                <td><a href="#" class="fied-required editable editable-click" data-name="section_heading2"
+                                        data-type="text" data-pk="" data-source=""
+                                        data-url="{{ route('admin_store_info.update') }}" data-title="section_heading2"
+                                        data-value="{{ $infos->section_heading2 }}" data-original-title=""
+                                        title="">{{ $infos->section_heading2 }}</a></td>
+                            </tr>
+                            <tr>
+                                <td>Armchair adventure description</td>
+                                <td><a href="#" class="fied-required editable editable-click" data-name="desc_section_heading2"
+                                        data-type="text" data-pk="" data-source=""
+                                        data-url="{{ route('admin_store_info.update') }}" data-title="desc_section_heading2"
+                                        data-value="{{ $infos->desc_section_heading2 }}" data-original-title=""
+                                        title="">{{ $infos->desc_section_heading2 }}</a></td>
+                            </tr>
                             <!--  <tr>
              <td>Google Analytics Key </td>
              <td><a href="#" class="fied-required editable editable-click" data-name="googlekey" data-type="text" data-pk="" data-source="" data-url="{{ route('admin_store_info.update') }}" data-title="googlekey" data-value="{{ $infos->googlekey }}" data-original-title="" title="">{{ $infos->googlekey }}</a></td>
@@ -293,7 +334,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="box box-primary">
+            {{-- <div class="box box-primary">
 
                 <div class="form-group">
                     @csrf
@@ -306,7 +347,7 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
 
 
