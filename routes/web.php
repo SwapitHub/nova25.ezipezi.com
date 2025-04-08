@@ -94,10 +94,14 @@
 		Portfolio
 	*/
 	require_once 'component/portfolio.php';
-
-
-
+    /*
+		Blog
+	*/
 	require_once 'component/event.php';
+	/*
+		gallery
+	*/
+	require_once 'component/gallery.php';
 	/*
 		Blog
 	*/

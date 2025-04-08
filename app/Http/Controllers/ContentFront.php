@@ -20,6 +20,10 @@ use App\Models\Event;
 use App\Models\EventType;
 use App\Models\EventtagType;
 use App\Models\EventImages;
+use App\Models\Gallary;
+use App\Models\GallaryType;
+use App\Models\GallarytagType;
+use App\Models\GallaryImages;
 use App\Models\BlogImages;
 use App\Models\NewstagType;
 use App\Models\NewsType;
@@ -1185,4 +1189,134 @@ class ContentFront extends GeneralController
             )
         );
     }
+
+
+      ## gallery start here 
+
+      public function allimages(Request $request)
+      {
+          $sort = $request->query('sort', 'featured');
+          $limit = $request->query('limit', 8);
+  
+          $eventQuery = Gallary::where('status', 1);
+          if ($sort === 'latest') {
+              $eventQuery->latest();
+          } else {
+              $eventQuery->where('featured', 1)->latest();
+          }
+  
+          // Append sort and limit to pagination links
+          $portfolios = $eventQuery->paginate($limit)->appends([
+              'sort' => $sort,
+              'limit' => $limit
+          ]);
+          if ($request->ajax()) {
+              return response()->json([
+                  'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                  'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                  'nextPageUrl' => $portfolios->nextPageUrl(),
+              ]);
+          }
+  
+          return view($this->templatePath . '.gallery-summery', compact('portfolios'));
+      }
+  
+      public function gallerytCat($alias)
+      {
+          $cat = (new GallaryType)->getCat($alias);
+          $event = array();
+          if ($cat) {
+              $event = (new Gallary())->getCatEvent($cat->id);
+          }
+          $eventtype = GallaryType::GetEventTypes();
+          return view(
+              $this->templatePath . '.gallery_list',
+              array(
+                  'title' => 'Image Gallery',
+                  'description' => sc_store('description'),
+                  'keyword' => sc_store('keyword'),
+                  'gallery' => $event,
+                  'gallerytype' => $eventtype,
+              )
+          );
+      }
+  
+      public function galleryDetails($alias)
+      {
+          $admin = Admin::user();
+          $status = '';
+          if (empty($admin)) $status = 1;
+          $portfolio = (new Gallary)->getGallary($alias, $status);
+          $previous = Gallary::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '<', $portfolio->id)->orderBy('id', 'desc')->first();
+          $next = Gallary::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('id', '>', $portfolio->id)->orderBy('id')->first();
+          $portfolioimgs = (new GallaryImages)->getImages($portfolio->id);
+          $tagtype = (new GallarytagType)->GetGallarytagTypes();
+  
+          if ($portfolio->faccommo) {
+              $footerAccommmo = (new Accommodation)->footerAccommo($portfolio->accorder);
+          }
+          if ($portfolio->fnews) {
+              $footerNews = (new Blog)->footerNews($portfolio->norder);
+          }
+          if ($portfolio->fprop) {
+              $footerProperty = (new Property)->footerProperty($portfolio->porder);
+          }
+          if ($portfolio->fproduct) {
+              $footerProduct = (new ShopProduct)->footerProduct($portfolio->proorder);
+          }
+          if ($portfolio->fservice) {
+              $footerService = (new Service)->footerService($portfolio->sorder);
+          }
+          if ($portfolio->faport) {
+              $footerPort = (new Portfolio)->footerPortfolio($portfolio->portorder);
+          }
+          if ($portfolio->fablog) {
+              $footerBlog = (new NewBlog)->footerNewBlog($portfolio->blogorder);
+          }
+          $portcat = EventType::getSingleCat($portfolio->eventtype);
+          return view(
+              $this->templatePath . '.gallery_details',
+              array(
+                  'title' => $portfolio->name,
+                  'description' => sc_store('description'),
+                  'keyword' => sc_store('keyword'),
+                  'portfolio' => $portfolio,
+                  'portfolioimgs' => $portfolioimgs,
+                  'tagtype' => $tagtype,
+                  'admin' => $admin,
+                  'footerAccommmo' => $footerAccommmo ?? [],
+                  'footerNews' => $footerNews ?? [],
+                  'footerService' => $footerService ?? [],
+                  'footerProduct' => $footerProduct ?? [],
+                  'footerProperty' => $footerProperty ?? [],
+                  'team' => (new AdminUser)->GetTeamMember(),
+                  'portcat' => $portcat,
+                  'next' => $next,
+                  'previous' => $previous,
+                  'footerPort' => $footerPort ?? [],
+                  'footerBlog' => $footerBlog ?? [],
+  
+              )
+          );
+      }
+  
+      public function gallerySearch(Request $request)
+      {
+          $keyword = request('name') ?? '';
+          $type = request('gallerytype') ?? '';
+  
+          $eventtype = GallaryType::GetGallaryTypes();
+          $event = (new Gallary)->search($keyword, $type);
+  
+          return view(
+              $this->templatePath . '.gallery_list',
+              array(
+                  'title' => 'Gallery',
+                  'description' => sc_store('description'),
+                  'keyword' => sc_store('keyword'),
+                  'gallery' => $event,
+                  'gallerytype' => $eventtype,
+              )
+          );
+      }
 }

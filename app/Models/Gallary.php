@@ -39,7 +39,7 @@ class Gallary extends Model
             $obj = $obj->whereRaw('(id = ' . (int) $keyword . ' OR name like "%' . $keyword . '%" )');
         }
         if ($protype) {
-            $obj = $obj->where('portfoliotype', $protype);
+            $obj = $obj->where('gallarytype', $protype);
         }
 
 
@@ -60,7 +60,7 @@ class Gallary extends Model
 
     public function getCatGallary($id)
     {
-        return $query = (new Gallary)->where('status', 1)->where('portfoliotype', $id)->where('expire', '>', now())->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
+        return $query = (new Gallary)->where('status', 1)->where('gallarytype', $id)->where('expire', '>', now())->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
     }
 
 
@@ -80,18 +80,18 @@ class Gallary extends Model
 
     public static function getHeaderCats()
     {
-        return $query =  DB::table('portfolio')
-            ->select(DB::raw('portfoliotype'))
+        return $query =  DB::table('gallary')
+            ->select(DB::raw('gallarytype'))
             ->where('status', 1)
             ->where('expire', '>', now())
             ->where('startdate', '<', now())
-            ->groupBy('portfoliotype')
+            ->groupBy('gallarytype')
             ->get();
     }
 
     public static function catCount($newstype)
     {
-        return  $query = Gallary::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('portfoliotype', $newstype)->count();
+        return  $query = Gallary::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('gallarytype', $newstype)->count();
     }
 
     public static function getFavItem($tbl, $id)
