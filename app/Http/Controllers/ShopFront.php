@@ -162,7 +162,7 @@ class ShopFront extends GeneralController
             ->where('status', 1)
             ->get()
             ->map(function ($item) {
-                $item->type = 'Gallery';
+                $item->type = 'gallery';
                 return $item;
             });
 
@@ -170,7 +170,7 @@ class ShopFront extends GeneralController
             ->where('status', 1)
             ->get()
             ->map(function ($item) {
-                $item->type = 'Video';
+                $item->type = 'video';
                 return $item;
             });
 
