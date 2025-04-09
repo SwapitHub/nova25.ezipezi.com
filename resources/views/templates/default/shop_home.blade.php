@@ -1729,7 +1729,6 @@
         
         ?>
 
-
                 <div class="team-content">
 
                     <div class="team-image">
