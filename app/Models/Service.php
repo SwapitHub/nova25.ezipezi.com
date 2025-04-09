@@ -13,6 +13,11 @@ class Service extends Model
     public $table = 'service';
     protected $guarded = [];
     private static $getList = null;
+
+    public function category()
+    {
+       return $this->belongsTo(ServiceType::class, 'servicetype');
+    }
     
     public static function getProvincia()
     {

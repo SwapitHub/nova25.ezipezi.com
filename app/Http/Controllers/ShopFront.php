@@ -83,66 +83,86 @@ class ShopFront extends GeneralController
         $events = collect();
         $properties = collect();
         $accommodations = collect();
+        $portfolios = collect();
 
         $images = collect();
         $videos = collect();
 
         // Fetch data ONLY if the corresponding menu is active
         if ($serviceMenu && $serviceMenu->status == 1) {
-            $services = Service::where('tott', 1)
+            $services = Service::with('category')
+                ->where('tott', 1)
                 ->where('status', 1)
+                ->where('featured', 1)
                 ->get()
                 ->map(function ($item) {
                     $item->type = 'services';
+                    $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
                     return $item;
                 });
         }
+
         if ($portfolioMenu && $portfolioMenu->status == 1) {
-            $services = Portfolio::where('tott', 1)
+            $portfolios = Portfolio::with('category')
+                ->where('tott', 1)
                 ->where('status', 1)
+                ->where('featured', 1)
                 ->get()
                 ->map(function ($item) {
                     $item->type = 'portfolio';
+                    $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
                     return $item;
                 });
         }
 
         if ($blogMenu && $blogMenu->status == 1) {
-            $blogs = NewBlog::where('tott', 1)
+            $blogs = NewBlog::with('category')
+                ->where('tott', 1)
                 ->where('status', 1)
+                ->where('featured', 1)
                 ->get()
                 ->map(function ($item) {
                     $item->type = 'blog';
+                    $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
                     return $item;
                 });
         }
 
         if ($eventMenu && $eventMenu->status == 1) {
-            $events = Event::where('tott', 1)
+            $events = Event::with('category')
+                ->where('tott', 1)
                 ->where('status', 1)
+                ->where('featured', 1)
                 ->get()
                 ->map(function ($item) {
                     $item->type = 'event';
+                    $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
                     return $item;
                 });
         }
 
         if ($propertyMenu && $propertyMenu->status == 1) {
-            $properties = Property::where('tott', 1)
+            $properties = Property::with('category')
+                ->where('tott', 1)
                 ->where('status', 1)
+                ->where('featured', 1)
                 ->get()
                 ->map(function ($item) {
                     $item->type = 'property';
+                    $item->category_name = optional($item->category)->name; // Adjust 'name' to
                     return $item;
                 });
         }
 
         if ($accommodationMenu && $accommodationMenu->status == 1) {
-            $accommodations = Accommodation::where('tott', 1)
+            $accommodations = Accommodation::with('category')
+                ->where('tott', 1)
                 ->where('status', 1)
+                ->where('featured', 1)
                 ->get()
                 ->map(function ($item) {
                     $item->type = 'accommodation';
+                    $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
                     return $item;
                 });
         }
@@ -154,6 +174,7 @@ class ShopFront extends GeneralController
             ->merge($events)
             ->merge($properties)
             ->merge($accommodations)
+            ->merge($portfolios)
             ->shuffle();
 
 

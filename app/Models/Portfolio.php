@@ -13,6 +13,11 @@ class Portfolio extends Model
     public $table = 'portfolio';
     protected $guarded = [];
     private static $getList = null;
+
+    public function category()
+    {
+       return $this->belongsTo(PortfolioType::class, 'portfoliotype');
+    }
     
     public static function getProvincia()
     {

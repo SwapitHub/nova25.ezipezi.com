@@ -342,3 +342,11 @@ if (!function_exists('sc_get_locale')) {
         return app()->getLocale();
     }
 }
+
+
+if(!function_exists('carousel_get_cat')) {
+    function carousel_get_cat($type)
+    {
+        return $type;
+    }
+}

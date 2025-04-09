@@ -13,6 +13,11 @@ class Accommodation extends Model
     public $table = 'accommodation';
     protected $guarded = [];
     private static $getList = null;
+
+    public function category()
+    {
+       return $this->belongsTo(AccommodationType::class, 'accommodationtype');
+    }
     
     public static function getProvincia()
     {

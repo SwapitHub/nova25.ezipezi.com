@@ -14,6 +14,11 @@ class Event extends Model
     protected $guarded = [];
     private static $getList = null;
 
+    public function category()
+    {
+       return $this->belongsTo(EventType::class, 'eventtype');
+    }
+
     public static function getProvincia()
     {
         return  $query = (new Provincia)->where('status', 1)->get();

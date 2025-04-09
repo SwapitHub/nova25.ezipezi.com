@@ -66,6 +66,7 @@
                 <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
                     @foreach ($filteredItems as $item)
                         @php
+                        dd($item);
                             $url = url("/{$item->type}/{$item->alias}");
                         @endphp
                         <div class="inner-barber-shop-recommended">
@@ -75,13 +76,21 @@
                                         style="height:260px;width:357px">
                                 </a>
                                 <div class="ribben-box">
-                                    <h5>{{ $item->type }}</h5>
+                                    {{-- <h5>{{ $item->type }}</h5> --}}
+                                    <h5>{{ $item->category_name }}</h5>
                                 </div>
                             </div>
                             <div class="barber-shop-box-main">
                                 <a href="{{ $url }}">
                                     <h5>{{ ucfirst($item->title ?? $item->name) }}</h5>
                                 </a>
+                                <div class="location-section">
+                                    <ul class="custom-justify-start">
+                                        <li>
+                                            <p>{{ $item->location ?? 'Location not available' }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="location-section">
                                     <ul class="custom-justify-start">
                                         @php

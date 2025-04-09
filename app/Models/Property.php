@@ -14,6 +14,11 @@ class Property extends Model
     protected $guarded = [];
     private static $getList = null;
     
+
+    public function category()
+    {
+       return $this->belongsTo(PropertyType::class, 'prpertytype');
+    }
     public static function getProvincia()
     {
        return  $query = (new Provincia)->where('status', 1)->get();
