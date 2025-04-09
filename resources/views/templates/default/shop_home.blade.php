@@ -1724,7 +1724,10 @@
             <div class="meet-team-slide team-slider">
                 <?php  foreach($team as $user) {
           $role = App\Admin\Models\AdminUser::getRole($user->id);
-        $position = App\Admin\Models\AdminUser::getPosition($role->role_id); ?>
+        $position = App\Admin\Models\AdminUser::getPosition($role->role_id); 
+        $branch = App\Admin\Models\Branch::where($user->branch)->first(); 
+        
+        ?>
 
 
                 <div class="team-content">
@@ -1739,6 +1742,7 @@
                         </div>
                         <div class="tc-title">
                             <h3>{{ $user->salutation }} {{ $user->name }} <?php echo ' ' . $user->last_name; ?></h3>
+                            <span>{{ $branch->name }}</span> <br>
                             <span>
                                 {{ $user->brief }}
                                 {{-- @if($position) --}}
