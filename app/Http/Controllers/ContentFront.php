@@ -24,6 +24,7 @@ use App\Models\Gallary;
 use App\Models\GallaryType;
 use App\Models\GallarytagType;
 use App\Models\GallaryImages;
+use App\Models\Video;
 use App\Models\BlogImages;
 use App\Models\NewstagType;
 use App\Models\NewsType;
@@ -1319,4 +1320,34 @@ class ContentFront extends GeneralController
               )
           );
       }
+
+        ## Videos start here 
+
+        public function allvideos(Request $request)
+        {
+            $sort = $request->query('sort', 'featured');
+            $limit = $request->query('limit', 8);
+    
+            $eventQuery = Video::where('status', 1);
+            if ($sort === 'latest') {
+                $eventQuery->latest();
+            } else {
+                $eventQuery->where('featured', 1)->latest();
+            }
+    
+            // Append sort and limit to pagination links
+            $portfolios = $eventQuery->paginate($limit)->appends([
+                'sort' => $sort,
+                'limit' => $limit
+            ]);
+            if ($request->ajax()) {
+                return response()->json([
+                    'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                    'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                    'nextPageUrl' => $portfolios->nextPageUrl(),
+                ]);
+            }
+    
+            return view($this->templatePath . '.video-summery', compact('portfolios'));
+        }
 }
