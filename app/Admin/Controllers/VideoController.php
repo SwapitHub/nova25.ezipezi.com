@@ -308,6 +308,10 @@ class VideoController extends Controller
             'faport' => !empty($data['faport']) ? 1 : 0,
             'portorder' => $data['portorder'],
             'blogorder' => $data['blogorder'],
+            'read_more_link' => $data['read_more_link'],
+            'watch_now_link' => $data['watch_now_link'],
+            'venue' => $data['venue'],
+            'audience_type' => $data['audience_type'],
 
         ];
         $blogid = Video::create($dataInsert);
@@ -474,6 +478,10 @@ class VideoController extends Controller
             'aa' => !empty($data['aa']) ? 1 : 0,
             'portorder' => $data['portorder'],
             'blogorder' => $data['blogorder'],
+            'read_more_link' => $data['read_more_link'],
+            'watch_now_link' => $data['watch_now_link'],
+            'venue' => $data['venue'],
+            'audience_type' => $data['audience_type'],
         ];
 
         $portfolio->update($dataUpdate);

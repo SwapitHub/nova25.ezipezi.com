@@ -158,20 +158,20 @@
                                     </div>
 
                                     <!--   <div
-                                class="form-group {{ $errors->has('contact') ? ' has-error' : '' }}">
-                                <label for="contact"
-                                    class="col-sm-2 control-label">Contact Details</label>
-                                <div class="col-sm-8">
-                                    <textarea id="contact" class="editor" name="contact">
+                                    class="form-group {{ $errors->has('contact') ? ' has-error' : '' }}">
+                                    <label for="contact"
+                                        class="col-sm-2 control-label">Contact Details</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="contact" class="editor" name="contact">
                                         {!! old('contact', $video['contact'] ?? '') !!}
                                     </textarea>
-                                   @if ($errors->has('contact'))
+                                       @if ($errors->has('contact'))
     <span class="help-block">
-                                        {{ $errors->first('contact') }}
-                                    </span>
+                                            {{ $errors->first('contact') }}
+                                        </span>
     @endif
-                                </div>
-                            </div> -->
+                                    </div>
+                                </div> -->
 
                                     <div class="form-group   {{ $errors->has('street1') ? ' has-error' : '' }}">
                                         <label for="street1" class="col-sm-2  control-label">Street Address1 </label>
@@ -341,8 +341,8 @@
                                                     value="{{ old('image', $video['image'] ?? '') }}"
                                                     class="form-control input-sm image" placeholder="" />
                                                 <span class="input-group-btn">
-                                                    <a data-input="image" data-preview="preview_image"
-                                                        data-type="video" class="btn btn-sm btn-primary lfm">
+                                                    <a data-input="image" data-preview="preview_image" data-type="video"
+                                                        class="btn btn-sm btn-primary lfm">
                                                         <i class="fa fa-picture-o"></i>
                                                         {{ trans('product.admin.choose_image') }}
                                                     </a>
@@ -398,10 +398,11 @@
                                                                 class="img_holder">
                                                                 {{-- <img src="{{ asset($sub_image->video) }}"> --}}
                                                                 <video height="100" width="100" controls>
-                                                                    <source src="{{ asset($sub_image->video) }}" type="video/mp4">
+                                                                    <source src="{{ asset($sub_image->video) }}"
+                                                                        type="video/mp4">
                                                                     Your browser does not support the video tag.
                                                                 </video>
-                                                                </div>
+                                                            </div>
                                                             <div class="input-group">
                                                                 <input type="text" id="imagealt" name="imagealt[]"
                                                                     value="{{ old('imagealt', $sub_image['videoalt'] ?? '') }}"
@@ -429,7 +430,7 @@
 
 
                                     <div class="form-group {{ $errors->has('videotype') ? ' has-error' : '' }}">
-                                        <label for="videotype" class="col-sm-2 control-label">Gallary type</label>
+                                        <label for="videotype" class="col-sm-2 control-label">Video type</label>
                                         <div class="col-sm-8">
                                             <select class="form-control input-sm videotype select2" style="width: 100%;"
                                                 name="videotype">
@@ -447,6 +448,62 @@
                                             @if ($errors->has('videotype'))
                                                 <span class="help-block">
                                                     {{ $errors->first('videotype') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group {{ $errors->has('audience_type') ? ' has-error' : '' }}">
+                                        <label for="audience_type" class="col-sm-2 control-label">Audience Type</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control input-sm audience_type select2"
+                                                style="width: 100%;" name="audience_type">
+                                                <option value="All Welcome"{{ $video['audience_type'] =='All Welcome'?'selected':'' }}>All Welcome</option>
+                                                <option value="Child Friendly" {{ $video['audience_type'] =='Child Friendly'?'selected':'' }}>Child Friendly</option>
+                                                <option value="Adults Only" {{ $video['audience_type'] =='Adults Only'?'selected':'' }}>Adults Only</option>
+                                                <option value="Over 16" {{ $video['audience_type'] =='Over 16'?'selected':'' }}>Over 16</option>
+                                            </select>
+                                            @if ($errors->has('audience_type'))
+                                                <span class="help-block">
+                                                    {{ $errors->first('audience_type') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group   {{ $errors->has('venue') ? ' has-error' : '' }}">
+                                        <label for="venue" class="col-sm-2  control-label">Venue</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                                                <input type="text" id="venue" name="venue"
+                                                    value="{!! old('venue', $video['venue'] ?? '') !!}" class="form-control"
+                                                    placeholder="" />
+                                            </div>
+                                            @if ($errors->has('venue'))
+                                                <span class="help-block">
+                                                    {{ $errors->first('venue') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group {{ $errors->has('watch_now_link') ? ' has-error' : '' }}">
+                                        <label for="watch_now_link" class="col-sm-2 control-label">Watch Now Link </label>
+                                        <div class="col-sm-8">
+                                            <textarea id="read_more_link" name="watch_now_link" class="form-control">{!! old('watch_now_link', $video['watch_now_link'] ?? '') !!}</textarea>
+                                            @if ($errors->has('watch_now_link'))
+                                                <span class="help-block">
+                                                    {{ $errors->first('watch_now_link') }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="form-group {{ $errors->has('read_more_link') ? ' has-error' : '' }}">
+                                        <label for="read_more_link" class="col-sm-2 control-label">Read More Link </label>
+                                        <div class="col-sm-8">
+                                            <textarea id="read_more_link" name="read_more_link" class="form-control">{!! old('rsvp', $video['read_more_link'] ?? '') !!}</textarea>
+                                            @if ($errors->has('read_more_link'))
+                                                <span class="help-block">
+                                                    {{ $errors->first('read_more_link') }}
                                                 </span>
                                             @endif
                                         </div>
@@ -1188,7 +1245,7 @@
                 '" data-type="video" class="btn btn-sm btn-flat btn-primary lfm"><i class="fa fa-picture-o"></i> {{ trans('product.admin.choose_image') }}</a></span><span title="Remove" class="btn btn-flat btn-sm btn-danger removeImage"><i class="fa fa-times"></i></span></span></div><div id="preview_sub_image_' +
                 id_sub_image +
                 '" class="img_holder "></div><input type="hidden" name="newimg[]"><div class="input-group"><input type="text" id="imagealt" name="nimagealt[]"  class="form-control input-sm imagealt" placeholder="Video alt text" />  </div></div>'
-                );
+            );
             $('.removeImage').click(function(event) {
                 $(this).parents('.group-image').remove();
                 if ($('.nnnimg').is(':visible')) {} else {

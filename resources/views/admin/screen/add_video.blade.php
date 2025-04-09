@@ -441,9 +441,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group {{ $errors->has('audience_type') ? ' has-error' : '' }}">
-                                        <label for="eventtype" class="col-sm-2 control-label">Audience Type</label>
+                                        <label for="audience_type" class="col-sm-2 control-label">Audience Type</label>
                                         <div class="col-sm-8">
-                                            <select class="form-control input-sm eventtype select2" style="width: 100%;"
+                                            <select class="form-control input-sm audience_type select2" style="width: 100%;"
                                                 name="audience_type">
                                                 <option value="All Welcome">All Welcome</option>
                                                 <option value="Child Friendly">Child Friendly</option>
