@@ -23,14 +23,12 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
                 <form id="searchbox" method="get" action="{{ url('event/search') }}" class="search-product">
                     <div class="product-type">
                         <label for="type">{{ $pageData->name }} type</label>
-                        @php
-                            dd($eventtype);
-                        @endphp
                         <select name="eventtype"  class="eventtype">
                             <option value="">Choose type</option>
-                           <?php $stypes = App\Models\Event::getHeaderCats();
+                           <?php 
+                           $stypes = App\Models\Event::getHeaderCats();
                             if(count($stypes) >=1) { 
-                           foreach($stypes as $dd) {
+                           foreach($eventtype as $dd) {
                             $type = App\Models\EventType::getSingleCat($dd->eventtype) ?>
                     
                               <option value="{{ $type->id }}" <?php if(isset($_GET['eventtype'])) { if($_GET['eventtype']==$type->id) echo "selected"; }  ?> >
