@@ -44,7 +44,7 @@
                     <form id="searchbox" method="get" action="{{ url('event/search') }}" class="search-product">
                         <div class="product-type">
                             <label for="type">{{ $pageData->name }} type</label>
-                            <select name="portfoliotype" class="portfoliotype">
+                            <select name="eventtype" class="eventtype">
                                 <option value="">Choose type</option>
                                 <?php $stypes = App\Models\Event::getHeaderCats();
                             if(count($stypes) >=1) { 
