@@ -103,6 +103,11 @@
 	*/
 	require_once 'component/gallery.php';
 	/*
+	/*
+		videos
+	*/
+	require_once 'component/video.php';
+	/*
 		Blog
 	*/
 	require_once 'component/blog.php';
