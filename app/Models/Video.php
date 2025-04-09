@@ -39,7 +39,7 @@ class Video extends Model
             $obj = $obj->whereRaw('(id = ' . (int) $keyword . ' OR name like "%' . $keyword . '%" )');
         }
         if ($protype) {
-            $obj = $obj->where('portfoliotype', $protype);
+            $obj = $obj->where('videotype', $protype);
         }
 
 
@@ -60,7 +60,7 @@ class Video extends Model
 
     public function getCatVideo($id)
     {
-        return $query = (new Video)->where('status', 1)->where('portfoliotype', $id)->where('expire', '>', now())->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
+        return $query = (new Video)->where('status', 1)->where('videotype', $id)->where('expire', '>', now())->where('startdate', '<', now())->orderBy('startdate', 'DESC')->paginate(6);
     }
 
 
@@ -80,18 +80,18 @@ class Video extends Model
 
     public static function getHeaderCats()
     {
-        return $query =  DB::table('portfolio')
-            ->select(DB::raw('portfoliotype'))
+        return $query =  DB::table('video')
+            ->select(DB::raw('videotype'))
             ->where('status', 1)
             ->where('expire', '>', now())
             ->where('startdate', '<', now())
-            ->groupBy('portfoliotype')
+            ->groupBy('videotype')
             ->get();
     }
 
     public static function catCount($newstype)
     {
-        return  $query = Video::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('portfoliotype', $newstype)->count();
+        return  $query = Video::where('status', 1)->where('expire', '>', now())->where('startdate', '<', now())->where('videotype', $newstype)->count();
     }
 
     public static function getFavItem($tbl, $id)
