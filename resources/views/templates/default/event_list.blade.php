@@ -28,17 +28,10 @@
                             <label for="type">{{ $pageData->name }} type</label>
                             <select name="eventtype" class="eventtype">
                                 <option value="">Choose type</option>
-                                <?php 
-                           foreach($eventtype as $dd) {
-                            $type = App\Models\EventType::getSingleCat($dd->eventtype) ?>
 
-                                <option value="{{ $type->id }}" <?php if (isset($_GET['eventtype'])) {
-                                    if ($_GET['eventtype'] == $type->id) {
-                                        echo 'selected';
-                                    }
-                                } ?>>
-                                    {{ $type->name }}</option>
-
+                                @foreach ($eventtype as $dd) 
+                                     <option value="">{{ $dd->name }}</option>
+                                    @endphp
                             </select>
                         </div>
                         <div class="product-category">
