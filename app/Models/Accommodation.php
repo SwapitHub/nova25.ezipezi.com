@@ -18,6 +18,11 @@ class Accommodation extends Model
     {
        return $this->belongsTo(AccommodationType::class, 'accommodationtype');
     }
+
+    public function location()
+    {
+       return $this->belongsTo(Sublocation::class,'location');
+    }
     
     public static function getProvincia()
     {

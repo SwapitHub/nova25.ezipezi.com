@@ -19,6 +19,11 @@ class NewBlog extends Model
       return $this->belongsTo(BlogType::class, 'blogtype');
    }
 
+   public function location()
+   {
+      return $this->belongsTo(Sublocation::class,'location');
+   }
+
    public static function getProvincia()
    {
       return  $query = (new Provincia)->where('status', 1)->get();

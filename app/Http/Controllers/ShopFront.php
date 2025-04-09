@@ -90,7 +90,7 @@ class ShopFront extends GeneralController
 
         // Fetch data ONLY if the corresponding menu is active
         if ($serviceMenu && $serviceMenu->status == 1) {
-            $services = Service::with('category')
+            $services = Service::with(['category', 'location'])
                 ->where('tott', 1)
                 ->where('status', 1)
                 ->where('featured', 1)
@@ -98,12 +98,13 @@ class ShopFront extends GeneralController
                 ->map(function ($item) {
                     $item->type = 'services';
                     $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
+                    $item->location_name = optional($item->location)->name;
                     return $item;
                 });
         }
 
         if ($portfolioMenu && $portfolioMenu->status == 1) {
-            $portfolios = Portfolio::with('category')
+            $portfolios = Portfolio::with(['category', 'location'])
                 ->where('tott', 1)
                 ->where('status', 1)
                 ->where('featured', 1)
@@ -111,12 +112,13 @@ class ShopFront extends GeneralController
                 ->map(function ($item) {
                     $item->type = 'portfolio';
                     $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
+                    $item->location_name = optional($item->location)->name;
                     return $item;
                 });
         }
 
         if ($blogMenu && $blogMenu->status == 1) {
-            $blogs = NewBlog::with('category')
+            $blogs = NewBlog::with(['category','location'])
                 ->where('tott', 1)
                 ->where('status', 1)
                 ->where('featured', 1)
@@ -124,12 +126,13 @@ class ShopFront extends GeneralController
                 ->map(function ($item) {
                     $item->type = 'blog';
                     $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
+                    $item->location_name = optional($item->location)->alias;
                     return $item;
                 });
         }
 
         if ($eventMenu && $eventMenu->status == 1) {
-            $events = Event::with('category')
+            $events = Event::with(['category', 'location'])
                 ->where('tott', 1)
                 ->where('status', 1)
                 ->where('featured', 1)
@@ -137,12 +140,13 @@ class ShopFront extends GeneralController
                 ->map(function ($item) {
                     $item->type = 'event';
                     $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
+                    $item->location_name = optional($item->location)->name;
                     return $item;
                 });
         }
 
         if ($propertyMenu && $propertyMenu->status == 1) {
-            $properties = Property::with('category')
+            $properties = Property::with(['category', 'location'])
                 ->where('tott', 1)
                 ->where('status', 1)
                 ->where('featured', 1)
@@ -150,11 +154,12 @@ class ShopFront extends GeneralController
                 ->map(function ($item) {
                     $item->type = 'property';
                     $item->category_name = optional($item->category)->name; // Adjust 'name' to
+                    $item->location_name = optional($item->location)->name;
                     return $item;
                 });
         }
         if ($accommodationMenu && $accommodationMenu->status == 1) {
-            $accommodations = Accommodation::with('category')
+            $accommodations = Accommodation::with(['category', 'location'])
                 ->where('tott', 1)
                 ->where('status', 1)
                 ->where('featured', 1)
@@ -162,6 +167,7 @@ class ShopFront extends GeneralController
                 ->map(function ($item) {
                     $item->type = 'accommodation';
                     $item->category_name = optional($item->category)->name; // Adjust 'name' to match your actual field
+                    $item->location_name = optional($item->location)->name;
                     return $item;
                 });
         }

@@ -66,6 +66,7 @@
                 <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
                     @foreach ($filteredItems as $item)
                         @php
+                        dd($item);
                             $url = url("/{$item->type}/{$item->alias}");
                         @endphp
                         <div class="inner-barber-shop-recommended">
@@ -86,7 +87,7 @@
                                 <div class="location-section">
                                     <ul class="custom-justify-start">
                                         <li>
-                                            <p>{{ $item->location ?? 'Location not available' }}</p>
+                                            <p>{{ $item->location_name ?? 'Location not available' }}</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -116,60 +117,64 @@
 
     <!-- ================== TAKL OF SHOW SECTION END HERE ================== -->
 
-    @if (count($products_new) > 0)
-        <!-- ================== Shop New Arrivals Section Start Here ================== -->
-        <section class="shop-new-arrivals-bg ctm-section-margin">
-            <div class="container">
-                <div class="inner-shop-new-arrivals ctm-text-center">
-                    <h2>Shop New Arrivals</h2>
-                    <p class="ctm-mt-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                </div>
-                <div class="all-shop-new-arrivals ctm-flex-row ctm-mt-50">
-                    @foreach ($products_new as $new)
-                        <div class="inner-all-shop-new-arrivals-box">
-                            <div class="shop-new-arrivals-image">
-                                {{-- <a href="#" title="Drumstick bresao"> --}}
-                                <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:350px">
-                                <div class="drumstick-cart-sec">
-                                    <ul class="ctm-flex-row">
-                                        <li><button type="button" class="ctm-white-color"><i
-                                                    class="fa fa-eye"></i></button></li>
-                                        <li><button type="button" onClick="addToCartAjax('{{ $new->id }}','default')"
-                                                class="ctm-white-color"><i class="fa fa-shopping-cart"></i></button></li>
-                                        {{-- <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-heart"></i></button>
-                                            </li> --}}
-                                        {{-- <li><button type="button" class="ctm-white-color"><i
-                                                        class="fa fa-search"></i></button>
-                                            </li> --}}
+    @php
+         $newsData = App\Models\HeaderMenu::getMenu(1);
+    @endphp
+    @if($newsData->status == 1)
+        @if (count($products_new) > 0)
+            <!-- ================== Shop New Arrivals Section Start Here ================== -->
+            <section class="shop-new-arrivals-bg ctm-section-margin">
+                <div class="container">
+                    <div class="inner-shop-new-arrivals ctm-text-center">
+                        <h2>Shop New Arrivals</h2>
+                        <p class="ctm-mt-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    </div>
+                    <div class="all-shop-new-arrivals ctm-flex-row ctm-mt-50">
+                        @foreach ($products_new as $new)
+                            <div class="inner-all-shop-new-arrivals-box">
+                                <div class="shop-new-arrivals-image">
+                                    {{-- <a href="#" title="Drumstick bresao"> --}}
+                                    <img src="{{ $new->image }}" alt="{{ $new->alt }}" style="height:350px">
+                                    <div class="drumstick-cart-sec">
+                                        <ul class="ctm-flex-row">
+                                            <li><button type="button" class="ctm-white-color"><i
+                                                        class="fa fa-eye"></i></button></li>
+                                            <li><button type="button" onClick="addToCartAjax('{{ $new->id }}','default')"
+                                                    class="ctm-white-color"><i class="fa fa-shopping-cart"></i></button></li>
+                                            {{-- <li><button type="button" class="ctm-white-color"><i
+                                                            class="fa fa-heart"></i></button>
+                                                </li> --}}
+                                            {{-- <li><button type="button" class="ctm-white-color"><i
+                                                            class="fa fa-search"></i></button>
+                                                </li> --}}
 
-                                    </ul>
+                                        </ul>
+                                    </div>
+                                    {{-- </a> --}}
                                 </div>
-                                {{-- </a> --}}
-                            </div>
-                            <div class="shop-new-arrivals-content">
-                                <h5 class="ctm-mt-20">
-                                    {{-- <a href="#" title="Drumstick bresao">{{ $new->name }}</a> --}}
-                                    <a href="{{ $new->getUrl() }}">
-                                        <p>{{ ucfirst($new->name) }}</p>
-                                    </a>
+                                <div class="shop-new-arrivals-content">
+                                    <h5 class="ctm-mt-20">
+                                        {{-- <a href="#" title="Drumstick bresao">{{ $new->name }}</a> --}}
+                                        <a href="{{ $new->getUrl() }}">
+                                            <p>{{ ucfirst($new->name) }}</p>
+                                        </a>
 
-                                </h5>
-                                <div class="product-price-sec ctm-mt-10">
-                                    <span class="price-text ctm-secondary-color">${{ $new->price }}</span>
-                                    {{-- <span class="old-price-del">$65.00</span> --}}
+                                    </h5>
+                                    <div class="product-price-sec ctm-mt-10">
+                                        <span class="price-text ctm-secondary-color">${{ $new->price }}</span>
+                                        {{-- <span class="old-price-del">$65.00</span> --}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
 
 
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- ================== Shop New Arrivals Section End Here ================== -->
+            </section>
+            <!-- ================== Shop New Arrivals Section End Here ================== -->
+        @endif
     @endif
-
 
     <!-- ================== SHOP BY CATEGORIES Section Start Here ================== -->
     {{-- <section class="shop-by-categoried-bg ctm-section-margin">
