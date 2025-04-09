@@ -30,8 +30,8 @@
                                 <option value="">Choose type</option>
 
                                 @foreach ($eventtype as $dd) 
-                                     <option value="">{{ $dd->name }}</option>
-                                    @endphp
+                                     <option value="{{ $dd->id }}">{{ $dd->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="product-category">
