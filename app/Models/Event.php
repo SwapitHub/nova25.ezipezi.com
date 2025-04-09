@@ -81,14 +81,13 @@ class Event extends Model
 
     public static function getHeaderCats()
     {
-        $query =  DB::table('events')
+        return $query =  DB::table('events')
             ->select(DB::raw('eventtype'))
             ->where('status', 1)
             ->where('expire', '>', now())
             ->where('startdate', '<', now())
             ->groupBy('eventtype')
             ->get();
-            dd($query);
     }
 
     public static function catCount($newstype)

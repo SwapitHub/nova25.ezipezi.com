@@ -47,7 +47,7 @@
                             <select name="eventtype" class="eventtype">
                                 <option value="">Choose type</option>
                                 <?php $stypes = App\Models\Event::getHeaderCats();
-                                dd($stypes);
+
                             if(count($stypes) >=1) { 
                            foreach($stypes as $dd) {
                             $type = App\Models\EventType::getSingleCat($dd->eventtype) ?>
