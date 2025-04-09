@@ -1099,7 +1099,6 @@ class ContentFront extends GeneralController
             $event = (new Event)->getCatEvent($cat->id);
         }
         $eventtype = EventType::GetEventTypes();
-        dd($eventtype);
         return view(
             $this->templatePath . '.event_list',
             array(

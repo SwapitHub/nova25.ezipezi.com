@@ -23,6 +23,9 @@ else $image = $templateFile.'/images/home/product-listing-bg.png'; ?>
                 <form id="searchbox" method="get" action="{{ url('event/search') }}" class="search-product">
                     <div class="product-type">
                         <label for="type">{{ $pageData->name }} type</label>
+                        @php
+                            dd($eventtype);
+                        @endphp
                         <select name="eventtype"  class="eventtype">
                             <option value="">Choose type</option>
                            <?php $stypes = App\Models\Event::getHeaderCats();
