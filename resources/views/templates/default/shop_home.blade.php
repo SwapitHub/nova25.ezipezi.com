@@ -1725,7 +1725,7 @@
                 <?php  foreach($team as $user) {
           $role = App\Admin\Models\AdminUser::getRole($user->id);
         $position = App\Admin\Models\AdminUser::getPosition($role->role_id); 
-        $branch = App\Admin\Models\Branch::where($user->branch)->first(); 
+        $branch = App\Models\Branch::where($user->branch)->first(); 
         
         ?>
 
