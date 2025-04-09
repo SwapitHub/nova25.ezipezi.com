@@ -66,7 +66,6 @@
                 <div class="barber-shop-recommended custom-justify-space-between ctm-mt-50">
                     @foreach ($filteredItems as $item)
                         @php
-                        dd($item);
                             $url = url("/{$item->type}/{$item->alias}");
                         @endphp
                         <div class="inner-barber-shop-recommended">
