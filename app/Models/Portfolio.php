@@ -19,9 +19,9 @@ class Portfolio extends Model
        return $this->belongsTo(PortfolioType::class, 'portfoliotype');
     }
 
-    public function location()
+    public function blogLocation()
     {
-       return $this->belongsTo(Sublocation::class,'location');
+       return $this->belongsTo(Sublocation::class, 'location');
     }
     
     public static function getProvincia()

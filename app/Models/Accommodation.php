@@ -19,9 +19,9 @@ class Accommodation extends Model
        return $this->belongsTo(AccommodationType::class, 'accommodationtype');
     }
 
-    public function location()
+    public function blogLocation()
     {
-       return $this->belongsTo(Sublocation::class,'location');
+       return $this->belongsTo(Sublocation::class, 'location');
     }
     
     public static function getProvincia()

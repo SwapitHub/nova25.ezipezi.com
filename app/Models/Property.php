@@ -23,7 +23,7 @@ class Property extends Model
    {
       return  $query = (new Provincia)->where('status', 1)->get();
    }
-   public function location()
+   public function blogLocation()
    {
       return $this->belongsTo(Sublocation::class, 'location');
    }

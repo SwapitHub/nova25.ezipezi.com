@@ -19,9 +19,9 @@ class Service extends Model
       return $this->belongsTo(ServiceType::class, 'servicetype');
    }
 
-   public function location()
+   public function blogLocation()
    {
-      return $this->belongsTo(Sublocation::class,'location');
+      return $this->belongsTo(Sublocation::class, 'location');
    }
 
    public static function getProvincia()

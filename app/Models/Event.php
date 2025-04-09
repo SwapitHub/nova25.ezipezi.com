@@ -18,9 +18,9 @@ class Event extends Model
     {
        return $this->belongsTo(EventType::class, 'eventtype');
     }
-    public function location()
+    public function blogLocation()
     {
-       return $this->belongsTo(Sublocation::class,'location');
+       return $this->belongsTo(Sublocation::class, 'location');
     }
 
     public static function getProvincia()
