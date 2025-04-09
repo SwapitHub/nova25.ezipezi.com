@@ -1739,12 +1739,15 @@
                         </div>
                         <div class="tc-title">
                             <h3>{{ $user->salutation }} {{ $user->name }} <?php echo ' ' . $user->last_name; ?></h3>
-                            <span><?php if ($position) {
-                                echo $position->name;
-                            } ?></span>
+                            <span>
+                                {{ $user->brief }}
+                                {{-- @if($position) --}}
+                                {{-- $position->name; --}}
+                                {{-- @endif --}}
+                            </span>
                         </div>
                         <div class="brief">
-                            <p><?php echo $user->brief; ?></p>
+                            <p><?php echo $user->background; ?></p>
                         </div>
                     </div>
                 </div>
