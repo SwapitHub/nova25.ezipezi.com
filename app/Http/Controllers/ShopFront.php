@@ -153,7 +153,6 @@ class ShopFront extends GeneralController
                     return $item;
                 });
         }
-
         if ($accommodationMenu && $accommodationMenu->status == 1) {
             $accommodations = Accommodation::with('category')
                 ->where('tott', 1)
