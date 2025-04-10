@@ -1327,7 +1327,8 @@ class ContentFront extends GeneralController
     {
         $limit = $request->query('limit', 8);
 
-        $videos = Video::where('status', 1)
+        $videos = Video::orderBy('sort','ASC')
+            ->where('status', 1)
             ->where('featured', 1)
             ->where('expire', '>', now())
             ->where('startdate', '<', now())
