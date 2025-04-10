@@ -170,6 +170,8 @@ class ShopFront extends GeneralController
                     $item->location_name = optional($item->blogLocation)->name;
                     return $item;
                 });
+
+                dd($accommodations);
         }
 
         // Merge all active sections into a shuffled collection
