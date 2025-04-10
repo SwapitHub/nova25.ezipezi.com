@@ -123,7 +123,7 @@
                                 <div id="portfolio-list">
                                     @include('partials.portfolio-items', [
                                         'portfolios' => $portfolios,
-                                        'type' => 'portfolio',
+                                        'type' => 'event',
                                     ])
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                 <div class="d-flex-custom tab-two-col-inner" id="portfolio-grid">
                                     @include('partials.portfolio-grid-items', [
                                         'portfolios' => $portfolios,
-                                        'type' => 'portfolio',
+                                        'type' => 'event',
                                     ])
                                 </div>
                             </div>
