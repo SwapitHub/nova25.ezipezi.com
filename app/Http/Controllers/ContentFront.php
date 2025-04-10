@@ -1325,28 +1325,28 @@ class ContentFront extends GeneralController
 
         public function allvideos(Request $request)
         {
-            // $sort = $request->query('sort', 'featured');
-            // $limit = $request->query('limit', 8);
+            $sort = $request->query('sort', 'featured');
+            $limit = $request->query('limit', 8);
     
-            // $eventQuery = Video::where('status', 1);
-            // if ($sort === 'latest') {
-            //     $eventQuery->latest();
-            // } else {
-            //     $eventQuery->where('featured', 1)->latest();
-            // }
+            $eventQuery = Video::where('status', 1);
+            if ($sort === 'latest') {
+                $eventQuery->latest();
+            } else {
+                $eventQuery->where('featured', 1)->latest();
+            }
     
-            // // Append sort and limit to pagination links
-            // $portfolios = $eventQuery->paginate($limit)->appends([
-            //     'sort' => $sort,
-            //     'limit' => $limit
-            // ]);
-            // if ($request->ajax()) {
-            //     return response()->json([
-            //         'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
-            //         'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
-            //         'nextPageUrl' => $portfolios->nextPageUrl(),
-            //     ]);
-            // }
-            return view($this->templatePath . '.netflix-summery');
+            // Append sort and limit to pagination links
+            $portfolios = $eventQuery->paginate($limit)->appends([
+                'sort' => $sort,
+                'limit' => $limit
+            ]);
+            if ($request->ajax()) {
+                return response()->json([
+                    'listView' => view('partials.portfolio-items', compact('portfolios'))->render(),
+                    'gridView' => view('partials.portfolio-grid-items', compact('portfolios'))->render(),
+                    'nextPageUrl' => $portfolios->nextPageUrl(),
+                ]);
+            }
+            // return view($this->templatePath . '.netflix-summery');
         }
 }
