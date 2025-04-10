@@ -81,7 +81,7 @@
                             </div>
                             <div class="barber-shop-box-main">
                                 <a href="{{ $url }}">
-                                    <h5>{{ ucfirst($item->title ?? $item->name) }}</h5>
+                                    <h5>{{ ucfirst($item->title ?? $item->name) }} {{ $item->featured }}</h5>
                                 </a>
                                 <div class="location-section">
                                     <ul class="custom-justify-start">
