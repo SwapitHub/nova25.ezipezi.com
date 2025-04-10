@@ -341,7 +341,7 @@
                                                     value="{{ old('image', $video['image'] ?? '') }}"
                                                     class="form-control input-sm image" placeholder="" />
                                                 <span class="input-group-btn">
-                                                    <a data-input="image" data-preview="preview_image" data-type="video"
+                                                    <a data-input="image" data-preview="preview_image" data-type="thumbs"
                                                         class="btn btn-sm btn-primary lfm">
                                                         <i class="fa fa-picture-o"></i>
                                                         {{ trans('product.admin.choose_image') }}
