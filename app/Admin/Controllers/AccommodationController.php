@@ -353,6 +353,7 @@ class AccommodationController extends Controller
         
 
         $accommodation = Accommodation::find($id);
+        dd($accommodation);
         $states =  ShopProduct::getLocalidads($accommodation->provincia);
         $add_subloc =  ShopProduct::getLocalidads($accommodation->add_subloc);
         $subloc =  ShopProduct::getSubloc($accommodation->state);
