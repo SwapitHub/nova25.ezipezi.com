@@ -66,9 +66,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
+
+    {{-- ##################new ########################### --}}
+    <link href="{{ asset($templateFile . '/css/custom-slick-thim-slider.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" />
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> --}}
+    <link href="{{ asset($templateFile . '/css/netflix.css') }}" rel="stylesheet">
 
 
     <style>
@@ -201,6 +206,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.4.0/build/js/intlTelInput.js"></script>
     <script src="{{ asset($templateFile . '/js/custom.js') }}"></script>
+    {{-- ##############new added ################ --}}
+    <script src="{{ asset($templateFile . '/js/custom-thma-slider.js') }}"></script>
+    <script src="{{ asset($templateFile . '/js/netflix.js') }}"></script>
     <script>
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 
@@ -268,4 +276,5 @@
 	</script> --}}
 
 {{-- script for nova slider --}}
+
 </html>
