@@ -186,6 +186,7 @@ class ShopFront extends GeneralController
 
         $images = Gallary::where('aa', 1)
             ->where('status', 1)
+            ->where('featured', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'gallery';
@@ -194,6 +195,7 @@ class ShopFront extends GeneralController
 
         $videos = Video::where('aa', 1)
             ->where('status', 1)
+            ->where('featured', 1)
             ->get()
             ->map(function ($item) {
                 $item->type = 'video';
