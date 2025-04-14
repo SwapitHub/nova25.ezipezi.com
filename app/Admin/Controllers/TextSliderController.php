@@ -205,7 +205,7 @@ class TextSliderController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required',
             'keyword' => 'required',
-            'description' => 'required|string|max:100',
+            'description' => 'required',
             // 'page' => 'required',
             'sort' => 'numeric|min:0',
             'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:text_slider,alias|string|max:100',
@@ -278,7 +278,7 @@ class TextSliderController extends Controller
             // 'page' => 'required',
             'sort' => 'numeric|min:0',
             'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:text_slider,alias,' . $slider->id . ',id|string|max:100',
-            'description' => 'required|string|max:100',
+            'description' => 'required',
         ], [
             // 'descriptions.*.name.required' => trans('validation.required', ['attribute' => trans('slider.name')]),
             'alias.regex' => trans('slider.alias_validate'),
