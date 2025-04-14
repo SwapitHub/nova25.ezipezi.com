@@ -205,7 +205,7 @@ class TextSliderController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required',
             'description' => 'required|string|max:100',
-            'page' => 'required',
+            // 'page' => 'required',
             'sort' => 'numeric|min:0',
             'alias' => 'required|regex:/(^([0-9A-Za-z\-_]+)$)/|unique:text_slider,alias|string|max:100',
            
@@ -228,7 +228,7 @@ class TextSliderController extends Controller
             'top' => !empty($data['top']) ? 1 : 0,
             'status' => !empty($data['status']) ? 1 : 0,
             'sort' => (int) $data['sort'],
-            'page' => $data['page'],
+            // 'page' => $data['page'],
             'startdate' => $data['startdate'],
             'expire' => $data['expire'],
         ];
