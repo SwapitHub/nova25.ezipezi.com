@@ -1,5 +1,6 @@
 @php
     $banners = \App\Models\ShopBanner::where('status', 1)->where('type', 0)->sort()->get();
+    $textslider = \App\Models\TextSlider::where('status', 1)->get();
 @endphp
 <?php $slides = App\Models\Slider::getSlider(6);
 
@@ -55,15 +56,20 @@
             </div>
 
             {{--  second banner slider start  --}}
-            <div class="banner-list-slider ctm-mt-30">
-                <div class="inner-banner-list-slider">
-                    <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
+            @if (count($textslider) > 0)
+                <div class="banner-list-slider ctm-mt-30">
+                    @foreach ($textslider as $text)
+                        <div class="inner-banner-list-slider">
+                            <ul>
+                                <li><i class="fa fa-check" aria-hidden="true"></i> {!! $text['description'] !!}</li>
+                                {{-- <li><i class="fa fa-check" aria-hidden="true"></i><a href="javascript:void(0)"
                                 title="Official Cloves shop">Official Cloves shop</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">over 1100 products online</li>
-                    </ul>
-                </div>
-                <div class="inner-banner-list-slider">
+                        <li class="ctm-gray-light-color ctm-primary-color">over 1100 products online</li> --}}
+                            </ul>
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="inner-banner-list-slider">
                     <ul>
                         <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
                                 title="Free shipping and returns">Free shipping and returns</a></li>
@@ -97,8 +103,9 @@
                                 title="Free Same-day dispatch">Same-day dispatch</a></li>
                         <li class="ctm-gray-light-color ctm-primary-color">before 8pm (Mon-Fri)</li>
                     </ul>
+                </div> --}}
                 </div>
-            </div>
+            @endif
             {{-- second banner slider end  --}}
         </div>
     </section>
