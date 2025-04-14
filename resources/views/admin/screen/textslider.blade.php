@@ -78,7 +78,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <textarea id="description" name="description" class="editor">
-                                         {!! old('description', isset($slider['description'])?$slider['description']:'' ?? '') !!}"
+                                         {!! old('description', isset($slider['description'])?$slider['description']:'' ?? '') !!}
                                     </textarea>
 
                                     </div>
