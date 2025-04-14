@@ -172,7 +172,7 @@ class TextSliderController extends Controller
  */
     public function create()
     {
-        $pages = TextSlider::getPages();
+        // $pages = TextSlider::getPages();
         $data = [
             'title' => 'Add new text slider',
             'sub_title' => '',
@@ -180,9 +180,9 @@ class TextSliderController extends Controller
             'icon' => 'fa fa-plus',
             'languages' => $this->languages,
             'slider' => [],
-            'categories' => (new TextSlider)->getTreeCategories(),
+            // 'categories' => (new TextSlider)->getTreeCategories(),
             'url_action' => route('text_slider.create'),
-            'pages' => $pages,
+            // 'pages' => $pages,
 
         ];
 

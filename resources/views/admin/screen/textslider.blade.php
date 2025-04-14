@@ -44,7 +44,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
-                                        <input type="text" id="name" name="name" value="{{ old('name',$slider['name']) }}"
+                                        <input type="text" id="name" name="name" value="{{ old('name',isset($slider['name'])?$slider['name']:'' ) }}"
                                             class="form-control " placeholder="" />
                                     </div>
                                     @if ($errors->has('name'))
@@ -61,7 +61,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
-                                        <input type="text" id="keyword" name="keyword" value="{!! old('keyword', $slider['keyword'] ?? '') !!}"
+                                        <input type="text" id="keyword" name="keyword" value="{!! old('keyword', isset($slider['keyword'])?$slider['keyword']:'' ?? '') !!}"
                                             class="form-control {{ 'keyword' }}" placeholder="" />
                                     </div>
                                     @if ($errors->has('keyword'))
@@ -78,7 +78,7 @@
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <textarea id="description" name="description" class="editor">
-                                         {!! old('description', $slider['description'] ?? '') !!}"
+                                         {!! old('description', isset($slider['description'])?$slider['description']:'' ?? '') !!}"
                                     </textarea>
 
                                     </div>
