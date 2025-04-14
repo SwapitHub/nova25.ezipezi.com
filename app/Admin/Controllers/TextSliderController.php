@@ -204,6 +204,7 @@ class TextSliderController extends Controller
 
         $validator = Validator::make($data, [
             'name' => 'required',
+            'keyword' => 'required',
             'description' => 'required|string|max:100',
             // 'page' => 'required',
             'sort' => 'numeric|min:0',
