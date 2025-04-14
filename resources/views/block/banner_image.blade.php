@@ -54,56 +54,27 @@
                 @endforeach
 
             </div>
-
             {{--  second banner slider start  --}}
             @if (count($textslider) > 0)
+                @php
+                    $currentDate = now();
+                @endphp
                 <div class="banner-list-slider ctm-mt-30">
                     @foreach ($textslider as $text)
-                        <div class="inner-banner-list-slider">
-                            <ul>
-                                <li><i class="fa fa-check" aria-hidden="true"></i> {!! $text['description'] !!}</li>
-                                {{-- <li><i class="fa fa-check" aria-hidden="true"></i><a href="javascript:void(0)"
-                                title="Official Cloves shop">Official Cloves shop</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">over 1100 products online</li> --}}
-                            </ul>
-                        </div>
+                        @php
+                            $currentDate = now();
+                            $isActive =
+                                $text->startdate <= $currentDate &&
+                                (empty($text->expity) || $text->expity >= $currentDate);
+                        @endphp
+                        @if ($isActive)
+                            <div class="inner-banner-list-slider">
+                                <ul>
+                                    <li><i class="fa fa-check" aria-hidden="true"></i> {!! $text['description'] !!}</li>
+                                </ul>
+                            </div>
+                        @endif
                     @endforeach
-
-                    {{-- <div class="inner-banner-list-slider">
-                    <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
-                                title="Free shipping and returns">Free shipping and returns</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">for members</li>
-                    </ul>
-                </div>
-                <div class="inner-banner-list-slider">
-                    <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
-                                title="Free Same-day dispatch">Same-day dispatch</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">before 8pm (Mon-Fri)</li>
-                    </ul>
-                </div>
-                <div class="inner-banner-list-slider">
-                    <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
-                                title="Official Cloves shop">Official Cloves shop</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">over 1100 products online</li>
-                    </ul>
-                </div>
-                <div class="inner-banner-list-slider">
-                    <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
-                                title="Free shipping and returns">Free shipping and returns</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">for members</li>
-                    </ul>
-                </div>
-                <div class="inner-banner-list-slider">
-                    <ul>
-                        <li><i class="fa fa-check" aria-hidden="true"></i><a href="#"
-                                title="Free Same-day dispatch">Same-day dispatch</a></li>
-                        <li class="ctm-gray-light-color ctm-primary-color">before 8pm (Mon-Fri)</li>
-                    </ul>
-                </div> --}}
                 </div>
             @endif
             {{-- second banner slider end  --}}
