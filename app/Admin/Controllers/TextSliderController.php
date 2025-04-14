@@ -224,7 +224,7 @@ class TextSliderController extends Controller
             'keyword' => $data['keyword'],
             'description' => $data['description'],
             'alias' => $data['alias'],
-            'parent' => (int) $data['parent'],
+            // 'parent' => (int) $data['parent'],
             'top' => !empty($data['top']) ? 1 : 0,
             'status' => !empty($data['status']) ? 1 : 0,
             'sort' => (int) $data['sort'],
